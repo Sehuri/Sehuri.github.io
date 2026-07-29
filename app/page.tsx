@@ -133,8 +133,6 @@ export default function Home() {
                 href={space.href}
                 key={space.name}
                 aria-label={`${space.action}：${space.name}`}
-                target={space.tone === "knowledge" ? "_blank" : undefined}
-                rel={space.tone === "knowledge" ? "noreferrer" : undefined}
               >
                 {content}
               </a>
@@ -190,13 +188,7 @@ export default function Home() {
         <div>
           <a href="https://sehuri.github.io/travel-map/">旅行</a>
           <a href="https://yueji-reading-room.shenhuil.chatgpt.site">阅读</a>
-          <a
-            href="https://sehuri.github.io/Sehuri-knowledge-wiki/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            知识
-          </a>
+          <a href="https://sehuri.github.io/Sehuri-knowledge-wiki/">知识</a>
           <a href="#spaces">音乐</a>
           <a href="https://github.com/Sehuri" target="_blank" rel="noreferrer">GitHub</a>
         </div>
