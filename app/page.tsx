@@ -24,8 +24,9 @@ const spaces = [
     name: "知庭",
     english: "KNOWLEDGE",
     description: "从文章、视频和零散灵感里，慢慢长出自己的知识花园。",
-    detail: "本地知识库 · 正在生长",
-    action: "正在接入",
+    detail: "个人知识 Wiki · 持续更新",
+    href: "https://sehuri.github.io/Sehuri-knowledge-wiki/",
+    action: "进入知识花园",
     tone: "knowledge",
   },
   {
@@ -132,6 +133,8 @@ export default function Home() {
                 href={space.href}
                 key={space.name}
                 aria-label={`${space.action}：${space.name}`}
+                target={space.tone === "knowledge" ? "_blank" : undefined}
+                rel={space.tone === "knowledge" ? "noreferrer" : undefined}
               >
                 {content}
               </a>
@@ -187,7 +190,13 @@ export default function Home() {
         <div>
           <a href="https://sehuri.github.io/travel-map/">旅行</a>
           <a href="https://yueji-reading-room.shenhuil.chatgpt.site">阅读</a>
-          <a href="#spaces">知识</a>
+          <a
+            href="https://sehuri.github.io/Sehuri-knowledge-wiki/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            知识
+          </a>
           <a href="#spaces">音乐</a>
           <a href="https://github.com/Sehuri" target="_blank" rel="noreferrer">GitHub</a>
         </div>
