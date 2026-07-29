@@ -1,0 +1,670 @@
+@import "tailwindcss";
+
+:root {
+  --ink: #071525;
+  --deep-blue: #0a2037;
+  --mist: #a9c3d7;
+  --moon: #f2eee6;
+  --sunset: #e5a58f;
+  --line: rgba(235, 244, 249, 0.16);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--ink);
+}
+
+body {
+  margin: 0;
+  background: var(--ink);
+  color: var(--moon);
+  font-family: "Avenir Next", "PingFang SC", "Hiragino Sans GB", sans-serif;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  background: var(--sunset);
+  color: var(--ink);
+}
+
+.skip-link {
+  position: fixed;
+  left: 1rem;
+  top: -4rem;
+  z-index: 100;
+  padding: 0.7rem 1rem;
+  background: var(--moon);
+  color: var(--ink);
+  transition: top 160ms ease;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+.hero {
+  min-height: 100svh;
+  position: relative;
+  display: grid;
+  align-items: center;
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    linear-gradient(90deg, rgba(5, 18, 33, 0.72) 0%, rgba(5, 18, 33, 0.3) 42%, rgba(5, 18, 33, 0.04) 72%),
+    url("/shenhuili.png") center center / cover no-repeat;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 24%;
+  z-index: -1;
+  background: linear-gradient(transparent, rgba(5, 16, 28, 0.68));
+}
+
+.hero-shade {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(circle at 15% 34%, rgba(229, 165, 143, 0.11), transparent 29%),
+    linear-gradient(180deg, rgba(5, 18, 33, 0.18), transparent 35%);
+}
+
+.site-nav {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.7rem clamp(1.5rem, 5vw, 5.5rem);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.11);
+  backdrop-filter: blur(6px);
+}
+
+.wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.72rem;
+  font-family: "Songti SC", "STSong", serif;
+  font-size: 1.05rem;
+  letter-spacing: 0.16em;
+}
+
+.wordmark-seal {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  aspect-ratio: 1;
+  border: 1px solid rgba(255, 255, 255, 0.46);
+  color: var(--moon);
+  font-size: 0.92rem;
+  letter-spacing: 0;
+}
+
+.nav-links {
+  display: flex;
+  gap: clamp(1rem, 2.7vw, 2.8rem);
+  font-size: 0.73rem;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.nav-links a {
+  transition: color 160ms ease;
+}
+
+.nav-links a:hover,
+.nav-links a:focus-visible {
+  color: #fff;
+}
+
+.hero-content {
+  width: min(46rem, 80vw);
+  margin-left: clamp(1.5rem, 9vw, 10rem);
+  padding-top: 5rem;
+}
+
+.eyebrow,
+.section-kicker {
+  margin: 0 0 1.4rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.27em;
+  color: var(--mist);
+}
+
+.hero h1 {
+  margin: 0;
+  font-family: "Songti SC", "STSong", "Noto Serif CJK SC", serif;
+  font-size: clamp(5rem, 10.7vw, 10.5rem);
+  font-weight: 400;
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+  text-shadow: 0 0 48px rgba(4, 14, 28, 0.32);
+}
+
+.hero h1 span {
+  display: block;
+  margin: 1.55rem 0 0 0.45rem;
+  font-family: "Avenir Next", "PingFang SC", sans-serif;
+  font-size: clamp(0.7rem, 1vw, 0.94rem);
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: 0.2em;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.hero-intro {
+  margin: clamp(2rem, 4vw, 3.6rem) 0 0 0.5rem;
+  font-family: "Songti SC", "STSong", serif;
+  font-size: clamp(1.05rem, 1.6vw, 1.4rem);
+  line-height: 1.9;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin: 2.4rem 0 0 0.5rem;
+}
+
+.primary-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2.5rem;
+  min-width: 12.5rem;
+  padding: 0.95rem 1.15rem;
+  background: rgba(242, 238, 230, 0.96);
+  color: var(--ink);
+  font-size: 0.77rem;
+  letter-spacing: 0.12em;
+  transition: background 180ms ease, transform 180ms ease;
+}
+
+.primary-action:hover,
+.primary-action:focus-visible {
+  background: #fff;
+  transform: translateY(-2px);
+}
+
+.text-action {
+  padding: 0.55rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  font-size: 0.77rem;
+  letter-spacing: 0.12em;
+}
+
+.hero-note {
+  position: absolute;
+  left: clamp(1.5rem, 4vw, 4.5rem);
+  bottom: 2.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  writing-mode: vertical-rl;
+  font-size: 0.56rem;
+  letter-spacing: 0.18em;
+  color: rgba(255, 255, 255, 0.48);
+}
+
+.hero-note i {
+  width: 1px;
+  height: 2rem;
+  background: rgba(255, 255, 255, 0.26);
+}
+
+.scroll-cue {
+  position: absolute;
+  right: clamp(1.5rem, 4vw, 4.5rem);
+  bottom: 2.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.56rem;
+  letter-spacing: 0.24em;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.scroll-cue span {
+  display: block;
+  width: 3.6rem;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.45);
+}
+
+.spaces {
+  padding: clamp(5rem, 10vw, 9rem) clamp(1.25rem, 6vw, 6.5rem);
+  background:
+    radial-gradient(circle at 70% 10%, rgba(91, 130, 158, 0.09), transparent 33%),
+    #071525;
+}
+
+.section-heading {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: end;
+  max-width: 84rem;
+  margin: 0 auto clamp(3rem, 6vw, 5.5rem);
+}
+
+.section-heading h2,
+.about h2 {
+  margin: 0;
+  font-family: "Songti SC", "STSong", serif;
+  font-size: clamp(2.4rem, 5vw, 4.9rem);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+}
+
+.section-heading > p {
+  max-width: 31rem;
+  justify-self: end;
+  margin: 0;
+  font-family: "Songti SC", "STSong", serif;
+  font-size: 1rem;
+  line-height: 2;
+  color: rgba(228, 238, 244, 0.58);
+}
+
+.space-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-width: 84rem;
+  margin: 0 auto;
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+
+.space-card {
+  position: relative;
+  min-height: 25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  padding: clamp(1.5rem, 3vw, 2.7rem);
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.018);
+  transition: background 240ms ease, transform 240ms ease;
+}
+
+a.space-card:hover,
+a.space-card:focus-visible {
+  z-index: 2;
+  transform: translateY(-4px);
+  background: rgba(126, 169, 199, 0.09);
+  outline: 1px solid rgba(167, 200, 221, 0.32);
+  outline-offset: -1px;
+}
+
+.space-card::before {
+  content: "";
+  position: absolute;
+  width: 19rem;
+  aspect-ratio: 1;
+  right: -9rem;
+  top: -10rem;
+  border-radius: 50%;
+  opacity: 0.2;
+  filter: blur(1px);
+  background: radial-gradient(circle, var(--card-glow), transparent 70%);
+}
+
+.space-card.travel { --card-glow: #86bada; }
+.space-card.reading { --card-glow: #d9a47a; }
+.space-card.knowledge { --card-glow: #91aa9c; }
+.space-card.music { --card-glow: #b89ab7; }
+
+.card-top,
+.card-footer {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.space-index {
+  font-family: "Songti SC", serif;
+  font-size: 0.82rem;
+  color: var(--sunset);
+}
+
+.space-english {
+  font-size: 0.58rem;
+  letter-spacing: 0.27em;
+  color: rgba(255, 255, 255, 0.34);
+}
+
+.card-copy {
+  position: relative;
+  max-width: 28rem;
+}
+
+.card-copy h3 {
+  margin: 0 0 1.1rem;
+  font-family: "Songti SC", "STSong", serif;
+  font-size: clamp(3.2rem, 6vw, 5.5rem);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+}
+
+.card-copy p {
+  max-width: 24rem;
+  margin: 0;
+  font-family: "Songti SC", "STSong", serif;
+  line-height: 1.9;
+  color: rgba(232, 239, 244, 0.64);
+}
+
+.card-footer {
+  padding-top: 1.4rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  gap: 1rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.42);
+}
+
+.card-footer strong {
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 0.68rem;
+  font-weight: 500;
+}
+
+.is-pending {
+  opacity: 0.68;
+}
+
+.about {
+  position: relative;
+  display: grid;
+  grid-template-columns: 0.32fr 1.25fr 0.8fr;
+  gap: clamp(2rem, 6vw, 7rem);
+  align-items: center;
+  padding: clamp(6rem, 12vw, 12rem) clamp(1.5rem, 8vw, 9rem);
+  background:
+    linear-gradient(rgba(9, 27, 45, 0.88), rgba(9, 27, 45, 0.94)),
+    url("/shenhuili.png") center 58% / cover no-repeat;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.about-mark {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+  writing-mode: vertical-rl;
+  align-self: stretch;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.about-mark span {
+  display: grid;
+  place-items: center;
+  width: 3.4rem;
+  aspect-ratio: 1;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  font-family: "Songti SC", serif;
+  font-size: 1.3rem;
+}
+
+.about-mark i {
+  width: 1px;
+  min-height: 10rem;
+  flex: 1;
+  background: rgba(255, 255, 255, 0.13);
+}
+
+.about-copy {
+  max-width: 48rem;
+}
+
+.about-copy h2 {
+  line-height: 1.25;
+}
+
+.about-copy > p:not(.section-kicker) {
+  max-width: 42rem;
+  margin: 2rem 0 0;
+  font-family: "Songti SC", "STSong", serif;
+  font-size: 1rem;
+  line-height: 2.1;
+  color: rgba(236, 241, 244, 0.68);
+}
+
+.about blockquote {
+  margin: 0;
+  padding: 2.2rem 0 0 2rem;
+  border-left: 1px solid rgba(255, 255, 255, 0.19);
+  font-family: "Songti SC", "STSong", serif;
+  font-size: clamp(1.35rem, 2.3vw, 2.05rem);
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.83);
+}
+
+.about blockquote span {
+  display: block;
+  height: 2.5rem;
+  font-size: 4rem;
+  line-height: 1;
+  color: var(--sunset);
+}
+
+footer {
+  display: grid;
+  grid-template-columns: 1fr auto auto auto;
+  gap: clamp(1.3rem, 4vw, 4rem);
+  align-items: center;
+  padding: 2rem clamp(1.5rem, 6vw, 6.5rem);
+  background: #05101c;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.42);
+  font-size: 0.66rem;
+  letter-spacing: 0.1em;
+}
+
+.footer-brand {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+footer p {
+  margin: 0;
+  font-family: "Songti SC", serif;
+}
+
+footer > div {
+  display: flex;
+  gap: 1.4rem;
+}
+
+footer a:hover,
+footer a:focus-visible {
+  color: #fff;
+}
+
+footer small {
+  font-size: inherit;
+}
+
+@media (max-width: 840px) {
+  .hero {
+    background-position: 62% center;
+  }
+
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(90deg, rgba(5, 17, 30, 0.62), rgba(5, 17, 30, 0.1));
+  }
+
+  .hero-content {
+    width: min(33rem, calc(100vw - 3rem));
+    margin-left: 1.5rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(4.6rem, 20vw, 7rem);
+  }
+
+  .nav-links a:first-child {
+    display: none;
+  }
+
+  .hero-note {
+    display: none;
+  }
+
+  .section-heading,
+  .about {
+    grid-template-columns: 1fr;
+  }
+
+  .section-heading > p {
+    justify-self: start;
+  }
+
+  .about-mark {
+    display: none;
+  }
+
+  .about blockquote {
+    max-width: 29rem;
+  }
+
+  footer {
+    grid-template-columns: 1fr auto;
+  }
+
+  footer p,
+  footer small {
+    display: none;
+  }
+}
+
+@media (max-width: 620px) {
+  .site-nav {
+    padding: 1.2rem 1.1rem;
+  }
+
+  .wordmark {
+    font-size: 0.92rem;
+  }
+
+  .nav-links {
+    gap: 1rem;
+  }
+
+  .nav-links a:nth-child(2) {
+    display: none;
+  }
+
+  .hero {
+    min-height: 46rem;
+    background-position: 66% center;
+  }
+
+  .hero-content {
+    align-self: end;
+    margin: 0 1.2rem 6rem;
+    padding: 0;
+  }
+
+  .eyebrow {
+    margin-bottom: 1rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(4.2rem, 22vw, 6rem);
+  }
+
+  .hero-intro {
+    font-size: 1rem;
+  }
+
+  .hero-actions {
+    gap: 1.3rem;
+  }
+
+  .primary-action {
+    min-width: 0;
+    gap: 1.5rem;
+  }
+
+  .scroll-cue {
+    display: none;
+  }
+
+  .spaces {
+    padding: 5rem 1rem;
+  }
+
+  .section-heading {
+    margin-bottom: 2.6rem;
+  }
+
+  .space-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .space-card {
+    min-height: 21rem;
+    padding: 1.4rem;
+  }
+
+  .card-copy h3 {
+    font-size: 3.7rem;
+  }
+
+  .about {
+    padding: 6rem 1.3rem;
+    background-position: 64% center;
+  }
+
+  .about-copy h2 {
+    font-size: 2.45rem;
+  }
+
+  footer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 2rem 1.3rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+  }
+}
