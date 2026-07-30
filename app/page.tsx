@@ -1,3 +1,5 @@
+import GardenFeatures from "./GardenFeatures";
+
 const spaces = [
   {
     index: "01",
@@ -47,7 +49,7 @@ function Arrow() {
 export default function Home() {
   return (
     <main>
-      <a className="skip-link" href="#spaces">跳到我的空间</a>
+      <a className="skip-link" href="#today">跳到今日庭院</a>
 
       <section className="hero" id="top">
         <nav className="site-nav" aria-label="主导航">
@@ -80,7 +82,7 @@ export default function Home() {
             <a className="primary-action" href="#spaces">
               进入我的世界 <span aria-hidden="true">↓</span>
             </a>
-            <a className="text-action" href="#about">认识我</a>
+            <a className="text-action" href="#today">看看今天</a>
           </div>
         </div>
 
@@ -94,6 +96,8 @@ export default function Home() {
           SCROLL
         </a>
       </section>
+
+      <GardenFeatures />
 
       <section className="spaces" id="spaces">
         <header className="section-heading">

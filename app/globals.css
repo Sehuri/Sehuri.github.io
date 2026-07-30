@@ -254,6 +254,336 @@ a {
   background: rgba(255, 255, 255, 0.45);
 }
 
+.garden-today {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(5rem, 10vw, 9rem) clamp(1.25rem, 6vw, 6.5rem);
+  background:
+    radial-gradient(circle at 84% 12%, rgba(229, 165, 143, 0.21), transparent 26%),
+    linear-gradient(135deg, #f2eee6 0%, #e9edf0 100%);
+  color: var(--ink);
+}
+
+.garden-today::before {
+  content: "今";
+  position: absolute;
+  right: -0.02em;
+  top: -0.24em;
+  font-family: "Songti SC", "STSong", serif;
+  font-size: clamp(18rem, 33vw, 34rem);
+  line-height: 1;
+  color: rgba(8, 31, 52, 0.028);
+  pointer-events: none;
+}
+
+.garden-heading {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: end;
+  max-width: 84rem;
+  margin: 0 auto clamp(3rem, 5vw, 4.6rem);
+}
+
+.garden-heading .section-kicker {
+  color: #53758d;
+}
+
+.garden-heading h2 {
+  margin: 0;
+  font-family: "Songti SC", "STSong", serif;
+  font-size: clamp(3.2rem, 6.8vw, 6.3rem);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+}
+
+.garden-date {
+  justify-self: end;
+  display: grid;
+  grid-template-columns: auto minmax(3rem, 8rem) auto;
+  gap: 1.2rem;
+  align-items: center;
+  color: rgba(7, 21, 37, 0.58);
+}
+
+.garden-date > span {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+}
+
+.garden-date i {
+  display: block;
+  height: 1px;
+  background: rgba(7, 21, 37, 0.22);
+}
+
+.garden-date p {
+  margin: 0;
+  font-family: "Songti SC", "STSong", serif;
+  font-size: 0.88rem;
+  line-height: 1.8;
+}
+
+.garden-layout {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(20rem, 0.75fr);
+  gap: clamp(1.5rem, 3vw, 3rem);
+  max-width: 84rem;
+  margin: 0 auto;
+}
+
+.today-list {
+  border-top: 1px solid rgba(7, 21, 37, 0.22);
+}
+
+.today-note {
+  --note-color: #53758d;
+  display: grid;
+  grid-template-columns: 4rem minmax(0, 1fr) auto;
+  gap: clamp(1rem, 2.4vw, 2.3rem);
+  align-items: center;
+  min-height: 10.6rem;
+  padding: 1.6rem 0;
+  border-bottom: 1px solid rgba(7, 21, 37, 0.16);
+  transition: padding 220ms ease, background 220ms ease;
+}
+
+.today-note.travel { --note-color: #537f9b; }
+.today-note.reading { --note-color: #a66f58; }
+.today-note.knowledge { --note-color: #607d6b; }
+
+.today-note:hover,
+.today-note:focus-visible {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  background: rgba(255, 255, 255, 0.44);
+  outline: none;
+}
+
+.today-index {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+  color: var(--note-color);
+}
+
+.today-index span {
+  font-family: "Songti SC", serif;
+  font-size: 0.8rem;
+}
+
+.today-index i {
+  width: 1px;
+  flex: 1;
+  background: color-mix(in srgb, var(--note-color) 38%, transparent);
+}
+
+.today-copy p {
+  margin: 0 0 0.4rem;
+  color: var(--note-color);
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+}
+
+.today-copy h3 {
+  display: inline;
+  margin: 0 0.8rem 0 0;
+  font-family: "Songti SC", "STSong", serif;
+  font-size: clamp(1.7rem, 3vw, 2.7rem);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+.today-copy > span {
+  color: rgba(7, 21, 37, 0.48);
+  font-size: 0.66rem;
+  letter-spacing: 0.07em;
+}
+
+.today-copy small {
+  display: block;
+  max-width: 35rem;
+  margin-top: 0.65rem;
+  font-family: "Songti SC", "STSong", serif;
+  font-size: 0.84rem;
+  line-height: 1.7;
+  color: rgba(7, 21, 37, 0.56);
+}
+
+.today-note > strong {
+  align-self: end;
+  padding-bottom: 0.3rem;
+  color: rgba(7, 21, 37, 0.68);
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+}
+
+.wander-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 36rem;
+  overflow: hidden;
+  padding: clamp(1.7rem, 3.5vw, 3rem);
+  background:
+    radial-gradient(circle at 16% 76%, rgba(229, 165, 143, 0.15), transparent 28%),
+    linear-gradient(155deg, #102c48, #071525 68%);
+  color: var(--moon);
+}
+
+.wander-card::after {
+  content: "";
+  position: absolute;
+  inset: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  pointer-events: none;
+}
+
+.wander-moons {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  width: 7.5rem;
+  height: 6rem;
+  opacity: 0.88;
+}
+
+.wander-moons span {
+  position: absolute;
+  width: 2.2rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 34% 31%, #fff 0 3%, transparent 4%),
+    radial-gradient(circle at 65% 63%, rgba(155, 134, 103, 0.3) 0 8%, transparent 9%),
+    #e9dfca;
+  box-shadow: 0 0 20px rgba(240, 224, 191, 0.28);
+}
+
+.wander-moons span:first-child {
+  top: 0;
+  right: 0;
+}
+
+.wander-moons span:last-child {
+  right: 3.1rem;
+  top: 2.6rem;
+  width: 1.65rem;
+}
+
+.wander-eyebrow {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 1rem;
+  color: var(--mist);
+  font-size: 0.59rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+}
+
+.wander-card > h2 {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  font-family: "Songti SC", "STSong", serif;
+  font-size: clamp(3.6rem, 6vw, 5.7rem);
+  font-weight: 400;
+  line-height: 1;
+}
+
+.wander-result {
+  position: relative;
+  z-index: 1;
+  margin: auto 0 2.2rem;
+  padding-top: 4rem;
+}
+
+.wander-result > span {
+  color: var(--sunset);
+  font-size: 0.57rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+}
+
+.wander-result h3 {
+  margin: 0.9rem 0 0.8rem;
+  font-family: "Songti SC", "STSong", serif;
+  font-size: clamp(1.7rem, 3vw, 2.45rem);
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+.wander-result p {
+  max-width: 24rem;
+  margin: 0;
+  font-family: "Songti SC", "STSong", serif;
+  font-size: 0.87rem;
+  line-height: 1.85;
+  color: rgba(237, 242, 246, 0.62);
+}
+
+.wander-actions {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.wander-actions button,
+.wander-actions a {
+  min-height: 2.9rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.4rem;
+  padding: 0.8rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: transparent;
+  color: var(--moon);
+  font: inherit;
+  font-size: 0.67rem;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: background 180ms ease, color 180ms ease;
+}
+
+.wander-actions button {
+  background: var(--moon);
+  color: var(--ink);
+  border-color: var(--moon);
+}
+
+.wander-actions button:hover,
+.wander-actions button:focus-visible {
+  background: #fff;
+}
+
+.wander-actions a:hover,
+.wander-actions a:focus-visible {
+  background: rgba(255, 255, 255, 0.1);
+  outline: none;
+}
+
+.wander-card > small {
+  position: relative;
+  z-index: 1;
+  margin-top: 1.5rem;
+  color: rgba(255, 255, 255, 0.35);
+  font-family: "Songti SC", "STSong", serif;
+  font-size: 0.65rem;
+}
+
 .spaces {
   padding: clamp(5rem, 10vw, 9rem) clamp(1.25rem, 6vw, 6.5rem);
   background:
@@ -540,8 +870,21 @@ footer small {
   }
 
   .section-heading,
+  .garden-heading,
   .about {
     grid-template-columns: 1fr;
+  }
+
+  .garden-date {
+    justify-self: start;
+  }
+
+  .garden-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .wander-card {
+    min-height: 31rem;
   }
 
   .section-heading > p {
@@ -621,6 +964,40 @@ footer small {
 
   .spaces {
     padding: 5rem 1rem;
+  }
+
+  .garden-today {
+    padding: 5rem 1rem;
+  }
+
+  .garden-date {
+    grid-template-columns: auto 2.5rem 1fr;
+    gap: 0.8rem;
+  }
+
+  .today-note {
+    grid-template-columns: 2rem minmax(0, 1fr);
+    gap: 0.9rem;
+    min-height: 0;
+  }
+
+  .today-note > strong {
+    grid-column: 2;
+    justify-self: start;
+  }
+
+  .today-copy h3,
+  .today-copy > span {
+    display: block;
+  }
+
+  .today-copy > span {
+    margin-top: 0.3rem;
+  }
+
+  .wander-card {
+    min-height: 34rem;
+    padding: 2rem 1.6rem;
   }
 
   .section-heading {
