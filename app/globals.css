@@ -65,7 +65,7 @@ a {
   isolation: isolate;
   background:
     linear-gradient(90deg, rgba(5, 18, 33, 0.72) 0%, rgba(5, 18, 33, 0.3) 42%, rgba(5, 18, 33, 0.04) 72%),
-    url("/shenhuili.png") center center / cover no-repeat;
+    url("/shenhuili.png") center top / cover no-repeat;
 }
 
 .hero::after {
@@ -97,7 +97,7 @@ a {
   align-items: center;
   padding: 1.7rem clamp(1.5rem, 5vw, 5.5rem);
   border-bottom: 1px solid rgba(255, 255, 255, 0.11);
-  backdrop-filter: blur(6px);
+  background: rgba(5, 18, 33, 0.08);
 }
 
 .wordmark {
@@ -511,7 +511,7 @@ footer small {
 
 @media (max-width: 840px) {
   .hero {
-    background-position: 62% center;
+    background-position: 62% top;
   }
 
   .hero::before {
@@ -585,7 +585,7 @@ footer small {
 
   .hero {
     min-height: 46rem;
-    background-position: 66% center;
+    background-position: 66% top;
   }
 
   .hero-content {
