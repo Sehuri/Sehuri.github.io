@@ -36,9 +36,20 @@ const spaces = [
     name: "听潮",
     english: "MUSIC",
     description: "有些时刻适合写下来，有些时刻，要用一首歌保存。",
-    detail: "下一处空间",
-    action: "即将开放",
+    detail: "唱片收藏 · 慢慢更新",
+    href: "#records",
+    action: "走进唱片室",
     tone: "music",
+  },
+] as const;
+
+const albums = [
+  {
+    title: "1Q84 OST",
+    artist: "原声音乐",
+    year: "收藏示例",
+    trackCount: "12 首歌曲",
+    note: "适合在两个月亮升起时听。",
   },
 ] as const;
 
@@ -153,6 +164,57 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="records" id="records">
+        <header className="records-heading">
+          <div>
+            <p className="section-kicker">RECORDS I KEEP</p>
+            <h2>深绘里的唱片室</h2>
+          </div>
+          <p>
+            收藏那些陪我走过一段时间的声音。
+            <br />
+            这里只陈列喜欢，不急着解释。
+          </p>
+        </header>
+
+        <div className="album-list">
+          {albums.map((album, index) => (
+            <article className="album-card" key={album.title}>
+              <div className="album-cover" aria-label={`${album.title} 专辑封面`}>
+                <div className="album-cover-moons" aria-hidden="true">
+                  <span />
+                  <span />
+                </div>
+                <div className="album-cover-title">
+                  <small>SEHURI&apos;S COLLECTION</small>
+                  <strong>1Q84</strong>
+                  <span>ORIGINAL SOUNDTRACK</span>
+                </div>
+                <i aria-hidden="true">SIDE A</i>
+              </div>
+
+              <div className="album-copy">
+                <div className="album-number">
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <i />
+                  <small>FAVORITE ALBUM</small>
+                </div>
+                <h3>{album.title}</h3>
+                <p className="album-meta">
+                  {album.artist} <span>·</span> {album.year} <span>·</span>{" "}
+                  {album.trackCount}
+                </p>
+                <blockquote>“{album.note}”</blockquote>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <p className="records-note">
+          唱片室刚刚亮灯。下一张喜欢的专辑，会继续摆在这里。
+        </p>
+      </section>
+
       <section className="about" id="about">
         <div className="about-mark" aria-hidden="true">
           <span>深</span>
@@ -193,7 +255,7 @@ export default function Home() {
           <a href="https://sehuri.github.io/travel-map/">旅行</a>
           <a href="https://yueji-reading-room.shenhuil.chatgpt.site">阅读</a>
           <a href="https://sehuri.github.io/Sehuri-knowledge-wiki/">知识</a>
-          <a href="#spaces">音乐</a>
+          <a href="#records">音乐</a>
           <a href="https://github.com/Sehuri" target="_blank" rel="noreferrer">GitHub</a>
         </div>
         <small>© 2026 SEHURI</small>

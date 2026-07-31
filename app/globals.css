@@ -729,6 +729,246 @@ a.space-card:focus-visible {
   opacity: 0.68;
 }
 
+.records {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(5.5rem, 11vw, 10rem) clamp(1.25rem, 6vw, 6.5rem);
+  background:
+    radial-gradient(circle at 84% 18%, rgba(181, 139, 166, 0.2), transparent 26%),
+    linear-gradient(145deg, #eee8e0 0%, #e5e9ec 58%, #dce5ea 100%);
+  color: var(--ink);
+}
+
+.records::before {
+  content: "音";
+  position: absolute;
+  left: -0.08em;
+  bottom: -0.32em;
+  font-family: "Songti SC", "STSong", serif;
+  font-size: clamp(20rem, 40vw, 38rem);
+  line-height: 1;
+  color: rgba(7, 21, 37, 0.028);
+  pointer-events: none;
+}
+
+.records-heading {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: end;
+  max-width: 84rem;
+  margin: 0 auto clamp(3rem, 6vw, 5.5rem);
+}
+
+.records-heading .section-kicker {
+  color: #705d75;
+}
+
+.records-heading h2 {
+  margin: 0;
+  font-family: "Songti SC", "STSong", serif;
+  font-size: clamp(2.8rem, 6vw, 5.8rem);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.records-heading > p {
+  max-width: 31rem;
+  justify-self: end;
+  margin: 0;
+  font-family: "Songti SC", "STSong", serif;
+  font-size: 1rem;
+  line-height: 2;
+  color: rgba(7, 21, 37, 0.56);
+}
+
+.album-list {
+  position: relative;
+  z-index: 1;
+  max-width: 84rem;
+  margin: 0 auto;
+}
+
+.album-card {
+  display: grid;
+  grid-template-columns: minmax(16rem, 0.75fr) minmax(0, 1.25fr);
+  gap: clamp(2rem, 7vw, 7rem);
+  align-items: center;
+  padding: clamp(1.2rem, 3vw, 2rem);
+  border: 1px solid rgba(7, 21, 37, 0.14);
+  background: rgba(255, 255, 255, 0.34);
+  box-shadow: 0 2rem 5rem rgba(26, 40, 52, 0.08);
+}
+
+.album-cover {
+  position: relative;
+  aspect-ratio: 1;
+  overflow: hidden;
+  padding: clamp(1.4rem, 3vw, 2.5rem);
+  background:
+    radial-gradient(circle at 28% 76%, rgba(218, 146, 120, 0.38), transparent 24%),
+    linear-gradient(145deg, #132b45 0%, #0b1c30 62%, #071320 100%);
+  color: var(--moon);
+  box-shadow: 1.4rem 1.4rem 0 rgba(7, 21, 37, 0.06);
+}
+
+.album-cover::before,
+.album-cover::after {
+  content: "";
+  position: absolute;
+  inset: 6%;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  pointer-events: none;
+}
+
+.album-cover::after {
+  inset: 10%;
+  border-color: rgba(255, 255, 255, 0.05);
+}
+
+.album-cover-moons {
+  position: absolute;
+  inset: 0;
+}
+
+.album-cover-moons span {
+  position: absolute;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 31% 29%, rgba(255, 255, 255, 0.7) 0 3%, transparent 4%),
+    radial-gradient(circle at 67% 63%, rgba(117, 94, 70, 0.28) 0 9%, transparent 10%),
+    #e7d8ba;
+  box-shadow: 0 0 2rem rgba(238, 216, 176, 0.32);
+}
+
+.album-cover-moons span:first-child {
+  top: 13%;
+  right: 13%;
+  width: 18%;
+  aspect-ratio: 1;
+}
+
+.album-cover-moons span:last-child {
+  top: 29%;
+  right: 31%;
+  width: 12%;
+  aspect-ratio: 1;
+  background:
+    radial-gradient(circle at 62% 34%, rgba(255, 255, 255, 0.52) 0 4%, transparent 5%),
+    #c2c8bc;
+  box-shadow: 0 0 1.5rem rgba(194, 202, 190, 0.26);
+}
+
+.album-cover-title {
+  position: absolute;
+  z-index: 1;
+  left: 12%;
+  right: 12%;
+  bottom: 12%;
+}
+
+.album-cover-title small,
+.album-cover-title span {
+  display: block;
+  font-size: clamp(0.42rem, 0.7vw, 0.62rem);
+  letter-spacing: 0.24em;
+  color: rgba(255, 255, 255, 0.48);
+}
+
+.album-cover-title strong {
+  display: block;
+  margin: 0.55rem 0 0.4rem;
+  font-family: "Songti SC", "STSong", serif;
+  font-size: clamp(3.5rem, 8vw, 8rem);
+  font-weight: 400;
+  line-height: 0.86;
+  letter-spacing: -0.07em;
+}
+
+.album-cover > i {
+  position: absolute;
+  z-index: 1;
+  top: 13%;
+  left: 12%;
+  font-size: 0.5rem;
+  font-style: normal;
+  letter-spacing: 0.24em;
+  color: rgba(255, 255, 255, 0.34);
+}
+
+.album-copy {
+  padding-right: clamp(0rem, 3vw, 3rem);
+}
+
+.album-number {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: clamp(2rem, 5vw, 4.5rem);
+  color: #705d75;
+}
+
+.album-number > span {
+  font-family: "Songti SC", "STSong", serif;
+  font-size: 0.8rem;
+}
+
+.album-number i {
+  width: min(8rem, 18vw);
+  height: 1px;
+  background: rgba(7, 21, 37, 0.18);
+}
+
+.album-number small {
+  font-size: 0.57rem;
+  letter-spacing: 0.22em;
+}
+
+.album-copy h3 {
+  margin: 0;
+  font-family: "Songti SC", "STSong", serif;
+  font-size: clamp(3rem, 7vw, 7rem);
+  font-weight: 400;
+  line-height: 0.96;
+  letter-spacing: -0.05em;
+}
+
+.album-meta {
+  margin: 1.4rem 0 0;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  color: rgba(7, 21, 37, 0.55);
+}
+
+.album-meta span {
+  margin: 0 0.45rem;
+  color: #a26e77;
+}
+
+.album-copy blockquote {
+  margin: clamp(2.3rem, 5vw, 4.5rem) 0 0;
+  padding: 1.5rem 0 1.5rem 1.6rem;
+  border-left: 1px solid rgba(7, 21, 37, 0.22);
+  font-family: "Songti SC", "STSong", serif;
+  font-size: clamp(1.25rem, 2.4vw, 2rem);
+  line-height: 1.7;
+  color: rgba(7, 21, 37, 0.78);
+}
+
+.records-note {
+  position: relative;
+  z-index: 1;
+  max-width: 84rem;
+  margin: 2rem auto 0;
+  text-align: right;
+  font-family: "Songti SC", "STSong", serif;
+  font-size: 0.72rem;
+  color: rgba(7, 21, 37, 0.42);
+}
+
 .about {
   position: relative;
   display: grid;
@@ -870,6 +1110,7 @@ footer small {
   }
 
   .section-heading,
+  .records-heading,
   .garden-heading,
   .about {
     grid-template-columns: 1fr;
@@ -889,6 +1130,15 @@ footer small {
 
   .section-heading > p {
     justify-self: start;
+  }
+
+  .records-heading > p {
+    justify-self: start;
+  }
+
+  .album-card {
+    grid-template-columns: minmax(14rem, 0.9fr) minmax(0, 1.1fr);
+    gap: 2.5rem;
   }
 
   .about-mark {
@@ -966,6 +1216,10 @@ footer small {
     padding: 5rem 1rem;
   }
 
+  .records {
+    padding: 5rem 1rem;
+  }
+
   .garden-today {
     padding: 5rem 1rem;
   }
@@ -1011,6 +1265,38 @@ footer small {
   .space-card {
     min-height: 21rem;
     padding: 1.4rem;
+  }
+
+  .album-card {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    padding: 1rem 1rem 2.5rem;
+  }
+
+  .album-cover {
+    width: 100%;
+    max-width: 30rem;
+    justify-self: center;
+  }
+
+  .album-copy {
+    padding: 0 0.4rem;
+  }
+
+  .album-number {
+    margin-bottom: 2rem;
+  }
+
+  .album-copy h3 {
+    font-size: clamp(3.2rem, 16vw, 5rem);
+  }
+
+  .album-copy blockquote {
+    margin-top: 2rem;
+  }
+
+  .records-note {
+    text-align: left;
   }
 
   .card-copy h3 {
