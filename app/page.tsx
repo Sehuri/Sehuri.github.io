@@ -267,7 +267,7 @@ export default function Home() {
               </>
             );
 
-            return "href" in space ? (
+            return (
               <a
                 className={`space-card ${space.tone}`}
                 href={space.href}
@@ -276,14 +276,6 @@ export default function Home() {
               >
                 {content}
               </a>
-            ) : (
-              <article
-                className={`space-card ${space.tone} is-pending`}
-                key={space.name}
-                aria-label={`${space.name}，${space.action}`}
-              >
-                {content}
-              </article>
             );
           })}
         </div>
