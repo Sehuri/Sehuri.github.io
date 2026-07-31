@@ -357,6 +357,7 @@ a {
 .today-note.travel { --note-color: #537f9b; }
 .today-note.reading { --note-color: #a66f58; }
 .today-note.knowledge { --note-color: #607d6b; }
+.today-note.music { --note-color: #866985; }
 
 .today-note:hover,
 .today-note:focus-visible {
@@ -969,6 +970,155 @@ a.space-card:focus-visible {
   color: rgba(7, 21, 37, 0.42);
 }
 
+.album-timeline-heading {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: auto minmax(2rem, 1fr) auto minmax(2rem, 1fr) auto;
+  align-items: center;
+  gap: clamp(0.7rem, 2vw, 1.5rem);
+  max-width: 84rem;
+  margin: clamp(4rem, 8vw, 7rem) auto 2rem;
+  color: rgba(7, 21, 37, 0.5);
+}
+
+.album-timeline-heading span {
+  font-family: "Songti SC", "STSong", serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+}
+
+.album-timeline-heading i {
+  height: 1px;
+  background: rgba(7, 21, 37, 0.16);
+}
+
+.album-timeline-heading p {
+  margin: 0;
+  font-family: "Songti SC", "STSong", serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
+.album-gallery {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  max-width: 84rem;
+  margin: 0 auto;
+  border-top: 1px solid rgba(7, 21, 37, 0.15);
+  border-left: 1px solid rgba(7, 21, 37, 0.15);
+}
+
+.album-tile {
+  min-width: 0;
+  padding: clamp(1rem, 2.5vw, 1.7rem);
+  border-right: 1px solid rgba(7, 21, 37, 0.15);
+  border-bottom: 1px solid rgba(7, 21, 37, 0.15);
+  background: rgba(255, 255, 255, 0.2);
+  transition: background 220ms ease, transform 220ms ease;
+}
+
+.album-tile:hover {
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.48);
+  transform: translateY(-3px);
+}
+
+.album-artwork {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1;
+  background: rgba(7, 21, 37, 0.1);
+  box-shadow: 0 1rem 2.4rem rgba(7, 21, 37, 0.1);
+}
+
+.album-artwork::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  pointer-events: none;
+}
+
+.album-artwork img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 500ms ease;
+}
+
+.album-tile:hover .album-artwork img {
+  transform: scale(1.025);
+}
+
+.album-artwork > span {
+  position: absolute;
+  right: 0.75rem;
+  bottom: 0.75rem;
+  display: grid;
+  place-items: center;
+  min-width: 2rem;
+  height: 2rem;
+  padding: 0 0.45rem;
+  background: rgba(5, 16, 28, 0.78);
+  color: var(--moon);
+  font-family: "Songti SC", "STSong", serif;
+  font-size: 0.65rem;
+  backdrop-filter: blur(8px);
+}
+
+.album-tile-copy {
+  padding: 1.5rem 0.25rem 0.35rem;
+}
+
+.album-tile-copy > p {
+  margin: 0 0 0.7rem;
+  color: #816580;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+}
+
+.album-tile-copy h3 {
+  min-height: 2.6em;
+  margin: 0;
+  font-family: "Songti SC", "STSong", serif;
+  font-size: clamp(1.65rem, 2.8vw, 2.65rem);
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: -0.03em;
+}
+
+.album-tile-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-top: 0.8rem;
+  color: rgba(7, 21, 37, 0.52);
+  font-size: 0.65rem;
+}
+
+.album-tile-meta i {
+  width: 1.6rem;
+  height: 1px;
+  background: rgba(7, 21, 37, 0.18);
+}
+
+.album-tile-copy blockquote {
+  min-height: 4.8em;
+  margin: 1.35rem 0 0;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(7, 21, 37, 0.12);
+  font-family: "Songti SC", "STSong", serif;
+  font-size: 0.8rem;
+  line-height: 1.8;
+  color: rgba(7, 21, 37, 0.64);
+}
+
 .about {
   position: relative;
   display: grid;
@@ -1141,6 +1291,10 @@ footer small {
     gap: 2.5rem;
   }
 
+  .album-gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .about-mark {
     display: none;
   }
@@ -1297,6 +1451,29 @@ footer small {
 
   .records-note {
     text-align: left;
+  }
+
+  .album-timeline-heading {
+    grid-template-columns: auto 1fr auto;
+  }
+
+  .album-timeline-heading i:nth-of-type(2),
+  .album-timeline-heading span:last-child {
+    display: none;
+  }
+
+  .album-timeline-heading p {
+    white-space: normal;
+    text-align: right;
+  }
+
+  .album-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .album-tile-copy h3,
+  .album-tile-copy blockquote {
+    min-height: 0;
   }
 
   .card-copy h3 {

@@ -36,20 +36,141 @@ const spaces = [
     name: "听潮",
     english: "MUSIC",
     description: "有些时刻适合写下来，有些时刻，要用一首歌保存。",
-    detail: "唱片收藏 · 慢慢更新",
+    detail: "13 张唱片 · 慢慢更新",
     href: "#records",
     action: "走进唱片室",
     tone: "music",
   },
 ] as const;
 
-const albums = [
+const featuredAlbum = {
+  title: "1Q84 OST",
+  artist: "原声音乐",
+  year: "收藏置顶",
+  trackCount: "12 首歌曲",
+  note: "适合在两个月亮升起时听。",
+} as const;
+
+const albumTimeline = [
   {
-    title: "1Q84 OST",
-    artist: "原声音乐",
-    year: "收藏示例",
-    trackCount: "12 首歌曲",
-    note: "适合在两个月亮升起时听。",
+    title: "陶喆同名专辑",
+    artist: "陶喆",
+    releaseDate: "1997-12-06",
+    year: "1997",
+    detail: "15 首歌曲",
+    note: "从《爱，很简单》开始，华语 R&B 打开了一扇新门。",
+    artwork:
+      "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/dd/bb/bd/ddbbbda1-9408-72b2-4c0b-943e648be6c1/190295574086.jpg/1000x1000bb.jpg",
+  },
+  {
+    title: "八度空间",
+    artist: "周杰伦",
+    releaseDate: "2002-07-18",
+    year: "2002",
+    detail: "10 首歌曲",
+    note: "像推开一只半岛铁盒，里面还装着那个年代的想象力。",
+    artwork:
+      "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/96/c8/a1/96c8a1d8-8077-b8a7-8600-80b2abf1fe20/JAY.jpg/1000x1000bb.jpg",
+  },
+  {
+    title: "黑色柳丁",
+    artist: "陶喆",
+    releaseDate: "2002-08-09",
+    year: "2002",
+    detail: "13 首歌曲",
+    note: "有愤怒，有温柔，也有不会被时间磨平的锋利。",
+    artwork:
+      "https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/05/7a/97/057a9723-2dbd-873b-81e0-5090879b2942/825646245352.jpg/1000x1000bb.jpg",
+  },
+  {
+    title: "心中的日月",
+    artist: "王力宏",
+    releaseDate: "2004-12-31",
+    year: "2004",
+    detail: "11 首歌曲",
+    note: "东方旋律和现代节奏，在心里照见同一轮月亮。",
+    artwork:
+      "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/be/4a/77/be4a7730-c144-a39e-c7b6-9d26ea0ebff3/1400X1400.jpg/1000x1000bb.jpg",
+  },
+  {
+    title: "太平盛世",
+    artist: "陶喆",
+    releaseDate: "2005-01-21",
+    year: "2005",
+    detail: "13 首歌曲",
+    note: "盛世的表面之下，仍然听得见真实的回声。",
+    artwork:
+      "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/fe/ad/e7/feade7c8-826b-0379-fbf4-e59606db8e4c/825646245406.jpg/1000x1000bb.jpg",
+  },
+  {
+    title: "盖世英雄",
+    artist: "王力宏",
+    releaseDate: "2005-12-30",
+    year: "2005",
+    detail: "10 首歌曲",
+    note: "把东方的音色与流行节拍，唱成自己的英雄叙事。",
+    artwork:
+      "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/f9/82/88/f98288eb-ea32-6c8c-7919-357c31a4b437/1400X1400.jpg/1000x1000bb.jpg",
+  },
+  {
+    title: "改变自己",
+    artist: "王力宏",
+    releaseDate: "2007-07-01",
+    year: "2007",
+    detail: "12 首歌曲",
+    note: "轻快地向前走，也提醒自己每天都可以更新一点。",
+    artwork:
+      "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/d6/d1/bb/d6d1bb74-e2d3-743e-f514-5668390c4d67/gaibianziji_fengmian.jpg/1000x1000bb.jpg",
+  },
+  {
+    title: "心跳",
+    artist: "王力宏",
+    releaseDate: "2008-12-26",
+    year: "2008",
+    detail: "10 首歌曲",
+    note: "旋律靠近时，情绪也跟着有了清晰的脉搏。",
+    artwork:
+      "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/58/be/1c/58be1cf6-8260-bafb-ae50-664ee9f3ec31/Heart_Beat.jpg/1000x1000bb.jpg",
+  },
+  {
+    title: "到此为止",
+    artist: "徐佳莹",
+    releaseDate: "2017-12-27",
+    year: "2017",
+    detail: "收录于《心里学》",
+    note: "有些告别不需要更多解释，唱到这里刚刚好。",
+    artwork:
+      "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/8a/60/e8/8a60e833-5516-7c16-2bdf-864627aa71e4/4713108163152.jpg/1000x1000bb.jpg",
+  },
+  {
+    title: "摩天动物园",
+    artist: "邓紫棋",
+    releaseDate: "2019-12-27",
+    year: "2019",
+    detail: "13 首歌曲",
+    note: "在繁华城市里，看见人群，也看见我们自己。",
+    artwork:
+      "https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/6e/20/22/6e202262-eaab-bca1-fe63-7ae59bd74183/886448203421.jpg/1000x1000bb.jpg",
+  },
+  {
+    title: "启示录",
+    artist: "邓紫棋",
+    releaseDate: "2022-09-22",
+    year: "2022",
+    detail: "14 首歌曲",
+    note: "像一封写给黑夜的信，最终仍然抵达光。",
+    artwork:
+      "https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/88/cc/70/88cc70bd-3763-a558-33dd-dbe07c8848d9/5054197302183.jpg/1000x1000bb.jpg",
+  },
+  {
+    title: "HeartBreakFast 伤心早餐店",
+    artist: "卢广仲",
+    releaseDate: "2025-09-17",
+    year: "2025",
+    detail: "10 首歌曲",
+    note: "把难过放在清晨，配一份仍要继续生活的早餐。",
+    artwork:
+      "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/ee/85/8f/ee858f39-7c88-5390-4061-6f2de8c43279/4711508138732.jpg/1000x1000bb.jpg",
   },
 ] as const;
 
@@ -58,6 +179,10 @@ function Arrow() {
 }
 
 export default function Home() {
+  const chronologicalAlbums = [...albumTimeline].sort((a, b) =>
+    a.releaseDate.localeCompare(b.releaseDate),
+  );
+
   return (
     <main>
       <a className="skip-link" href="#today">跳到今日庭院</a>
@@ -178,9 +303,11 @@ export default function Home() {
         </header>
 
         <div className="album-list">
-          {albums.map((album, index) => (
-            <article className="album-card" key={album.title}>
-              <div className="album-cover" aria-label={`${album.title} 专辑封面`}>
+          <article className="album-card album-featured">
+              <div
+                className="album-cover"
+                aria-label={`${featuredAlbum.title} 专辑封面`}
+              >
                 <div className="album-cover-moons" aria-hidden="true">
                   <span />
                   <span />
@@ -195,15 +322,48 @@ export default function Home() {
 
               <div className="album-copy">
                 <div className="album-number">
-                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <span>01</span>
                   <i />
-                  <small>FAVORITE ALBUM</small>
+                  <small>ALWAYS FIRST</small>
                 </div>
-                <h3>{album.title}</h3>
+                <h3>{featuredAlbum.title}</h3>
                 <p className="album-meta">
-                  {album.artist} <span>·</span> {album.year} <span>·</span>{" "}
-                  {album.trackCount}
+                  {featuredAlbum.artist} <span>·</span> {featuredAlbum.year}{" "}
+                  <span>·</span> {featuredAlbum.trackCount}
                 </p>
+                <blockquote>“{featuredAlbum.note}”</blockquote>
+              </div>
+          </article>
+        </div>
+
+        <div className="album-timeline-heading">
+          <span>1997</span>
+          <i />
+          <p>其余收藏，按发行时间慢慢排开</p>
+          <i />
+          <span>2025</span>
+        </div>
+
+        <div className="album-gallery">
+          {chronologicalAlbums.map((album, index) => (
+            <article className="album-tile" key={album.title}>
+              <div className="album-artwork">
+                <img
+                  src={album.artwork}
+                  alt={`${album.artist}《${album.title}》封面`}
+                  loading="lazy"
+                  referrerPolicy="no-referrer"
+                />
+                <span>{String(index + 2).padStart(2, "0")}</span>
+              </div>
+              <div className="album-tile-copy">
+                <p>{album.year}</p>
+                <h3>{album.title}</h3>
+                <div className="album-tile-meta">
+                  <span>{album.artist}</span>
+                  <i />
+                  <span>{album.detail}</span>
+                </div>
                 <blockquote>“{album.note}”</blockquote>
               </div>
             </article>
@@ -211,7 +371,7 @@ export default function Home() {
         </div>
 
         <p className="records-note">
-          唱片室刚刚亮灯。下一张喜欢的专辑，会继续摆在这里。
+          13 张唱片，依时间排开。下一张喜欢的专辑，会继续摆在这里。
         </p>
       </section>
 

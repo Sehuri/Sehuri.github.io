@@ -33,6 +33,16 @@ const todayNotes = [
     action: "进入知识花园",
     tone: "knowledge",
   },
+  {
+    index: "04",
+    kind: "最近收藏",
+    title: "伤心早餐店",
+    meta: "卢广仲 · 2025",
+    description: "把难过放进清晨，也给继续生活留一份早餐。",
+    href: "#records",
+    action: "去唱片室",
+    tone: "music",
+  },
 ] as const;
 
 const wanderStops = [
@@ -78,6 +88,20 @@ const wanderStops = [
     href: "https://sehuri.github.io/Sehuri-knowledge-wiki/",
     action: "漫游知识花园",
   },
+  {
+    eyebrow: "MUSIC · TWO MOONS",
+    title: "等两个月亮升起",
+    description: "从永远排在第一位的 1Q84 OST，进入深绘里的声音世界。",
+    href: "#records",
+    action: "去听潮",
+  },
+  {
+    eyebrow: "MUSIC · RECORDS",
+    title: "从一张旧唱片开始",
+    description: "沿着 1997 到 2025 的时间线，随机遇见一段熟悉的旋律。",
+    href: "#records",
+    action: "翻看唱片收藏",
+  },
 ] as const;
 
 function Arrow() {
@@ -105,10 +129,10 @@ export default function GardenFeatures() {
           <h2>今日庭院</h2>
         </div>
         <div className="garden-date">
-          <span>2026.07.30</span>
+          <span>2026.07.31</span>
           <i />
           <p>
-            三处空间，在今天相遇。
+            四处空间，在今天相遇。
             <br />
             看看最近留下了什么。
           </p>
@@ -159,7 +183,7 @@ export default function GardenFeatures() {
               <>
                 <span>WHERE TO NEXT?</span>
                 <h3>今晚，想去哪里？</h3>
-                <p>让两个月亮替你选一处，旅行、阅读或知识都可能出现。</p>
+                <p>让两个月亮替你选一处，旅行、阅读、知识或音乐都可能出现。</p>
               </>
             )}
           </div>
