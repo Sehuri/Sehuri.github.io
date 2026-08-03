@@ -28,11 +28,12 @@ const todayLabel = new Intl.DateTimeFormat("zh-CN", {
 const dailySeed = Number(todayLabel.replaceAll(".", ""));
 
 function pick<T>(items: readonly T[], seed: number, salt: number) {
+  if (items.length === 0) throw new Error("Recommendation source cannot be empty");
   let value = (seed + salt * 2654435761) >>> 0;
   value ^= value >>> 16;
   value = Math.imul(value, 2246822519) >>> 0;
-  value ^= value >>> 13;
-  return items[value % items.length];
+  value = (value ^ (value >>> 13)) >>> 0;
+  return items[value % items.length] ?? items[0];
 }
 
 function makeTodayNotes(seed: number): TodayNote[] {
