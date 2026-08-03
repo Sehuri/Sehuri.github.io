@@ -1,5 +1,6 @@
 import GardenFeatures from "./GardenFeatures";
 import RecordCollection from "./RecordCollection";
+import { recordCount } from "./albumData";
 
 const spaces = [
   {
@@ -37,7 +38,7 @@ const spaces = [
     name: "听潮",
     english: "MUSIC",
     description: "有些时刻适合写下来，有些时刻，要用一首歌保存。",
-    detail: "17 张唱片 · 慢慢更新",
+    detail: recordCount + " 张唱片 · 慢慢更新",
     href: "#records",
     action: "走进唱片室",
     tone: "music",

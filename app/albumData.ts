@@ -434,4 +434,150 @@ export const albumTimeline: readonly Album[] = [
       "不要在一起",
     ],
   },
+  {
+    title: "唱游",
+    artist: "王菲",
+    releaseDate: "1998-10-02",
+    year: "1998",
+    detail: "13 首歌曲",
+    note: "声音像在空气里游走，自由得不需要解释方向。",
+    description:
+      "王菲以更自由的声音实验与视觉概念展开一次漫游，在电子、梦幻流行与抒情之间留下鲜明的个人印记。",
+    artwork:
+      "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/58/0e/51/580e517e-69a0-decc-96a4-b39fee54945c/Untitled.jpg/1000x1000bb.jpg",
+    tracks: [
+      "感情生活", "原谅自己", "脸", "偿还", "色诫", "情诫", "半途而废",
+      "飞", "祢", "小聪明", "醒不来", "红豆", "童",
+    ],
+  },
+  {
+    title: "U 87",
+    artist: "陈奕迅",
+    releaseDate: "2005-06-07",
+    year: "2005",
+    detail: "12 首歌曲",
+    note: "夸张与克制并存，唱的是人群，也是每个人不肯承认的自己。",
+    description:
+      "陈奕迅回归粤语作品的重要专辑，以戏剧张力、城市观察和细腻叙事覆盖从浮夸到成熟的多种情绪。",
+    artwork:
+      "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/62/52/5c/62525cbe-f9cd-90ee-820e-db3f75d29c80/00602498308905.rgb.jpg/1000x1000bb.jpg",
+    tracks: [
+      "烂", "阿牛", "夕阳无限好", "16月6日晴", "浮夸", "葡萄成熟时",
+      "三个人的探戈", "不良嗜好", "怕死", "大个女", "新美人主义（国）", "遇见了你（国）",
+    ],
+  },
+  {
+    title: "Life Continues",
+    artist: "陈奕迅",
+    releaseDate: "2006-01-01",
+    year: "2006",
+    detail: "7 首歌曲 · EP",
+    note: "告别不是终点，生活总会从下一拍继续。",
+    description:
+      "这张粤语 EP 把友情、成长与日常失落放进克制的旋律里，在不动声色之间写下继续生活的答案。",
+    artwork:
+      "https://is1-ssl.mzstatic.com/image/thumb/Music118/v4/a4/fa/86/a4fa86d6-c23a-c37f-1251-00376ff144cd/00602498378830.rgb.jpg/1000x1000bb.jpg",
+    tracks: ["低调", "人车志", "最佳损友", "暴殄天物", "落花流水", "大得太快", "想听"],
+  },
+  {
+    title: "未来",
+    artist: "方大同",
+    releaseDate: "2007-12-28",
+    year: "2007",
+    detail: "11 首歌曲",
+    note: "把爱写得简单一点，未来也就慢慢有了形状。",
+    description:
+      "方大同延续灵魂乐与 R&B 的温暖质感，用轻盈而扎实的编曲谈爱情、城市生活和对未来的想象。",
+    artwork:
+      "https://is1-ssl.mzstatic.com/image/thumb/Music/c3/35/6c/mzi.slgaieio.jpg/1000x1000bb.jpg",
+    tracks: [
+      "Love Song", "够不够", "暖", "爱在", "公园", "简单最浪漫",
+      "十九八七", "未来", "忘了美丽", "Sorry", "爱爱爱（Acoustic Version）",
+    ],
+  },
+  {
+    title: "一百种生活",
+    artist: "卢广仲",
+    releaseDate: "2008-05-27",
+    year: "2008",
+    detail: "12 首歌曲",
+    note: "从一句早安开始，平凡生活也能长出一百种明亮的样子。",
+    description:
+      "卢广仲的首张录音室专辑，以木吉他、幽默感和年轻的生活观察，把日常琐碎唱成充满生命力的歌。",
+    artwork:
+      "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/e2/92/95/e2929549-0322-8277-749a-204abab3e4f6/box3-3cover_1400x1400.jpg/1000x1000bb.jpg",
+    tracks: [
+      "早安，晨之美！", "Que te pasa 你在干嘛？", "一百种生活", "PAZ",
+      "好想要挥霍", "别杀我", "Boring", "我爱你", "无敌铁金刚",
+      "校园美女2008", "寂寞考", "破气球（when I Fall in Love）",
+    ],
+  },
+  {
+    title: "橙月",
+    artist: "方大同",
+    releaseDate: "2008-12-19",
+    year: "2008",
+    detail: "12 首歌曲",
+    note: "像一轮温暖的橙色月亮，把夜晚照得柔软又浪漫。",
+    description:
+      "专辑围绕爱情与陪伴展开，方大同用柔和的灵魂乐、爵士和 R&B，营造出温暖而完整的夜色情绪。",
+    artwork:
+      "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/55/e9/12/55e91219-a730-0b97-da05-f99334921567/mzi.cupkqfev.jpg/1000x1000bb.jpg",
+    tracks: [
+      "Singalongsong", "小小虫", "1234567", "黑白", "如果爱", "黑洞里",
+      "三人游", "每个人都会（Song for Cartier [Love Project]）", "100种表情",
+      "爱我吧", "为你写的歌", "Orange Moon",
+    ],
+  },
+  {
+    title: "上五楼的快活",
+    artist: "陈奕迅",
+    releaseDate: "2009-01-01",
+    year: "2009",
+    detail: "11 首歌曲",
+    note: "上楼以后没有标准答案，只有诚实面对自己的快活。",
+    description:
+      "一张由国语创作人与陈奕迅共同搭建的专辑，在都市关系、孤独和自我追问之间寻找轻盈出口。",
+    artwork:
+      "https://is1-ssl.mzstatic.com/image/thumb/Music128/v4/86/ba/20/86ba2094-8dd0-4625-220e-8eb7f5cd74f8/00602527202747.rgb.jpg/1000x1000bb.jpg",
+    tracks: [
+      "在你身边", "这样的一个麻烦", "多少", "Nothing Ever Happened",
+      "你为什么哭了呢", "谋情害命", "我甲你", "心的距离", "床头灯", "给你", "从何说起",
+    ],
+  },
+  {
+    title: "Time Flies",
+    artist: "陈奕迅",
+    releaseDate: "2010-01-01",
+    year: "2010",
+    detail: "6 首歌曲 · EP",
+    note: "时间从指针之间经过，留下的都是无法重来的认真。",
+    description: "六首粤语作品围绕时间流逝展开，从关系边界到人生阶段，以精炼篇幅留下强烈而耐听的情绪密度。",
+    artwork: "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/15/5f/4a/155f4a99-7580-a100-923e-064993de8fd8/dj.tzusmqoo.jpg/1000x1000bb.jpg",
+    tracks: ["无人之境", "大人", "一丝不挂", "陀飞轮", "心腹（麦当劳35周年主题曲）", "味之素"],
+  },
+  {
+    title: "The Key",
+    artist: "陈奕迅",
+    releaseDate: "2013-07-22",
+    year: "2013",
+    detail: "8 首歌曲",
+    note: "有些门不需要答案，只需要找到属于自己的那把钥匙。",
+    description: "专辑以八首粤语歌讨论选择、自由与关系困境，在冷静的制作中保留陈奕迅最具张力的情感表达。",
+    artwork: "https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/1c/c0/d3/1cc0d357-4642-a5c6-4ad6-57add94791b3/00602567727873.rgb.jpg/1000x1000bb.jpg",
+    tracks: ["主旋律", "告别娑婆", "斯德哥尔摩情人", "任我行", "远在咫尺", "失忆蝴蝶", "床头床尾", "阿猫阿狗"],
+  },
+  {
+    title: "folklore",
+    artist: "Taylor Swift",
+    releaseDate: "2020-07-24",
+    year: "2020",
+    detail: "16 首歌曲",
+    note: "像走进一片雾里的树林，每个故事都在远处轻轻发亮。",
+    description: "Taylor Swift 转向内省的独立民谣与室内流行，以虚构人物、记忆和细微叙事构成一片安静而连贯的故事森林。",
+    artwork: "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/7c/04/ba/7c04ba17-2ff8-21b3-0ac0-7d141f86e924/20UMGIM64216.rgb.jpg/1000x1000bb.jpg",
+    tracks: "the 1|cardigan|the last great american dynasty|exile (feat. Bon Iver)|my tears ricochet|mirrorball|seven|august|this is me trying|illicit affairs|invisible string|mad woman|epiphany|betty|peace|hoax".split("|"),
+  },
 ];
+
+export const recordCount = albumTimeline.length + 1;

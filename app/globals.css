@@ -328,6 +328,28 @@ a {
   line-height: 1.8;
 }
 
+.garden-refresh {
+  margin: 0.6rem 0 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #53758d;
+  font: inherit;
+  font-size: 0.66rem;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+}
+
+.garden-refresh span {
+  margin-left: 0.35rem;
+}
+
+.garden-refresh:hover,
+.garden-refresh:focus-visible {
+  color: var(--ink);
+  outline: none;
+}
+
 .garden-layout {
   position: relative;
   z-index: 1;

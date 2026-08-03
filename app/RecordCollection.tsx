@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import {
   albumTimeline,
   featuredAlbum,
+  recordCount,
   type Album,
 } from "./albumData";
 
@@ -195,7 +196,7 @@ export default function RecordCollection() {
       </div>
 
       <p className="records-note">
-        17 张唱片，依时间排开。下一张喜欢的专辑，会继续摆在这里。
+        {recordCount} 张唱片，依时间排开。下一张喜欢的专辑，会继续摆在这里。
       </p>
 
       {selectedAlbum ? (
