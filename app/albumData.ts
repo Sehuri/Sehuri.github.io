@@ -590,7 +590,7 @@ export const albumTimeline: readonly Album[] = [
     tracks: ["Doxology", "找自己", "小镇姑娘", "夜来香", "普通朋友", "I'm O.K.", "不一样", "说走就走", "多谢你", "马戏团", "天天", "Angeline", "Amen"],
   },
   {
-    title: "杰伦",
+    title: "Jay",
     artist: "周杰伦",
     releaseDate: "2000-11-06",
     year: "2000",
