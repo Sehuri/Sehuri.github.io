@@ -4,10 +4,13 @@ import { useEffect, useState } from "react";
 import { murakamiBooks, readingRoutes, type MurakamiBook } from "./murakamiData";
 
 function BookCover({ book, className, loading }: { book: MurakamiBook; className: string; loading?: "lazy" | "eager" }) {
-  const [failed, setFailed] = useState(false);
+  const officialIsbn = book.cover.match(/fengmian\/(\d+)\.jpg/)?.[1];
+  const candidates = [book.cover, ...(officialIsbn ? [`https://covers.openlibrary.org/b/isbn/${officialIsbn}-L.jpg`] : []), ...(book.coverAlternates ?? [])];
+  const [coverIndex, setCoverIndex] = useState(0);
+  const failed = coverIndex >= candidates.length;
   return (
     <div className={className}>
-      {!failed ? <img src={book.cover} alt={`《${book.title}》封面`} loading={loading} referrerPolicy="no-referrer" onError={() => setFailed(true)} /> : null}
+      {!failed ? <img src={candidates[coverIndex]} alt={`《${book.title}》封面`} loading={loading} referrerPolicy="no-referrer" onError={() => setCoverIndex((index) => index + 1)} /> : null}
       {failed ? <div className="book-cover-fallback"><small>村上春樹</small><strong>{book.title}</strong><span>{book.year}</span></div> : null}
     </div>
   );
@@ -98,7 +101,7 @@ export default function MurakamiLibrary() {
         <div className="book-year-track">
           {chronologicalBooks.map((book) => (
             <button type="button" key={book.title} onClick={() => setSelectedBook(book)} aria-label={`查看${book.year}年作品《${book.title}》`}>
-              <span>{book.year}</span><i /><small>{book.title}</small>
+              <span>{book.year}</span><BookCover book={book} className="book-year-cover" loading="lazy" /><small>{book.title}</small>
             </button>
           ))}
         </div>

@@ -4,6 +4,7 @@ export type MurakamiBook = {
   year: string;
   type: "长篇小说" | "中篇小说" | "短篇小说集";
   cover: string;
+  coverAlternates?: readonly string[];
   publisher?: string;
   summary: string;
   background: string;
@@ -168,7 +169,9 @@ export const murakamiBooks: readonly MurakamiBook[] = [
     originalTitle: "アフターダーク",
     year: "2004",
     type: "长篇小说",
-    cover: openLibraryCover("9780307278739"),
+    cover: yiwenCover("9787532743018"),
+    coverAlternates: [openLibraryCover("9787544299787"), openLibraryCover("9780307278739")],
+    publisher: "上海译文出版社",
     summary: "从午夜到清晨，东京夜色中的陌生人短暂相遇，沉睡的爱丽则身处另一个房间。",
     background: "一部发生在单个夜晚的城市小说，像镜头一样观察深夜仍未入睡的人。",
     themes: ["夜晚", "城市", "偶然相遇"],
@@ -181,7 +184,9 @@ export const murakamiBooks: readonly MurakamiBook[] = [
     originalTitle: "1Q84",
     year: "2009",
     type: "长篇小说",
-    cover: openLibraryCover("9780307593313"),
+    cover: openLibraryCover("9787544264099"),
+    coverAlternates: [openLibraryCover("9780307593313")],
+    publisher: "南海出版公司",
     summary: "青豆与天吾进入悬挂着两个月亮的世界，在小小人、空气蛹与命运追捕中寻找彼此。",
     background: "村上篇幅最长的小说之一，以乔治·奥威尔《1984》为远方回声，建构出完整的平行现实。",
     themes: ["爱", "信念", "平行现实"],
@@ -194,7 +199,9 @@ export const murakamiBooks: readonly MurakamiBook[] = [
     originalTitle: "色彩を持たない多崎つくると、彼の巡礼の年",
     year: "2013",
     type: "长篇小说",
-    cover: openLibraryCover("9780385352109"),
+    cover: openLibraryCover("9787544268417"),
+    coverAlternates: [openLibraryCover("9780385352109")],
+    publisher: "南海出版公司",
     summary: "多崎作在多年后重新拜访四位旧友，寻找自己当年被突然排斥的原因。",
     background: "以李斯特《巡礼之年》为音乐线索，讨论创伤、友谊和重新理解过去。",
     themes: ["创伤", "友谊", "和解"],
@@ -207,7 +214,9 @@ export const murakamiBooks: readonly MurakamiBook[] = [
     originalTitle: "騎士団長殺し",
     year: "2017",
     type: "长篇小说",
-    cover: openLibraryCover("9780525520047"),
+    cover: yiwenCover("9787532793082"),
+    coverAlternates: [openLibraryCover("9780525520047")],
+    publisher: "上海译文出版社",
     summary: "离婚后的肖像画家住进山中画室，一幅隐藏的画和深夜铃声打开了观念世界。",
     background: "围绕绘画、创作和失去展开，也延续了村上关于地下空间与另一个世界的想象。",
     themes: ["艺术", "失去", "观念"],
@@ -317,7 +326,8 @@ export const murakamiBooks: readonly MurakamiBook[] = [
     originalTitle: "女のいない男たち",
     year: "2014",
     type: "短篇小说集",
-    cover: openLibraryCover("9781101912214"),
+    cover: yiwenCover("9787532793143"),
+    coverAlternates: [openLibraryCover("9781101912214")],
     publisher: "上海译文出版社",
     summary: "七个故事从不同角度描写失去伴侣、无法理解爱人，以及被关系留下的人。",
     background: "书名向海明威致意，其中《驾驶我的车》后来被改编为同名电影。",
