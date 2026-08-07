@@ -1364,6 +1364,112 @@ a.space-card:focus-visible {
   line-height: 1.6;
 }
 
+.album-concept-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 1.2rem;
+  border: 1px solid rgba(7, 21, 37, 0.14);
+}
+
+.album-concept-side {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: clamp(1.5rem, 3vw, 2.4rem);
+}
+
+.album-concept-side + .album-concept-side {
+  border-left: 1px solid rgba(7, 21, 37, 0.14);
+}
+
+.album-concept-side.wonderland {
+  background:
+    radial-gradient(circle at 88% 8%, rgba(147, 176, 194, 0.16), transparent 24%),
+    #0b2033;
+  color: #f4efe5;
+}
+
+.album-concept-side.world-end {
+  background:
+    radial-gradient(circle at 88% 8%, rgba(225, 170, 132, 0.2), transparent 26%),
+    #eee8df;
+  color: #102438;
+}
+
+.album-concept-side header > p {
+  margin: 0 0 0.8rem;
+  color: #a988a3;
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+}
+
+.album-concept-side header h3 {
+  margin: 0;
+  font-family: "Songti SC", "STSong", serif;
+  font-size: clamp(2rem, 3.6vw, 3.25rem);
+  font-weight: 400;
+}
+
+.album-concept-side header > span {
+  display: block;
+  max-width: 27rem;
+  min-height: 3.6rem;
+  margin-top: 0.75rem;
+  font-family: "Songti SC", "STSong", serif;
+  font-size: 0.8rem;
+  line-height: 1.75;
+  opacity: 0.62;
+}
+
+.album-concept-side ol {
+  grid-template-columns: 1fr;
+  margin-top: 1.5rem;
+  border-color: currentColor;
+  border-left: 0;
+}
+
+.album-concept-side li {
+  grid-template-columns: 2rem minmax(0, 1fr);
+  min-height: 4rem;
+  padding: 0.85rem 0;
+  border-right: 0;
+  border-color: color-mix(in srgb, currentColor 16%, transparent);
+}
+
+.album-concept-side li > span {
+  color: #a988a3;
+}
+
+.album-concept-side li div {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: baseline;
+}
+
+.album-concept-side li p {
+  font-size: 0.9rem;
+}
+
+.album-concept-side li small {
+  color: currentColor;
+  font-size: 0.62rem;
+  letter-spacing: 0.04em;
+  text-align: right;
+  opacity: 0.54;
+}
+
+.album-concept-side > strong {
+  margin-top: auto;
+  padding-top: 1.8rem;
+  color: #a988a3;
+  font-family: "Songti SC", "STSong", serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+}
+
 .album-dialog-empty {
   margin: 1.2rem 0 0;
   padding: 1.5rem;
@@ -1753,6 +1859,29 @@ footer small {
 
   .album-dialog-tracks ol {
     grid-template-columns: 1fr;
+  }
+
+  .album-concept-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .album-concept-side + .album-concept-side {
+    border-top: 1px solid rgba(7, 21, 37, 0.14);
+    border-left: 0;
+  }
+
+  .album-concept-side header > span {
+    min-height: 0;
+  }
+
+  .album-concept-side li div {
+    display: block;
+  }
+
+  .album-concept-side li small {
+    display: block;
+    margin-top: 0.25rem;
+    text-align: left;
   }
 
   .album-tile-copy h3,

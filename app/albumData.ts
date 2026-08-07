@@ -8,19 +8,69 @@ export type Album = {
   description: string;
   artwork?: string;
   tracks: readonly string[];
+  trackSections?: readonly TrackSection[];
   featured?: boolean;
 };
+
+export type TrackSection = {
+  title: string;
+  englishTitle: string;
+  description: string;
+  closingLine: string;
+  tracks: readonly {
+    title: string;
+    artist: string;
+  }[];
+};
+
+export const featuredTrackSections: readonly TrackSection[] = [
+  {
+    title: "冷酷仙境",
+    englishTitle: "SIDE A · HARD-BOILED WONDERLAND",
+    description: "凝视时代、城市、战争与欲望，也追问我们如何走到这里。",
+    closingLine: "WHERE IS THE LOVE?",
+    tracks: [
+      { title: "再见二十世纪", artist: "汪峰" },
+      { title: "摩天动物园", artist: "邓紫棋" },
+      { title: "陀飞轮", artist: "陈奕迅" },
+      { title: "孙子兵法", artist: "陶喆" },
+      { title: "止战之殇", artist: "周杰伦" },
+      { title: "Earth Song", artist: "Michael Jackson" },
+      { title: "Dear God", artist: "陶喆" },
+      { title: "Where Is the Love?", artist: "The Black Eyed Peas" },
+    ],
+  },
+  {
+    title: "世界尽头",
+    englishTitle: "SIDE B · THE END OF THE WORLD",
+    description: "在看清现实之后，仍然保存爱、故乡、成长与理想生活。",
+    closingLine: "爱，因为在心中。",
+    tracks: [
+      { title: "爱 因为在心中", artist: "王力宏" },
+      { title: "Hey Jude", artist: "The Beatles" },
+      { title: "Fix You", artist: "Coldplay" },
+      { title: "望春风", artist: "陶喆" },
+      { title: "大人中", artist: "卢广仲" },
+      { title: "旅行的意义", artist: "陈绮贞" },
+      { title: "the lakes", artist: "Taylor Swift" },
+      { title: "稻香", artist: "周杰伦" },
+    ],
+  },
+];
 
 export const featuredAlbum: Album = {
   title: "1Q84 OST",
   artist: "原声音乐",
   releaseDate: "0000-00-00",
   year: "收藏置顶",
-  detail: "曲目待整理",
-  note: "适合在两个月亮升起时听。",
+  detail: "16 首歌曲 · 双面选集",
+  note: "在冷酷仙境凝视现实，在世界尽头保存理想。",
   description:
-    "这是一张围绕《1Q84》的双月意象与夜色情绪整理的置顶收藏。具体版本仍在确认，曲目会在整理完成后补充。",
-  tracks: [],
+    "借用《世界尽头与冷酷仙境》的双重意象：冷酷仙境是我们身处的复杂现实，世界尽头则是内心向往并愿意守住的生活。两组歌曲隔着一道问题彼此回应。",
+  tracks: featuredTrackSections.flatMap((section) =>
+    section.tracks.map((track) => track.title + " — " + track.artist),
+  ),
+  trackSections: featuredTrackSections,
   featured: true,
 };
 

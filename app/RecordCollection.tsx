@@ -20,7 +20,7 @@ function TwoMoonCover({ label }: { label: string }) {
         <strong>1Q84</strong>
         <span>ORIGINAL SOUNDTRACK</span>
       </div>
-      <i aria-hidden="true">SIDE A</i>
+      <i aria-hidden="true">SIDE A / B</i>
     </div>
   );
 }
@@ -100,7 +100,35 @@ function AlbumDialog({
             <p>{album.tracks.length ? `${album.tracks.length} 首` : "待整理"}</p>
           </div>
 
-          {album.tracks.length ? (
+          {album.trackSections ? (
+            <div className="album-concept-grid">
+              {album.trackSections.map((section, sectionIndex) => (
+                <section
+                  className={"album-concept-side " + (sectionIndex === 0 ? "wonderland" : "world-end")}
+                  key={section.title}
+                  aria-labelledby={"album-side-" + sectionIndex}
+                >
+                  <header>
+                    <p>{section.englishTitle}</p>
+                    <h3 id={"album-side-" + sectionIndex}>{section.title}</h3>
+                    <span>{section.description}</span>
+                  </header>
+                  <ol>
+                    {section.tracks.map((track, index) => (
+                      <li key={track.title + "-" + track.artist}>
+                        <span>{String(index + 1).padStart(2, "0")}</span>
+                        <div>
+                          <p>{track.title}</p>
+                          <small>{track.artist}</small>
+                        </div>
+                      </li>
+                    ))}
+                  </ol>
+                  <strong>{section.closingLine}</strong>
+                </section>
+              ))}
+            </div>
+          ) : album.tracks.length ? (
             <ol>
               {album.tracks.map((track, index) => (
                 <li key={`${track}-${index}`}>
