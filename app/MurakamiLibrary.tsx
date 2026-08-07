@@ -10,7 +10,17 @@ function BookCover({ book, className, loading }: { book: MurakamiBook; className
   const failed = coverIndex >= candidates.length;
   return (
     <div className={className}>
-      {!failed ? <img src={candidates[coverIndex]} alt={`《${book.title}》封面`} loading={loading} referrerPolicy="no-referrer" onError={() => setCoverIndex((index) => index + 1)} /> : null}
+      {!failed ? <img
+        src={candidates[coverIndex]}
+        alt={`《${book.title}》封面`}
+        loading={loading}
+        referrerPolicy="no-referrer"
+        onLoad={(event) => {
+          const image = event.currentTarget;
+          if (image.naturalWidth < 80 || image.naturalHeight < 80) setCoverIndex((index) => index + 1);
+        }}
+        onError={() => setCoverIndex((index) => index + 1)}
+      /> : null}
       {failed ? <div className="book-cover-fallback"><small>村上春樹</small><strong>{book.title}</strong><span>{book.year}</span></div> : null}
     </div>
   );
