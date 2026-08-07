@@ -95,39 +95,69 @@ function AlbumDialog({
 
         <div className="album-dialog-tracks">
           <div className="album-dialog-section-title">
-            <span>TRACK LIST</span>
+            <span>{album.trackSections ? "TRACK NOTES" : "TRACK LIST"}</span>
             <i />
             <p>{album.tracks.length ? `${album.tracks.length} 首` : "待整理"}</p>
           </div>
 
           {album.trackSections ? (
-            <div className="album-concept-grid">
-              {album.trackSections.map((section, sectionIndex) => (
-                <section
-                  className={"album-concept-side " + (sectionIndex === 0 ? "wonderland" : "world-end")}
-                  key={section.title}
-                  aria-labelledby={"album-side-" + sectionIndex}
-                >
-                  <header>
-                    <p>{section.englishTitle}</p>
-                    <h3 id={"album-side-" + sectionIndex}>{section.title}</h3>
-                    <span>{section.description}</span>
-                  </header>
-                  <ol>
-                    {section.tracks.map((track, index) => (
-                      <li key={track.title + "-" + track.artist}>
-                        <span>{String(index + 1).padStart(2, "0")}</span>
-                        <div>
-                          <p>{track.title}</p>
-                          <small>{track.artist}</small>
-                        </div>
-                      </li>
-                    ))}
-                  </ol>
-                  <strong>{section.closingLine}</strong>
-                </section>
-              ))}
-            </div>
+            <>
+              <div className="album-concept-bridge" aria-label="两面歌单的主题衔接">
+                <small>A QUESTION BETWEEN TWO WORLDS</small>
+                <div>
+                  <p>Where is the love?</p>
+                  <i aria-hidden="true">→</i>
+                  <p>爱，因为在心中。</p>
+                </div>
+              </div>
+              <div className="album-concept-grid">
+                {album.trackSections.map((section, sectionIndex) => (
+                  <section
+                    className={"album-concept-side " + (sectionIndex === 0 ? "wonderland" : "world-end")}
+                    key={section.title}
+                    aria-labelledby={"album-side-" + sectionIndex}
+                  >
+                    <header>
+                      <p>{section.englishTitle}</p>
+                      <h3 id={"album-side-" + sectionIndex}>{section.title}</h3>
+                      <span>{section.description}</span>
+                    </header>
+                    <ol>
+                      {section.tracks.map((track, index) => (
+                        <li className="album-concept-track" key={track.title + "-" + track.artist}>
+                          <div className="album-concept-track-main">
+                            <span>{String(index + 1).padStart(2, "0")}</span>
+                            <img
+                              src={track.artwork}
+                              alt={track.artist + "《" + track.album + "》封面"}
+                              loading="lazy"
+                              referrerPolicy="no-referrer"
+                            />
+                            <div className="album-concept-track-copy">
+                              <div>
+                                <h4>{track.title}</h4>
+                                <small>{track.artist}</small>
+                              </div>
+                              <p className="album-concept-track-meta">
+                                《{track.album}》<span>·</span>{track.year}
+                              </p>
+                              <p>{track.interpretation}</p>
+                            </div>
+                          </div>
+                          {track.transitionAfter ? (
+                            <div className="album-concept-transition">
+                              <i aria-hidden="true">↓</i>
+                              <p>{track.transitionAfter}</p>
+                            </div>
+                          ) : null}
+                        </li>
+                      ))}
+                    </ol>
+                    <strong>{section.closingLine}</strong>
+                  </section>
+                ))}
+              </div>
+            </>
           ) : album.tracks.length ? (
             <ol>
               {album.tracks.map((track, index) => (

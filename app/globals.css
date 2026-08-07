@@ -1364,10 +1364,50 @@ a.space-card:focus-visible {
   line-height: 1.6;
 }
 
+.album-concept-bridge {
+  display: grid;
+  place-items: center;
+  gap: 0.7rem;
+  margin-top: 1.2rem;
+  padding: 1.6rem;
+  border: 1px solid rgba(7, 21, 37, 0.14);
+  border-bottom: 0;
+  background:
+    linear-gradient(90deg, #0b2033 0 50%, #eee8df 50% 100%);
+}
+
+.album-concept-bridge small {
+  color: #aa8aa5;
+  font-size: 0.54rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+}
+
+.album-concept-bridge > div {
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 3vw, 3rem);
+}
+
+.album-concept-bridge p {
+  margin: 0;
+  color: #f4efe5;
+  font-family: "Songti SC", "STSong", serif;
+  font-size: clamp(1rem, 2vw, 1.45rem);
+}
+
+.album-concept-bridge p:last-child {
+  color: #102438;
+}
+
+.album-concept-bridge i {
+  color: #aa8aa5;
+  font-style: normal;
+}
+
 .album-concept-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  margin-top: 1.2rem;
   border: 1px solid rgba(7, 21, 37, 0.14);
 }
 
@@ -1423,41 +1463,109 @@ a.space-card:focus-visible {
 }
 
 .album-concept-side ol {
-  grid-template-columns: 1fr;
+  display: block;
   margin-top: 1.5rem;
-  border-color: currentColor;
-  border-left: 0;
+  border: 0;
 }
 
-.album-concept-side li {
-  grid-template-columns: 2rem minmax(0, 1fr);
-  min-height: 4rem;
-  padding: 0.85rem 0;
+.album-concept-side .album-concept-track {
+  display: block;
+  min-height: 0;
+  padding: 1.25rem 0;
   border-right: 0;
-  border-color: color-mix(in srgb, currentColor 16%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, currentColor 16%, transparent);
 }
 
-.album-concept-side li > span {
+.album-concept-track-main {
+  display: grid;
+  grid-template-columns: 1.5rem 5.2rem minmax(0, 1fr);
+  gap: 1rem;
+  align-items: start;
+}
+
+.album-concept-track-main > span {
+  padding-top: 0.25rem;
   color: #a988a3;
+  font-family: "Songti SC", "STSong", serif;
+  font-size: 0.68rem;
 }
 
-.album-concept-side li div {
+.album-concept-track-main > img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  border: 1px solid color-mix(in srgb, currentColor 16%, transparent);
+  object-fit: cover;
+  box-shadow: 0 0.8rem 1.8rem rgba(0, 0, 0, 0.12);
+}
+
+.album-concept-side .album-concept-track-copy {
+  display: block;
+  min-width: 0;
+}
+
+.album-concept-track-copy > div {
   display: flex;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 0.8rem;
   align-items: baseline;
 }
 
-.album-concept-side li p {
-  font-size: 0.9rem;
+.album-concept-track-copy h4 {
+  margin: 0;
+  font-family: "Songti SC", "STSong", serif;
+  font-size: 1.05rem;
+  font-weight: 500;
+  line-height: 1.35;
 }
 
-.album-concept-side li small {
+.album-concept-track-copy small {
+  flex: 0 0 auto;
   color: currentColor;
-  font-size: 0.62rem;
+  font-size: 0.6rem;
   letter-spacing: 0.04em;
   text-align: right;
-  opacity: 0.54;
+  opacity: 0.52;
+}
+
+.album-concept-side .album-concept-track-meta {
+  margin-top: 0.25rem;
+  color: #a988a3;
+  font-family: inherit;
+  font-size: 0.58rem;
+  letter-spacing: 0.04em;
+}
+
+.album-concept-track-meta span {
+  margin: 0 0.35rem;
+}
+
+.album-concept-side .album-concept-track-copy > p:last-child {
+  margin-top: 0.65rem;
+  font-family: "Songti SC", "STSong", serif;
+  font-size: 0.75rem;
+  line-height: 1.7;
+  opacity: 0.68;
+}
+
+.album-concept-side .album-concept-transition {
+  display: grid;
+  grid-template-columns: 1.5rem 1fr;
+  gap: 0.65rem;
+  margin: 1rem 0 0 7.7rem;
+  padding: 0.85rem 0 0.1rem;
+  border-top: 1px dashed color-mix(in srgb, currentColor 18%, transparent);
+  color: #a988a3;
+}
+
+.album-concept-transition i {
+  font-style: normal;
+  font-size: 0.7rem;
+}
+
+.album-concept-side .album-concept-transition p {
+  font-size: 0.68rem;
+  line-height: 1.65;
 }
 
 .album-concept-side > strong {
@@ -1874,14 +1982,31 @@ footer small {
     min-height: 0;
   }
 
-  .album-concept-side li div {
+  .album-concept-bridge {
+    padding: 1.2rem 0.8rem;
+  }
+
+  .album-concept-bridge > div {
+    gap: 0.7rem;
+  }
+
+  .album-concept-track-main {
+    grid-template-columns: 1.2rem 4.4rem minmax(0, 1fr);
+    gap: 0.7rem;
+  }
+
+  .album-concept-track-copy > div {
     display: block;
   }
 
-  .album-concept-side li small {
+  .album-concept-track-copy small {
     display: block;
     margin-top: 0.25rem;
     text-align: left;
+  }
+
+  .album-concept-side .album-concept-transition {
+    margin-left: 6.3rem;
   }
 
   .album-tile-copy h3,

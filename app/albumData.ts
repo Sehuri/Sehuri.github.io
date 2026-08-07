@@ -17,10 +17,17 @@ export type TrackSection = {
   englishTitle: string;
   description: string;
   closingLine: string;
-  tracks: readonly {
-    title: string;
-    artist: string;
-  }[];
+  tracks: readonly ConceptTrack[];
+};
+
+export type ConceptTrack = {
+  title: string;
+  artist: string;
+  album: string;
+  year: string;
+  artwork: string;
+  interpretation: string;
+  transitionAfter?: string;
 };
 
 export const featuredTrackSections: readonly TrackSection[] = [
@@ -30,14 +37,74 @@ export const featuredTrackSections: readonly TrackSection[] = [
     description: "凝视时代、城市、战争与欲望，也追问我们如何走到这里。",
     closingLine: "WHERE IS THE LOVE?",
     tracks: [
-      { title: "再见二十世纪", artist: "汪峰" },
-      { title: "摩天动物园", artist: "邓紫棋" },
-      { title: "陀飞轮", artist: "陈奕迅" },
-      { title: "孙子兵法", artist: "陶喆" },
-      { title: "止战之殇", artist: "周杰伦" },
-      { title: "Earth Song", artist: "Michael Jackson" },
-      { title: "Dear God", artist: "陶喆" },
-      { title: "Where Is the Love?", artist: "The Black Eyed Peas" },
+      {
+        title: "再见二十世纪",
+        artist: "汪峰",
+        album: "爱是一颗幸福的子弹",
+        year: "2002",
+        artwork: "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/59/9e/07/599e0700-9ab5-ffff-0978-066f59e1e989/mzi.yraqwkkh.jpg/1000x1000bb.jpg",
+        interpretation: "站在世纪交界处回望理想的退潮，也为整张选集打开一扇通往现实的门。",
+        transitionAfter: "世纪已经翻页，城市却把新的欲望写进橱窗。",
+      },
+      {
+        title: "摩天动物园",
+        artist: "邓紫棋",
+        album: "摩天动物园",
+        year: "2019",
+        artwork: "https://is1-ssl.mzstatic.com/image/thumb/Music123/v4/6e/20/22/6e202262-eaab-bca1-fe63-7ae59bd74183/886448203421.jpg/1000x1000bb.jpg",
+        interpretation: "把都市比作动物园，在繁华表面之下观察欲望、竞争与人性的不同面孔。",
+      },
+      {
+        title: "陀飞轮",
+        artist: "陈奕迅",
+        album: "Time Flies",
+        year: "2010",
+        artwork: "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/15/5f/4a/155f4a99-7580-a100-923e-064993de8fd8/dj.tzusmqoo.jpg/1000x1000bb.jpg",
+        interpretation: "当时间被价格和物质衡量，拥有得越多，反而越难确定自己真正留下了什么。",
+        transitionAfter: "个人的时间焦虑继续放大，最终进入权力、策略与战争。",
+      },
+      {
+        title: "孙子兵法",
+        artist: "陶喆",
+        album: "太平盛世",
+        year: "2005",
+        artwork: "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/fe/ad/e7/feade7c8-826b-0379-fbf4-e59606db8e4c/825646245406.jpg/1000x1000bb.jpg",
+        interpretation: "借古老的战争智慧反观现代冲突：技术不断进步，人类却仍在重复相似的对抗。",
+      },
+      {
+        title: "止战之殇",
+        artist: "周杰伦",
+        album: "七里香",
+        year: "2004",
+        artwork: "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/29/c1/2d/29c12de6-54b4-f549-9d9f-07d8a04221ea/JAY.jpg/1000x1000bb.jpg",
+        interpretation: "不从胜负书写战争，而是把镜头交给失去家园、童年与亲人的普通人。",
+        transitionAfter: "战争的回声越过边界，最终落到同一颗受伤的地球。",
+      },
+      {
+        title: "Earth Song",
+        artist: "Michael Jackson",
+        album: "HIStory: Past, Present and Future, Book I",
+        year: "1995",
+        artwork: "https://is1-ssl.mzstatic.com/image/thumb/Music/v4/39/dc/e5/39dce57c-8f64-bb54-fc50-2b2ea6a0e669/MichaelJackson_HistoryPastPresentAndFutureBoo_G0100029916490_F_001_1400x1400RGB.jpeg/1000x1000bb.jpg",
+        interpretation: "从森林、海洋到战争废墟，把环境与人类苦难放在同一声近乎撕裂的追问里。",
+      },
+      {
+        title: "Dear God",
+        artist: "陶喆",
+        album: "黑色柳丁",
+        year: "2002",
+        artwork: "https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/05/7a/97/057a9723-2dbd-873b-81e0-5090879b2942/825646245352.jpg/1000x1000bb.jpg",
+        interpretation: "当现实无法被解释，只能把关于灾难、信仰与人的困惑写成一封寄往远方的信。",
+        transitionAfter: "祈祷没有给出答案，于是最后一首歌把问题交给另一个世界。",
+      },
+      {
+        title: "Where Is the Love?",
+        artist: "The Black Eyed Peas",
+        album: "Elephunk",
+        year: "2003",
+        artwork: "https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/05/a3/a1/05a3a1aa-c472-a7f2-4d8b-9eacff8a1e43/22UMGIM30753.rgb.jpg/1000x1000bb.jpg",
+        interpretation: "把战争、偏见与冷漠收束成一个人人都能听懂的问题，也将答案留给唱片的另一面。",
+      },
     ],
   },
   {
@@ -46,14 +113,74 @@ export const featuredTrackSections: readonly TrackSection[] = [
     description: "在看清现实之后，仍然保存爱、故乡、成长与理想生活。",
     closingLine: "爱，因为在心中。",
     tracks: [
-      { title: "爱 因为在心中", artist: "王力宏" },
-      { title: "Hey Jude", artist: "The Beatles" },
-      { title: "Fix You", artist: "Coldplay" },
-      { title: "望春风", artist: "陶喆" },
-      { title: "大人中", artist: "卢广仲" },
-      { title: "旅行的意义", artist: "陈绮贞" },
-      { title: "the lakes", artist: "Taylor Swift" },
-      { title: "稻香", artist: "周杰伦" },
+      {
+        title: "爱 因为在心中",
+        artist: "王力宏",
+        album: "盖世英雄",
+        year: "2005",
+        artwork: "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/f9/82/88/f98288eb-ea32-6c8c-7919-357c31a4b437/1400X1400.jpg/1000x1000bb.jpg",
+        interpretation: "答案不是一个抽象概念，而是人与人相遇、陪伴，并共同完成一件事情的时刻。",
+        transitionAfter: "爱从宏大的回答落回一个人身边，先成为安慰，再成为照亮。",
+      },
+      {
+        title: "Hey Jude",
+        artist: "The Beatles",
+        album: "Hey Jude",
+        year: "1968",
+        artwork: "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/f3/ad/d2/f3add268-3a49-10d4-e7f7-154b9ffc9042/00602537669035.rgb.jpg/1000x1000bb.jpg",
+        interpretation: "面对难过时不催促遗忘，而是允许一个人慢慢把痛苦转化为继续前行的力量。",
+      },
+      {
+        title: "Fix You",
+        artist: "Coldplay",
+        album: "X&Y",
+        year: "2005",
+        artwork: "https://is1-ssl.mzstatic.com/image/thumb/Music115/v4/0c/82/48/0c8248a8-4a5b-d30d-8056-f32d650d2fc9/190295978068.jpg/1000x1000bb.jpg",
+        interpretation: "无法替另一个人解决所有问题，却仍愿意留下来，成为黑暗中稳定而温柔的光。",
+        transitionAfter: "被照亮以后，我们开始辨认自己的来处，也重新学习怎样长大。",
+      },
+      {
+        title: "望春风",
+        artist: "陶喆",
+        album: "陶喆同名专辑",
+        year: "1997",
+        artwork: "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/dd/bb/bd/ddbbbda1-9408-72b2-4c0b-943e648be6c1/190295574086.jpg/1000x1000bb.jpg",
+        interpretation: "让旧日旋律在新的声音里重生，故乡不是固定地点，而是一种仍能被唤回的情感。",
+      },
+      {
+        title: "大人中",
+        artist: "卢广仲",
+        album: "大人中",
+        year: "2014",
+        artwork: "https://is1-ssl.mzstatic.com/image/thumb/Music/v4/fc/88/02/fc880243-88a9-fb3f-71ef-13e100430d87/Cover_4000x4000.jpg/1000x1000bb.jpg",
+        interpretation: "成长不是突然成为完整的大人，而是在不确定里继续生活，也不遗失原来的自己。",
+        transitionAfter: "成长并不是终点；带着仍未解开的自己，我们重新出发。",
+      },
+      {
+        title: "旅行的意义",
+        artist: "陈绮贞",
+        album: "华丽的冒险",
+        year: "2005",
+        artwork: "https://is1-ssl.mzstatic.com/image/thumb/Music/v4/c5/c5/b9/c5c5b9a5-7b08-1579-950e-6ad69d8f105a/2005_9-_1400.jpg/1000x1000bb.jpg",
+        interpretation: "走过许多地方并不自动带来答案，旅行真正照见的是关系、记忆以及自己的内心。",
+      },
+      {
+        title: "the lakes",
+        artist: "Taylor Swift",
+        album: "folklore",
+        year: "2020",
+        artwork: "https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/7c/04/ba/7c04ba17-2ff8-21b3-0ac0-7d141f86e924/20UMGIM64216.rgb.jpg/1000x1000bb.jpg",
+        interpretation: "离开喧嚣、评价与被观看的生活，前往一个能够继续写作、相爱和保持自我的地方。",
+        transitionAfter: "理想并不只存在于远方，最后的路通向最普通、也最值得守住的生活。",
+      },
+      {
+        title: "稻香",
+        artist: "周杰伦",
+        album: "魔杰座",
+        year: "2008",
+        artwork: "https://is1-ssl.mzstatic.com/image/thumb/Music122/v4/1b/63/9e/1b639e5b-f8ca-a6e1-8612-6396bc9ff0eb/4711448407424.jpg/1000x1000bb.jpg",
+        interpretation: "经历城市、战争与远行之后，最终回到家、童年和日常，在简单生活里重新确认幸福。",
+      },
     ],
   },
 ];
