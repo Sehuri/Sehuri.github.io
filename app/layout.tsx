@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "深绘里｜Sehuri's Digital Garden",
-    description: "今日庭院、两个月亮、春树书房与庭院年轮，记录深绘里持续生长的路径。",
+    description: "今日庭院、两个月亮、村上书房与庭院年轮，记录深绘里持续生长的路径。",
     type: "website",
     locale: "zh_CN",
     url: "/",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "深绘里｜Sehuri's Digital Garden",
-    description: "今日庭院、两个月亮、春树书房与庭院年轮，记录深绘里持续生长的路径。",
+    description: "今日庭院、两个月亮、村上书房与庭院年轮，记录深绘里持续生长的路径。",
     images: ["/og.png"],
   },
 };

@@ -3,6 +3,16 @@
 import { useEffect, useState } from "react";
 import { murakamiBooks, readingRoutes, type MurakamiBook } from "./murakamiData";
 
+function BookCover({ book, className, loading }: { book: MurakamiBook; className: string; loading?: "lazy" | "eager" }) {
+  const [failed, setFailed] = useState(false);
+  return (
+    <div className={className}>
+      {!failed ? <img src={book.cover} alt={`《${book.title}》封面`} loading={loading} referrerPolicy="no-referrer" onError={() => setFailed(true)} /> : null}
+      {failed ? <div className="book-cover-fallback"><small>村上春樹</small><strong>{book.title}</strong><span>{book.year}</span></div> : null}
+    </div>
+  );
+}
+
 function BookDialog({ book, onClose }: { book: MurakamiBook; onClose: () => void }) {
   useEffect(() => {
     const previous = document.body.style.overflow;
@@ -20,9 +30,9 @@ function BookDialog({ book, onClose }: { book: MurakamiBook; onClose: () => void
       <article className="book-dialog" role="dialog" aria-modal="true" aria-labelledby="book-dialog-title" onMouseDown={(event) => event.stopPropagation()}>
         <button className="book-dialog-close" type="button" onClick={onClose} aria-label="关闭作品详情" autoFocus>×</button>
         <div className="book-dialog-hero">
-          <div className="book-dialog-cover"><img src={book.cover} alt={`《${book.title}》封面`} referrerPolicy="no-referrer" /></div>
+          <BookCover book={book} className="book-dialog-cover" loading="eager" />
           <div className="book-dialog-intro">
-            <p>{book.year} · {book.type}{book.favorite ? " · 私人珍藏" : ""}</p>
+            <p>{book.year} · {book.type}{book.publisher ? ` · ${book.publisher}` : ""}{book.favorite ? " · 私人珍藏" : ""}</p>
             <h2 id="book-dialog-title">{book.title}</h2>
             <span>{book.originalTitle}</span>
             <blockquote>“{book.personalNote}”</blockquote>
@@ -41,13 +51,18 @@ function BookDialog({ book, onClose }: { book: MurakamiBook; onClose: () => void
 export default function MurakamiLibrary() {
   const [selectedBook, setSelectedBook] = useState<MurakamiBook | null>(null);
   const [showAll, setShowAll] = useState(false);
-  const visibleBooks = showAll ? murakamiBooks : murakamiBooks.slice(0, 6);
+  const [filter, setFilter] = useState<"全部" | "长篇" | "短篇小说集">("全部");
+  const chronologicalBooks = [...murakamiBooks].sort((a, b) => Number(a.year) - Number(b.year));
+  const filteredBooks = filter === "全部" ? chronologicalBooks : filter === "短篇小说集"
+    ? chronologicalBooks.filter((book) => book.type === "短篇小说集")
+    : chronologicalBooks.filter((book) => book.type !== "短篇小说集");
+  const visibleBooks = showAll ? filteredBooks : filteredBooks.slice(0, 6);
   const favorites = murakamiBooks.filter((book) => book.favorite);
 
   return (
     <section className="murakami-library" id="murakami">
       <header className="murakami-heading">
-        <div><p className="section-kicker">HARUKI&apos;S READING ROOM</p><h2>春树书房</h2></div>
+        <div><p className="section-kicker">HARUKI&apos;S READING ROOM</p><h2>村上书房</h2></div>
         <p>在现实与另一个世界的缝隙里，<br />收藏我读过、也想继续重读的村上春树。</p>
       </header>
 
@@ -71,7 +86,7 @@ export default function MurakamiLibrary() {
         <div>
           {favorites.map((book) => (
             <button type="button" key={book.title} onClick={() => setSelectedBook(book)}>
-              <img src={book.cover} alt={`《${book.title}》封面`} loading="lazy" referrerPolicy="no-referrer" />
+              <BookCover book={book} className="favorite-book-cover" loading="lazy" />
               <span>{book.year}</span><h4>{book.title}</h4><p>{book.personalNote}</p><strong>查看作品档案 ↗</strong>
             </button>
           ))}
@@ -81,7 +96,7 @@ export default function MurakamiLibrary() {
       <div className="murakami-timeline">
         <div className="murakami-subheading"><div><p>BOOKS ACROSS TIME</p><h3>作品年图</h3></div><span>1979 — 2023</span></div>
         <div className="book-year-track">
-          {murakamiBooks.map((book) => (
+          {chronologicalBooks.map((book) => (
             <button type="button" key={book.title} onClick={() => setSelectedBook(book)} aria-label={`查看${book.year}年作品《${book.title}》`}>
               <span>{book.year}</span><i /><small>{book.title}</small>
             </button>
@@ -90,16 +105,19 @@ export default function MurakamiLibrary() {
       </div>
 
       <div className="murakami-shelf">
-        <div className="murakami-subheading"><div><p>BOOK ARCHIVE</p><h3>作品书架</h3></div><span>{murakamiBooks.length} 部主要长篇 · 仅作资料展示</span></div>
+        <div className="murakami-subheading"><div><p>BOOK ARCHIVE</p><h3>作品书架</h3></div><span>{murakamiBooks.length} 部作品 · 长篇与短篇小说集 · 仅作资料展示</span></div>
+        <div className="murakami-filters" aria-label="筛选作品类型">
+          {(["全部", "长篇", "短篇小说集"] as const).map((item) => <button className={filter === item ? "is-active" : ""} type="button" key={item} onClick={() => { setFilter(item); setShowAll(false); }}>{item}</button>)}
+        </div>
         <div className="murakami-book-grid">
           {visibleBooks.map((book) => (
             <button type="button" className="murakami-book" key={book.title} onClick={() => setSelectedBook(book)}>
-              <div><img src={book.cover} alt={`《${book.title}》封面`} loading="lazy" referrerPolicy="no-referrer" />{book.favorite ? <span>FAVORITE</span> : null}</div>
+              <div><BookCover book={book} className="murakami-book-cover" loading="lazy" />{book.favorite ? <span>FAVORITE</span> : null}</div>
               <p>{book.year} · {book.type}</p><h4>{book.title}</h4><small>{book.originalTitle}</small><strong>查看详情 ↗</strong>
             </button>
           ))}
         </div>
-        <button className="murakami-show-all" type="button" onClick={() => setShowAll((value) => !value)}>{showAll ? "收起书架" : `展开全部 ${murakamiBooks.length} 部作品`} <span aria-hidden="true">{showAll ? "↑" : "↓"}</span></button>
+        {filteredBooks.length > 6 ? <button className="murakami-show-all" type="button" onClick={() => setShowAll((value) => !value)}>{showAll ? "收起书架" : `展开全部 ${filteredBooks.length} 部作品`} <span aria-hidden="true">{showAll ? "↑" : "↓"}</span></button> : null}
       </div>
 
       <div className="reading-routes">

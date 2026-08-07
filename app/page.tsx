@@ -1,9 +1,10 @@
 import GardenFeatures from "./GardenFeatures";
 import GardenGrowth from "./GardenGrowth";
+import HeroMoonExperience from "./HeroMoonExperience";
 import MurakamiLibrary from "./MurakamiLibrary";
 import RecordCollection from "./RecordCollection";
-import TwoMoonJourney from "./TwoMoonJourney";
 import { recordCount } from "./albumData";
+import { murakamiBooks } from "./murakamiData";
 
 const spaces = [
   {
@@ -48,12 +49,12 @@ const spaces = [
   },
   {
     index: "05",
-    name: "春树",
+    name: "村上春樹",
     english: "MURAKAMI",
     description: "在现实与另一个世界的缝隙里，收藏我反复回到的作品。",
-    detail: "15 部主要长篇 · 作品年图",
+    detail: `${murakamiBooks.length} 部作品 · 长篇与短篇小说集`,
     href: "#murakami",
-    action: "走进春树书房",
+    action: "走进村上书房",
     tone: "murakami",
   },
 ] as const;
@@ -75,7 +76,7 @@ export default function Home() {
           </a>
           <div className="nav-links">
             <a href="#spaces">我的空间</a>
-            <a href="#moons">两个月亮</a>
+            <a href="#moon-guide">两个月亮</a>
             <a href="#growth">庭院年轮</a>
             <a href="#about">关于我</a>
             <a href="https://github.com/Sehuri" target="_blank" rel="noreferrer">
@@ -85,6 +86,7 @@ export default function Home() {
         </nav>
 
         <div className="hero-shade" aria-hidden="true" />
+        <HeroMoonExperience />
         <div className="hero-content">
           <p className="eyebrow">SEHURI&apos;S DIGITAL GARDEN</p>
           <h1>
@@ -116,8 +118,6 @@ export default function Home() {
       </section>
 
       <GardenFeatures />
-
-      <TwoMoonJourney />
 
       <section className="spaces" id="spaces">
         <header className="section-heading">
@@ -226,7 +226,7 @@ export default function Home() {
           <a href="https://yueji-reading-room.shenhuil.chatgpt.site">阅读</a>
           <a href="https://sehuri.github.io/Sehuri-knowledge-wiki/">知识</a>
           <a href="#records">音乐</a>
-          <a href="#murakami">春树</a>
+          <a href="#murakami">村上</a>
           <a href="#growth">年轮</a>
           <a href="https://github.com/Sehuri" target="_blank" rel="noreferrer">GitHub</a>
         </div>

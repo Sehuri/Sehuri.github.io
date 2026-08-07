@@ -65,8 +65,129 @@ a {
   isolation: isolate;
   background:
     linear-gradient(90deg, rgba(5, 18, 33, 0.72) 0%, rgba(5, 18, 33, 0.3) 42%, rgba(5, 18, 33, 0.04) 72%),
-    url("/shenhuili.png") center top / cover no-repeat;
+    url("/shenhuili.png") center 2.6rem / cover no-repeat;
 }
+
+.moon-guide {
+  position: absolute;
+  z-index: 6;
+  top: 6.6rem;
+  right: clamp(1.25rem, 5vw, 5.5rem);
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  max-width: min(26rem, calc(100vw - 2.5rem));
+  padding: .85rem 1rem;
+  border: 1px solid rgba(255,255,255,.25);
+  background: rgba(5,18,33,.82);
+  box-shadow: 0 1rem 3rem rgba(0,0,0,.22);
+  color: rgba(255,255,255,.82);
+  font-family: "Songti SC", "STSong", serif;
+  font-size: .76rem;
+  line-height: 1.7;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-.6rem);
+  transition: opacity 180ms ease, transform 180ms ease;
+  backdrop-filter: blur(12px);
+}
+
+.moon-guide:target {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.moon-guide a {
+  flex: 0 0 auto;
+  padding-bottom: .15rem;
+  border-bottom: 1px solid rgba(255,255,255,.45);
+  font-family: "Avenir Next", "PingFang SC", sans-serif;
+  font-size: .58rem;
+  letter-spacing: .08em;
+}
+
+.hero-moon-hit {
+  position: absolute;
+  z-index: 1;
+  width: clamp(3.3rem, 4.7vw, 5.4rem);
+  aspect-ratio: 1;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+}
+
+.hero-moon-cold { top: calc(9.2% + 2.6rem); right: 8.8%; }
+.hero-moon-warm { top: calc(26.5% + 2.6rem); right: 12.4%; }
+.hero-moon-hit span {
+  position: absolute;
+  left: 50%;
+  top: calc(100% + .45rem);
+  width: max-content;
+  padding: .25rem .45rem;
+  border-radius: 2rem;
+  background: rgba(5,18,33,.72);
+  font-size: .52rem;
+  letter-spacing: .1em;
+  opacity: 0;
+  transform: translate(-50%, -.3rem);
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.hero-moon-hit:hover,
+.hero-moon-hit:focus-visible {
+  border-color: rgba(255,255,255,.72);
+  box-shadow: 0 0 0 .45rem rgba(255,255,255,.08), 0 0 2rem rgba(246,225,184,.35);
+  outline: none;
+}
+.hero-moon-hit:hover span,
+.hero-moon-hit:focus-visible span { opacity: 1; transform: translate(-50%, 0); }
+
+.hero-moon-backdrop {
+  position: fixed;
+  z-index: 220;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: clamp(.8rem,3vw,2.5rem);
+  overflow-y: auto;
+  background: rgba(4,14,25,.8);
+  backdrop-filter: blur(15px);
+}
+
+.hero-moon-dialog {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(13rem,.62fr) minmax(0,1.38fr);
+  gap: clamp(2rem,6vw,5rem);
+  align-items: center;
+  width: min(66rem,100%);
+  max-height: calc(100svh - 3rem);
+  overflow-y: auto;
+  padding: clamp(1.4rem,4vw,4rem);
+  box-shadow: 0 2rem 7rem rgba(0,0,0,.4);
+}
+.hero-moon-dialog.wonderland { background: #0b2237; color: var(--moon); }
+.hero-moon-dialog.world-end { background: #eee8df; color: var(--ink); }
+.hero-moon-close { position: absolute; z-index: 2; top: 1rem; right: 1rem; display: grid; place-items: center; width: 2.8rem; aspect-ratio: 1; border: 1px solid currentColor; border-radius: 50%; background: transparent; color: inherit; font: inherit; font-size: 1.65rem; cursor: pointer; opacity: .72; }
+.hero-moon-artwork { position: relative; aspect-ratio: 1; overflow: hidden; box-shadow: 1rem 1rem 0 rgba(161,134,158,.14); }
+.hero-moon-artwork img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.hero-moon-artwork span { position: absolute; right: .8rem; bottom: .8rem; padding: .65rem .75rem; background: rgba(5,16,28,.82); color: #fff; font-size: .5rem; letter-spacing: .16em; }
+.hero-moon-copy > p { margin: 0 0 .85rem; color: #ac8ca5; font-size: .56rem; font-weight: 600; letter-spacing: .2em; }
+.hero-moon-copy h2 { margin: 0; font-family: "Songti SC", "STSong", serif; font-size: clamp(2.8rem,6vw,5.8rem); font-weight: 400; line-height: 1; }
+.hero-moon-meta { display: flex; align-items: center; flex-wrap: wrap; gap: .8rem; margin-top: 1rem; font-size: .68rem; opacity: .56; }
+.hero-moon-meta i { width: 2rem; height: 1px; background: currentColor; opacity: .35; }
+.hero-moon-copy blockquote { margin: 2rem 0 0; padding: 1rem 0 1rem 1.3rem; border-left: 1px solid currentColor; font-family: "Songti SC", serif; font-size: clamp(1rem,2vw,1.35rem); line-height: 1.8; opacity: .76; }
+.hero-moon-reason { margin-top: 1.4rem; }
+.hero-moon-reason small { color: #ac8ca5; font-size: .54rem; letter-spacing: .18em; }
+.hero-moon-reason p { margin: .45rem 0 0; font-family: "Songti SC", serif; font-size: .8rem; line-height: 1.8; opacity: .6; }
+.hero-moon-actions { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 1.6rem; }
+.hero-moon-actions button, .hero-moon-actions a { padding: .75rem 1rem; border: 1px solid currentColor; background: transparent; color: inherit; font: inherit; font-size: .64rem; cursor: pointer; }
+.hero-moon-actions button { background: var(--moon); color: var(--ink); border-color: var(--moon); }
+.hero-moon-dialog.world-end .hero-moon-actions button { background: var(--ink); color: var(--moon); border-color: var(--ink); }
 
 .hero::after {
   content: "";
@@ -698,6 +819,8 @@ a.space-card:focus-visible {
   min-height: 20rem;
 }
 
+.space-card.murakami .card-copy h3 { font-size: clamp(2.8rem, 5.5vw, 5rem); }
+
 /* Two moons */
 .moon-journey {
   position: relative;
@@ -900,13 +1023,17 @@ a.space-card:focus-visible {
 .murakami-favorites > div { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid rgba(7,21,37,.15); border-left: 1px solid rgba(7,21,37,.15); }
 .murakami-favorites button { display: grid; grid-template-columns: minmax(10rem,.58fr) minmax(0,1fr); grid-template-rows: auto auto 1fr auto; gap: .8rem 2rem; min-width: 0; padding: clamp(1.2rem,3vw,2rem); border: 0; border-right: 1px solid rgba(7,21,37,.15); border-bottom: 1px solid rgba(7,21,37,.15); background: rgba(255,255,255,.24); color: inherit; text-align: left; cursor: pointer; }
 .murakami-favorites button:hover { background: rgba(255,255,255,.56); }
-.murakami-favorites img { grid-row: 1 / 5; width: 100%; aspect-ratio: .69; object-fit: cover; box-shadow: .8rem .8rem 0 rgba(7,21,37,.06); }
+.favorite-book-cover { grid-row: 1 / 5; width: 100%; aspect-ratio: .69; overflow: hidden; box-shadow: .8rem .8rem 0 rgba(7,21,37,.06); }
+.favorite-book-cover img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .murakami-favorites button > span { color: #8b6c52; font-size: .6rem; letter-spacing: .2em; }
 .murakami-favorites h4 { margin: 0; font-family: "Songti SC", serif; font-size: clamp(1.8rem,3vw,2.8rem); font-weight: 400; }
 .murakami-favorites button p { margin: 0; font-family: "Songti SC", serif; font-size: .8rem; line-height: 1.8; color: rgba(7,21,37,.58); }
 .murakami-favorites button strong { color: #8b6c52; font-size: .6rem; font-weight: 500; letter-spacing: .08em; }
 .murakami-subheading { display: flex; justify-content: space-between; align-items: end; gap: 2rem; margin-bottom: 2rem; }
 .murakami-subheading > span { color: rgba(7,21,37,.48); font-size: .64rem; letter-spacing: .1em; }
+.murakami-filters { display: flex; gap: .6rem; margin: -1rem 0 1.5rem; }
+.murakami-filters button { padding: .55rem .85rem; border: 1px solid rgba(7,21,37,.2); background: transparent; color: rgba(7,21,37,.58); font: inherit; font-size: .6rem; letter-spacing: .08em; cursor: pointer; }
+.murakami-filters button:hover, .murakami-filters button.is-active { border-color: #8b6c52; background: #8b6c52; color: #fff; }
 .book-year-track { display: flex; gap: 0; overflow-x: auto; padding: 2rem 0 1rem; border-top: 1px solid rgba(7,21,37,.18); scrollbar-width: thin; }
 .book-year-track button { flex: 0 0 8.5rem; display: grid; grid-template-rows: auto 3rem auto; justify-items: start; min-height: 8.5rem; padding: 0 .8rem; border: 0; border-left: 1px solid rgba(7,21,37,.14); background: transparent; color: inherit; text-align: left; cursor: pointer; }
 .book-year-track button:hover small { color: #8b6c52; }
@@ -917,6 +1044,7 @@ a.space-card:focus-visible {
 .murakami-book { min-width: 0; padding: clamp(1rem,2.5vw,1.7rem); border: 0; border-right: 1px solid rgba(7,21,37,.15); border-bottom: 1px solid rgba(7,21,37,.15); background: rgba(255,255,255,.2); color: inherit; text-align: left; cursor: pointer; }
 .murakami-book:hover { background: rgba(255,255,255,.58); }
 .murakami-book > div { position: relative; width: min(74%, 15rem); aspect-ratio: .69; overflow: hidden; margin: 0 auto 1.4rem; background: rgba(7,21,37,.08); box-shadow: .8rem .8rem 0 rgba(7,21,37,.06); }
+.murakami-book-cover { width: 100%; height: 100%; }
 .murakami-book img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .murakami-book > div span { position: absolute; right: 0; bottom: 0; padding: .55rem .65rem; background: #8b6c52; color: #fff; font-size: .48rem; letter-spacing: .12em; }
 .murakami-book > p { margin: 0 0 .6rem; color: #8b6c52; font-size: .56rem; letter-spacing: .14em; }
@@ -942,6 +1070,12 @@ a.space-card:focus-visible {
 .book-dialog-hero { clear: both; display: grid; grid-template-columns: minmax(12rem,.52fr) minmax(0,1.48fr); gap: clamp(2rem,6vw,5rem); align-items: center; }
 .book-dialog-cover { width: min(100%,18rem); aspect-ratio: .69; overflow: hidden; box-shadow: 1rem 1rem 0 rgba(7,21,37,.07); }
 .book-dialog-cover img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.book-cover-fallback { display: flex; flex-direction: column; justify-content: space-between; width: 100%; height: 100%; padding: 1.25rem; background: linear-gradient(155deg,#183047,#091a2c); color: #f2eee6; text-align: left; }
+.book-cover-fallback::before { content: ""; position: absolute; inset: .7rem; border: 1px solid rgba(255,255,255,.2); pointer-events: none; }
+.book-cover-fallback small { position: relative; z-index: 1; font-size: .5rem; letter-spacing: .2em; opacity: .68; }
+.book-cover-fallback strong { position: relative; z-index: 1; font-family: "Songti SC", serif; font-size: clamp(1.25rem,2.4vw,2rem); font-weight: 400; line-height: 1.35; }
+.book-cover-fallback span { position: relative; z-index: 1; font-family: "Songti SC", serif; font-size: .72rem; opacity: .58; }
+.favorite-book-cover, .murakami-book-cover, .book-dialog-cover { position: relative; }
 .book-dialog-intro > p { margin: 0 0 1rem; color: #8b6c52; font-size: .58rem; letter-spacing: .18em; }
 .book-dialog-intro h2 { margin: 0; font-family: "Songti SC", serif; font-size: clamp(2.6rem,6vw,5.5rem); font-weight: 400; line-height: 1.1; }
 .book-dialog-intro > span { display: block; margin-top: .65rem; color: rgba(7,21,37,.48); font-size: .68rem; letter-spacing: .08em; }
@@ -1988,7 +2122,7 @@ footer small {
 
 @media (max-width: 840px) {
   .hero {
-    background-position: 62% top;
+    background-position: 62% 2.6rem;
   }
 
   .hero::before {
@@ -2117,8 +2251,15 @@ footer small {
 
   .hero {
     min-height: 46rem;
-    background-position: 66% top;
+    background-position: 66% 2.4rem;
   }
+
+  .moon-guide { top: 5.4rem; right: 1rem; }
+  .hero-moon-hit { width: 3.4rem; }
+  .hero-moon-cold { top: 10%; right: 6%; }
+  .hero-moon-warm { top: 25%; right: 10%; }
+  .hero-moon-dialog { grid-template-columns: 1fr; min-height: 100svh; max-height: 100svh; padding: 4.6rem 1rem 2rem; }
+  .hero-moon-artwork { width: min(100%,23rem); justify-self: center; }
 
   .hero-content {
     align-self: end;

@@ -10,13 +10,13 @@ const stats = [
   { value: "26", unit: "本书", label: "今年的阅读", href: "https://yueji-reading-room.shenhuil.chatgpt.site" },
   { value: String(recordCount), unit: "张唱片", label: "收藏的声音", href: "#records" },
   { value: "128", unit: "篇知识", label: "知识花园收录", href: "https://sehuri.github.io/Sehuri-knowledge-wiki/" },
-  { value: String(murakamiBooks.length), unit: "部作品", label: "春树书房", href: "#murakami" },
+  { value: String(murakamiBooks.length), unit: "部作品", label: "村上书房", href: "#murakami" },
   { value: String(growingDays), unit: "天", label: "网站持续生长", href: "#growth" },
 ] as const;
 
 const growthEvents = [
-  { date: "2026.08", title: "两个月亮升起", space: "TWO MOONS", description: "冷酷仙境与世界尽头成为可以进入的两条声音路径。", href: "#moons" },
-  { date: "2026.08", title: "春树书房建立", space: "MURAKAMI", description: "整理主要长篇、作品年图、私人珍藏与四条入门路线。", href: "#murakami" },
+  { date: "2026.08", title: "两个月亮升起", space: "TWO MOONS", description: "首屏的两个月亮成为可以进入的两条声音路径。", href: "#moon-guide" },
+  { date: "2026.08", title: "村上书房建立", space: "MURAKAMI", description: "整理长篇、短篇小说集、作品年图、私人珍藏与四条入门路线。", href: "#murakami" },
   { date: "2026.08", title: "1Q84 OST 完成双面选集", space: "MUSIC", description: "十六首歌曲分居两个世界，并为每一首留下解读与衔接。", href: "#records" },
   { date: "2026.08", title: "唱片室继续扩建", space: "RECORDS", description: `专辑收藏增长至 ${recordCount} 张，封面、曲目与作品介绍逐渐齐全。`, href: "#records" },
   { date: "2026.07", title: "今日庭院与随便走走开放", space: "GARDEN", description: "旅行、阅读、知识和音乐开始在主页随机相遇。", href: "#today" },
