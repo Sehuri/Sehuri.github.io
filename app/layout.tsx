@@ -4,14 +4,14 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://sehuri.github.io"),
   title: "深绘里｜Sehuri's Digital Garden",
-  description: "在旅行、阅读、知识与音乐之间，收藏我看见的世界。",
+  description: "在旅行、阅读、知识、音乐与两个月亮之间，收藏我看见的世界。",
   icons: {
     icon: "/favicon.svg",
     shortcut: "/favicon.svg",
   },
   openGraph: {
     title: "深绘里｜Sehuri's Digital Garden",
-    description: "今日庭院、随便走走与唱片室，在旅行、阅读、知识和音乐之间遇见新的路径。",
+    description: "今日庭院、两个月亮、春树书房与庭院年轮，记录深绘里持续生长的路径。",
     type: "website",
     locale: "zh_CN",
     url: "/",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "深绘里｜Sehuri's Digital Garden",
-    description: "今日庭院、随便走走与唱片室，在旅行、阅读、知识和音乐之间遇见新的路径。",
+    description: "今日庭院、两个月亮、春树书房与庭院年轮，记录深绘里持续生长的路径。",
     images: ["/og.png"],
   },
 };

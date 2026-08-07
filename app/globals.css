@@ -691,6 +691,296 @@ a.space-card:focus-visible {
 .space-card.reading { --card-glow: #d9a47a; }
 .space-card.knowledge { --card-glow: #91aa9c; }
 .space-card.music { --card-glow: #b89ab7; }
+.space-card.murakami { --card-glow: #c5a57c; }
+
+.space-card.murakami {
+  grid-column: 1 / -1;
+  min-height: 20rem;
+}
+
+/* Two moons */
+.moon-journey {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(5.5rem, 11vw, 10rem) clamp(1.25rem, 6vw, 6.5rem);
+  background:
+    radial-gradient(circle at 17% 22%, rgba(133, 169, 194, 0.15), transparent 26%),
+    radial-gradient(circle at 83% 20%, rgba(228, 190, 153, 0.12), transparent 26%),
+    #061421;
+}
+
+.moon-journey::before {
+  content: "月";
+  position: absolute;
+  left: 50%;
+  top: 42%;
+  transform: translate(-50%, -50%);
+  color: rgba(255, 255, 255, 0.018);
+  font-family: "Songti SC", "STSong", serif;
+  font-size: min(46vw, 42rem);
+  line-height: 1;
+}
+
+.moon-journey-heading,
+.murakami-heading,
+.growth-heading {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: end;
+  max-width: 84rem;
+  margin: 0 auto clamp(3rem, 6vw, 5.5rem);
+}
+
+.moon-journey-heading h2,
+.murakami-heading h2,
+.growth-heading h2 {
+  margin: 0;
+  font-family: "Songti SC", "STSong", serif;
+  font-size: clamp(3rem, 6vw, 5.8rem);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.moon-journey-heading > p,
+.murakami-heading > p,
+.growth-heading > p {
+  justify-self: end;
+  margin: 0;
+  font-family: "Songti SC", "STSong", serif;
+  font-size: 1rem;
+  line-height: 2;
+  color: rgba(229, 238, 244, 0.58);
+}
+
+.moon-journey-stage {
+  position: relative;
+  z-index: 1;
+  max-width: 84rem;
+  margin: 0 auto;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.moon-choices {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 0.22fr 1fr;
+  min-height: 29rem;
+  background: linear-gradient(90deg, #0b2237 0 50%, #eae4da 50% 100%);
+}
+
+.moon-choice {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  padding: 3rem 1.5rem;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.moon-choice.world-end { color: var(--ink); }
+
+.interactive-moon {
+  position: relative;
+  display: block;
+  width: clamp(7.8rem, 13vw, 11.5rem);
+  aspect-ratio: 1;
+  margin-bottom: 2rem;
+  border-radius: 50%;
+  transition: transform 300ms ease, box-shadow 300ms ease, filter 300ms ease;
+}
+
+.moon-dark {
+  background:
+    radial-gradient(circle at 36% 30%, rgba(255,255,255,.65) 0 2%, transparent 2.5%),
+    radial-gradient(circle at 65% 66%, rgba(57, 74, 82, .52) 0 9%, transparent 10%),
+    #bcc6c0;
+  box-shadow: 0 0 3rem rgba(177, 199, 201, 0.18);
+}
+
+.moon-light {
+  background:
+    radial-gradient(circle at 35% 28%, rgba(255,255,255,.9) 0 2%, transparent 2.5%),
+    radial-gradient(circle at 67% 62%, rgba(132, 107, 73, .28) 0 9%, transparent 10%),
+    #ead8b6;
+  box-shadow: 0 0 3.5rem rgba(237, 211, 169, 0.27);
+}
+
+.interactive-moon i {
+  position: absolute;
+  left: 19%;
+  top: 52%;
+  width: 13%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: rgba(91, 86, 74, 0.18);
+}
+
+.moon-choice:hover .interactive-moon,
+.moon-choice:focus-visible .interactive-moon,
+.moon-choice.is-active .interactive-moon {
+  transform: translateY(-6px) scale(1.035);
+  filter: brightness(1.08);
+  box-shadow: 0 0 5rem rgba(236, 220, 191, 0.42);
+}
+
+.moon-choice:focus-visible { outline: 1px solid var(--sunset); outline-offset: -4px; }
+.moon-choice small { font-size: .56rem; letter-spacing: .25em; opacity: .5; }
+.moon-choice strong { margin-top: .7rem; font-family: "Songti SC", "STSong", serif; font-size: clamp(2rem, 3.8vw, 3.5rem); font-weight: 400; }
+.moon-choice p { margin: .7rem 0 0; font-family: "Songti SC", "STSong", serif; font-size: .78rem; opacity: .54; }
+
+.moon-orbit { display: grid; place-items: center; color: #a98ba2; background: linear-gradient(90deg, #0b2237 0 50%, #eae4da 50% 100%); }
+.moon-orbit span { position: relative; z-index: 1; padding: .8rem .35rem; background: linear-gradient(90deg, #0b2237 0 50%, #eae4da 50% 100%); font-family: "Songti SC", serif; font-size: .7rem; letter-spacing: .16em; }
+.moon-orbit i { position: absolute; width: 1px; height: 56%; background: linear-gradient(transparent, #a98ba2, transparent); }
+
+.moon-song {
+  display: grid;
+  grid-template-columns: minmax(13rem, .62fr) minmax(0, 1.38fr);
+  gap: clamp(2rem, 6vw, 6rem);
+  align-items: center;
+  min-height: 30rem;
+  padding: clamp(1.5rem, 4vw, 4rem);
+  border-top: 1px solid rgba(255,255,255,.12);
+  transition: background 240ms ease;
+}
+
+.moon-song.wonderland { background: #0b2237; }
+.moon-song.world-end { background: #eae4da; color: var(--ink); }
+.moon-song.is-empty { display: grid; grid-template-columns: 1fr; place-items: center; text-align: center; background: rgba(255,255,255,.025); }
+.moon-song-artwork { position: relative; aspect-ratio: 1; overflow: hidden; box-shadow: 1rem 1rem 0 rgba(161, 134, 158, .15); }
+.moon-song-artwork img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.moon-song-artwork span { position: absolute; right: .8rem; bottom: .8rem; display: grid; place-items: center; width: 2.2rem; aspect-ratio: 1; background: rgba(5,16,28,.78); font-family: "Songti SC", serif; }
+.moon-song-copy > p { margin: 0 0 .8rem; color: #ac8ca5; font-size: .58rem; font-weight: 600; letter-spacing: .2em; }
+.moon-song-copy h3 { margin: 0; font-family: "Songti SC", "STSong", serif; font-size: clamp(2.7rem, 6vw, 5.5rem); font-weight: 400; line-height: 1; }
+.moon-song-meta { display: flex; align-items: center; gap: .8rem; margin-top: 1rem; font-size: .68rem; opacity: .55; }
+.moon-song-meta i { width: 2rem; height: 1px; background: currentColor; opacity: .35; }
+.moon-song-copy blockquote { margin: 2rem 0 0; padding: 1.2rem 0 1.2rem 1.4rem; border-left: 1px solid currentColor; font-family: "Songti SC", "STSong", serif; font-size: clamp(1rem, 2vw, 1.4rem); line-height: 1.8; opacity: .75; }
+.moon-song-reason { margin-top: 1.5rem; }
+.moon-song-reason small { color: #ac8ca5; font-size: .55rem; letter-spacing: .18em; }
+.moon-song-reason p { margin: .45rem 0 0; max-width: 35rem; font-family: "Songti SC", serif; font-size: .82rem; line-height: 1.8; opacity: .58; }
+.moon-song-actions { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 1.7rem; }
+.moon-song-actions button, .moon-song-actions a { display: inline-flex; align-items: center; gap: 1.5rem; min-height: 2.8rem; padding: .75rem 1rem; border: 1px solid currentColor; background: transparent; color: inherit; font: inherit; font-size: .65rem; cursor: pointer; }
+.moon-song-actions button { background: var(--moon); color: var(--ink); border-color: var(--moon); }
+.moon-song.world-end .moon-song-actions button { background: var(--ink); color: var(--moon); border-color: var(--ink); }
+.moon-song-placeholder span { color: #ac8ca5; font-size: .58rem; letter-spacing: .22em; }
+.moon-song-placeholder h3 { margin: 1rem 0 .7rem; font-family: "Songti SC", serif; font-size: clamp(2rem, 4vw, 3.8rem); font-weight: 400; }
+.moon-song-placeholder p { margin: 0; font-family: "Songti SC", serif; opacity: .5; }
+
+/* Murakami library */
+.murakami-library {
+  padding: clamp(5.5rem, 11vw, 10rem) clamp(1.25rem, 6vw, 6.5rem);
+  background:
+    radial-gradient(circle at 92% 9%, rgba(196, 157, 113, .17), transparent 25%),
+    #eeeae2;
+  color: var(--ink);
+}
+
+.murakami-heading > p { color: rgba(7,21,37,.56); }
+.murakami-heading .section-kicker { color: #8b6c52; }
+.murakami-personal { display: grid; grid-template-columns: .32fr 1.68fr; gap: clamp(2rem, 6vw, 6rem); max-width: 84rem; margin: 0 auto; padding: clamp(2rem, 5vw, 4.5rem); border: 1px solid rgba(7,21,37,.15); background: rgba(255,255,255,.35); }
+.murakami-portrait { display: flex; flex-direction: column; align-items: center; gap: 1rem; color: #8b6c52; }
+.murakami-portrait > span { display: grid; place-items: center; width: 5rem; aspect-ratio: 1; border: 1px solid currentColor; font-family: "Songti SC", serif; font-size: 2rem; }
+.murakami-portrait i { width: 1px; flex: 1; min-height: 7rem; background: rgba(7,21,37,.15); }
+.murakami-portrait small { writing-mode: vertical-rl; font-size: .54rem; letter-spacing: .22em; }
+.murakami-why > p, .murakami-favorites header p, .murakami-subheading p, .reading-routes header p { margin: 0 0 .8rem; color: #8b6c52; font-size: .58rem; font-weight: 600; letter-spacing: .22em; }
+.murakami-why h3 { margin: 0; font-family: "Songti SC", serif; font-size: clamp(2rem, 4.5vw, 4.2rem); font-weight: 400; line-height: 1.4; }
+.murakami-why > div { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid rgba(7,21,37,.13); }
+.murakami-why > div p { margin: 0; font-family: "Songti SC", serif; font-size: .92rem; line-height: 2; color: rgba(7,21,37,.63); }
+.murakami-favorites, .murakami-timeline, .murakami-shelf, .reading-routes { max-width: 84rem; margin: clamp(4.5rem, 9vw, 8rem) auto 0; }
+.murakami-favorites > header { display: flex; justify-content: space-between; align-items: end; margin-bottom: 2rem; }
+.murakami-favorites header h3, .murakami-subheading h3, .reading-routes header h3, .growth-now-title h3, .growth-timeline-title h3 { margin: 0; font-family: "Songti SC", serif; font-size: clamp(2.1rem, 4vw, 3.8rem); font-weight: 400; }
+.murakami-favorites > div { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid rgba(7,21,37,.15); border-left: 1px solid rgba(7,21,37,.15); }
+.murakami-favorites button { display: grid; grid-template-columns: minmax(10rem,.58fr) minmax(0,1fr); grid-template-rows: auto auto 1fr auto; gap: .8rem 2rem; min-width: 0; padding: clamp(1.2rem,3vw,2rem); border: 0; border-right: 1px solid rgba(7,21,37,.15); border-bottom: 1px solid rgba(7,21,37,.15); background: rgba(255,255,255,.24); color: inherit; text-align: left; cursor: pointer; }
+.murakami-favorites button:hover { background: rgba(255,255,255,.56); }
+.murakami-favorites img { grid-row: 1 / 5; width: 100%; aspect-ratio: .69; object-fit: cover; box-shadow: .8rem .8rem 0 rgba(7,21,37,.06); }
+.murakami-favorites button > span { color: #8b6c52; font-size: .6rem; letter-spacing: .2em; }
+.murakami-favorites h4 { margin: 0; font-family: "Songti SC", serif; font-size: clamp(1.8rem,3vw,2.8rem); font-weight: 400; }
+.murakami-favorites button p { margin: 0; font-family: "Songti SC", serif; font-size: .8rem; line-height: 1.8; color: rgba(7,21,37,.58); }
+.murakami-favorites button strong { color: #8b6c52; font-size: .6rem; font-weight: 500; letter-spacing: .08em; }
+.murakami-subheading { display: flex; justify-content: space-between; align-items: end; gap: 2rem; margin-bottom: 2rem; }
+.murakami-subheading > span { color: rgba(7,21,37,.48); font-size: .64rem; letter-spacing: .1em; }
+.book-year-track { display: flex; gap: 0; overflow-x: auto; padding: 2rem 0 1rem; border-top: 1px solid rgba(7,21,37,.18); scrollbar-width: thin; }
+.book-year-track button { flex: 0 0 8.5rem; display: grid; grid-template-rows: auto 3rem auto; justify-items: start; min-height: 8.5rem; padding: 0 .8rem; border: 0; border-left: 1px solid rgba(7,21,37,.14); background: transparent; color: inherit; text-align: left; cursor: pointer; }
+.book-year-track button:hover small { color: #8b6c52; }
+.book-year-track span { color: #8b6c52; font-family: "Songti SC", serif; font-size: .75rem; }
+.book-year-track i { width: 1px; height: 2.1rem; margin-left: .1rem; background: rgba(7,21,37,.23); }
+.book-year-track small { font-family: "Songti SC", serif; font-size: .74rem; line-height: 1.45; }
+.murakami-book-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); border-top: 1px solid rgba(7,21,37,.15); border-left: 1px solid rgba(7,21,37,.15); }
+.murakami-book { min-width: 0; padding: clamp(1rem,2.5vw,1.7rem); border: 0; border-right: 1px solid rgba(7,21,37,.15); border-bottom: 1px solid rgba(7,21,37,.15); background: rgba(255,255,255,.2); color: inherit; text-align: left; cursor: pointer; }
+.murakami-book:hover { background: rgba(255,255,255,.58); }
+.murakami-book > div { position: relative; width: min(74%, 15rem); aspect-ratio: .69; overflow: hidden; margin: 0 auto 1.4rem; background: rgba(7,21,37,.08); box-shadow: .8rem .8rem 0 rgba(7,21,37,.06); }
+.murakami-book img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.murakami-book > div span { position: absolute; right: 0; bottom: 0; padding: .55rem .65rem; background: #8b6c52; color: #fff; font-size: .48rem; letter-spacing: .12em; }
+.murakami-book > p { margin: 0 0 .6rem; color: #8b6c52; font-size: .56rem; letter-spacing: .14em; }
+.murakami-book h4 { min-height: 2.5em; margin: 0; font-family: "Songti SC", serif; font-size: clamp(1.4rem,2.2vw,2rem); font-weight: 400; line-height: 1.3; }
+.murakami-book > small { display: block; min-height: 3em; margin-top: .35rem; color: rgba(7,21,37,.45); font-size: .6rem; line-height: 1.5; }
+.murakami-book > strong { display: block; margin-top: 1rem; color: #8b6c52; font-size: .56rem; font-weight: 500; }
+.murakami-show-all { display: flex; justify-content: space-between; width: 100%; margin-top: 1.2rem; padding: 1rem 1.2rem; border: 1px solid rgba(7,21,37,.18); background: transparent; color: inherit; font: inherit; font-size: .66rem; cursor: pointer; }
+.murakami-show-all:hover { background: rgba(255,255,255,.5); }
+.reading-routes { display: grid; grid-template-columns: .62fr 1.38fr; gap: clamp(2rem,6vw,6rem); padding-top: 3rem; border-top: 1px solid rgba(7,21,37,.18); }
+.reading-routes header span { display: block; max-width: 24rem; margin-top: 1rem; font-family: "Songti SC", serif; font-size: .82rem; line-height: 1.8; color: rgba(7,21,37,.54); }
+.reading-routes > div { border-top: 1px solid rgba(7,21,37,.15); }
+.reading-routes button { display: grid; grid-template-columns: 2.5rem 1fr auto; gap: 1.2rem; align-items: center; width: 100%; padding: 1.3rem .4rem; border: 0; border-bottom: 1px solid rgba(7,21,37,.15); background: transparent; color: inherit; text-align: left; cursor: pointer; }
+.reading-routes button:hover { padding-left: 1rem; background: rgba(255,255,255,.38); }
+.reading-routes button > span { color: #8b6c52; font-family: "Songti SC", serif; }
+.reading-routes small { color: #8b6c52; font-size: .54rem; letter-spacing: .1em; }
+.reading-routes h4 { margin: .25rem 0 0; font-family: "Songti SC", serif; font-size: 1.4rem; font-weight: 400; }
+.reading-routes p { margin: .3rem 0 0; font-family: "Songti SC", serif; font-size: .75rem; color: rgba(7,21,37,.52); }
+.reading-routes button > strong { font-weight: 400; }
+
+.book-dialog-backdrop { position: fixed; z-index: 210; inset: 0; display: grid; place-items: center; padding: clamp(.8rem,3vw,2.5rem); overflow-y: auto; background: rgba(4,14,25,.78); backdrop-filter: blur(14px); }
+.book-dialog { position: relative; width: min(68rem,100%); max-height: calc(100svh - 3rem); overflow-y: auto; padding: clamp(1.2rem,4vw,3.5rem); background: #f0ede7; color: var(--ink); box-shadow: 0 2rem 7rem rgba(0,0,0,.34); }
+.book-dialog-close { position: sticky; z-index: 2; top: 0; float: right; display: grid; place-items: center; width: 2.8rem; aspect-ratio: 1; border: 1px solid rgba(7,21,37,.18); border-radius: 50%; background: rgba(240,237,231,.9); font: inherit; font-size: 1.6rem; cursor: pointer; }
+.book-dialog-hero { clear: both; display: grid; grid-template-columns: minmax(12rem,.52fr) minmax(0,1.48fr); gap: clamp(2rem,6vw,5rem); align-items: center; }
+.book-dialog-cover { width: min(100%,18rem); aspect-ratio: .69; overflow: hidden; box-shadow: 1rem 1rem 0 rgba(7,21,37,.07); }
+.book-dialog-cover img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.book-dialog-intro > p { margin: 0 0 1rem; color: #8b6c52; font-size: .58rem; letter-spacing: .18em; }
+.book-dialog-intro h2 { margin: 0; font-family: "Songti SC", serif; font-size: clamp(2.6rem,6vw,5.5rem); font-weight: 400; line-height: 1.1; }
+.book-dialog-intro > span { display: block; margin-top: .65rem; color: rgba(7,21,37,.48); font-size: .68rem; letter-spacing: .08em; }
+.book-dialog-intro blockquote { margin: 2rem 0 0; padding: 1rem 0 1rem 1.3rem; border-left: 1px solid #8b6c52; font-family: "Songti SC", serif; font-size: clamp(1rem,2vw,1.45rem); line-height: 1.8; color: rgba(7,21,37,.7); }
+.book-dialog-body { display: grid; grid-template-columns: repeat(3,1fr); gap: 0; margin-top: 3rem; border-top: 1px solid rgba(7,21,37,.14); border-left: 1px solid rgba(7,21,37,.14); }
+.book-dialog-body section { padding: 1.5rem; border-right: 1px solid rgba(7,21,37,.14); border-bottom: 1px solid rgba(7,21,37,.14); }
+.book-dialog-body small { color: #8b6c52; font-size: .52rem; letter-spacing: .18em; }
+.book-dialog-body h3 { margin: .6rem 0 1rem; font-family: "Songti SC", serif; font-size: 1.5rem; font-weight: 400; }
+.book-dialog-body p { margin: 0 0 .8rem; font-family: "Songti SC", serif; font-size: .8rem; line-height: 1.85; color: rgba(7,21,37,.62); }
+.book-theme-list { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1rem; }
+.book-theme-list span { padding: .35rem .55rem; border: 1px solid rgba(139,108,82,.35); color: #8b6c52; font-size: .55rem; }
+
+/* Growth rings */
+.garden-growth { padding: clamp(5.5rem,11vw,10rem) clamp(1.25rem,6vw,6.5rem); background: #081a2b; color: var(--moon); }
+.growth-heading .section-kicker { color: var(--sunset); }
+.growth-now, .growth-timeline { max-width: 84rem; margin: 0 auto; }
+.growth-now { display: grid; grid-template-columns: .35fr 1.65fr; gap: clamp(2rem,6vw,6rem); padding: clamp(2rem,4vw,4rem); border: 1px solid rgba(255,255,255,.13); }
+.growth-now-title > span { color: var(--sunset); font-size: .58rem; letter-spacing: .24em; }
+.growth-now-title p { margin: 1rem 0 0; color: rgba(255,255,255,.34); font-size: .54rem; letter-spacing: .14em; }
+.growth-stat-grid { display: grid; grid-template-columns: repeat(3,1fr); border-top: 1px solid rgba(255,255,255,.12); border-left: 1px solid rgba(255,255,255,.12); }
+.growth-stat-grid a { position: relative; min-height: 10rem; padding: 1.3rem; border-right: 1px solid rgba(255,255,255,.12); border-bottom: 1px solid rgba(255,255,255,.12); }
+.growth-stat-grid a:hover { background: rgba(255,255,255,.05); }
+.growth-stat-grid strong { font-family: "Songti SC", serif; font-size: clamp(2.6rem,5vw,4.8rem); font-weight: 400; line-height: 1; }
+.growth-stat-grid span { margin-left: .45rem; color: var(--sunset); font-family: "Songti SC", serif; font-size: .72rem; }
+.growth-stat-grid p { margin: 1rem 0 0; color: rgba(255,255,255,.46); font-size: .62rem; }
+.growth-stat-grid i { position: absolute; right: 1rem; top: 1rem; color: rgba(255,255,255,.28); font-style: normal; }
+.growth-timeline { display: grid; grid-template-columns: .42fr 1.58fr; gap: clamp(2rem,6vw,6rem); margin-top: clamp(4rem,8vw,7rem); }
+.growth-timeline-title > p { margin: 0 0 .8rem; color: var(--sunset); font-size: .58rem; letter-spacing: .2em; }
+.growth-timeline-title > span { display: block; max-width: 18rem; margin-top: 1rem; font-family: "Songti SC", serif; font-size: .8rem; line-height: 1.8; color: rgba(255,255,255,.42); }
+.growth-timeline ol { margin: 0; padding: 0; border-top: 1px solid rgba(255,255,255,.13); list-style: none; }
+.growth-timeline li { display: grid; grid-template-columns: 7rem 1fr; min-height: 10rem; border-bottom: 1px solid rgba(255,255,255,.13); }
+.growth-event-date { display: flex; gap: 1rem; padding: 1.5rem 0; color: var(--sunset); font-family: "Songti SC", serif; font-size: .72rem; }
+.growth-event-date i { width: 1px; flex: 1; background: linear-gradient(var(--sunset), transparent); opacity: .35; }
+.growth-timeline li > a { position: relative; padding: 1.5rem 3rem 1.5rem 1.5rem; }
+.growth-timeline li > a:hover { background: rgba(255,255,255,.04); }
+.growth-timeline small { color: var(--mist); font-size: .52rem; letter-spacing: .18em; }
+.growth-timeline h4 { margin: .5rem 0; font-family: "Songti SC", serif; font-size: clamp(1.4rem,2.6vw,2.2rem); font-weight: 400; }
+.growth-timeline li p { margin: 0; max-width: 36rem; font-family: "Songti SC", serif; font-size: .78rem; line-height: 1.7; color: rgba(255,255,255,.48); }
+.growth-timeline li strong { position: absolute; right: .6rem; top: 1.5rem; color: rgba(255,255,255,.25); font-family: "Songti SC", serif; font-size: .65rem; font-weight: 400; }
 
 .card-top,
 .card-footer {
@@ -1722,6 +2012,10 @@ footer small {
     display: none;
   }
 
+  .nav-links a:last-child {
+    display: none;
+  }
+
   .hero-note {
     display: none;
   }
@@ -1729,7 +2023,31 @@ footer small {
   .section-heading,
   .records-heading,
   .garden-heading,
+  .moon-journey-heading,
+  .murakami-heading,
+  .growth-heading,
   .about {
+    grid-template-columns: 1fr;
+  }
+
+  .moon-journey-heading > p,
+  .murakami-heading > p,
+  .growth-heading > p {
+    justify-self: start;
+  }
+
+  .murakami-personal,
+  .growth-now,
+  .growth-timeline,
+  .reading-routes {
+    grid-template-columns: 1fr;
+  }
+
+  .murakami-portrait {
+    display: none;
+  }
+
+  .book-dialog-body {
     grid-template-columns: 1fr;
   }
 
@@ -1845,6 +2163,12 @@ footer small {
     padding: 5rem 1rem;
   }
 
+  .moon-journey,
+  .murakami-library,
+  .garden-growth {
+    padding: 5rem 1rem;
+  }
+
   .garden-date {
     grid-template-columns: auto 2.5rem 1fr;
     gap: 0.8rem;
@@ -1881,6 +2205,145 @@ footer small {
 
   .space-grid {
     grid-template-columns: 1fr;
+  }
+
+  .space-card.murakami {
+    grid-column: auto;
+  }
+
+  .moon-choices {
+    grid-template-columns: 1fr;
+    min-height: 0;
+    background: transparent;
+  }
+
+  .moon-choice {
+    min-height: 23rem;
+    padding: 2.2rem 0.75rem;
+  }
+
+  .moon-choice.wonderland {
+    background: #0b2237;
+  }
+
+  .moon-choice.world-end {
+    background: #eae4da;
+  }
+
+  .moon-choice p {
+    max-width: 14rem;
+    text-align: center;
+  }
+
+  .moon-orbit {
+    min-height: 3rem;
+    background: linear-gradient(180deg, #0b2237 0 50%, #eae4da 50% 100%);
+  }
+
+  .moon-orbit span {
+    background: #8e748b;
+    color: #fff;
+  }
+
+  .moon-orbit i {
+    width: 56%;
+    height: 1px;
+  }
+
+  .moon-song {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 1.2rem;
+  }
+
+  .moon-song-artwork {
+    width: min(100%, 23rem);
+  }
+
+  .moon-song-copy h3 {
+    font-size: clamp(2.6rem, 14vw, 4.2rem);
+  }
+
+  .murakami-personal {
+    padding: 1.4rem;
+  }
+
+  .murakami-why h3 {
+    font-size: 2.35rem;
+  }
+
+  .murakami-why > div,
+  .murakami-favorites > div,
+  .murakami-book-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .murakami-favorites button {
+    grid-template-columns: 7.5rem minmax(0, 1fr);
+    gap: 0.6rem 1.2rem;
+  }
+
+  .murakami-subheading {
+    display: block;
+  }
+
+  .murakami-subheading > span {
+    display: block;
+    margin-top: 0.7rem;
+  }
+
+  .murakami-book > div {
+    width: min(68%, 16rem);
+  }
+
+  .reading-routes button {
+    grid-template-columns: 2rem 1fr auto;
+    gap: 0.7rem;
+  }
+
+  .book-dialog-backdrop {
+    padding: 0;
+  }
+
+  .book-dialog {
+    width: 100%;
+    min-height: 100svh;
+    max-height: 100svh;
+    padding: 1rem 1rem 2rem;
+  }
+
+  .book-dialog-hero {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .book-dialog-cover {
+    justify-self: center;
+  }
+
+  .book-dialog-intro h2 {
+    font-size: clamp(2.6rem, 13vw, 4.2rem);
+  }
+
+  .growth-now {
+    padding: 1.2rem;
+  }
+
+  .growth-stat-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .growth-stat-grid a {
+    min-height: 8rem;
+    padding: 1rem;
+  }
+
+  .growth-timeline li {
+    grid-template-columns: 4.5rem 1fr;
+  }
+
+  .growth-timeline li > a {
+    padding-left: 1rem;
   }
 
   .space-card {

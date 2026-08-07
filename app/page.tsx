@@ -1,5 +1,8 @@
 import GardenFeatures from "./GardenFeatures";
+import GardenGrowth from "./GardenGrowth";
+import MurakamiLibrary from "./MurakamiLibrary";
 import RecordCollection from "./RecordCollection";
+import TwoMoonJourney from "./TwoMoonJourney";
 import { recordCount } from "./albumData";
 
 const spaces = [
@@ -43,6 +46,16 @@ const spaces = [
     action: "走进唱片室",
     tone: "music",
   },
+  {
+    index: "05",
+    name: "春树",
+    english: "MURAKAMI",
+    description: "在现实与另一个世界的缝隙里，收藏我反复回到的作品。",
+    detail: "15 部主要长篇 · 作品年图",
+    href: "#murakami",
+    action: "走进春树书房",
+    tone: "murakami",
+  },
 ] as const;
 
 function Arrow() {
@@ -62,6 +75,8 @@ export default function Home() {
           </a>
           <div className="nav-links">
             <a href="#spaces">我的空间</a>
+            <a href="#moons">两个月亮</a>
+            <a href="#growth">庭院年轮</a>
             <a href="#about">关于我</a>
             <a href="https://github.com/Sehuri" target="_blank" rel="noreferrer">
               GitHub <Arrow />
@@ -101,6 +116,8 @@ export default function Home() {
       </section>
 
       <GardenFeatures />
+
+      <TwoMoonJourney />
 
       <section className="spaces" id="spaces">
         <header className="section-heading">
@@ -148,6 +165,8 @@ export default function Home() {
         </div>
       </section>
 
+      <MurakamiLibrary />
+
       <section className="records" id="records">
         <header className="records-heading">
           <div>
@@ -163,6 +182,8 @@ export default function Home() {
 
         <RecordCollection />
       </section>
+
+      <GardenGrowth />
 
       <section className="about" id="about">
         <div className="about-mark" aria-hidden="true">
@@ -181,7 +202,7 @@ export default function Home() {
             我把旅途做成地图，把阅读留在书房，也把零散的信息养成自己的知识花园。
           </p>
           <p>
-            音乐也在这里有了自己的唱片室，还有尚未想好名字的新空间。
+            音乐有了自己的唱片室，村上春树的作品也在这里拥有一间书房；庭院年轮继续记录它们如何生长。
             <br />
             欢迎偶尔回来看看。
           </p>
@@ -205,6 +226,8 @@ export default function Home() {
           <a href="https://yueji-reading-room.shenhuil.chatgpt.site">阅读</a>
           <a href="https://sehuri.github.io/Sehuri-knowledge-wiki/">知识</a>
           <a href="#records">音乐</a>
+          <a href="#murakami">春树</a>
+          <a href="#growth">年轮</a>
           <a href="https://github.com/Sehuri" target="_blank" rel="noreferrer">GitHub</a>
         </div>
         <small>© 2026 SEHURI</small>
