@@ -1,6 +1,7 @@
 import GardenFeatures from "./GardenFeatures";
 import GardenGrowth from "./GardenGrowth";
 import FilmCollection from "./FilmCollection";
+import ContactSection from "./ContactSection";
 import HeroMoonExperience from "./HeroMoonExperience";
 import MurakamiLibrary from "./MurakamiLibrary";
 import RecordCollection from "./RecordCollection";
@@ -91,6 +92,7 @@ export default function Home() {
             <a href="#moon-guide">两个月亮</a>
             <a href="#growth">庭院年轮</a>
             <a href="#about">关于我</a>
+            <a href="#contact">联系我</a>
             <a href="https://github.com/Sehuri" target="_blank" rel="noreferrer">
               GitHub <Arrow />
             </a>
@@ -242,6 +244,8 @@ export default function Home() {
         </blockquote>
       </section>
 
+      <ContactSection />
+
       <footer>
         <a className="wordmark footer-brand" href="#top">
           <span className="wordmark-seal">深</span>
@@ -256,6 +260,7 @@ export default function Home() {
           <a href="#murakami">村上</a>
           <a href="#films">电影</a>
           <a href="#growth">年轮</a>
+          <a href="#contact">联系</a>
           <a href="https://github.com/Sehuri" target="_blank" rel="noreferrer">GitHub</a>
         </div>
         <small>© 2026 SEHURI</small>

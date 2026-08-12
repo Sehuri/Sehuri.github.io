@@ -2196,6 +2196,44 @@ a.space-card:focus-visible {
   color: var(--sunset);
 }
 
+/* Contact */
+.contact-section { position: relative; overflow: hidden; padding: clamp(5.5rem,11vw,10rem) clamp(1.25rem,6vw,6.5rem); background: linear-gradient(145deg,#eee9e1,#e3e9ec); color: var(--ink); }
+.contact-section::before { content: "遇"; position: absolute; right: -.06em; bottom: -.3em; color: rgba(7,21,37,.025); font-family: "Songti SC",serif; font-size: clamp(24rem,46vw,44rem); line-height: 1; pointer-events: none; }
+.contact-heading { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: end; max-width: 84rem; margin: 0 auto clamp(3rem,6vw,5rem); }
+.contact-heading .section-kicker { color: #8a6b7f; }
+.contact-heading h2 { margin: 0; font-family: "Songti SC",serif; font-size: clamp(2.8rem,6vw,5.8rem); font-weight: 400; line-height: 1; letter-spacing: -.04em; }
+.contact-heading > p { max-width: 31rem; justify-self: end; margin: 0; font-family: "Songti SC",serif; font-size: 1rem; line-height: 2; color: rgba(7,21,37,.55); }
+.contact-layout { position: relative; z-index: 1; display: grid; grid-template-columns: 1.25fr .75fr; gap: clamp(2rem,5vw,5rem); max-width: 84rem; margin: 0 auto; }
+.contact-qr-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); border-top: 1px solid rgba(7,21,37,.15); border-left: 1px solid rgba(7,21,37,.15); }
+.contact-qr-card { min-width: 0; padding: 1rem; border-right: 1px solid rgba(7,21,37,.15); border-bottom: 1px solid rgba(7,21,37,.15); color: inherit; text-align: left; cursor: pointer; transition: background 220ms ease,transform 220ms ease; }
+.contact-qr-card:hover { z-index: 1; background: rgba(255,255,255,.48); transform: translateY(-3px); }
+.contact-qr-card:focus-visible,.contact-links a:focus-visible,.contact-dialog > button:focus-visible { outline: 2px solid #816580; outline-offset: 3px; }
+.contact-qr-image { position: relative; aspect-ratio: 4/5; overflow: hidden; background: rgba(7,21,37,.07); }
+.contact-qr-image img { display: block; width: 100%; height: 100%; object-fit: contain; object-position: center; transition: transform 320ms ease; }
+.contact-qr-card:hover img { transform: scale(1.02); }
+.contact-qr-image span { position: absolute; right: .6rem; bottom: .6rem; display: grid; place-items: center; width: 2.2rem; aspect-ratio: 1; background: rgba(5,16,28,.82); color: var(--moon); font-family: "Songti SC",serif; font-size: .62rem; }
+.contact-qr-card > div:last-child { padding: 1.2rem .25rem .35rem; }
+.contact-qr-card small,.contact-links small { color: #8a6b7f; font-size: .52rem; letter-spacing: .18em; }
+.contact-qr-card h3 { margin: .45rem 0; font-family: "Songti SC",serif; font-size: 2rem; font-weight: 400; }
+.contact-qr-card p { min-height: 2.5em; margin: 0; color: rgba(7,21,37,.5); font-size: .66rem; line-height: 1.6; }
+.contact-qr-card strong { display: block; margin-top: 1rem; color: rgba(7,21,37,.72); font-size: .62rem; font-weight: 500; }
+.contact-links { border-top: 1px solid rgba(7,21,37,.16); }
+.contact-links a { display: grid; grid-template-columns: 2.5rem 1fr auto; gap: 1rem; align-items: center; min-height: 6.3rem; padding: 1rem .5rem; border-bottom: 1px solid rgba(7,21,37,.16); transition: background 180ms ease,padding 180ms ease; }
+.contact-links a:hover { padding-left: 1rem; background: rgba(255,255,255,.36); }
+.contact-links > a > span { display: grid; place-items: center; width: 2.5rem; aspect-ratio: 1; border: 1px solid rgba(7,21,37,.25); border-radius: 50%; color: #8a6b7f; font-size: .57rem; }
+.contact-links h3 { margin: .32rem 0 0; overflow-wrap: anywhere; font-family: "Songti SC",serif; font-size: clamp(1rem,1.7vw,1.35rem); font-weight: 400; }
+.contact-links i { color: rgba(7,21,37,.38); font-style: normal; }
+.contact-note { position: relative; z-index: 1; max-width: 84rem; margin: 2rem auto 0; color: rgba(7,21,37,.38); font-family: "Songti SC",serif; font-size: .63rem; text-align: right; }
+.contact-dialog-backdrop { position: fixed; z-index: 260; inset: 0; display: grid; place-items: center; padding: 1rem; background: rgba(2,8,14,.82); backdrop-filter: blur(14px); }
+.contact-dialog { position: relative; width: min(30rem,100%); max-height: calc(100svh - 2rem); overflow: auto; padding: 2rem; background: #f1ede6; color: var(--ink); text-align: center; box-shadow: 0 2rem 7rem rgba(0,0,0,.38); }
+.contact-dialog > button { position: absolute; right: 1rem; top: 1rem; display: grid; place-items: center; width: 2.8rem; aspect-ratio: 1; border: 1px solid rgba(7,21,37,.28); border-radius: 50%; color: var(--ink); cursor: pointer; }
+.contact-dialog > button span { font-family: Arial,sans-serif; font-size: 1.8rem; line-height: 1; }
+.contact-dialog > p { margin: .5rem 0; color: #8a6b7f; font-size: .55rem; letter-spacing: .22em; }
+.contact-dialog h2 { margin: 0 0 1.5rem; font-family: "Songti SC",serif; font-size: 3rem; font-weight: 400; }
+.contact-dialog img { display: block; width: min(100%,23rem); max-height: 62svh; margin: 0 auto; object-fit: contain; }
+.contact-dialog strong { display: block; margin-top: 1.4rem; font-family: "Songti SC",serif; font-size: 1rem; font-weight: 400; }
+.contact-dialog > span { display: block; margin-top: .35rem; color: rgba(7,21,37,.48); font-size: .65rem; }
+
 footer {
   display: grid;
   grid-template-columns: 1fr auto auto auto;
@@ -2273,6 +2311,7 @@ footer small {
   .moon-journey-heading,
   .murakami-heading,
   .growth-heading,
+  .contact-heading,
   .about {
     grid-template-columns: 1fr;
   }
@@ -2281,6 +2320,14 @@ footer small {
   .murakami-heading > p,
   .growth-heading > p {
     justify-self: start;
+  }
+
+  .contact-heading > p {
+    justify-self: start;
+  }
+
+  .contact-layout {
+    grid-template-columns: 1fr;
   }
 
   .murakami-personal,
@@ -2366,6 +2413,29 @@ footer small {
 
   .nav-links a:nth-child(2) {
     display: none;
+  }
+
+  .contact-section {
+    padding: 5rem 1rem;
+  }
+
+  .contact-qr-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-qr-card {
+    display: grid;
+    grid-template-columns: 7.5rem minmax(0, 1fr);
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .contact-qr-card > div:last-child {
+    padding: .5rem 0;
+  }
+
+  .contact-dialog {
+    padding: 1.5rem 1rem;
   }
 
   .hero {
