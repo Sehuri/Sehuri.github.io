@@ -65,7 +65,7 @@ a {
   isolation: isolate;
   background:
     linear-gradient(90deg, rgba(5, 18, 33, 0.72) 0%, rgba(5, 18, 33, 0.3) 42%, rgba(5, 18, 33, 0.04) 72%),
-    url("/shenhuili.png") center 2.6rem / cover no-repeat;
+    url("/shenhuili.png") center center / cover no-repeat;
 }
 
 .moon-guide {
@@ -120,8 +120,8 @@ a {
   cursor: pointer;
 }
 
-.hero-moon-cold { top: calc(9.2% + 2.6rem); right: 8.8%; }
-.hero-moon-warm { top: calc(26.5% + 2.6rem); right: 12.4%; }
+.hero-moon-cold { top: 9.2%; right: 8.8%; }
+.hero-moon-warm { top: 26.5%; right: 12.4%; }
 .hero-moon-hit span {
   position: absolute;
   left: 50%;
@@ -218,7 +218,8 @@ a {
   align-items: center;
   padding: 1.7rem clamp(1.5rem, 5vw, 5.5rem);
   border-bottom: 1px solid rgba(255, 255, 255, 0.11);
-  background: rgba(5, 18, 33, 0.08);
+  background: linear-gradient(180deg, rgba(15, 45, 73, 0.36), rgba(15, 45, 73, 0.12));
+  backdrop-filter: blur(2px);
 }
 
 .wordmark {
@@ -1125,8 +1126,12 @@ a.space-card:focus-visible {
 .growth-timeline li { display: grid; grid-template-columns: 7rem 1fr; min-height: 10rem; border-bottom: 1px solid rgba(255,255,255,.13); }
 .growth-event-date { display: flex; gap: 1rem; padding: 1.5rem 0; color: var(--sunset); font-family: "Songti SC", serif; font-size: .72rem; }
 .growth-event-date i { width: 1px; flex: 1; background: linear-gradient(var(--sunset), transparent); opacity: .35; }
-.growth-timeline li > a { position: relative; padding: 1.5rem 3rem 1.5rem 1.5rem; }
+.growth-timeline li > a { position: relative; display: grid; grid-template-columns: 5.3rem minmax(0,1fr); gap: 1.5rem; align-items: center; padding: 1.5rem 3rem 1.5rem 1.5rem; }
 .growth-timeline li > a:hover { background: rgba(255,255,255,.04); }
+.growth-event-image { width: 5.3rem; aspect-ratio: 4/5; overflow: hidden; background: rgba(255,255,255,.05); box-shadow: .45rem .45rem 0 rgba(255,255,255,.025); }
+.growth-event-image img { display: block; width: 100%; height: 100%; object-fit: cover; filter: saturate(.72) brightness(.82); transition: transform 240ms ease, filter 240ms ease; }
+.growth-timeline li > a:hover .growth-event-image img { transform: scale(1.04); filter: saturate(.95) brightness(.96); }
+.growth-event-copy { min-width: 0; }
 .growth-timeline small { color: var(--mist); font-size: .52rem; letter-spacing: .18em; }
 .growth-timeline h4 { margin: .5rem 0; font-family: "Songti SC", serif; font-size: clamp(1.4rem,2.6vw,2.2rem); font-weight: 400; }
 .growth-timeline li p { margin: 0; max-width: 36rem; font-family: "Songti SC", serif; font-size: .78rem; line-height: 1.7; color: rgba(255,255,255,.48); }
@@ -2227,7 +2232,7 @@ footer small {
 
 @media (max-width: 840px) {
   .hero {
-    background-position: 62% 2.6rem;
+    background-position: 62% center;
   }
 
   .hero::before {
@@ -2363,7 +2368,7 @@ footer small {
 
   .hero {
     min-height: 46rem;
-    background-position: 66% 2.4rem;
+    background-position: 66% center;
   }
 
   .moon-guide { top: 5.4rem; right: 1rem; }
@@ -2612,8 +2617,12 @@ footer small {
   }
 
   .growth-timeline li > a {
+    grid-template-columns: 4.5rem minmax(0,1fr);
+    gap: .85rem;
     padding-left: 1rem;
   }
+
+  .growth-event-image { width: 4.5rem; }
 
   .space-card {
     min-height: 21rem;

@@ -17,14 +17,14 @@ const stats = [
 ] as const;
 
 const growthEvents = [
-  { date: "2026.08", title: "光影馆开始放映", space: "CINEMA", description: `${filmCount} 部电影按上映时间排开，发行海报、故事与私人注解拥有了自己的位置。`, href: "#films" },
-  { date: "2026.08", title: "两个月亮升起", space: "TWO MOONS", description: "首屏的两个月亮成为可以进入的两条声音路径。", href: "#moon-guide" },
-  { date: "2026.08", title: "村上书房建立", space: "MURAKAMI", description: "整理长篇、短篇小说集、作品年图、私人珍藏与四条入门路线。", href: "#murakami" },
-  { date: "2026.08", title: "1Q84 OST 完成双面选集", space: "MUSIC", description: "十六首歌曲分居两个世界，并为每一首留下解读与衔接。", href: "#records" },
-  { date: "2026.08", title: "唱片室继续扩建", space: "RECORDS", description: `专辑收藏增长至 ${recordCount} 张，封面、曲目与作品介绍逐渐齐全。`, href: "#records" },
-  { date: "2026.07", title: "今日庭院与随便走走开放", space: "GARDEN", description: "旅行、阅读、知识和音乐开始在主页随机相遇。", href: "#today" },
-  { date: "2026.07", title: "四处空间完成连接", space: "SPACES", description: "旅行地图、阅览室、知识花园与唱片室汇入同一座庭院，后来书房与光影馆也陆续亮灯。", href: "#spaces" },
-  { date: "2026.07", title: "深绘里正式上线", space: "BEGINNING", description: "在两个月亮下，个人网站拥有了第一个可以抵达的地址。", href: "#top" },
+  { date: "2026.08", title: "光影馆开始放映", space: "CINEMA", description: `${filmCount} 部电影按上映时间排开，发行海报、故事与私人注解拥有了自己的位置。`, href: "#films", image: "/movie-posters/oppenheimer.jpg", imageAlt: "《奥本海默》电影海报" },
+  { date: "2026.08", title: "两个月亮升起", space: "TWO MOONS", description: "首屏的两个月亮成为可以进入的两条声音路径。", href: "#moon-guide", image: "/shenhuili.png", imageAlt: "深绘里天空中的两个月亮" },
+  { date: "2026.08", title: "村上书房建立", space: "MURAKAMI", description: "整理长篇、短篇小说集、作品年图、私人珍藏与四条入门路线。", href: "#murakami", image: "/book-covers/the-city-and-its-uncertain-walls.png", imageAlt: "《小城与不确定性的墙》封面" },
+  { date: "2026.08", title: "1Q84 OST 完成双面选集", space: "MUSIC", description: "十六首歌曲分居两个世界，并为每一首留下解读与衔接。", href: "#records", image: "/book-covers/1q84.jpg", imageAlt: "《1Q84》封面" },
+  { date: "2026.08", title: "唱片室继续扩建", space: "RECORDS", description: `专辑收藏增长至 ${recordCount} 张，封面、曲目与作品介绍逐渐齐全。`, href: "#records", image: "/book-covers/after-dark.jpg", imageAlt: "《天黑以后》封面" },
+  { date: "2026.07", title: "今日庭院与随便走走开放", space: "GARDEN", description: "旅行、阅读、知识、音乐与电影开始在主页随机相遇。", href: "#today", image: "/shenhuili.png", imageAlt: "深绘里数字庭院" },
+  { date: "2026.07", title: "几处空间完成连接", space: "SPACES", description: "旅行地图、阅览室、知识花园与唱片室汇入同一座庭院，后来书房与光影馆也陆续亮灯。", href: "#spaces", image: "/shenhuili.png", imageAlt: "深绘里个人网站主页" },
+  { date: "2026.07", title: "深绘里正式上线", space: "BEGINNING", description: "在两个月亮下，个人网站拥有了第一个可以抵达的地址。", href: "#top", image: "/shenhuili.png", imageAlt: "深绘里首屏" },
 ] as const;
 
 export default function GardenGrowth() {
@@ -54,7 +54,9 @@ export default function GardenGrowth() {
             <li key={`${event.date}-${event.title}`}>
               <div className="growth-event-date"><span>{event.date}</span><i /></div>
               <a href={event.href}>
-                <small>{event.space}</small><h4>{event.title}</h4><p>{event.description}</p><strong>{String(growthEvents.length - index).padStart(2, "0")} ↗</strong>
+                <div className="growth-event-image"><img src={event.image} alt={event.imageAlt} loading="lazy" /></div>
+                <div className="growth-event-copy"><small>{event.space}</small><h4>{event.title}</h4><p>{event.description}</p></div>
+                <strong>{String(growthEvents.length - index).padStart(2, "0")} ↗</strong>
               </a>
             </li>
           ))}
