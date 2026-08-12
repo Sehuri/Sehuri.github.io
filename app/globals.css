@@ -813,6 +813,7 @@ a.space-card:focus-visible {
 .space-card.knowledge { --card-glow: #91aa9c; }
 .space-card.music { --card-glow: #b89ab7; }
 .space-card.murakami { --card-glow: #c5a57c; }
+.space-card.film { --card-glow: #d5b36c; }
 
 .space-card.murakami {
   grid-column: 1 / -1;
@@ -820,6 +821,14 @@ a.space-card:focus-visible {
 }
 
 .space-card.murakami .card-copy h3 { font-size: clamp(2.8rem, 5.5vw, 5rem); }
+
+.space-card.film {
+  grid-column: 1 / -1;
+  min-height: 20rem;
+  background:
+    linear-gradient(90deg, rgba(255,255,255,.018), rgba(213,179,108,.035)),
+    repeating-linear-gradient(90deg, transparent 0 4rem, rgba(255,255,255,.018) 4rem 4.05rem);
+}
 
 /* Two moons */
 .moon-journey {
@@ -1438,6 +1447,95 @@ a.space-card:focus-visible {
   line-height: 1.7;
   color: rgba(7, 21, 37, 0.78);
 }
+
+/* Cinema */
+.films {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(5.5rem, 11vw, 10rem) clamp(1.25rem, 6vw, 6.5rem);
+  background:
+    radial-gradient(circle at 16% 8%, rgba(196, 147, 91, 0.16), transparent 25%),
+    linear-gradient(145deg, #081726 0%, #0b1c2d 58%, #111a24 100%);
+  color: var(--moon);
+}
+
+.films::before {
+  content: "影";
+  position: absolute;
+  right: -0.08em;
+  top: -0.28em;
+  color: rgba(255,255,255,.018);
+  font-family: "Songti SC", "STSong", serif;
+  font-size: clamp(22rem, 43vw, 42rem);
+  line-height: 1;
+  pointer-events: none;
+}
+
+.films-heading {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: end;
+  max-width: 84rem;
+  margin: 0 auto clamp(3rem, 6vw, 5rem);
+}
+
+.films-heading .section-kicker { color: #d0a66f; }
+.films-heading h2 { margin: 0; font-family: "Songti SC", "STSong", serif; font-size: clamp(2.8rem, 6vw, 5.8rem); font-weight: 400; line-height: 1; letter-spacing: -.04em; }
+.films-heading > p { max-width: 31rem; justify-self: end; margin: 0; font-family: "Songti SC", "STSong", serif; font-size: 1rem; line-height: 2; color: rgba(235,239,240,.52); }
+
+.film-toolbar { position: relative; z-index: 1; display: flex; justify-content: space-between; gap: 2rem; align-items: center; max-width: 84rem; margin: 0 auto 2.5rem; padding: 1rem 0; border-top: 1px solid rgba(255,255,255,.12); border-bottom: 1px solid rgba(255,255,255,.12); }
+.film-filters { display: flex; flex-wrap: wrap; gap: .5rem; }
+.film-filters button { padding: .58rem .85rem; border: 1px solid rgba(255,255,255,.13); border-radius: 999px; color: rgba(255,255,255,.48); font-family: "Songti SC", serif; font-size: .7rem; cursor: pointer; transition: 180ms ease; }
+.film-filters button:hover, .film-filters button.active { border-color: rgba(219,174,116,.72); background: rgba(219,174,116,.12); color: #f1d3ac; }
+.film-toolbar > p { flex: none; margin: 0; color: rgba(255,255,255,.38); font-size: .62rem; letter-spacing: .08em; }
+.film-toolbar > p strong { color: #e4bd88; font-family: "Songti SC", serif; font-size: 1rem; font-weight: 400; }
+
+.film-grid { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); max-width: 84rem; margin: 0 auto; border-top: 1px solid rgba(255,255,255,.11); border-left: 1px solid rgba(255,255,255,.11); }
+.film-card { min-width: 0; padding: clamp(1rem,2.2vw,2rem); border-right: 1px solid rgba(255,255,255,.11); border-bottom: 1px solid rgba(255,255,255,.11); color: inherit; text-align: left; cursor: pointer; transition: background 220ms ease; }
+.film-card:hover { background: rgba(255,255,255,.045); }
+.film-card:focus-visible, .film-show-all:focus-visible, .film-dialog-close:focus-visible, .film-filters button:focus-visible { outline: 2px solid #d5ab73; outline-offset: 3px; }
+.film-poster { position: relative; aspect-ratio: 2/3; overflow: hidden; background: #101821; box-shadow: .8rem .8rem 0 rgba(255,255,255,.035); }
+.film-poster img { width: 100%; height: 100%; object-fit: cover; transition: transform 420ms ease, filter 420ms ease; }
+.film-card:hover .film-poster img { transform: scale(1.025); filter: brightness(.72); }
+.film-poster > span { position: absolute; right: 0; bottom: 0; display: grid; place-items: center; width: 3.6rem; aspect-ratio: 1; background: #071522; color: #e7c18c; font-family: "Songti SC", serif; font-size: .72rem; }
+.film-poster > i { position: absolute; left: 50%; top: 50%; opacity: 0; transform: translate(-50%,-42%); color: #fff; font-size: .58rem; font-style: normal; letter-spacing: .2em; transition: 220ms ease; }
+.film-card:hover .film-poster > i { opacity: 1; transform: translate(-50%,-50%); }
+.film-card-copy { padding: 1.5rem .25rem .6rem; }
+.film-card-copy > p { margin: 0 0 .7rem; color: #c79563; font-size: .58rem; letter-spacing: .24em; }
+.film-card-copy h3 { min-height: 2.7em; margin: 0; font-family: "Songti SC", serif; font-size: clamp(1.65rem,2.8vw,2.45rem); font-weight: 400; line-height: 1.25; }
+.film-card-copy > span { display: block; min-height: 2.6em; margin-top: .45rem; color: rgba(255,255,255,.31); font-family: Georgia, serif; font-size: .67rem; line-height: 1.4; }
+.film-card-copy > div { display: flex; align-items: center; gap: .7rem; margin-top: 1.15rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,.09); color: rgba(255,255,255,.42); }
+.film-card-copy small { font-family: "Songti SC", serif; font-size: .62rem; }
+.film-card-copy > div i { width: 1.5rem; height: 1px; background: rgba(255,255,255,.2); }
+.film-show-all { position: relative; z-index: 1; display: flex; justify-content: space-between; width: min(100%,84rem); margin: 2rem auto 0; padding: 1.2rem 1.5rem; border: 1px solid rgba(255,255,255,.14); color: rgba(255,255,255,.72); font-family: "Songti SC", serif; cursor: pointer; }
+.film-show-all:hover { background: rgba(255,255,255,.05); }
+
+.film-dialog-backdrop { position: fixed; z-index: 100; inset: 0; display: grid; place-items: center; padding: 2rem; background: rgba(2,8,14,.82); backdrop-filter: blur(12px); }
+.film-dialog { position: relative; display: grid; grid-template-columns: minmax(15rem,.7fr) minmax(0,1.3fr); gap: clamp(2rem,5vw,5rem); width: min(74rem,100%); max-height: calc(100svh - 4rem); overflow: auto; padding: clamp(1.2rem,3vw,3rem); border: 1px solid rgba(255,255,255,.18); background: linear-gradient(135deg,#0a1d2e,#091520 72%); box-shadow: 0 3rem 8rem rgba(0,0,0,.45); color: var(--moon); }
+.film-dialog-close { position: absolute; z-index: 2; right: 1.2rem; top: 1.2rem; display: grid; place-items: center; width: 3.2rem; aspect-ratio: 1; border: 1px solid rgba(255,255,255,.22); border-radius: 50%; background: rgba(6,17,28,.72); color: #fff; cursor: pointer; }
+.film-dialog-close span { font-family: Arial,sans-serif; font-size: 2rem; font-weight: 200; line-height: 1; }
+.film-dialog-poster { position: sticky; top: 0; align-self: start; }
+.film-dialog-poster img { width: 100%; aspect-ratio: 2/3; object-fit: cover; box-shadow: 1.2rem 1.2rem 0 rgba(255,255,255,.04); }
+.film-dialog-poster > span { display: block; margin-top: 1.3rem; color: #c79563; font-size: .64rem; letter-spacing: .25em; }
+.film-dialog-copy { padding: clamp(1rem,3vw,2.5rem) 3.5rem 1rem 0; }
+.film-dialog-kicker { margin: 0 0 1.3rem; color: #c79563; font-size: .58rem; letter-spacing: .22em; }
+.film-dialog-copy h2 { margin: 0; font-family: "Songti SC", serif; font-size: clamp(3rem,7vw,6.5rem); font-weight: 400; line-height: 1; letter-spacing: -.04em; }
+.film-original-title { margin: .8rem 0 2.3rem; color: rgba(255,255,255,.36); font-family: Georgia,serif; font-size: .9rem; letter-spacing: .04em; }
+.film-dialog-copy dl { display: grid; grid-template-columns: repeat(3,1fr); margin: 0 0 2.6rem; padding: 1.1rem 0; border-top: 1px solid rgba(255,255,255,.12); border-bottom: 1px solid rgba(255,255,255,.12); }
+.film-dialog-copy dl div { padding-right: 1rem; }
+.film-dialog-copy dt { color: rgba(255,255,255,.3); font-size: .56rem; letter-spacing: .15em; }
+.film-dialog-copy dd { margin: .5rem 0 0; font-family: "Songti SC",serif; font-size: .78rem; line-height: 1.6; }
+.film-dialog-story small, .film-series-list > small { color: #c79563; font-size: .56rem; letter-spacing: .2em; }
+.film-dialog-story p { margin: .8rem 0 0; font-family: "Songti SC",serif; font-size: 1rem; line-height: 2; color: rgba(255,255,255,.68); }
+.film-dialog-copy blockquote { margin: 2.5rem 0; padding: 1.2rem 0 1.2rem 1.5rem; border-left: 1px solid #c79563; font-family: "Songti SC",serif; font-size: clamp(1.3rem,2.4vw,2rem); line-height: 1.7; color: rgba(255,255,255,.84); }
+.film-series-list { margin-top: 2.5rem; }
+.film-series-list ol { margin: 1rem 0 0; padding: 0; border-top: 1px solid rgba(255,255,255,.1); list-style: none; }
+.film-series-list li { display: grid; grid-template-columns: 2rem 1fr auto; gap: 1rem; align-items: center; min-height: 3.5rem; border-bottom: 1px solid rgba(255,255,255,.1); }
+.film-series-list li span, .film-series-list li i { color: rgba(255,255,255,.3); font-size: .58rem; font-style: normal; }
+.film-series-list li p { margin: 0; font-family: "Songti SC",serif; font-size: .74rem; }
 
 .records-note {
   position: relative;
@@ -2163,6 +2261,7 @@ footer small {
 
   .section-heading,
   .records-heading,
+  .films-heading,
   .garden-heading,
   .moon-journey-heading,
   .murakami-heading,
@@ -2211,6 +2310,12 @@ footer small {
   .records-heading > p {
     justify-self: start;
   }
+
+  .films-heading > p { justify-self: start; }
+
+  .film-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .film-dialog { grid-template-columns: minmax(13rem,.72fr) minmax(0,1.28fr); gap: 2rem; }
+  .film-dialog-copy { padding-right: 2.5rem; }
 
   .album-card {
     grid-template-columns: minmax(14rem, 0.9fr) minmax(0, 1.1fr);
@@ -2307,6 +2412,8 @@ footer small {
     padding: 5rem 1rem;
   }
 
+  .films { padding: 5rem 1rem; }
+
   .garden-today {
     padding: 5rem 1rem;
   }
@@ -2358,6 +2465,20 @@ footer small {
   .space-card.murakami {
     grid-column: auto;
   }
+
+  .space-card.film { grid-column: auto; }
+
+  .film-toolbar { display: block; }
+  .film-toolbar > p { margin-top: 1rem; }
+  .film-grid { grid-template-columns: 1fr; }
+  .film-card-copy h3, .film-card-copy > span { min-height: 0; }
+  .film-dialog-backdrop { padding: 0; }
+  .film-dialog { grid-template-columns: 1fr; width: 100%; min-height: 100svh; max-height: 100svh; padding: 1rem 1rem 2.5rem; border: 0; }
+  .film-dialog-poster { position: static; width: min(78%,23rem); justify-self: center; }
+  .film-dialog-copy { padding: 1rem .3rem; }
+  .film-dialog-copy h2 { font-size: clamp(3rem,16vw,5rem); }
+  .film-dialog-copy dl { grid-template-columns: 1fr; gap: 1rem; }
+  .film-dialog-close { position: fixed; }
 
   .moon-choices {
     grid-template-columns: 1fr;

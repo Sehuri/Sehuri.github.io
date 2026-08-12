@@ -1,10 +1,12 @@
 import GardenFeatures from "./GardenFeatures";
 import GardenGrowth from "./GardenGrowth";
+import FilmCollection from "./FilmCollection";
 import HeroMoonExperience from "./HeroMoonExperience";
 import MurakamiLibrary from "./MurakamiLibrary";
 import RecordCollection from "./RecordCollection";
 import { recordCount } from "./albumData";
 import { murakamiBooks } from "./murakamiData";
+import { filmCount } from "./filmData";
 
 const spaces = [
   {
@@ -56,6 +58,16 @@ const spaces = [
     href: "#murakami",
     action: "走进村上书房",
     tone: "murakami",
+  },
+  {
+    index: "06",
+    name: "光影",
+    english: "CINEMA",
+    description: "把那些让我相信、怀疑、落泪或久久沉默的电影，留在时间里。",
+    detail: `${filmCount} 部电影 · 按年份收藏`,
+    href: "#films",
+    action: "走进光影馆",
+    tone: "film",
   },
 ] as const;
 
@@ -126,7 +138,7 @@ export default function Home() {
             <h2>我的几处空间</h2>
           </div>
           <p>
-            这里存放我的足迹、阅读、知识与声音。
+            这里存放我的足迹、阅读、知识、声音与光影。
             <br />
             它们各自生长，也在这里彼此相遇。
           </p>
@@ -183,6 +195,21 @@ export default function Home() {
         <RecordCollection />
       </section>
 
+      <section className="films" id="films">
+        <header className="films-heading">
+          <div>
+            <p className="section-kicker">FILMS I KEEP</p>
+            <h2>深绘里的光影馆</h2>
+          </div>
+          <p>
+            有些故事在银幕结束后，仍会跟着人走很久。
+            <br />
+            这里按时间保存我愿意再次回看的电影。
+          </p>
+        </header>
+        <FilmCollection />
+      </section>
+
       <GardenGrowth />
 
       <section className="about" id="about">
@@ -202,7 +229,7 @@ export default function Home() {
             我把旅途做成地图，把阅读留在书房，也把零散的信息养成自己的知识花园。
           </p>
           <p>
-            音乐有了自己的唱片室，村上春树的作品也在这里拥有一间书房；庭院年轮继续记录它们如何生长。
+            音乐有了自己的唱片室，村上春树的作品拥有一间书房，喜欢的电影也在光影馆里依年份排开；庭院年轮继续记录它们如何生长。
             <br />
             欢迎偶尔回来看看。
           </p>
@@ -227,6 +254,7 @@ export default function Home() {
           <a href="https://sehuri.github.io/Sehuri-knowledge-wiki/">知识</a>
           <a href="#records">音乐</a>
           <a href="#murakami">村上</a>
+          <a href="#films">电影</a>
           <a href="#growth">年轮</a>
           <a href="https://github.com/Sehuri" target="_blank" rel="noreferrer">GitHub</a>
         </div>

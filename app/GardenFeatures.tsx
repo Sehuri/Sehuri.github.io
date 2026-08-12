@@ -2,13 +2,14 @@
 
 import { useMemo, useState } from "react";
 import { albumTimeline, featuredAlbum } from "./albumData";
+import { films } from "./filmData";
 import { bookRecommendations, knowledgeRecommendations, travelRecommendations, type RecommendationItem } from "./recommendationData";
 
 type TodayNote = RecommendationItem & {
   index: string;
   kind: string;
   action: string;
-  tone: "travel" | "reading" | "knowledge" | "music";
+  tone: "travel" | "reading" | "knowledge" | "music" | "film";
 };
 
 const wanderStops = [
@@ -18,6 +19,7 @@ const wanderStops = [
   { eyebrow: "KNOWLEDGE · GARDEN", title: "从一个概念出发", description: "走进知识之间的缝隙，看看它们如何彼此连接。", href: "https://sehuri.github.io/Sehuri-knowledge-wiki/", action: "漫游知识花园" },
   { eyebrow: "MUSIC · TWO MOONS", title: "等两个月亮升起", description: "从永远排在第一位的 1Q84 OST，进入深绘里的声音世界。", href: "#records", action: "去听潮" },
   { eyebrow: "MUSIC · RECORDS", title: "从一张旧唱片开始", description: "沿着唱片时间线，随机遇见一段熟悉的旋律。", href: "#records", action: "翻看唱片收藏" },
+  { eyebrow: "CINEMA · TIMELINE", title: "在一束光里坐下", description: "从近一个世纪的片单里，随机遇见一个仍在回响的故事。", href: "#films", action: "走进光影馆" },
 ] as const;
 
 function Arrow() { return <span aria-hidden="true">↗</span>; }
@@ -41,11 +43,13 @@ function makeTodayNotes(seed: number): TodayNote[] {
   const book = pick(bookRecommendations, seed, 2);
   const knowledge = pick(knowledgeRecommendations, seed, 3);
   const album = pick([featuredAlbum, ...albumTimeline], seed, 4);
+  const film = pick(films, seed, 5);
   return [
     { ...travel, index: "01", kind: "足迹推荐", action: "重走这段旅程", tone: "travel" },
     { ...book, index: "02", kind: "书架推荐", action: "去书架看看", tone: "reading" },
     { ...knowledge, index: "03", kind: "知识推荐", action: "进入知识花园", tone: "knowledge" },
     { title: `《${album.title}》`, meta: `${album.artist} · ${album.year}`, description: album.note, href: "#records", index: "04", kind: "唱片推荐", action: "去唱片室", tone: "music" },
+    { title: `《${film.title}》`, meta: `${film.director} · ${film.year}`, description: film.note, href: "#films", index: "05", kind: "电影推荐", action: "去光影馆", tone: "film" },
   ];
 }
 
@@ -67,7 +71,7 @@ export default function GardenFeatures() {
         <div><p className="section-kicker">TODAY IN THE GARDEN</p><h2>今日推荐</h2></div>
         <div className="garden-date">
           <span>{todayLabel}</span><i />
-          <div><p>从四处空间，各抽取一份今天的相遇。</p>
+          <div><p>从五处收藏，各抽取一份今天的相遇。</p>
             <button className="garden-refresh" type="button" onClick={() => setSeed(Date.now() + Math.floor(Math.random() * 100000))}>换一组推荐 <span aria-hidden="true">✦</span></button>
           </div>
         </div>
@@ -86,7 +90,7 @@ export default function GardenFeatures() {
         <div className="wander-moons" aria-hidden="true"><span /><span /></div>
         <p className="wander-eyebrow">A RANDOM WALK</p><h2>随便走走</h2>
         <div className="wander-result" aria-live="polite">
-          {selected ? <><span>{selected.eyebrow}</span><h3>{selected.title}</h3><p>{selected.description}</p></> : <><span>WHERE TO NEXT?</span><h3>今晚，想去哪里？</h3><p>让两个月亮替你选一处，旅行、阅读、知识或音乐都可能出现。</p></>}
+          {selected ? <><span>{selected.eyebrow}</span><h3>{selected.title}</h3><p>{selected.description}</p></> : <><span>WHERE TO NEXT?</span><h3>今晚，想去哪里？</h3><p>让两个月亮替你选一处，旅行、阅读、知识、音乐或电影都可能出现。</p></>}
         </div>
         <div className="wander-actions">
           <button type="button" onClick={chooseStop}>{selected ? "再选一处" : "替我选一处"}<span aria-hidden="true">✦</span></button>
