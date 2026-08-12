@@ -63,9 +63,11 @@ a {
   align-items: center;
   overflow: hidden;
   isolation: isolate;
+  background-color: #173d60;
   background:
     linear-gradient(90deg, rgba(5, 18, 33, 0.72) 0%, rgba(5, 18, 33, 0.3) 42%, rgba(5, 18, 33, 0.04) 72%),
-    url("/shenhuili.png") center center / cover no-repeat;
+    linear-gradient(180deg, #173d60 0 2.7rem, transparent 7rem),
+    url("/shenhuili.png") center 2.6rem / cover no-repeat;
 }
 
 .moon-guide {
@@ -120,8 +122,8 @@ a {
   cursor: pointer;
 }
 
-.hero-moon-cold { top: 9.2%; right: 8.8%; }
-.hero-moon-warm { top: 26.5%; right: 12.4%; }
+.hero-moon-cold { top: calc(9.2% + 2.6rem); right: 8.8%; }
+.hero-moon-warm { top: calc(26.5% + 2.6rem); right: 12.4%; }
 .hero-moon-hit span {
   position: absolute;
   left: 50%;
@@ -2232,7 +2234,7 @@ footer small {
 
 @media (max-width: 840px) {
   .hero {
-    background-position: 62% center;
+    background-position: center, center, 62% 2.6rem;
   }
 
   .hero::before {
@@ -2368,13 +2370,13 @@ footer small {
 
   .hero {
     min-height: 46rem;
-    background-position: 66% center;
+    background-position: center, center, 66% 2.4rem;
   }
 
   .moon-guide { top: 5.4rem; right: 1rem; }
   .hero-moon-hit { width: 3.4rem; }
-  .hero-moon-cold { top: 10%; right: 6%; }
-  .hero-moon-warm { top: 25%; right: 10%; }
+  .hero-moon-cold { top: calc(10% + 2.4rem); right: 6%; }
+  .hero-moon-warm { top: calc(25% + 2.4rem); right: 10%; }
   .hero-moon-dialog { grid-template-columns: 1fr; min-height: 100svh; max-height: 100svh; padding: 4.6rem 1rem 2rem; }
   .hero-moon-artwork { width: min(100%,23rem); justify-self: center; }
 
