@@ -179,10 +179,12 @@ function AlbumDialog({
 }
 
 export default function RecordCollection() {
+  const [showAll, setShowAll] = useState(false);
   const [selectedAlbum, setSelectedAlbum] = useState<Album | null>(null);
   const chronologicalAlbums = [...albumTimeline].sort((a, b) =>
     a.releaseDate.localeCompare(b.releaseDate),
   );
+  const visibleAlbums = showAll ? chronologicalAlbums : chronologicalAlbums.slice(0, 12);
 
   return (
     <>
@@ -221,7 +223,9 @@ export default function RecordCollection() {
       </div>
 
       <div className="album-gallery">
-        {chronologicalAlbums.map((album, index) => (
+        {visibleAlbums.map((album) => {
+          const index = chronologicalAlbums.indexOf(album);
+          return (
           <button
             className="album-tile"
             type="button"
@@ -250,8 +254,20 @@ export default function RecordCollection() {
               <span className="album-detail-hint">查看详情 ↗</span>
             </div>
           </button>
-        ))}
+          );
+        })}
       </div>
+
+      {chronologicalAlbums.length > 12 ? (
+        <button
+          className="records-show-all"
+          type="button"
+          onClick={() => setShowAll((value) => !value)}
+        >
+          {showAll ? "收起唱片" : `展开全部 ${recordCount} 张唱片`}
+          <span aria-hidden="true">{showAll ? "↑" : "↓"}</span>
+        </button>
+      ) : null}
 
       <p className="records-note">
         {recordCount} 张唱片，依时间排开。下一张喜欢的专辑，会继续摆在这里。

@@ -1503,7 +1503,7 @@ a.space-card:focus-visible {
 .film-grid { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); max-width: 84rem; margin: 0 auto; border-top: 1px solid rgba(255,255,255,.11); border-left: 1px solid rgba(255,255,255,.11); }
 .film-card { min-width: 0; padding: clamp(1rem,2.2vw,2rem); border-right: 1px solid rgba(255,255,255,.11); border-bottom: 1px solid rgba(255,255,255,.11); color: inherit; text-align: left; cursor: pointer; transition: background 220ms ease; }
 .film-card:hover { background: rgba(255,255,255,.045); }
-.film-card:focus-visible, .film-show-all:focus-visible, .film-dialog-close:focus-visible, .film-filters button:focus-visible { outline: 2px solid #d5ab73; outline-offset: 3px; }
+.film-card:focus-visible, .film-show-all:focus-visible, .records-show-all:focus-visible, .film-dialog-close:focus-visible, .film-filters button:focus-visible { outline: 2px solid #d5ab73; outline-offset: 3px; }
 .film-poster { position: relative; aspect-ratio: 2/3; overflow: hidden; background: #101821; box-shadow: .8rem .8rem 0 rgba(255,255,255,.035); }
 .film-poster img { width: 100%; height: 100%; object-fit: cover; transition: transform 420ms ease, filter 420ms ease; }
 .film-card:hover .film-poster img { transform: scale(1.025); filter: brightness(.72); }
@@ -1595,6 +1595,25 @@ a.space-card:focus-visible {
   margin: 0 auto;
   border-top: 1px solid rgba(7, 21, 37, 0.15);
   border-left: 1px solid rgba(7, 21, 37, 0.15);
+}
+
+.records-show-all {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  width: min(100%, 84rem);
+  margin: 2rem auto 0;
+  padding: 1.2rem 1.5rem;
+  border: 1px solid rgba(7, 21, 37, 0.18);
+  color: rgba(7, 21, 37, 0.72);
+  font-family: "Songti SC", "STSong", serif;
+  cursor: pointer;
+  transition: background 180ms ease;
+}
+
+.records-show-all:hover {
+  background: rgba(255, 255, 255, 0.42);
 }
 
 .album-tile {

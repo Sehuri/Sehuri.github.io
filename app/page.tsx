@@ -52,16 +52,6 @@ const spaces = [
   },
   {
     index: "05",
-    name: "村上春樹",
-    english: "MURAKAMI",
-    description: "在现实与另一个世界的缝隙里，收藏我反复回到的作品。",
-    detail: `${murakamiBooks.length} 部作品 · 长篇与短篇小说集`,
-    href: "#murakami",
-    action: "走进村上书房",
-    tone: "murakami",
-  },
-  {
-    index: "06",
     name: "光影",
     english: "CINEMA",
     description: "把那些让我相信、怀疑、落泪或久久沉默的电影，留在时间里。",
@@ -69,6 +59,16 @@ const spaces = [
     href: "#films",
     action: "走进光影馆",
     tone: "film",
+  },
+  {
+    index: "06",
+    name: "村上春樹",
+    english: "MURAKAMI",
+    description: "在现实与另一个世界的缝隙里，收藏我反复回到的作品。",
+    detail: `${murakamiBooks.length} 部作品 · 长篇与短篇小说集`,
+    href: "#murakami",
+    action: "走进村上书房",
+    tone: "murakami",
   },
 ] as const;
 
@@ -179,8 +179,6 @@ export default function Home() {
         </div>
       </section>
 
-      <MurakamiLibrary />
-
       <section className="records" id="records">
         <header className="records-heading">
           <div>
@@ -211,6 +209,8 @@ export default function Home() {
         </header>
         <FilmCollection />
       </section>
+
+      <MurakamiLibrary />
 
       <GardenGrowth />
 
@@ -257,8 +257,8 @@ export default function Home() {
           <a href="https://yueji-reading-room.shenhuil.chatgpt.site">阅读</a>
           <a href="https://sehuri.github.io/Sehuri-knowledge-wiki/">知识</a>
           <a href="#records">音乐</a>
-          <a href="#murakami">村上</a>
           <a href="#films">电影</a>
+          <a href="#murakami">村上</a>
           <a href="#growth">年轮</a>
           <a href="#contact">联系</a>
           <a href="https://github.com/Sehuri" target="_blank" rel="noreferrer">GitHub</a>
