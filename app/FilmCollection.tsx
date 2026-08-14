@@ -3,11 +3,13 @@
 import { useEffect, useMemo, useState } from "react";
 import { films, type Film } from "./filmData";
 
-const filters = ["全部", "剧情人性", "犯罪悬疑", "科幻奇想", "动画", "战争历史"] as const;
+const filters = ["全部", "电影", "电视剧", "剧情人性", "犯罪悬疑", "科幻奇想", "动画", "战争历史"] as const;
 type FilmFilter = (typeof filters)[number];
 
 function belongsTo(film: Film, filter: FilmFilter) {
   if (filter === "全部") return true;
+  if (filter === "电影") return (film.format ?? "电影") === "电影";
+  if (filter === "电视剧") return film.format === "电视剧";
   const genres = film.genres.join("/");
   if (filter === "剧情人性") return /剧情|爱情|家庭|成长|女性|公路/.test(genres);
   if (filter === "犯罪悬疑") return /犯罪|悬疑|惊悚/.test(genres);
@@ -17,6 +19,7 @@ function belongsTo(film: Film, filter: FilmFilter) {
 }
 
 function FilmDialog({ film, onClose }: { film: Film; onClose: () => void }) {
+  const format = film.format ?? "电影";
   useEffect(() => {
     const overflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
@@ -31,25 +34,25 @@ function FilmDialog({ film, onClose }: { film: Film; onClose: () => void }) {
   return (
     <div className="film-dialog-backdrop" onMouseDown={onClose}>
       <section className="film-dialog" role="dialog" aria-modal="true" aria-labelledby="film-dialog-title" onMouseDown={(event) => event.stopPropagation()}>
-        <button className="film-dialog-close" type="button" onClick={onClose} aria-label="关闭电影详情" autoFocus><span aria-hidden="true">×</span></button>
+        <button className="film-dialog-close" type="button" onClick={onClose} aria-label="关闭影视详情" autoFocus><span aria-hidden="true">×</span></button>
         <div className="film-dialog-poster">
           <img src={film.poster} alt={`${film.title}发行海报`} />
           <span>{film.year}</span>
         </div>
         <div className="film-dialog-copy">
-          <p className="film-dialog-kicker">A FILM I KEEP · {film.year}</p>
+          <p className="film-dialog-kicker">{format === "电视剧" ? "A SERIES I KEEP" : "A FILM I KEEP"} · {film.year}</p>
           <h2 id="film-dialog-title">{film.title}</h2>
           <p className="film-original-title">{film.originalTitle}</p>
           <dl>
-            <div><dt>导演</dt><dd>{film.director}</dd></div>
+            <div><dt>{format === "电视剧" ? "主创" : "导演"}</dt><dd>{film.director}</dd></div>
             <div><dt>地区</dt><dd>{film.country}</dd></div>
             <div><dt>类型</dt><dd>{film.genres.join(" · ")}</dd></div>
           </dl>
-          <div className="film-dialog-story"><small>ABOUT THE FILM</small><p>{film.summary}</p></div>
+          <div className="film-dialog-story"><small>{format === "电视剧" ? "ABOUT THE SERIES" : "ABOUT THE FILM"}</small><p>{film.summary}</p></div>
           <blockquote>“{film.note}”</blockquote>
           {film.chapters ? (
             <div className="film-series-list">
-              <small>THE EIGHT FILMS</small>
+              <small>{film.seriesLabel ?? "SERIES COLLECTION"}</small>
               <ol>{film.chapters.map((chapter, index) => <li key={chapter.title}><span>{String(index + 1).padStart(2, "0")}</span><p>{chapter.title}</p><i>{chapter.year}</i></li>)}</ol>
             </div>
           ) : null}
@@ -74,22 +77,22 @@ export default function FilmCollection() {
   return (
     <>
       <div className="film-toolbar">
-        <div className="film-filters" aria-label="按电影类型筛选">
+        <div className="film-filters" aria-label="按影视类型筛选">
           {filters.map((item) => <button className={filter === item ? "active" : ""} type="button" key={item} onClick={() => chooseFilter(item)}>{item}</button>)}
         </div>
-        <p><strong>{filteredFilms.length}</strong> 部 · 按上映时间排列</p>
+        <p><strong>{filteredFilms.length}</strong> 部影视作品 · 按首映时间排列</p>
       </div>
 
       <div className="film-grid">
         {visibleFilms.map((film, index) => (
-          <button className="film-card" type="button" key={film.slug} onClick={() => setSelectedFilm(film)} aria-label={`查看《${film.title}》电影详情`}>
+          <button className="film-card" type="button" key={film.slug} onClick={() => setSelectedFilm(film)} aria-label={`查看《${film.title}》影视详情`}>
             <div className="film-poster">
               <img src={film.poster} alt={`${film.title}发行海报`} loading="lazy" />
               <span>{String(films.indexOf(film) + 1).padStart(2, "0")}</span>
-              <i>VIEW FILM</i>
+              <i>{film.format === "电视剧" ? "VIEW SERIES" : "VIEW FILM"}</i>
             </div>
             <div className="film-card-copy">
-              <p>{film.year}</p>
+              <p>{film.year} · {film.format ?? "电影"}</p>
               <h3>{film.title}</h3>
               <span>{film.originalTitle}</span>
               <div><small>{film.director}</small><i /><small>{film.genres.slice(0, 2).join(" · ")}</small></div>

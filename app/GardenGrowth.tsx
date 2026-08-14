@@ -13,7 +13,7 @@ const stats = [
   { value: String(recordCount), unit: "张唱片", label: "收藏的声音", href: "#records" },
   { value: "128", unit: "篇知识", label: "知识花园收录", href: "https://sehuri.github.io/Sehuri-knowledge-wiki/" },
   { value: String(murakamiBooks.length), unit: "部作品", label: "村上书房", href: "#murakami" },
-  { value: String(filmCount), unit: "部电影", label: "光影馆收藏", href: "#films" },
+  { value: String(filmCount), unit: "部影视", label: "光影馆收藏", href: "#films" },
   { value: String(gardenNotes.length), unit: "篇手记", label: "庭院留下的文字", href: "#notes" },
   { value: String(growingDays), unit: "天", label: "网站持续生长", href: "#growth" },
 ] as const;
@@ -22,7 +22,7 @@ const growthEvents = [
   { date: "2026.08", title: "白昼与搜索抵达庭院", space: "DAYLIGHT · SEARCH", description: "影子在白天归来，一只搜索框也终于可以穿过城市、书、唱片、电影、知识与手记。", href: "#top", image: "/shenhuili-day.png", imageAlt: "深绘里的白天庭院" },
   { date: "2026.08", title: "庭院手记翻开第一页", space: "NOTES", description: `${gardenNotes.length} 篇轻量随笔成为收藏之外，属于自己的文字空间。`, href: "#notes", image: "/shenhuili-day.png", imageAlt: "白天庭院与海风" },
   { date: "2026.08", title: "留下相遇的入口", space: "CONTACT", description: "微信、抖音、小红书、X、Instagram、邮箱与 GitHub 汇入同一张联系地图。", href: "#contact", image: "/contact/wechat.jpg", imageAlt: "深绘里的微信二维码" },
-  { date: "2026.08", title: "光影馆开始放映", space: "CINEMA", description: `${filmCount} 部电影按上映时间排开，发行海报、故事与私人注解拥有了自己的位置。`, href: "#films", image: "/movie-posters/oppenheimer.jpg", imageAlt: "《奥本海默》电影海报" },
+  { date: "2026.08", title: "光影馆开始放映", space: "SCREEN", description: `${filmCount} 部电影与剧集按首映时间排开，发行海报、故事与私人注解拥有了自己的位置。`, href: "#films", image: "/movie-posters/oppenheimer.jpg", imageAlt: "《奥本海默》电影海报" },
   { date: "2026.08", title: "两个月亮升起", space: "TWO MOONS", description: "首屏的两个月亮成为可以进入的两条声音路径。", href: "#moon-guide", image: "/shenhuili.png", imageAlt: "深绘里天空中的两个月亮" },
   { date: "2026.08", title: "村上书房建立", space: "MURAKAMI", description: "整理长篇、短篇小说集、作品年图、私人珍藏与四条入门路线。", href: "#murakami", image: "/book-covers/the-city-and-its-uncertain-walls.png", imageAlt: "《小城与不确定性的墙》封面" },
   { date: "2026.08", title: "1Q84 OST 完成双面选集", space: "MUSIC", description: "十六首歌曲分居两个世界，并为每一首留下解读与衔接。", href: "#records", image: "/book-covers/1q84.jpg", imageAlt: "《1Q84》封面" },

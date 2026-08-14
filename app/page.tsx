@@ -56,8 +56,8 @@ const spaces = [
     index: "05",
     name: "光影",
     english: "CINEMA",
-    description: "把那些让我相信、怀疑、落泪或久久沉默的电影，留在时间里。",
-    detail: `${filmCount} 部电影 · 按年份收藏`,
+    description: "把那些让我相信、怀疑、落泪或久久沉默的电影与剧集，留在时间里。",
+    detail: `${filmCount} 部影视作品 · 按年份收藏`,
     href: "#films",
     action: "走进光影馆",
     tone: "film",
@@ -214,13 +214,13 @@ export default function Home() {
       <section className="films" id="films">
         <header className="films-heading">
           <div>
-            <p className="section-kicker">FILMS I KEEP</p>
+            <p className="section-kicker">STORIES ON SCREEN</p>
             <h2>深绘里的光影馆</h2>
           </div>
           <p>
-            有些故事在银幕结束后，仍会跟着人走很久。
+            有些故事在银幕暗下或一季结束后，仍会跟着人走很久。
             <br />
-            这里按时间保存我愿意再次回看的电影。
+            这里按时间保存我愿意再次回看的电影与剧集。
           </p>
         </header>
         <FilmCollection />

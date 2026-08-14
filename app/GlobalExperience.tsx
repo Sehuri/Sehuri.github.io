@@ -31,12 +31,12 @@ const localItems: SearchItem[] = [
 })).concat(
   films.map((film) => ({
     id: `film-${film.slug}`,
-    type: "电影",
+    type: film.format ?? "电影",
     title: film.title,
     subtitle: `${film.director} · ${film.year}`,
     description: film.note,
     href: "#films",
-    keywords: `${film.title} ${film.originalTitle} ${film.director} ${film.country} ${film.genres.join(" ")} ${film.summary}`,
+    keywords: `${film.title} ${film.originalTitle} ${film.format ?? "电影"} 影视 剧集 ${film.director} ${film.country} ${film.genres.join(" ")} ${film.summary}`,
   })),
   murakamiBooks.map((book) => ({
     id: `murakami-${book.title}`,
@@ -68,7 +68,7 @@ const localItems: SearchItem[] = [
 );
 
 const normalize = (value: string) => value.toLocaleLowerCase("zh-CN").replace(/[《》·，。！？：；、\s_-]/g, "");
-const typeOrder = ["城市", "书籍", "唱片", "电影", "知识", "手记"];
+const typeOrder = ["城市", "书籍", "唱片", "电影", "电视剧", "知识", "手记"];
 
 export default function GlobalExperience() {
   const [theme, setTheme] = useState<"night" | "day">("night");

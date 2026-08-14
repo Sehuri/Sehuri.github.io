@@ -10,6 +10,8 @@ export type Film = {
   poster: string;
   summary: string;
   note: string;
+  format?: "电影" | "电视剧";
+  seriesLabel?: string;
   chapters?: { year: string; title: string }[];
 };
 
@@ -71,6 +73,23 @@ export const films: Film[] = [
   { slug: "suzume", title: "铃芽之旅", originalTitle: "すずめの戸締まり", year: "2022", sortYear: 2022, director: "新海诚", country: "日本", genres: ["动画", "奇幻"], poster: poster("suzume"), summary: "少女铃芽踏上关闭灾祸之门的旅程，在日本各处的废墟中与过去的伤痕重新相遇。", note: "关上一扇门，也是在对曾经生活于此的人认真道别。" },
   { slug: "oppenheimer", title: "奥本海默", originalTitle: "Oppenheimer", year: "2023", sortYear: 2023, director: "克里斯托弗·诺兰", country: "美国 / 英国", genres: ["传记", "历史"], poster: poster("oppenheimer"), summary: "理论物理学家奥本海默领导曼哈顿计划，原子弹诞生的荣光、恐惧与政治清算此后缠绕一生。", note: "一个人完成改变世界的工程，也从此无法离开它投下的阴影。" },
   { slug: "the-odyssey", title: "奥德赛", originalTitle: "The Odyssey", year: "2026", sortYear: 2026, director: "克里斯托弗·诺兰", country: "美国 / 英国", genres: ["史诗", "冒险"], poster: poster("the-odyssey"), summary: "影片改编自荷马史诗，跟随奥德修斯在特洛伊战争之后穿越神话、海洋与漫长考验，寻找回到故乡的路。", note: "在最辽阔的神话尺度里，核心仍是一个人如何回家。" },
+  { slug: "breaking-bad", title: "绝命毒师全系列", originalTitle: "Breaking Bad", year: "2008—2013", sortYear: 2008, director: "文斯·吉里根", country: "美国", genres: ["犯罪", "剧情"], poster: poster("breaking-bad"), format: "电视剧", seriesLabel: "FIVE SEASONS", summary: "高中化学教师沃尔特·怀特在确诊重病后闯入制毒世界，求生的借口逐渐变成对权力、控制和自我证明的无止境追逐。", note: "一个人不是突然成为海森堡，而是在每一次仍可回头的选择里慢慢走远。", chapters: [
+    { year: "2008", title: "第一季" }, { year: "2009", title: "第二季" }, { year: "2010", title: "第三季" }, { year: "2011", title: "第四季" }, { year: "2012—2013", title: "第五季" },
+  ] },
+  { slug: "the-theory-of-everything", title: "万物理论", originalTitle: "The Theory of Everything", year: "2014", sortYear: 2014, director: "詹姆斯·马什", country: "英国", genres: ["传记", "爱情"], poster: poster("the-theory-of-everything"), summary: "青年霍金在剑桥求学、坠入爱河，也在身体逐渐失去控制时继续追问时间与宇宙的边界。", note: "关于宇宙的理论极其辽阔，而支撑一个人穿越漫长岁月的，仍是具体的爱与意志。" },
+  { slug: "the-danish-girl", title: "丹麦女孩", originalTitle: "The Danish Girl", year: "2015", sortYear: 2015, director: "汤姆·霍伯", country: "英国 / 美国", genres: ["传记", "剧情"], poster: poster("the-danish-girl"), summary: "画家埃纳尔在一次偶然的模特替代中逐渐确认自己的性别身份，并以莉莉·艾尔伯的名字走向真实的自己。", note: "成为自己并不是轻盈的抵达，而是一条需要爱、诚实与巨大勇气的路。" },
+  { slug: "stranger-things", title: "怪奇物语全系列", originalTitle: "Stranger Things", year: "2016—2025", sortYear: 2016, director: "达菲兄弟", country: "美国", genres: ["科幻", "悬疑", "成长"], poster: poster("stranger-things"), format: "电视剧", seriesLabel: "FIVE SEASONS", summary: "霍金斯小镇的少年们从一场失踪案进入颠倒世界，在怪物、实验与成长之间，用友谊守住彼此和熟悉的家园。", note: "怪物来自另一个世界，真正让人一次次站起来的，却是朋友在最黑暗处仍握住你的手。", chapters: [
+    { year: "2016", title: "第一季" }, { year: "2017", title: "第二季" }, { year: "2019", title: "第三季" }, { year: "2022", title: "第四季" }, { year: "2025", title: "第五季" },
+  ] },
+  { slug: "avengers-infinity-war", title: "复仇者联盟3：无限战争", originalTitle: "Avengers: Infinity War", year: "2018", sortYear: 2018, director: "安东尼·罗素 / 乔·罗素", country: "美国", genres: ["科幻", "动作"], poster: poster("avengers-infinity-war"), summary: "灭霸为集齐六颗无限宝石向整个宇宙推进，分散各地的复仇者与盟友被迫迎接一场无法独自承担的战争。", note: "英雄第一次如此接近失败，牺牲也让这场宇宙战争真正拥有重量。" },
+  { slug: "avengers-endgame", title: "复仇者联盟4：终局之战", originalTitle: "Avengers: Endgame", year: "2019", sortYear: 2019, director: "安东尼·罗素 / 乔·罗素", country: "美国", genres: ["科幻", "动作"], poster: poster("avengers-endgame"), summary: "无限战争之后，幸存的复仇者穿越时间寻找逆转结局的可能，也为十一年的共同旅程完成最后集结。", note: "终局不是把失去全部抹去，而是让每一次陪伴、选择与告别获得回声。" },
+  { slug: "the-bad-kids", title: "隐秘的角落", originalTitle: "The Bad Kids", year: "2020", sortYear: 2020, director: "辛爽", country: "中国", genres: ["悬疑", "家庭"], poster: poster("the-bad-kids"), format: "电视剧", summary: "三个孩子在景区游玩时意外记录下一场谋杀，原本平静的暑假由此卷入成人世界的秘密与算计。", note: "童话和现实共用同一片阳光，真正隐秘的角落往往藏在最普通的家庭关系里。" },
+  { slug: "the-long-night", title: "沉默的真相", originalTitle: "The Long Night", year: "2020", sortYear: 2020, director: "陈奕甫", country: "中国", genres: ["犯罪", "悬疑"], poster: poster("the-long-night"), format: "电视剧", summary: "一只被故意留在地铁站的行李箱牵出跨越十年的追查，几个人用漫长岁月和人生代价守住同一个真相。", note: "真相也许会迟到，但总有人愿意在无人看见的地方替它点灯。" },
+  { slug: "wandavision", title: "旺达幻视", originalTitle: "WandaVision", year: "2021", sortYear: 2021, director: "雅克·舍费尔 / 马特·沙克曼", country: "美国", genres: ["科幻", "剧情"], poster: poster("wandavision"), format: "电视剧", summary: "旺达与幻视生活在不断切换年代的情景喜剧小镇里，完美日常的裂缝逐渐显露出悲伤创造的幻境。", note: "爱不是逃离失去的魔法，却可能是悲伤坚持到最后仍保留下来的形状。" },
+  { slug: "loki-season-1", title: "洛基 第一季", originalTitle: "Loki · Season 1", year: "2021", sortYear: 2021, director: "迈克尔·沃尔德伦 / 凯特·赫伦", country: "美国", genres: ["科幻", "冒险"], poster: poster("loki-season-1"), format: "电视剧", summary: "逃离既定时间线的洛基被时间变异管理局捕获，在追查另一个自己的过程中重新理解命运、自由意志与身份。", note: "诡计之神第一次无法只靠聪明逃走，他必须决定自己究竟想成为什么人。" },
+  { slug: "loki-season-2", title: "洛基 第二季", originalTitle: "Loki · Season 2", year: "2023", sortYear: 2023, director: "埃里克·马丁 / 贾斯汀·本森 / 亚伦·穆尔黑德", country: "美国", genres: ["科幻", "冒险"], poster: poster("loki-season-2"), format: "电视剧", summary: "时间线持续分裂，洛基在过去与未来之间反复滑落，为朋友和无数世界寻找一个不再依赖牺牲的出口。", note: "曾经只想坐上王座的人，最后学会独自承担王座背后的时间。" },
+  { slug: "the-long-season", title: "漫长的季节", originalTitle: "The Long Season", year: "2023", sortYear: 2023, director: "辛爽", country: "中国", genres: ["悬疑", "家庭", "剧情"], poster: poster("the-long-season"), format: "电视剧", summary: "一座东北小城里，三个家庭被一桩旧案牵住近二十年；火车向前，记忆却一次次把人带回那个秋天。", note: "漫长的并非季节，而是普通人带着失去继续往前走的时间。" },
+  { slug: "johnny-keep-walking", title: "年会不能停！", originalTitle: "Johnny Keep Walking!", year: "2023", sortYear: 2023, director: "董润年", country: "中国", genres: ["喜剧", "职场"], poster: poster("johnny-keep-walking"), summary: "钳工胡建林意外被调入集团总部，在荒诞的职场规则与裁员风波中一路误打误撞，最终替普通员工说出真话。", note: "笑声背后是每个打工人熟悉的无奈，而荒诞最有力的出口仍是把人当作人。" },
 ].sort((a, b) => a.sortYear - b.sortYear || a.title.localeCompare(b.title, "zh-CN"));
 
 export const filmCount = films.length;
