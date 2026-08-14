@@ -38,7 +38,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="zh-CN">
+    <html lang="zh-CN" suppressHydrationWarning>
+      <head><script dangerouslySetInnerHTML={{ __html: "try{document.documentElement.dataset.theme=localStorage.getItem('shenhuili-theme')==='day'?'day':'night'}catch(e){document.documentElement.dataset.theme='night'}" }} /></head>
       <body>{children}</body>
     </html>
   );

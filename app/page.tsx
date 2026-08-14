@@ -1,5 +1,7 @@
 import GardenFeatures from "./GardenFeatures";
 import GardenGrowth from "./GardenGrowth";
+import GardenNotes from "./GardenNotes";
+import GlobalExperience from "./GlobalExperience";
 import FilmCollection from "./FilmCollection";
 import ContactSection from "./ContactSection";
 import HeroMoonExperience from "./HeroMoonExperience";
@@ -52,6 +54,16 @@ const spaces = [
   },
   {
     index: "05",
+    name: "庭院手记",
+    english: "NOTES",
+    description: "写下一段旅途、一本书、一首歌，或某个不想让它消失的念头。",
+    detail: "4 篇手记 · 不定期生长",
+    href: "#notes",
+    action: "翻开庭院手记",
+    tone: "notes",
+  },
+  {
+    index: "06",
     name: "光影",
     english: "CINEMA",
     description: "把那些让我相信、怀疑、落泪或久久沉默的电影，留在时间里。",
@@ -61,7 +73,7 @@ const spaces = [
     tone: "film",
   },
   {
-    index: "06",
+    index: "07",
     name: "村上春樹",
     english: "MURAKAMI",
     description: "在现实与另一个世界的缝隙里，收藏我反复回到的作品。",
@@ -97,10 +109,12 @@ export default function Home() {
               GitHub <Arrow />
             </a>
           </div>
+          <GlobalExperience />
         </nav>
 
         <div className="hero-shade" aria-hidden="true" />
         <HeroMoonExperience />
+        <div className="day-motifs" aria-hidden="true"><span className="day-bird">⌁</span><span className="day-shadow" /><span className="day-unicorn">♞</span><p>THE SHADOW RETURNS</p></div>
         <div className="hero-content">
           <p className="eyebrow">SEHURI&apos;S DIGITAL GARDEN</p>
           <h1>
@@ -178,6 +192,8 @@ export default function Home() {
           })}
         </div>
       </section>
+
+      <GardenNotes />
 
       <section className="records" id="records">
         <header className="records-heading">
@@ -257,6 +273,7 @@ export default function Home() {
           <a href="https://yueji-reading-room.shenhuil.chatgpt.site">阅读</a>
           <a href="https://sehuri.github.io/Sehuri-knowledge-wiki/">知识</a>
           <a href="#records">音乐</a>
+          <a href="#notes">手记</a>
           <a href="#films">电影</a>
           <a href="#murakami">村上</a>
           <a href="#growth">年轮</a>

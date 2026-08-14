@@ -1,0 +1,920 @@
+[
+  {
+    "id": "city-日照",
+    "type": "城市",
+    "title": "日照",
+    "subtitle": "中国 · 2013-07-09",
+    "description": "万平口海滨浴场、灯塔风景区、日照海滨国家森林公园，感受黄海之滨的日出之美。",
+    "href": "https://sehuri.github.io/travel-map/#memories",
+    "keywords": "日照 中国 旅行 城市 足迹 万平口海滨浴场、灯塔风景区、日照海滨国家森林公园，感受黄海之滨的日出之美。"
+  },
+  {
+    "id": "city-淮安",
+    "type": "城市",
+    "title": "淮安",
+    "subtitle": "中国 · 2023-07-16",
+    "description": "周恩来纪念馆、河下古镇、洪泽湖湿地，运河之都的历史底蕴。",
+    "href": "https://sehuri.github.io/travel-map/#memories",
+    "keywords": "淮安 中国 旅行 城市 足迹 周恩来纪念馆、河下古镇、洪泽湖湿地，运河之都的历史底蕴。"
+  },
+  {
+    "id": "city-青岛",
+    "type": "城市",
+    "title": "青岛",
+    "subtitle": "中国 · 2023-07-19",
+    "description": "栈桥、八大关万国建筑、崂山道教圣地、五四广场，红瓦绿树碧海蓝天。",
+    "href": "https://sehuri.github.io/travel-map/#memories",
+    "keywords": "青岛 中国 旅行 城市 足迹 栈桥、八大关万国建筑、崂山道教圣地、五四广场，红瓦绿树碧海蓝天。"
+  },
+  {
+    "id": "city-南京",
+    "type": "城市",
+    "title": "南京",
+    "subtitle": "中国 · 2023-09-17",
+    "description": "中山陵、夫子庙秦淮河、明孝陵、总统府，六朝古都的金陵烟雨。",
+    "href": "https://sehuri.github.io/travel-map/#memories",
+    "keywords": "南京 中国 旅行 城市 足迹 中山陵、夫子庙秦淮河、明孝陵、总统府，六朝古都的金陵烟雨。"
+  },
+  {
+    "id": "city-杭州",
+    "type": "城市",
+    "title": "杭州",
+    "subtitle": "中国 · 2024-01-31",
+    "description": "西湖十景、灵隐禅寺、西溪湿地、雷峰塔，人间天堂的江南韵味。",
+    "href": "https://sehuri.github.io/travel-map/#memories",
+    "keywords": "杭州 中国 旅行 城市 足迹 西湖十景、灵隐禅寺、西溪湿地、雷峰塔，人间天堂的江南韵味。"
+  },
+  {
+    "id": "city-武汉",
+    "type": "城市",
+    "title": "武汉",
+    "subtitle": "中国 · 2024-02-17",
+    "description": "黄鹤楼登高望远、东湖绿道骑行、户部巷过早、长江大桥赏夜景。",
+    "href": "https://sehuri.github.io/travel-map/#memories",
+    "keywords": "武汉 中国 旅行 城市 足迹 黄鹤楼登高望远、东湖绿道骑行、户部巷过早、长江大桥赏夜景。"
+  },
+  {
+    "id": "city-泰州",
+    "type": "城市",
+    "title": "泰州",
+    "subtitle": "中国 · 2024-03-17",
+    "description": "溱潼古镇、凤城河、千垛菜花，水城慢生活的温柔。",
+    "href": "https://sehuri.github.io/travel-map/#memories",
+    "keywords": "泰州 中国 旅行 城市 足迹 溱潼古镇、凤城河、千垛菜花，水城慢生活的温柔。"
+  },
+  {
+    "id": "city-上海",
+    "type": "城市",
+    "title": "上海",
+    "subtitle": "中国 · 2024-04-03",
+    "description": "外滩万国建筑、陆家嘴摩天楼群、豫园江南园林、迪士尼梦幻城堡。",
+    "href": "https://sehuri.github.io/travel-map/#memories",
+    "keywords": "上海 中国 旅行 城市 足迹 外滩万国建筑、陆家嘴摩天楼群、豫园江南园林、迪士尼梦幻城堡。"
+  },
+  {
+    "id": "city-苏州",
+    "type": "城市",
+    "title": "苏州",
+    "subtitle": "中国 · 2024-04-06",
+    "description": "拙政园、狮子林、平江路、金鸡湖，园林之城的小桥流水。",
+    "href": "https://sehuri.github.io/travel-map/#memories",
+    "keywords": "苏州 中国 旅行 城市 足迹 拙政园、狮子林、平江路、金鸡湖，园林之城的小桥流水。"
+  },
+  {
+    "id": "city-扬州",
+    "type": "城市",
+    "title": "扬州",
+    "subtitle": "中国 · 2024-04-14",
+    "description": "瘦西湖、个园四季假山、大明寺、东关街，淮左名都的精致慢生活。",
+    "href": "https://sehuri.github.io/travel-map/#memories",
+    "keywords": "扬州 中国 旅行 城市 足迹 瘦西湖、个园四季假山、大明寺、东关街，淮左名都的精致慢生活。"
+  },
+  {
+    "id": "city-洛阳",
+    "type": "城市",
+    "title": "洛阳",
+    "subtitle": "中国 · 2024-05-03",
+    "description": "龙门石窟、白马寺、老君山与洛阳牡丹，古都风骨仍在日常里延续。",
+    "href": "https://sehuri.github.io/travel-map/#memories",
+    "keywords": "洛阳 中国 旅行 城市 足迹 龙门石窟、白马寺、老君山与洛阳牡丹，古都风骨仍在日常里延续。"
+  },
+  {
+    "id": "city-郑州",
+    "type": "城市",
+    "title": "郑州",
+    "subtitle": "中国 · 2024-05-06",
+    "description": "少林寺、嵩山与河南博物院，中原大地的厚重在这里慢慢展开。",
+    "href": "https://sehuri.github.io/travel-map/#memories",
+    "keywords": "郑州 中国 旅行 城市 足迹 少林寺、嵩山与河南博物院，中原大地的厚重在这里慢慢展开。"
+  },
+  {
+    "id": "city-北京",
+    "type": "城市",
+    "title": "北京",
+    "subtitle": "中国 · 2024-07-12",
+    "description": "故宫红墙、长城、天安门广场、颐和园与天坛，一次走进辽阔的历史。",
+    "href": "https://sehuri.github.io/travel-map/#memories",
+    "keywords": "北京 中国 旅行 城市 足迹 故宫红墙、长城、天安门广场、颐和园与天坛，一次走进辽阔的历史。"
+  },
+  {
+    "id": "city-合肥",
+    "type": "城市",
+    "title": "合肥",
+    "subtitle": "中国 · 2024-08-23",
+    "description": "包公园、三河古镇、逍遥津，三国故地的庐州风情。",
+    "href": "https://sehuri.github.io/travel-map/#memories",
+    "keywords": "合肥 中国 旅行 城市 足迹 包公园、三河古镇、逍遥津，三国故地的庐州风情。"
+  },
+  {
+    "id": "city-九江",
+    "type": "城市",
+    "title": "九江",
+    "subtitle": "中国 · 2024-08-23",
+    "description": "庐山瀑布云海、鄱阳湖候鸟、浔阳楼，山水诗画之城。",
+    "href": "https://sehuri.github.io/travel-map/#memories",
+    "keywords": "九江 中国 旅行 城市 足迹 庐山瀑布云海、鄱阳湖候鸟、浔阳楼，山水诗画之城。"
+  },
+  {
+    "id": "city-南昌",
+    "type": "城市",
+    "title": "南昌",
+    "subtitle": "中国 · 2024-08-23",
+    "description": "滕王阁、八一广场与绳金塔美食街，江风里装着古今两种气质。",
+    "href": "https://sehuri.github.io/travel-map/#memories",
+    "keywords": "南昌 中国 旅行 城市 足迹 滕王阁、八一广场与绳金塔美食街，江风里装着古今两种气质。"
+  },
+  {
+    "id": "city-芜湖",
+    "type": "城市",
+    "title": "芜湖",
+    "subtitle": "中国 · 2024-08-28",
+    "description": "方特梦幻王国、鸠兹古镇、马仁奇峰，欢乐与山水并存。",
+    "href": "https://sehuri.github.io/travel-map/#memories",
+    "keywords": "芜湖 中国 旅行 城市 足迹 方特梦幻王国、鸠兹古镇、马仁奇峰，欢乐与山水并存。"
+  },
+  {
+    "id": "city-上饶",
+    "type": "城市",
+    "title": "上饶",
+    "subtitle": "中国 · 2024-10-01",
+    "description": "三清山、婺源与龟峰丹霞，共同拼成赣东北的山水画廊。",
+    "href": "https://sehuri.github.io/travel-map/#memories",
+    "keywords": "上饶 中国 旅行 城市 足迹 三清山、婺源与龟峰丹霞，共同拼成赣东北的山水画廊。"
+  },
+  {
+    "id": "city-黄山",
+    "type": "城市",
+    "title": "黄山",
+    "subtitle": "中国 · 2024-10-01",
+    "description": "迎客松、光明顶日出、西海大峡谷与宏村，把徽州秋色留进记忆。",
+    "href": "https://sehuri.github.io/travel-map/#memories",
+    "keywords": "黄山 中国 旅行 城市 足迹 迎客松、光明顶日出、西海大峡谷与宏村，把徽州秋色留进记忆。"
+  },
+  {
+    "id": "city-泰安",
+    "type": "城市",
+    "title": "泰安",
+    "subtitle": "中国 · 2024-10-25",
+    "description": "泰山与岱庙，一路登高，也一路读懂五岳独尊的分量。",
+    "href": "https://sehuri.github.io/travel-map/#memories",
+    "keywords": "泰安 中国 旅行 城市 足迹 泰山与岱庙，一路登高，也一路读懂五岳独尊的分量。"
+  },
+  {
+    "id": "city-镇江",
+    "type": "城市",
+    "title": "镇江",
+    "subtitle": "中国 · 2024-12-22",
+    "description": "金山寺、焦山碑林与北固山，京口三山藏着千年的故事。",
+    "href": "https://sehuri.github.io/travel-map/#memories",
+    "keywords": "镇江 中国 旅行 城市 足迹 金山寺、焦山碑林与北固山，京口三山藏着千年的故事。"
+  },
+  {
+    "id": "city-济南",
+    "type": "城市",
+    "title": "济南",
+    "subtitle": "中国 · 2025-01-14",
+    "description": "趵突泉、大明湖与千佛山，泉水让北方城市也有了温润的表情。",
+    "href": "https://sehuri.github.io/travel-map/#memories",
+    "keywords": "济南 中国 旅行 城市 足迹 趵突泉、大明湖与千佛山，泉水让北方城市也有了温润的表情。"
+  },
+  {
+    "id": "city-烟台",
+    "type": "城市",
+    "title": "烟台",
+    "subtitle": "中国 · 2025-01-15",
+    "description": "蓬莱阁、长岛与养马岛环岛路，沿着海岸寻找冬日的辽阔。",
+    "href": "https://sehuri.github.io/travel-map/#memories",
+    "keywords": "烟台 中国 旅行 城市 足迹 蓬莱阁、长岛与养马岛环岛路，沿着海岸寻找冬日的辽阔。"
+  },
+  {
+    "id": "city-大连",
+    "type": "城市",
+    "title": "大连",
+    "subtitle": "中国 · 2025-01-16",
+    "description": "星海广场、老虎滩、棒棰岛与滨海路，北方海滨也有浪漫气息。",
+    "href": "https://sehuri.github.io/travel-map/#memories",
+    "keywords": "大连 中国 旅行 城市 足迹 星海广场、老虎滩、棒棰岛与滨海路，北方海滨也有浪漫气息。"
+  },
+  {
+    "id": "city-哈尔滨",
+    "type": "城市",
+    "title": "哈尔滨",
+    "subtitle": "中国 · 2025-01-16",
+    "description": "冰雪大世界、中央大街与圣索菲亚教堂，在严寒里遇见璀璨。",
+    "href": "https://sehuri.github.io/travel-map/#memories",
+    "keywords": "哈尔滨 中国 旅行 城市 足迹 冰雪大世界、中央大街与圣索菲亚教堂，在严寒里遇见璀璨。"
+  },
+  {
+    "id": "city-沈阳",
+    "type": "城市",
+    "title": "沈阳",
+    "subtitle": "中国 · 2025-01-20",
+    "description": "沈阳故宫、张氏帅府与北陵公园，一朝发祥地，两代帝王都。",
+    "href": "https://sehuri.github.io/travel-map/#memories",
+    "keywords": "沈阳 中国 旅行 城市 足迹 沈阳故宫、张氏帅府与北陵公园，一朝发祥地，两代帝王都。"
+  },
+  {
+    "id": "city-马鞍山",
+    "type": "城市",
+    "title": "马鞍山",
+    "subtitle": "中国 · 2025-01-22",
+    "description": "采石矶与褒禅山，在长江边追寻诗仙李白留下的故事。",
+    "href": "https://sehuri.github.io/travel-map/#memories",
+    "keywords": "马鞍山 中国 旅行 城市 足迹 采石矶与褒禅山，在长江边追寻诗仙李白留下的故事。"
+  },
+  {
+    "id": "city-无锡",
+    "type": "城市",
+    "title": "无锡",
+    "subtitle": "中国 · 2025-01-30",
+    "description": "鼋头渚、灵山大佛与惠山古镇，太湖明珠有自己的从容。",
+    "href": "https://sehuri.github.io/travel-map/#memories",
+    "keywords": "无锡 中国 旅行 城市 足迹 鼋头渚、灵山大佛与惠山古镇，太湖明珠有自己的从容。"
+  },
+  {
+    "id": "city-常州",
+    "type": "城市",
+    "title": "常州",
+    "subtitle": "中国 · 2025-03-14",
+    "description": "中华恐龙园、南山竹海与春秋淹城，一段轻松明快的旅程。",
+    "href": "https://sehuri.github.io/travel-map/#memories",
+    "keywords": "常州 中国 旅行 城市 足迹 中华恐龙园、南山竹海与春秋淹城，一段轻松明快的旅程。"
+  },
+  {
+    "id": "city-嘉兴",
+    "type": "城市",
+    "title": "嘉兴",
+    "subtitle": "中国 · 2025-03-14",
+    "description": "南湖、西塘与乌镇，烟雨长廊把江南的梦留得很长。",
+    "href": "https://sehuri.github.io/travel-map/#memories",
+    "keywords": "嘉兴 中国 旅行 城市 足迹 南湖、西塘与乌镇，烟雨长廊把江南的梦留得很长。"
+  },
+  {
+    "id": "city-三亚",
+    "type": "城市",
+    "title": "三亚",
+    "subtitle": "中国 · 2025-03-29",
+    "description": "亚龙湾、天涯海角、蜈支洲岛与南山寺，把假日交给碧海银沙。",
+    "href": "https://sehuri.github.io/travel-map/#memories",
+    "keywords": "三亚 中国 旅行 城市 足迹 亚龙湾、天涯海角、蜈支洲岛与南山寺，把假日交给碧海银沙。"
+  },
+  {
+    "id": "city-厦门",
+    "type": "城市",
+    "title": "厦门",
+    "subtitle": "中国 · 2025-07-06",
+    "description": "鼓浪屿、南普陀寺、环岛路与曾厝垵，海风是这座城最好的旁白。",
+    "href": "https://sehuri.github.io/travel-map/#memories",
+    "keywords": "厦门 中国 旅行 城市 足迹 鼓浪屿、南普陀寺、环岛路与曾厝垵，海风是这座城最好的旁白。"
+  },
+  {
+    "id": "city-福州",
+    "type": "城市",
+    "title": "福州",
+    "subtitle": "中国 · 2025-07-26",
+    "description": "三坊七巷、鼓山与平潭蓝眼泪，在有福之州等待海面发光。",
+    "href": "https://sehuri.github.io/travel-map/#memories",
+    "keywords": "福州 中国 旅行 城市 足迹 三坊七巷、鼓山与平潭蓝眼泪，在有福之州等待海面发光。"
+  },
+  {
+    "id": "city-香港",
+    "type": "城市",
+    "title": "香港",
+    "subtitle": "中国 · 2025-08-09",
+    "description": "维多利亚港、太平山顶与城市乐园，在山海之间感受东方之珠。",
+    "href": "https://sehuri.github.io/travel-map/#memories",
+    "keywords": "香港 中国 旅行 城市 足迹 维多利亚港、太平山顶与城市乐园，在山海之间感受东方之珠。"
+  },
+  {
+    "id": "city-深圳",
+    "type": "城市",
+    "title": "深圳",
+    "subtitle": "中国 · 2025-08-10",
+    "description": "世界之窗、欢乐谷与深圳湾公园，年轻城市拥有持续向前的活力。",
+    "href": "https://sehuri.github.io/travel-map/#memories",
+    "keywords": "深圳 中国 旅行 城市 足迹 世界之窗、欢乐谷与深圳湾公园，年轻城市拥有持续向前的活力。"
+  },
+  {
+    "id": "city-漳州",
+    "type": "城市",
+    "title": "漳州",
+    "subtitle": "中国 · 2025-08-20",
+    "description": "南靖土楼、东山岛与云水谣古镇，在闽南山海间穿行。",
+    "href": "https://sehuri.github.io/travel-map/#memories",
+    "keywords": "漳州 中国 旅行 城市 足迹 南靖土楼、东山岛与云水谣古镇，在闽南山海间穿行。"
+  },
+  {
+    "id": "city-渭南",
+    "type": "城市",
+    "title": "渭南",
+    "subtitle": "中国 · 2025-09-26",
+    "description": "华山奇险与韩城古韵，共同构成西岳脚下的壮阔。",
+    "href": "https://sehuri.github.io/travel-map/#memories",
+    "keywords": "渭南 中国 旅行 城市 足迹 华山奇险与韩城古韵，共同构成西岳脚下的壮阔。"
+  },
+  {
+    "id": "city-西安",
+    "type": "城市",
+    "title": "西安",
+    "subtitle": "中国 · 2025-09-27",
+    "description": "兵马俑、大雁塔、城墙与回民街，十三朝古都仍然鲜活。",
+    "href": "https://sehuri.github.io/travel-map/#memories",
+    "keywords": "西安 中国 旅行 城市 足迹 兵马俑、大雁塔、城墙与回民街，十三朝古都仍然鲜活。"
+  },
+  {
+    "id": "city-银川",
+    "type": "城市",
+    "title": "银川",
+    "subtitle": "中国 · 2025-09-30",
+    "description": "镇北堡、西夏王陵与沙湖，在塞上江南读另一种西北。",
+    "href": "https://sehuri.github.io/travel-map/#memories",
+    "keywords": "银川 中国 旅行 城市 足迹 镇北堡、西夏王陵与沙湖，在塞上江南读另一种西北。"
+  },
+  {
+    "id": "city-阿拉善盟",
+    "type": "城市",
+    "title": "阿拉善盟",
+    "subtitle": "中国 · 2025-10-01",
+    "description": "额济纳胡杨林、巴丹吉林与腾格里沙漠，终于看见大漠孤烟直。",
+    "href": "https://sehuri.github.io/travel-map/#memories",
+    "keywords": "阿拉善盟 中国 旅行 城市 足迹 额济纳胡杨林、巴丹吉林与腾格里沙漠，终于看见大漠孤烟直。"
+  },
+  {
+    "id": "city-威海",
+    "type": "城市",
+    "title": "威海",
+    "subtitle": "中国 · 2025-12-29",
+    "description": "刘公岛、成山头与国际海水浴场，在干净的海风里结束一年。",
+    "href": "https://sehuri.github.io/travel-map/#memories",
+    "keywords": "威海 中国 旅行 城市 足迹 刘公岛、成山头与国际海水浴场，在干净的海风里结束一年。"
+  },
+  {
+    "id": "city-大阪",
+    "type": "城市",
+    "title": "大阪",
+    "subtitle": "日本 · 2026-02-03",
+    "description": "大阪城、道顿堀、环球影城与心斋桥，关西旅程从热闹开始。",
+    "href": "https://sehuri.github.io/travel-map/#memories",
+    "keywords": "大阪 日本 旅行 城市 足迹 大阪城、道顿堀、环球影城与心斋桥，关西旅程从热闹开始。"
+  },
+  {
+    "id": "city-京都",
+    "type": "城市",
+    "title": "京都",
+    "subtitle": "日本 · 2026-02-06",
+    "description": "千本鸟居、清水寺、金阁寺与岚山竹林，在千年古都放慢脚步。",
+    "href": "https://sehuri.github.io/travel-map/#memories",
+    "keywords": "京都 日本 旅行 城市 足迹 千本鸟居、清水寺、金阁寺与岚山竹林，在千年古都放慢脚步。"
+  },
+  {
+    "id": "city-东京",
+    "type": "城市",
+    "title": "东京",
+    "subtitle": "日本 · 2026-02-09",
+    "description": "浅草寺、涩谷、秋叶原与东京塔，在秩序和繁华之间穿行。",
+    "href": "https://sehuri.github.io/travel-map/#memories",
+    "keywords": "东京 日本 旅行 城市 足迹 浅草寺、涩谷、秋叶原与东京塔，在秩序和繁华之间穿行。"
+  },
+  {
+    "id": "city-镰仓",
+    "type": "城市",
+    "title": "镰仓",
+    "subtitle": "日本 · 2026-02-12",
+    "description": "镰仓大佛、江之岛电车与湘南海岸，一场属于青春记忆的海滨散步。",
+    "href": "https://sehuri.github.io/travel-map/#memories",
+    "keywords": "镰仓 日本 旅行 城市 足迹 镰仓大佛、江之岛电车与湘南海岸，一场属于青春记忆的海滨散步。"
+  },
+  {
+    "id": "city-宁波",
+    "type": "城市",
+    "title": "宁波",
+    "subtitle": "中国 · 2026-02-18",
+    "description": "天一阁、东钱湖与老外滩，书藏古今，港通天下。",
+    "href": "https://sehuri.github.io/travel-map/#memories",
+    "keywords": "宁波 中国 旅行 城市 足迹 天一阁、东钱湖与老外滩，书藏古今，港通天下。"
+  },
+  {
+    "id": "city-台州",
+    "type": "城市",
+    "title": "台州",
+    "subtitle": "中国 · 2026-02-20",
+    "description": "神仙居、天台山国清寺与临海古城墙，山海之间自有仙气。",
+    "href": "https://sehuri.github.io/travel-map/#memories",
+    "keywords": "台州 中国 旅行 城市 足迹 神仙居、天台山国清寺与临海古城墙，山海之间自有仙气。"
+  },
+  {
+    "id": "city-六安",
+    "type": "城市",
+    "title": "六安",
+    "subtitle": "中国 · 2026-04-02",
+    "description": "天堂寨、万佛湖与大别山风景道，红色记忆与绿色山川交织。",
+    "href": "https://sehuri.github.io/travel-map/#memories",
+    "keywords": "六安 中国 旅行 城市 足迹 天堂寨、万佛湖与大别山风景道，红色记忆与绿色山川交织。"
+  },
+  {
+    "id": "city-长沙",
+    "type": "城市",
+    "title": "长沙",
+    "subtitle": "中国 · 2026-04-02",
+    "description": "岳麓山、橘子洲、太平街与湖南博物院，星城的夜晚总有热度。",
+    "href": "https://sehuri.github.io/travel-map/#memories",
+    "keywords": "长沙 中国 旅行 城市 足迹 岳麓山、橘子洲、太平街与湖南博物院，星城的夜晚总有热度。"
+  },
+  {
+    "id": "city-湘潭",
+    "type": "城市",
+    "title": "湘潭",
+    "subtitle": "中国 · 2026-04-03",
+    "description": "韶山与盘龙大观园，在伟人故里了解一段近现代历史。",
+    "href": "https://sehuri.github.io/travel-map/#memories",
+    "keywords": "湘潭 中国 旅行 城市 足迹 韶山与盘龙大观园，在伟人故里了解一段近现代历史。"
+  },
+  {
+    "id": "city-衡阳",
+    "type": "城市",
+    "title": "衡阳",
+    "subtitle": "中国 · 2026-04-04",
+    "description": "南岳衡山与石鼓书院，在雁城之南为春日旅程收尾。",
+    "href": "https://sehuri.github.io/travel-map/#memories",
+    "keywords": "衡阳 中国 旅行 城市 足迹 南岳衡山与石鼓书院，在雁城之南为春日旅程收尾。"
+  },
+  {
+    "id": "city-绍兴",
+    "type": "城市",
+    "title": "绍兴",
+    "subtitle": "中国 · 2026-06-26",
+    "description": "鲁迅故里、沈园、仓桥直街与东湖，在乌篷船与青石板路之间感受古越水乡。",
+    "href": "https://sehuri.github.io/travel-map/#memories",
+    "keywords": "绍兴 中国 旅行 城市 足迹 鲁迅故里、沈园、仓桥直街与东湖，在乌篷船与青石板路之间感受古越水乡。"
+  },
+  {
+    "id": "knowledge-Home.md",
+    "type": "知识",
+    "title": "我的个人知识 Wiki",
+    "subtitle": "知识花园",
+    "description": "本地、可追溯、可关联的个人知识库。最后更新：2026 07 29T15:20:14+08:00",
+    "href": "https://sehuri.github.io/Sehuri-knowledge-wiki/",
+    "keywords": "我的个人知识 Wiki Home.md 本地、可追溯、可关联的个人知识库。最后更新：2026 07 29T15:20:14+08:00"
+  },
+  {
+    "id": "knowledge-concepts/ai替代焦虑.md",
+    "type": "知识",
+    "title": "AI替代焦虑",
+    "subtitle": "概念",
+    "description": "自动生成的概念索引，共 1 条。",
+    "href": "https://sehuri.github.io/Sehuri-knowledge-wiki/",
+    "keywords": "AI替代焦虑 concepts 自动生成的概念索引，共 1 条。"
+  },
+  {
+    "id": "knowledge-concepts/kimi-k3.md",
+    "type": "知识",
+    "title": "Kimi K3",
+    "subtitle": "概念",
+    "description": "自动生成的概念索引，共 1 条。",
+    "href": "https://sehuri.github.io/Sehuri-knowledge-wiki/",
+    "keywords": "Kimi K3 concepts 自动生成的概念索引，共 1 条。"
+  },
+  {
+    "id": "knowledge-concepts/moe.md",
+    "type": "知识",
+    "title": "MoE",
+    "subtitle": "概念",
+    "description": "自动生成的概念索引，共 1 条。",
+    "href": "https://sehuri.github.io/Sehuri-knowledge-wiki/",
+    "keywords": "MoE concepts 自动生成的概念索引，共 1 条。"
+  },
+  {
+    "id": "knowledge-concepts/mvp.md",
+    "type": "知识",
+    "title": "MVP",
+    "subtitle": "概念",
+    "description": "自动生成的概念索引，共 1 条。",
+    "href": "https://sehuri.github.io/Sehuri-knowledge-wiki/",
+    "keywords": "MVP concepts 自动生成的概念索引，共 1 条。"
+  },
+  {
+    "id": "knowledge-concepts/rag.md",
+    "type": "知识",
+    "title": "RAG",
+    "subtitle": "概念",
+    "description": "自动生成的概念索引，共 1 条。",
+    "href": "https://sehuri.github.io/Sehuri-knowledge-wiki/",
+    "keywords": "RAG concepts 自动生成的概念索引，共 1 条。"
+  },
+  {
+    "id": "knowledge-concepts/workflow.md",
+    "type": "知识",
+    "title": "Workflow",
+    "subtitle": "概念",
+    "description": "自动生成的概念索引，共 1 条。",
+    "href": "https://sehuri.github.io/Sehuri-knowledge-wiki/",
+    "keywords": "Workflow concepts 自动生成的概念索引，共 1 条。"
+  },
+  {
+    "id": "knowledge-concepts/产品化.md",
+    "type": "知识",
+    "title": "产品化",
+    "subtitle": "概念",
+    "description": "自动生成的概念索引，共 1 条。",
+    "href": "https://sehuri.github.io/Sehuri-knowledge-wiki/",
+    "keywords": "产品化 concepts 自动生成的概念索引，共 1 条。"
+  },
+  {
+    "id": "knowledge-concepts/产品发现.md",
+    "type": "知识",
+    "title": "产品发现",
+    "subtitle": "概念",
+    "description": "自动生成的概念索引，共 1 条。",
+    "href": "https://sehuri.github.io/Sehuri-knowledge-wiki/",
+    "keywords": "产品发现 concepts 自动生成的概念索引，共 1 条。"
+  },
+  {
+    "id": "knowledge-concepts/原生多模态.md",
+    "type": "知识",
+    "title": "原生多模态",
+    "subtitle": "概念",
+    "description": "自动生成的概念索引，共 1 条。",
+    "href": "https://sehuri.github.io/Sehuri-knowledge-wiki/",
+    "keywords": "原生多模态 concepts 自动生成的概念索引，共 1 条。"
+  },
+  {
+    "id": "knowledge-concepts/古镇旅行.md",
+    "type": "知识",
+    "title": "古镇旅行",
+    "subtitle": "概念",
+    "description": "自动生成的概念索引，共 1 条。",
+    "href": "https://sehuri.github.io/Sehuri-knowledge-wiki/",
+    "keywords": "古镇旅行 concepts 自动生成的概念索引，共 1 条。"
+  },
+  {
+    "id": "knowledge-concepts/工具实践.md",
+    "type": "知识",
+    "title": "工具实践",
+    "subtitle": "概念",
+    "description": "自动生成的概念索引，共 1 条。",
+    "href": "https://sehuri.github.io/Sehuri-knowledge-wiki/",
+    "keywords": "工具实践 concepts 自动生成的概念索引，共 1 条。"
+  },
+  {
+    "id": "knowledge-concepts/开放权重.md",
+    "type": "知识",
+    "title": "开放权重",
+    "subtitle": "概念",
+    "description": "自动生成的概念索引，共 1 条。",
+    "href": "https://sehuri.github.io/Sehuri-knowledge-wiki/",
+    "keywords": "开放权重 concepts 自动生成的概念索引，共 1 条。"
+  },
+  {
+    "id": "knowledge-concepts/技术泡沫.md",
+    "type": "知识",
+    "title": "技术泡沫",
+    "subtitle": "概念",
+    "description": "自动生成的概念索引，共 1 条。",
+    "href": "https://sehuri.github.io/Sehuri-knowledge-wiki/",
+    "keywords": "技术泡沫 concepts 自动生成的概念索引，共 1 条。"
+  },
+  {
+    "id": "knowledge-concepts/推理基础设施.md",
+    "type": "知识",
+    "title": "推理基础设施",
+    "subtitle": "概念",
+    "description": "自动生成的概念索引，共 1 条。",
+    "href": "https://sehuri.github.io/Sehuri-knowledge-wiki/",
+    "keywords": "推理基础设施 concepts 自动生成的概念索引，共 1 条。"
+  },
+  {
+    "id": "knowledge-concepts/旅行摄影.md",
+    "type": "知识",
+    "title": "旅行摄影",
+    "subtitle": "概念",
+    "description": "自动生成的概念索引，共 1 条。",
+    "href": "https://sehuri.github.io/Sehuri-knowledge-wiki/",
+    "keywords": "旅行摄影 concepts 自动生成的概念索引，共 1 条。"
+  },
+  {
+    "id": "knowledge-concepts/环洱海骑行.md",
+    "type": "知识",
+    "title": "环洱海骑行",
+    "subtitle": "概念",
+    "description": "自动生成的概念索引，共 1 条。",
+    "href": "https://sehuri.github.io/Sehuri-knowledge-wiki/",
+    "keywords": "环洱海骑行 concepts 自动生成的概念索引，共 1 条。"
+  },
+  {
+    "id": "knowledge-concepts/知识治理.md",
+    "type": "知识",
+    "title": "知识治理",
+    "subtitle": "概念",
+    "description": "自动生成的概念索引，共 1 条。",
+    "href": "https://sehuri.github.io/Sehuri-knowledge-wiki/",
+    "keywords": "知识治理 concepts 自动生成的概念索引，共 1 条。"
+  },
+  {
+    "id": "knowledge-concepts/能力边界.md",
+    "type": "知识",
+    "title": "能力边界",
+    "subtitle": "概念",
+    "description": "自动生成的概念索引，共 1 条。",
+    "href": "https://sehuri.github.io/Sehuri-knowledge-wiki/",
+    "keywords": "能力边界 concepts 自动生成的概念索引，共 1 条。"
+  },
+  {
+    "id": "knowledge-concepts/行程规划.md",
+    "type": "知识",
+    "title": "行程规划",
+    "subtitle": "概念",
+    "description": "自动生成的概念索引，共 1 条。",
+    "href": "https://sehuri.github.io/Sehuri-knowledge-wiki/",
+    "keywords": "行程规划 concepts 自动生成的概念索引，共 1 条。"
+  },
+  {
+    "id": "knowledge-concepts/长上下文.md",
+    "type": "知识",
+    "title": "长上下文",
+    "subtitle": "概念",
+    "description": "自动生成的概念索引，共 1 条。",
+    "href": "https://sehuri.github.io/Sehuri-knowledge-wiki/",
+    "keywords": "长上下文 concepts 自动生成的概念索引，共 1 条。"
+  },
+  {
+    "id": "knowledge-concepts/验收指标.md",
+    "type": "知识",
+    "title": "验收指标",
+    "subtitle": "概念",
+    "description": "自动生成的概念索引，共 1 条。",
+    "href": "https://sehuri.github.io/Sehuri-knowledge-wiki/",
+    "keywords": "验收指标 concepts 自动生成的概念索引，共 1 条。"
+  },
+  {
+    "id": "knowledge-people/jackshrine.md",
+    "type": "知识",
+    "title": "JackShrINe",
+    "subtitle": "知识花园",
+    "description": "自动生成的人物索引，共 2 条。",
+    "href": "https://sehuri.github.io/Sehuri-knowledge-wiki/",
+    "keywords": "JackShrINe people 自动生成的人物索引，共 2 条。"
+  },
+  {
+    "id": "knowledge-people/moonshot-ai.md",
+    "type": "知识",
+    "title": "Moonshot AI",
+    "subtitle": "知识花园",
+    "description": "自动生成的人物索引，共 1 条。",
+    "href": "https://sehuri.github.io/Sehuri-knowledge-wiki/",
+    "keywords": "Moonshot AI people 自动生成的人物索引，共 1 条。"
+  },
+  {
+    "id": "knowledge-people/草莓啵啵.md",
+    "type": "知识",
+    "title": "草莓啵啵🍓",
+    "subtitle": "知识花园",
+    "description": "自动生成的人物索引，共 1 条。",
+    "href": "https://sehuri.github.io/Sehuri-knowledge-wiki/",
+    "keywords": "草莓啵啵🍓 people 自动生成的人物索引，共 1 条。"
+  },
+  {
+    "id": "knowledge-platforms/wechat-article.md",
+    "type": "知识",
+    "title": "wechat article",
+    "subtitle": "知识花园",
+    "description": "自动生成的平台索引，共 2 条。",
+    "href": "https://sehuri.github.io/Sehuri-knowledge-wiki/",
+    "keywords": "wechat-article platforms 自动生成的平台索引，共 2 条。"
+  },
+  {
+    "id": "knowledge-platforms/x.md",
+    "type": "知识",
+    "title": "x",
+    "subtitle": "知识花园",
+    "description": "自动生成的平台索引，共 1 条。",
+    "href": "https://sehuri.github.io/Sehuri-knowledge-wiki/",
+    "keywords": "x platforms 自动生成的平台索引，共 1 条。"
+  },
+  {
+    "id": "knowledge-platforms/xiaohongshu.md",
+    "type": "知识",
+    "title": "xiaohongshu",
+    "subtitle": "知识花园",
+    "description": "自动生成的平台索引，共 1 条。",
+    "href": "https://sehuri.github.io/Sehuri-knowledge-wiki/",
+    "keywords": "xiaohongshu platforms 自动生成的平台索引，共 1 条。"
+  },
+  {
+    "id": "knowledge-sources/wechat-article/2026/2026-07-29-gpt-5-6来了-而许多人还停留在石器时代-31a1ebac68b2.md",
+    "type": "知识",
+    "title": "GPT 5.6来了，而许多人还停留在石器时代",
+    "subtitle": "来源收藏",
+    "description": "来源：wechat article · 打开原内容",
+    "href": "https://sehuri.github.io/Sehuri-knowledge-wiki/",
+    "keywords": "GPT-5.6来了，而许多人还停留在石器时代 sources 来源：wechat article · 打开原内容"
+  },
+  {
+    "id": "knowledge-sources/wechat-article/2026/2026-07-29-销售签单-客户提需求-实施开始干-狗屁不通-7af5b45d7223.md",
+    "type": "知识",
+    "title": "销售签单，客户提需求，实施开始干：狗屁不通",
+    "subtitle": "来源收藏",
+    "description": "来源：wechat article · 打开原内容",
+    "href": "https://sehuri.github.io/Sehuri-knowledge-wiki/",
+    "keywords": "销售签单，客户提需求，实施开始干：狗屁不通 sources 来源：wechat article · 打开原内容"
+  },
+  {
+    "id": "knowledge-sources/x/2026/2026-07-29-kimi-k3-开放模型权重与技术报告-09986f306f14.md",
+    "type": "知识",
+    "title": "Kimi K3 开放模型权重与技术报告",
+    "subtitle": "来源收藏",
+    "description": "来源：x · 打开原内容",
+    "href": "https://sehuri.github.io/Sehuri-knowledge-wiki/",
+    "keywords": "Kimi K3 开放模型权重与技术报告 sources 来源：x · 打开原内容"
+  },
+  {
+    "id": "knowledge-sources/xiaohongshu/2026/2026-07-29-云南旅游攻略-大理-丽江-1fb561229eea.md",
+    "type": "知识",
+    "title": "云南旅游攻略（大理+丽江）",
+    "subtitle": "来源收藏",
+    "description": "来源：xiaohongshu · 打开原内容",
+    "href": "https://sehuri.github.io/Sehuri-knowledge-wiki/",
+    "keywords": "云南旅游攻略（大理+丽江） sources 来源：xiaohongshu · 打开原内容"
+  },
+  {
+    "id": "knowledge-topics/agent.md",
+    "type": "知识",
+    "title": "Agent",
+    "subtitle": "主题",
+    "description": "自动生成的主题索引，共 1 条。",
+    "href": "https://sehuri.github.io/Sehuri-knowledge-wiki/",
+    "keywords": "Agent topics 自动生成的主题索引，共 1 条。"
+  },
+  {
+    "id": "knowledge-topics/ai工具.md",
+    "type": "知识",
+    "title": "AI工具",
+    "subtitle": "主题",
+    "description": "自动生成的主题索引，共 1 条。",
+    "href": "https://sehuri.github.io/Sehuri-knowledge-wiki/",
+    "keywords": "AI工具 topics 自动生成的主题索引，共 1 条。"
+  },
+  {
+    "id": "knowledge-topics/ai模型.md",
+    "type": "知识",
+    "title": "AI模型",
+    "subtitle": "主题",
+    "description": "自动生成的主题索引，共 1 条。",
+    "href": "https://sehuri.github.io/Sehuri-knowledge-wiki/",
+    "keywords": "AI模型 topics 自动生成的主题索引，共 1 条。"
+  },
+  {
+    "id": "knowledge-topics/ai采用.md",
+    "type": "知识",
+    "title": "AI采用",
+    "subtitle": "主题",
+    "description": "自动生成的主题索引，共 1 条。",
+    "href": "https://sehuri.github.io/Sehuri-knowledge-wiki/",
+    "keywords": "AI采用 topics 自动生成的主题索引，共 1 条。"
+  },
+  {
+    "id": "knowledge-topics/ai项目交付.md",
+    "type": "知识",
+    "title": "AI项目交付",
+    "subtitle": "主题",
+    "description": "自动生成的主题索引，共 1 条。",
+    "href": "https://sehuri.github.io/Sehuri-knowledge-wiki/",
+    "keywords": "AI项目交付 topics 自动生成的主题索引，共 1 条。"
+  },
+  {
+    "id": "knowledge-topics/gpt-5-6.md",
+    "type": "知识",
+    "title": "GPT 5.6",
+    "subtitle": "主题",
+    "description": "自动生成的主题索引，共 1 条。",
+    "href": "https://sehuri.github.io/Sehuri-knowledge-wiki/",
+    "keywords": "GPT-5.6 topics 自动生成的主题索引，共 1 条。"
+  },
+  {
+    "id": "knowledge-topics/丽江.md",
+    "type": "知识",
+    "title": "丽江",
+    "subtitle": "主题",
+    "description": "自动生成的主题索引，共 1 条。",
+    "href": "https://sehuri.github.io/Sehuri-knowledge-wiki/",
+    "keywords": "丽江 topics 自动生成的主题索引，共 1 条。"
+  },
+  {
+    "id": "knowledge-topics/云南旅游.md",
+    "type": "知识",
+    "title": "云南旅游",
+    "subtitle": "主题",
+    "description": "自动生成的主题索引，共 1 条。",
+    "href": "https://sehuri.github.io/Sehuri-knowledge-wiki/",
+    "keywords": "云南旅游 topics 自动生成的主题索引，共 1 条。"
+  },
+  {
+    "id": "knowledge-topics/产品管理.md",
+    "type": "知识",
+    "title": "产品管理",
+    "subtitle": "主题",
+    "description": "自动生成的主题索引，共 1 条。",
+    "href": "https://sehuri.github.io/Sehuri-knowledge-wiki/",
+    "keywords": "产品管理 topics 自动生成的主题索引，共 1 条。"
+  },
+  {
+    "id": "knowledge-topics/企业ai.md",
+    "type": "知识",
+    "title": "企业AI",
+    "subtitle": "主题",
+    "description": "自动生成的主题索引，共 3 条。",
+    "href": "https://sehuri.github.io/Sehuri-knowledge-wiki/",
+    "keywords": "企业AI topics 自动生成的主题索引，共 3 条。"
+  },
+  {
+    "id": "knowledge-topics/大理.md",
+    "type": "知识",
+    "title": "大理",
+    "subtitle": "主题",
+    "description": "自动生成的主题索引，共 1 条。",
+    "href": "https://sehuri.github.io/Sehuri-knowledge-wiki/",
+    "keywords": "大理 topics 自动生成的主题索引，共 1 条。"
+  },
+  {
+    "id": "knowledge-topics/开源模型.md",
+    "type": "知识",
+    "title": "开源模型",
+    "subtitle": "主题",
+    "description": "自动生成的主题索引，共 1 条。",
+    "href": "https://sehuri.github.io/Sehuri-knowledge-wiki/",
+    "keywords": "开源模型 topics 自动生成的主题索引，共 1 条。"
+  },
+  {
+    "id": "knowledge-topics/旅行攻略.md",
+    "type": "知识",
+    "title": "旅行攻略",
+    "subtitle": "主题",
+    "description": "自动生成的主题索引，共 1 条。",
+    "href": "https://sehuri.github.io/Sehuri-knowledge-wiki/",
+    "keywords": "旅行攻略 topics 自动生成的主题索引，共 1 条。"
+  },
+  {
+    "id": "knowledge-topics/洱海.md",
+    "type": "知识",
+    "title": "洱海",
+    "subtitle": "主题",
+    "description": "自动生成的主题索引，共 1 条。",
+    "href": "https://sehuri.github.io/Sehuri-knowledge-wiki/",
+    "keywords": "洱海 topics 自动生成的主题索引，共 1 条。"
+  },
+  {
+    "id": "knowledge-topics/玉龙雪山.md",
+    "type": "知识",
+    "title": "玉龙雪山",
+    "subtitle": "主题",
+    "description": "自动生成的主题索引，共 1 条。",
+    "href": "https://sehuri.github.io/Sehuri-knowledge-wiki/",
+    "keywords": "玉龙雪山 topics 自动生成的主题索引，共 1 条。"
+  },
+  {
+    "id": "knowledge-topics/知识工程.md",
+    "type": "知识",
+    "title": "知识工程",
+    "subtitle": "主题",
+    "description": "自动生成的主题索引，共 1 条。",
+    "href": "https://sehuri.github.io/Sehuri-knowledge-wiki/",
+    "keywords": "知识工程 topics 自动生成的主题索引，共 1 条。"
+  },
+  {
+    "id": "knowledge-topics/需求管理.md",
+    "type": "知识",
+    "title": "需求管理",
+    "subtitle": "主题",
+    "description": "自动生成的主题索引，共 1 条。",
+    "href": "https://sehuri.github.io/Sehuri-knowledge-wiki/",
+    "keywords": "需求管理 topics 自动生成的主题索引，共 1 条。"
+  },
+  {
+    "id": "knowledge-web/README.md",
+    "type": "知识",
+    "title": "vinext starter",
+    "subtitle": "知识花园",
+    "description": "A clean full stack starter running on vinext, with optional Cloudflare D1 and Drizzle support.",
+    "href": "https://sehuri.github.io/Sehuri-knowledge-wiki/",
+    "keywords": "vinext-starter web A clean full stack starter running on vinext, with optional Cloudflare D1 and Drizzle support."
+  }
+]
