@@ -2956,7 +2956,7 @@ footer small {
 .note-dialog > a { display: inline-block; margin-top: 2.5rem; padding-bottom: .3rem; border-bottom: 1px solid currentColor; color: #628d94; font-size: .68rem; }
 
 html[data-theme="day"] body { background: #eef5f3; color: #102b36; }
-html[data-theme="day"] .hero { color: #102b36; background-color: #b9deef; background: linear-gradient(90deg,rgba(238,249,250,.78),rgba(238,249,250,.27) 43%,rgba(255,255,255,.02) 72%),linear-gradient(180deg,rgba(143,196,220,.6) 0 2.7rem,transparent 7rem),url("/shenhuili-day.png") center 2.6rem / cover no-repeat; }
+html[data-theme="day"] .hero { color: #102b36; background-color: #b9deef; background: linear-gradient(90deg,rgba(238,249,250,.78),rgba(238,249,250,.27) 43%,rgba(255,255,255,.02) 72%),url("/shenhuili-day.png") center center / cover no-repeat; }
 html[data-theme="day"] .hero::before { background: linear-gradient(90deg,rgba(233,247,248,.55),transparent) !important; }
 html[data-theme="day"] .hero-shade { background: linear-gradient(180deg,rgba(255,255,255,.02),rgba(8,45,58,.08)); }
 html[data-theme="day"] .site-nav { border-color: rgba(13,55,68,.14); background: rgba(233,247,248,.26); }
@@ -3027,7 +3027,7 @@ html[data-theme="day"] .search-group a:hover { background: rgba(255,255,255,.5);
 @media (max-width: 840px) {
   .notes-heading { grid-template-columns: 1fr; }
   .notes-heading > p { justify-self: start; }
-  html[data-theme="day"] .hero { background-position: center,center,62% 2.6rem; }
+  html[data-theme="day"] .hero { background-position: center,62% center; }
 }
 
 @media (max-width: 620px) {
@@ -3042,7 +3042,7 @@ html[data-theme="day"] .search-group a:hover { background: rgba(255,255,255,.5);
   .note-featured { grid-column: auto; min-height: 25rem; }
   .note-featured h3 { font-size: 2.8rem; }
   .garden-notes { padding: 5rem 1rem; }
-  html[data-theme="day"] .hero { background-position: center,center,66% 2.4rem; }
+  html[data-theme="day"] .hero { background-position: center,66% center; }
   html[data-theme="day"] .day-shadow { right: 8%; width: 9rem; }
 }
 
