@@ -2973,8 +2973,7 @@ html[data-theme="day"] .hero-moon-hit, html[data-theme="day"] .moon-guide { disp
 html[data-theme="day"] .day-motifs { display: block; position: absolute; z-index: 2; inset: 0; pointer-events: none; }
 html[data-theme="day"] .day-bird { position: absolute; left: 22%; top: 16%; color: rgba(24,75,86,.55); font-family: Georgia,serif; font-size: 2rem; animation: dayBird 9s ease-in-out infinite; }
 html[data-theme="day"] .day-shadow { position: absolute; right: 17%; bottom: 5%; width: 14rem; height: 2.2rem; border-radius: 50%; background: rgba(20,48,52,.16); filter: blur(12px); transform: rotate(-7deg); }
-html[data-theme="day"] .day-unicorn { position: absolute; right: 4%; bottom: 4%; color: #af842d; font-size: 2.1rem; text-shadow: 0 .3rem 1rem rgba(119,82,18,.24); }
-html[data-theme="day"] .day-motifs p { position: absolute; right: 3.5%; bottom: 2%; margin: 0; color: rgba(46,78,72,.48); font-size: .46rem; letter-spacing: .2em; transform: translateY(1.2rem); }
+html[data-theme="day"] .day-motifs p { position: absolute; right: 17%; bottom: 2%; margin: 0; color: rgba(46,78,72,.48); font-size: .46rem; letter-spacing: .2em; transform: translateY(1.2rem); }
 
 html[data-theme="day"] .spaces, html[data-theme="day"] .garden-growth, html[data-theme="day"] .films { background: linear-gradient(145deg,#e9f4f1,#e8edf0); color: #102b36; }
 html[data-theme="day"] .section-heading > p, html[data-theme="day"] .films-heading > p, html[data-theme="day"] .growth-heading > p { color: rgba(7,38,48,.56); }

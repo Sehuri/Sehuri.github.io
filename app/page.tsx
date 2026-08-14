@@ -114,7 +114,7 @@ export default function Home() {
 
         <div className="hero-shade" aria-hidden="true" />
         <HeroMoonExperience />
-        <div className="day-motifs" aria-hidden="true"><span className="day-bird">⌁</span><span className="day-shadow" /><span className="day-unicorn">♞</span><p>THE SHADOW RETURNS</p></div>
+        <div className="day-motifs" aria-hidden="true"><span className="day-bird">⌁</span><span className="day-shadow" /><p>THE SHADOW RETURNS</p></div>
         <div className="hero-content">
           <p className="eyebrow">SEHURI&apos;S DIGITAL GARDEN</p>
           <h1>
