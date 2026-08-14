@@ -15,6 +15,7 @@ function pickTrack(side: MoonSide, previous?: ConceptTrack | null) {
 export default function HeroMoonExperience() {
   const [side, setSide] = useState<MoonSide | null>(null);
   const [track, setTrack] = useState<ConceptTrack | null>(null);
+  const [dayNotice, setDayNotice] = useState(false);
 
   const enterWorld = (nextSide: MoonSide) => {
     setSide(nextSide);
@@ -38,6 +39,28 @@ export default function HeroMoonExperience() {
     };
   }, [track]);
 
+  useEffect(() => {
+    const showDayNotice = (event: MouseEvent) => {
+      const target = event.target instanceof Element ? event.target.closest<HTMLAnchorElement>('a[href="#moon-guide"]') : null;
+      if (!target || document.documentElement.dataset.theme !== "day") return;
+      event.preventDefault();
+      setDayNotice(true);
+    };
+    document.addEventListener("click", showDayNotice);
+    return () => document.removeEventListener("click", showDayNotice);
+  }, []);
+
+  useEffect(() => {
+    if (!dayNotice) return;
+    const timer = window.setTimeout(() => setDayNotice(false), 6000);
+    return () => window.clearTimeout(timer);
+  }, [dayNotice]);
+
+  const switchToNight = () => {
+    document.querySelector<HTMLButtonElement>(".theme-trigger")?.click();
+    setDayNotice(false);
+  };
+
   const section = side === null ? null : featuredTrackSections[side];
 
   return (
@@ -46,6 +69,15 @@ export default function HeroMoonExperience() {
         <span>尝试点击背景里的两个月亮，会进入不同世界。</span>
         <a href="#top" aria-label="关闭双月提示">知道了</a>
       </div>
+
+      {dayNotice ? (
+        <aside className="day-moon-notice" role="status" aria-live="polite">
+          <span aria-hidden="true">☼</span>
+          <div><small>DAYLIGHT</small><p>太阳还没有落下，两个月亮的世界还未出现。</p></div>
+          <button type="button" onClick={switchToNight}>切换到夜晚</button>
+          <button className="day-moon-notice-close" type="button" onClick={() => setDayNotice(false)} aria-label="关闭提示">×</button>
+        </aside>
+      ) : null}
 
       <button className="hero-moon-hit hero-moon-cold" type="button" onClick={() => enterWorld(0)} aria-label="点击上方月亮，进入冷酷仙境">
         <span>冷酷仙境</span>

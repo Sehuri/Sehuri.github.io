@@ -2975,6 +2975,16 @@ html[data-theme="day"] .day-bird { position: absolute; left: 22%; top: 16%; colo
 html[data-theme="day"] .day-shadow { position: absolute; right: 17%; bottom: 5%; width: 14rem; height: 2.2rem; border-radius: 50%; background: rgba(20,48,52,.16); filter: blur(12px); transform: rotate(-7deg); }
 html[data-theme="day"] .day-motifs p { position: absolute; right: 17%; bottom: 2%; margin: 0; color: rgba(46,78,72,.48); font-size: .46rem; letter-spacing: .2em; transform: translateY(1.2rem); }
 
+.day-moon-notice { position: fixed; z-index: 70; top: 5rem; left: 50%; display: grid; grid-template-columns: auto 1fr auto auto; align-items: center; gap: 1rem; width: min(43rem,calc(100vw - 2rem)); padding: .9rem 1rem; border: 1px solid rgba(20,62,73,.2); background: rgba(239,248,246,.94); color: #153846; box-shadow: 0 1.2rem 3rem rgba(20,58,70,.16); backdrop-filter: blur(14px); transform: translateX(-50%); animation: dayNoticeIn .35s ease both; }
+.day-moon-notice > span { display: grid; place-items: center; width: 2.45rem; aspect-ratio: 1; border: 1px solid rgba(20,62,73,.22); border-radius: 50%; color: #a57b32; font-size: 1rem; }
+.day-moon-notice small { color: rgba(21,56,70,.42); font-size: .48rem; letter-spacing: .2em; }
+.day-moon-notice p { margin: .18rem 0 0; font-family: "Songti SC","STSong",serif; font-size: .78rem; }
+.day-moon-notice button { padding: .58rem .75rem; border: 1px solid rgba(20,62,73,.25); background: transparent; color: inherit; font: inherit; font-size: .58rem; cursor: pointer; }
+.day-moon-notice button:hover, .day-moon-notice button:focus-visible { background: #153846; color: #f4f7ef; }
+.day-moon-notice .day-moon-notice-close { width: 2rem; padding: .35rem; border-color: transparent; font-size: 1rem; }
+
+@keyframes dayNoticeIn { from { opacity: 0; transform: translate(-50%,-.7rem); } to { opacity: 1; transform: translate(-50%,0); } }
+
 html[data-theme="day"] .spaces, html[data-theme="day"] .garden-growth, html[data-theme="day"] .films { background: linear-gradient(145deg,#e9f4f1,#e8edf0); color: #102b36; }
 html[data-theme="day"] .section-heading > p, html[data-theme="day"] .films-heading > p, html[data-theme="day"] .growth-heading > p { color: rgba(7,38,48,.56); }
 html[data-theme="day"] .space-grid, html[data-theme="day"] .space-card, html[data-theme="day"] .film-grid, html[data-theme="day"] .film-card, html[data-theme="day"] .growth-now, html[data-theme="day"] .growth-stat-grid, html[data-theme="day"] .growth-stat-grid a, html[data-theme="day"] .growth-timeline ol, html[data-theme="day"] .growth-timeline li { border-color: rgba(7,38,48,.14); }
@@ -3034,4 +3044,10 @@ html[data-theme="day"] .search-group a:hover { background: rgba(255,255,255,.5);
   .garden-notes { padding: 5rem 1rem; }
   html[data-theme="day"] .hero { background-position: center,center,66% 2.4rem; }
   html[data-theme="day"] .day-shadow { right: 8%; width: 9rem; }
+}
+
+@media (max-width: 620px) {
+  .day-moon-notice { top: 4.35rem; grid-template-columns: auto 1fr auto; gap: .7rem; }
+  .day-moon-notice > button:not(.day-moon-notice-close) { grid-column: 2 / 3; justify-self: start; }
+  .day-moon-notice-close { grid-column: 3; grid-row: 1; }
 }
