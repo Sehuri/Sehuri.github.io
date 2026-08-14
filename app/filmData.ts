@@ -17,7 +17,7 @@ export type Film = {
 
 const poster = (slug: string) => `/movie-posters/${slug}.jpg`;
 
-export const films: Film[] = [
+export const films: Film[] = ([
   { slug: "gone-with-the-wind", title: "乱世佳人", originalTitle: "Gone with the Wind", year: "1939", sortYear: 1939, director: "维克多·弗莱明", country: "美国", genres: ["爱情", "史诗"], poster: poster("gone-with-the-wind"), summary: "美国南北战争前后，斯嘉丽在家园、爱情与时代巨变之间一次次失去，又一次次重新站起。", note: "宏大历史最终落在一个人不肯被命运击倒的生命力上。" },
   { slug: "2001-a-space-odyssey", title: "2001太空漫游", originalTitle: "2001: A Space Odyssey", year: "1968", sortYear: 1968, director: "斯坦利·库布里克", country: "英国 / 美国", genres: ["科幻", "哲思"], poster: poster("2001-a-space-odyssey"), summary: "一块神秘黑石贯穿人类文明的黎明与宇宙远航，人工智能 HAL 则让探索变成关于意识与进化的追问。", note: "它不是解释宇宙，而是让人真正感到宇宙的寂静与尺度。" },
   { slug: "the-godfather", title: "教父", originalTitle: "The Godfather", year: "1972", sortYear: 1972, director: "弗朗西斯·福特·科波拉", country: "美国", genres: ["犯罪", "家族"], poster: poster("the-godfather"), summary: "柯里昂家族的权力交接，让原本远离家族生意的迈克尔一步步走进父亲留下的黑暗世界。", note: "权力、家庭与命运在同一张餐桌上缓慢收紧。" },
@@ -90,6 +90,6 @@ export const films: Film[] = [
   { slug: "loki-season-2", title: "洛基 第二季", originalTitle: "Loki · Season 2", year: "2023", sortYear: 2023, director: "埃里克·马丁 / 贾斯汀·本森 / 亚伦·穆尔黑德", country: "美国", genres: ["科幻", "冒险"], poster: poster("loki-season-2"), format: "电视剧", summary: "时间线持续分裂，洛基在过去与未来之间反复滑落，为朋友和无数世界寻找一个不再依赖牺牲的出口。", note: "曾经只想坐上王座的人，最后学会独自承担王座背后的时间。" },
   { slug: "the-long-season", title: "漫长的季节", originalTitle: "The Long Season", year: "2023", sortYear: 2023, director: "辛爽", country: "中国", genres: ["悬疑", "家庭", "剧情"], poster: poster("the-long-season"), format: "电视剧", summary: "一座东北小城里，三个家庭被一桩旧案牵住近二十年；火车向前，记忆却一次次把人带回那个秋天。", note: "漫长的并非季节，而是普通人带着失去继续往前走的时间。" },
   { slug: "johnny-keep-walking", title: "年会不能停！", originalTitle: "Johnny Keep Walking!", year: "2023", sortYear: 2023, director: "董润年", country: "中国", genres: ["喜剧", "职场"], poster: poster("johnny-keep-walking"), summary: "钳工胡建林意外被调入集团总部，在荒诞的职场规则与裁员风波中一路误打误撞，最终替普通员工说出真话。", note: "笑声背后是每个打工人熟悉的无奈，而荒诞最有力的出口仍是把人当作人。" },
-].sort((a, b) => a.sortYear - b.sortYear || a.title.localeCompare(b.title, "zh-CN"));
+] satisfies Film[]).sort((a, b) => a.sortYear - b.sortYear || a.title.localeCompare(b.title, "zh-CN"));
 
 export const filmCount = films.length;
