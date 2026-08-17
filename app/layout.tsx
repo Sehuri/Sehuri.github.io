@@ -6,8 +6,12 @@ export const metadata: Metadata = {
   title: "深绘里｜Sehuri's Digital Garden",
   description: "在旅行、阅读、知识、音乐与两个月亮之间，收藏我看见的世界。",
   icons: {
-    icon: "/favicon.svg",
-    shortcut: "/favicon.svg",
+    icon: [
+      { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-shenhuili.png", sizes: "512x512", type: "image/png" },
+    ],
+    shortcut: "/favicon-32.png",
+    apple: "/apple-touch-icon.png",
   },
   openGraph: {
     title: "深绘里｜Sehuri's Digital Garden",
