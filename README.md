@@ -1,98 +1,114 @@
-# vinext-starter
+# 深绘里｜Sehuri's Digital Garden
 
-A clean full-stack starter running on
-[vinext](https://github.com/cloudflare/vinext), with optional Cloudflare D1 and
-Drizzle support.
+> 在自己的世界里，慢慢生长。
 
-## Prerequisites
+![深绘里个人网站预览](./public/og.png)
 
-- Node.js `>=22.13.0`
+「深绘里」是我的个人数字庭院。
 
-## Quick Start
+我把旅行、阅读、知识、音乐、影视和随手写下的文字放在这里，让散落在不同地方的收藏拥有同一个入口。它不是一份静止的个人简历，而是一个会随着生活持续变化的长期项目。
+
+## 访问网站
+
+- GitHub Pages：[https://sehuri.github.io](https://sehuri.github.io)
+- ChatGPT Sites：[https://shenhuili-digital-garden.shenhuil.chatgpt.site](https://shenhuili-digital-garden.shenhuil.chatgpt.site)
+
+## 网站里的空间
+
+### 01 · 远行
+
+记录走过的城市、旅行照片和沿途记忆，并在一张会持续生长的地图上重新遇见它们。
+
+[打开旅行地图](https://sehuri.github.io/travel-map/)
+
+### 02 · 阅迹
+
+连接微信读书，展示我的书架、阅读进度、笔记与划线。阅读数据会通过微信读书工具持续同步。
+
+[走进阅览室](https://yueji-reading-room.shenhuil.chatgpt.site)
+
+### 03 · 知庭
+
+我的个人知识 Wiki。文章、视频与公开链接经过提取、转录和整理后，会成为知识花园里可以继续关联的内容。
+
+[进入知识花园](https://sehuri.github.io/Sehuri-knowledge-wiki/)
+
+### 04 · 听潮
+
+收藏喜欢的唱片，按发行时间展示专辑封面、歌手、年份、作品介绍、私人推荐语和曲目列表。
+
+其中的 `1Q84 OST` 是一张特别的双面选集：
+
+- 冷酷仙境：凝视现实、时代、战争与欲望。
+- 世界尽头：保存爱、故乡、成长与理想生活。
+
+### 05 · 光影
+
+按首映时间收藏喜欢的电影与电视剧。每部作品都可以查看海报、主创、类型、内容简介和私人注解，系列作品还会展示季度或影片列表。
+
+### 06 · 庭院手记
+
+一个比博客更轻的随记空间，用来写旅行片段、阅读随想、听歌时刻，以及那些不想让它消失的念头。
+
+### 07 · むらかみ はるき（Murakami Haruki）
+
+单独留给村上春树的书房，整理长篇小说、短篇小说集、作品年图、作品详情、私人珍藏和阅读入门路线。
+
+我最喜欢的作品是《舞！舞！舞！》与《世界尽头与冷酷仙境》。
+
+## 特别功能
+
+- **两个月亮**：夜晚首屏中的两个月亮分别通往“冷酷仙境”和“世界尽头”，会从对应歌单中随机选择一首歌曲。
+- **今日推荐**：每天从足迹、书架、知识、唱片和影视收藏中各推荐一项。
+- **随便走走**：随机选择网站中的一个空间，开始一次没有预设目的的漫游。
+- **全局搜索**：一个搜索框查找城市、书籍、知识、唱片、电影、电视剧与庭院手记。
+- **白天与夜晚**：默认是有两个月亮的深夜主题，也可以切换到海风、云与归来之影组成的白天庭院。
+- **庭院年轮**：记录网站当前收藏的数据，以及每一次新增模块和功能的成长时间线。
+
+## 独立项目与更新方式
+
+旅行地图、阅览室和知识 Wiki 都是独立维护、独立部署的项目，个人网站通过它们的线上地址进行连接。
+
+因此：
+
+- 独立项目发布新版本后，从个人网站进入时会直接看到该项目的最新版。
+- 独立项目的代码和内容不需要重复复制进本仓库。
+- 首页上写死的数量、推荐数据或介绍文字，不会自动从其他仓库读取，需要在本项目中同步调整。
+
+这样的结构让每个空间都可以单独生长，同时又通过主页汇入同一座庭院。
+
+## 本地运行
+
+需要 Node.js `>=22.13.0`。
 
 ```bash
 npm install
 npm run dev
-npm run build
 ```
 
-This starter does not use `wrangler.jsonc`.
+打开 [http://localhost:3000](http://localhost:3000) 即可查看本地页面。
 
-## Included Shape
+常用命令：
 
-- edit site code under `app/`
-- `.openai/hosting.json` declares optional Sites D1 and R2 bindings
-- `vite.config.ts` simulates declared bindings for local development
-- `db/schema.ts` starts intentionally empty
-- `examples/d1/` contains an optional D1 example surface
-- `drizzle.config.ts` supports local migration generation when needed
-
-## Workspace Auth Headers
-
-OpenAI workspace sites can read the current user's email from
-`oai-authenticated-user-email`.
-
-SIWC-authenticated workspace sites may also receive
-`oai-authenticated-user-full-name` when the user's SIWC profile has a non-empty
-`name` claim. The full-name value is percent-encoded UTF-8 and is accompanied by
-`oai-authenticated-user-full-name-encoding: percent-encoded-utf-8`.
-
-Treat the full name as optional and fall back to email when it is absent:
-
-```tsx
-import { headers } from "next/headers";
-
-export default async function Home() {
-  const requestHeaders = await headers();
-  const email = requestHeaders.get("oai-authenticated-user-email");
-  const encodedFullName = requestHeaders.get("oai-authenticated-user-full-name");
-  const fullName =
-    encodedFullName &&
-    requestHeaders.get("oai-authenticated-user-full-name-encoding") ===
-      "percent-encoded-utf-8"
-      ? decodeURIComponent(encodedFullName)
-      : null;
-
-  const displayName = fullName ?? email;
-  // ...
-}
+```bash
+npm run dev         # 启动本地开发环境
+npm run build       # 检查 ChatGPT Sites 构建
+npm run build:pages # 生成 GitHub Pages 静态文件
 ```
 
-## Optional Dispatch-Owned ChatGPT Sign-In
+## 技术与部署
 
-Import the ready-to-use helpers from `app/chatgpt-auth.ts` when the site needs
-optional or required ChatGPT sign-in:
+- Next.js + React + TypeScript
+- vinext / Vite
+- GitHub Pages
+- ChatGPT Sites
 
-- Use `getChatGPTUser()` for optional signed-in UI.
-- Use `requireChatGPTUser(returnTo)` for server-rendered pages that should send
-  anonymous visitors through Sign in with ChatGPT.
-- Use `chatGPTSignInPath(returnTo)` and `chatGPTSignOutPath(returnTo)` for
-  browser links or actions.
-- Pass a same-origin relative `returnTo` path for the destination after sign-in
-  or sign-out. The helper validates and safely encodes it.
-- Mark protected pages with `export const dynamic = "force-dynamic"` because
-  they depend on per-request identity headers.
+源码维护在 `main` 分支，GitHub Pages 的静态构建发布到 `gh-pages` 分支。
 
-Dispatch owns `/signin-with-chatgpt`, `/signout-with-chatgpt`, `/callback`, the
-OAuth cookies, and identity header injection. Do not implement app routes for
-those reserved paths. Routes that do not import and call the helper remain
-anonymous-compatible.
+## 关于名字
 
-SIWC establishes identity only; it does not prove workspace membership. Use the
-Sites hosting platform's access policy controls for workspace-wide restrictions,
-or enforce explicit server-side membership or allowlist checks.
+“深绘里”既是这个网站的名字，也是我在数字世界中的另一个身份。两个月亮来自《1Q84》，而庭院、影子、鸟与世界尽头，则共同构成这个网站不断延伸的精神线索。
 
-Use SIWC for account pages, user-specific dashboards, saved records, and write
-actions tied to the current ChatGPT user. Leave public content anonymous.
+---
 
-## Useful Commands
-
-- `npm run dev`: start local development
-- `npm run build`: verify the vinext build output
-- `npm test`: build the starter and verify its rendered loading skeleton
-- `npm run db:generate`: generate Drizzle migrations after schema changes
-
-## Learn More
-
-- [vinext Documentation](https://github.com/cloudflare/vinext)
-- [Drizzle D1 Guide](https://orm.drizzle.team/docs/get-started/d1-new)
+Built slowly, kept sincerely.
