@@ -10,6 +10,7 @@ import RecordCollection from "./RecordCollection";
 import { recordCount } from "./albumData";
 import { murakamiBooks } from "./murakamiData";
 import { filmCount } from "./filmData";
+import { gardenNotes } from "./noteData";
 
 const spaces = [
   {
@@ -67,7 +68,7 @@ const spaces = [
     name: "庭院手记",
     english: "NOTES",
     description: "写下一段旅途、一本书、一首歌，或某个不想让它消失的念头。",
-    detail: "4 篇手记 · 不定期生长",
+    detail: `${gardenNotes.length} 篇手记 · 不定期生长`,
     href: "#notes",
     action: "翻开庭院手记",
     tone: "notes",
