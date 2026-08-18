@@ -6,6 +6,7 @@ import { films } from "./filmData";
 import { gardenNotes } from "./noteData";
 import { murakamiBooks } from "./murakamiData";
 import { bookRecommendations } from "./recommendationData";
+import { gardenDeepLinkEvent, searchTargetId } from "./deepLinks";
 
 type SearchItem = {
   id: string;
@@ -26,7 +27,7 @@ const localItems: SearchItem[] = [
   title: album.title,
   subtitle: `${album.artist} · ${album.year}`,
   description: album.note,
-  href: "#records",
+  href: `#${searchTargetId("album", `${album.artist}-${album.title}`)}`,
   keywords: `${album.title} ${album.artist} ${album.year} ${album.description} ${album.tracks.join(" ")}`,
 })).concat(
   films.map((film) => ({
@@ -35,7 +36,7 @@ const localItems: SearchItem[] = [
     title: film.title,
     subtitle: `${film.director} · ${film.year}`,
     description: film.note,
-    href: "#films",
+    href: `#${searchTargetId("film", film.slug)}`,
     keywords: `${film.title} ${film.originalTitle} ${film.format ?? "电影"} 影视 剧集 ${film.director} ${film.country} ${film.genres.join(" ")} ${film.summary}`,
   })),
   murakamiBooks.map((book) => ({
@@ -44,7 +45,7 @@ const localItems: SearchItem[] = [
     title: book.title,
     subtitle: `村上春树 · ${book.year}`,
     description: book.personalNote,
-    href: "#murakami",
+    href: `#${searchTargetId("murakami", book.title)}`,
     keywords: `${book.title} ${book.originalTitle} 村上春树 ${book.publisher ?? ""} ${book.themes.join(" ")} ${book.summary}`,
   })),
   bookRecommendations.map((book) => ({
@@ -62,7 +63,7 @@ const localItems: SearchItem[] = [
     title: note.title,
     subtitle: `${note.category} · ${note.date}`,
     description: note.excerpt,
-    href: "#notes",
+    href: `#${searchTargetId("note", note.slug)}`,
     keywords: `${note.title} ${note.category} ${note.excerpt} ${note.paragraphs.join(" ")}`,
   })),
 );
@@ -121,6 +122,18 @@ export default function GlobalExperience() {
     localStorage.setItem("shenhuili-theme", next);
   };
 
+  const openResult = (event: React.MouseEvent<HTMLAnchorElement>, item: SearchItem) => {
+    setSearchOpen(false);
+    if (item.href.startsWith("http")) return;
+
+    event.preventDefault();
+    const targetId = decodeURIComponent(item.href.replace(/^#/, ""));
+    window.history.replaceState(null, "", item.href);
+    window.setTimeout(() => {
+      window.dispatchEvent(new CustomEvent(gardenDeepLinkEvent, { detail: targetId }));
+    }, 0);
+  };
+
   return (
     <>
       <div className="global-tools">
@@ -137,7 +150,7 @@ export default function GlobalExperience() {
               {!query ? (
                 <div className="search-intro"><p>一只搜索框，穿过整座庭院。</p><div>{counts.map((item) => <button type="button" key={item.type} onClick={() => setQuery(item.type)}><strong>{item.count}</strong><span>{item.type}</span></button>)}</div><small>试试搜索“村上”“上海”“时间”或一位歌手。</small></div>
               ) : grouped.length ? grouped.map((group) => (
-                <section className="search-group" key={group.type}><header><h3>{group.type}</h3><span>{group.items.length}</span></header><div>{group.items.map((item) => <a href={item.href} target={item.href.startsWith("http") ? "_blank" : undefined} rel={item.href.startsWith("http") ? "noreferrer" : undefined} key={item.id} onClick={() => setSearchOpen(false)}><small>{item.type}</small><h4>{item.title}</h4><span>{item.subtitle}</span><p>{item.description}</p><i>↗</i></a>)}</div></section>
+                <section className="search-group" key={group.type}><header><h3>{group.type}</h3><span>{group.items.length}</span></header><div>{group.items.map((item) => <a href={item.href} target={item.href.startsWith("http") ? "_blank" : undefined} rel={item.href.startsWith("http") ? "noreferrer" : undefined} key={item.id} onClick={(event) => openResult(event, item)}><small>{item.type}</small><h4>{item.title}</h4><span>{item.subtitle}</span><p>{item.description}</p><i>↗</i></a>)}</div></section>
               )) : <div className="search-empty"><span>○</span><h3>没有找到这件收藏</h3><p>换一个更短的词试试，也许它藏在另一条路上。</p></div>}
             </div>
           </section>

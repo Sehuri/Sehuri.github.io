@@ -3051,3 +3051,28 @@ html[data-theme="day"] .search-group a:hover { background: rgba(255,255,255,.5);
   .day-moon-notice > button:not(.day-moon-notice-close) { grid-column: 2 / 3; justify-self: start; }
   .day-moon-notice-close { grid-column: 3; grid-row: 1; }
 }
+/* Search results can link to individual collection cards, including cards that
+   are initially collapsed. Keep the destination below the fixed navigation and
+   briefly mark it so the visitor can see exactly where the search landed. */
+.album-open-button,
+.album-tile,
+.film-card,
+.murakami-book,
+.note-card {
+  scroll-margin-top: 7rem;
+}
+
+.album-open-button:target,
+.album-tile:target,
+.film-card:target,
+.murakami-book:target,
+.note-card:target {
+  animation: search-target-arrival 2.4s ease-out;
+  outline: 2px solid color-mix(in srgb, var(--coral, #d98c74) 76%, transparent);
+  outline-offset: -2px;
+}
+
+@keyframes search-target-arrival {
+  0%, 28% { box-shadow: 0 0 0 10px color-mix(in srgb, var(--coral, #d98c74) 22%, transparent); }
+  100% { box-shadow: 0 0 0 0 transparent; }
+}

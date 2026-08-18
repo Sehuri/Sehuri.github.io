@@ -7,6 +7,9 @@ import {
   recordCount,
   type Album,
 } from "./albumData";
+import { currentSearchTarget, gardenDeepLinkEvent, revealSearchTarget, searchTargetId } from "./deepLinks";
+
+const albumTargetId = (album: Album) => searchTargetId("album", `${album.artist}-${album.title}`);
 
 function TwoMoonCover({ label }: { label: string }) {
   return (
@@ -186,12 +189,32 @@ export default function RecordCollection() {
   );
   const visibleAlbums = showAll ? chronologicalAlbums : chronologicalAlbums.slice(0, 12);
 
+  useEffect(() => {
+    const openLinkedAlbum = (targetId = currentSearchTarget()) => {
+      if (!targetId.startsWith("album-")) return;
+      const targetAlbum = [featuredAlbum, ...chronologicalAlbums].find((album) => albumTargetId(album) === targetId);
+      if (!targetAlbum) return;
+      if (!targetAlbum.featured) setShowAll(true);
+      revealSearchTarget(targetId);
+    };
+    const onDeepLink = (event: Event) => openLinkedAlbum((event as CustomEvent<string>).detail);
+    const onHashChange = () => openLinkedAlbum();
+    openLinkedAlbum();
+    window.addEventListener(gardenDeepLinkEvent, onDeepLink);
+    window.addEventListener("hashchange", onHashChange);
+    return () => {
+      window.removeEventListener(gardenDeepLinkEvent, onDeepLink);
+      window.removeEventListener("hashchange", onHashChange);
+    };
+  }, []);
+
   return (
     <>
       <div className="album-list">
         <button
           className="album-card album-featured album-open-button"
           type="button"
+          id={albumTargetId(featuredAlbum)}
           onClick={() => setSelectedAlbum(featuredAlbum)}
           aria-label={`查看《${featuredAlbum.title}》专辑详情`}
         >
@@ -229,6 +252,7 @@ export default function RecordCollection() {
           <button
             className="album-tile"
             type="button"
+            id={albumTargetId(album)}
             key={`${album.artist}-${album.title}`}
             onClick={() => setSelectedAlbum(album)}
             aria-label={`查看${album.artist}《${album.title}》专辑详情`}

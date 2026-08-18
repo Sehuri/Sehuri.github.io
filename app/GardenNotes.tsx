@@ -2,6 +2,9 @@
 
 import { useEffect, useState } from "react";
 import { gardenNotes, type GardenNote } from "./noteData";
+import { currentSearchTarget, gardenDeepLinkEvent, revealSearchTarget, searchTargetId } from "./deepLinks";
+
+const noteTargetId = (note: GardenNote) => searchTargetId("note", note.slug);
 
 function NoteDialog({ note, onClose }: { note: GardenNote; onClose: () => void }) {
   useEffect(() => {
@@ -32,6 +35,23 @@ function NoteDialog({ note, onClose }: { note: GardenNote; onClose: () => void }
 export default function GardenNotes() {
   const [selected, setSelected] = useState<GardenNote | null>(null);
 
+  useEffect(() => {
+    const openLinkedNote = (targetId = currentSearchTarget()) => {
+      if (!targetId.startsWith("note-")) return;
+      if (!gardenNotes.some((note) => noteTargetId(note) === targetId)) return;
+      revealSearchTarget(targetId);
+    };
+    const onDeepLink = (event: Event) => openLinkedNote((event as CustomEvent<string>).detail);
+    const onHashChange = () => openLinkedNote();
+    openLinkedNote();
+    window.addEventListener(gardenDeepLinkEvent, onDeepLink);
+    window.addEventListener("hashchange", onHashChange);
+    return () => {
+      window.removeEventListener(gardenDeepLinkEvent, onDeepLink);
+      window.removeEventListener("hashchange", onHashChange);
+    };
+  }, []);
+
   return (
     <section className="garden-notes" id="notes">
       <header className="notes-heading">
@@ -40,7 +60,7 @@ export default function GardenNotes() {
       </header>
       <div className="notes-grid">
         {gardenNotes.map((note, index) => (
-          <button className={index === 0 ? "note-card note-featured" : "note-card"} type="button" key={note.slug} onClick={() => setSelected(note)}>
+          <button className={index === 0 ? "note-card note-featured" : "note-card"} type="button" id={noteTargetId(note)} key={note.slug} onClick={() => setSelected(note)}>
             <div><span>{String(index + 1).padStart(2, "0")}</span><time>{note.date}</time></div>
             <small>{note.category}</small>
             <h3>{note.title}</h3>

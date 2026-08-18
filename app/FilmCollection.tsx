@@ -2,6 +2,9 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { films, type Film } from "./filmData";
+import { currentSearchTarget, gardenDeepLinkEvent, revealSearchTarget, searchTargetId } from "./deepLinks";
+
+const filmTargetId = (film: Film) => searchTargetId("film", film.slug);
 
 const filters = ["全部", "电影", "电视剧", "剧情人性", "犯罪悬疑", "科幻奇想", "动画", "战争历史"] as const;
 type FilmFilter = (typeof filters)[number];
@@ -69,6 +72,26 @@ export default function FilmCollection() {
   const filteredFilms = useMemo(() => films.filter((film) => belongsTo(film, filter)), [filter]);
   const visibleFilms = showAll ? filteredFilms : filteredFilms.slice(0, 15);
 
+  useEffect(() => {
+    const openLinkedFilm = (targetId = currentSearchTarget()) => {
+      if (!targetId.startsWith("film-")) return;
+      const targetFilm = films.find((film) => filmTargetId(film) === targetId);
+      if (!targetFilm) return;
+      setFilter("全部");
+      setShowAll(true);
+      revealSearchTarget(targetId);
+    };
+    const onDeepLink = (event: Event) => openLinkedFilm((event as CustomEvent<string>).detail);
+    const onHashChange = () => openLinkedFilm();
+    openLinkedFilm();
+    window.addEventListener(gardenDeepLinkEvent, onDeepLink);
+    window.addEventListener("hashchange", onHashChange);
+    return () => {
+      window.removeEventListener(gardenDeepLinkEvent, onDeepLink);
+      window.removeEventListener("hashchange", onHashChange);
+    };
+  }, []);
+
   const chooseFilter = (next: FilmFilter) => {
     setFilter(next);
     setShowAll(false);
@@ -85,7 +108,7 @@ export default function FilmCollection() {
 
       <div className="film-grid">
         {visibleFilms.map((film, index) => (
-          <button className="film-card" type="button" key={film.slug} onClick={() => setSelectedFilm(film)} aria-label={`查看《${film.title}》影视详情`}>
+          <button className="film-card" type="button" id={filmTargetId(film)} key={film.slug} onClick={() => setSelectedFilm(film)} aria-label={`查看《${film.title}》影视详情`}>
             <div className="film-poster">
               <img src={film.poster} alt={`${film.title}发行海报`} loading="lazy" />
               <span>{String(films.indexOf(film) + 1).padStart(2, "0")}</span>

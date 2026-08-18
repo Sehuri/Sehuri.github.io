@@ -2,6 +2,9 @@
 
 import { useEffect, useState } from "react";
 import { murakamiBooks, readingRoutes, type MurakamiBook } from "./murakamiData";
+import { currentSearchTarget, gardenDeepLinkEvent, revealSearchTarget, searchTargetId } from "./deepLinks";
+
+const bookTargetId = (book: MurakamiBook) => searchTargetId("murakami", book.title);
 
 function BookCover({ book, className, loading }: { book: MurakamiBook; className: string; loading?: "lazy" | "eager" }) {
   const officialIsbn = book.cover.match(/fengmian\/(\d+)\.jpg/)?.[1];
@@ -72,6 +75,26 @@ export default function MurakamiLibrary() {
   const visibleBooks = showAll ? filteredBooks : filteredBooks.slice(0, 6);
   const favorites = murakamiBooks.filter((book) => book.favorite);
 
+  useEffect(() => {
+    const openLinkedBook = (targetId = currentSearchTarget()) => {
+      if (!targetId.startsWith("murakami-")) return;
+      const targetBook = chronologicalBooks.find((book) => bookTargetId(book) === targetId);
+      if (!targetBook) return;
+      setFilter("全部");
+      setShowAll(true);
+      revealSearchTarget(targetId);
+    };
+    const onDeepLink = (event: Event) => openLinkedBook((event as CustomEvent<string>).detail);
+    const onHashChange = () => openLinkedBook();
+    openLinkedBook();
+    window.addEventListener(gardenDeepLinkEvent, onDeepLink);
+    window.addEventListener("hashchange", onHashChange);
+    return () => {
+      window.removeEventListener(gardenDeepLinkEvent, onDeepLink);
+      window.removeEventListener("hashchange", onHashChange);
+    };
+  }, []);
+
   return (
     <section className="murakami-library" id="murakami">
       <header className="murakami-heading">
@@ -124,7 +147,7 @@ export default function MurakamiLibrary() {
         </div>
         <div className="murakami-book-grid">
           {visibleBooks.map((book) => (
-            <button type="button" className="murakami-book" key={book.title} onClick={() => setSelectedBook(book)}>
+            <button type="button" className="murakami-book" id={bookTargetId(book)} key={book.title} onClick={() => setSelectedBook(book)}>
               <div><BookCover book={book} className="murakami-book-cover" loading="lazy" />{book.favorite ? <span>FAVORITE</span> : null}</div>
               <p>{book.year} · {book.type}</p><h4>{book.title}</h4><small>{book.originalTitle}</small><strong>查看详情 ↗</strong>
             </button>
