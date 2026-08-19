@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { murakamiBooks, readingRoutes, type MurakamiBook } from "./murakamiData";
 import { currentSearchTarget, gardenDeepLinkEvent, revealSearchTarget, searchTargetId } from "./deepLinks";
+import ShareCard from "./ShareCard";
 
 const bookTargetId = (book: MurakamiBook) => searchTargetId("murakami", book.title);
 
@@ -52,6 +53,14 @@ function BookDialog({ book, onClose }: { book: MurakamiBook; onClose: () => void
             <h2 id="book-dialog-title">{book.title}</h2>
             <span>{book.originalTitle}</span>
             <blockquote>“{book.personalNote}”</blockquote>
+            <ShareCard data={{
+              category: "村上书房",
+              title: `《${book.title}》`,
+              meta: `村上春树 · ${book.year} · ${book.type}`,
+              quote: book.personalNote,
+              targetId: bookTargetId(book),
+              tone: "book",
+            }} />
           </div>
         </div>
         <div className="book-dialog-body">

@@ -2955,6 +2955,39 @@ footer small {
 .note-dialog > div p { margin: 1.2rem 0 0; color: rgba(7,21,37,.68); font-family: "Songti SC",serif; font-size: 1rem; line-height: 2.15; }
 .note-dialog > a { display: inline-block; margin-top: 2.5rem; padding-bottom: .3rem; border-bottom: 1px solid currentColor; color: #628d94; font-size: .68rem; }
 
+/* Shareable collection cards */
+.share-card-entry { margin-top: 1.6rem; }
+.share-card-trigger { display: inline-flex; align-items: center; gap: .55rem; min-height: 2.8rem; padding: .7rem 1rem; border: 1px solid currentColor; background: transparent; color: inherit; font: inherit; font-size: .68rem; letter-spacing: .08em; cursor: pointer; transition: background .2s ease, color .2s ease, transform .2s ease; }
+.share-card-trigger:hover { transform: translateY(-2px); background: currentColor; }
+.share-card-trigger:hover span { color: #fff; }
+.album-dialog .share-card-trigger:hover, .book-dialog .share-card-trigger:hover, .note-dialog .share-card-trigger:hover { color: #102437; }
+.film-dialog .share-card-trigger:hover { color: #efe9df; }
+.share-card-trigger:focus-visible, .share-card-actions button:focus-visible, .share-card-close:focus-visible { outline: 2px solid #d5ab73; outline-offset: 3px; }
+
+.share-card-backdrop { position: fixed; z-index: 420; inset: 0; display: grid; place-items: center; padding: 1rem; overflow-y: auto; background: rgba(2,8,14,.88); backdrop-filter: blur(16px); }
+.share-card-dialog { position: relative; display: grid; grid-template-columns: minmax(0,.72fr) minmax(17rem,.58fr); grid-template-areas: "copy preview" "actions preview" "status preview"; column-gap: clamp(1.5rem,4vw,4rem); align-items: end; width: min(62rem,100%); max-height: calc(100svh - 2rem); overflow-y: auto; padding: clamp(1.3rem,4vw,3.5rem); border: 1px solid rgba(255,255,255,.16); background: linear-gradient(140deg,#0b2133,#071522 70%); color: #f1ece2; box-shadow: 0 3rem 8rem rgba(0,0,0,.48); }
+.share-card-close { position: absolute; z-index: 2; top: 1rem; right: 1rem; display: grid; place-items: center; width: 2.8rem; aspect-ratio: 1; border: 1px solid rgba(255,255,255,.24); border-radius: 50%; background: rgba(5,17,28,.82); color: #fff; font-size: 1.6rem; cursor: pointer; }
+.share-card-copy { grid-area: copy; align-self: end; padding-top: 2rem; }
+.share-card-entry .share-card-dialog .share-card-copy > p { margin: 0 0 1rem; color: #c79563; font-family: inherit; font-size: .56rem; line-height: 1.4; letter-spacing: .22em; }
+.share-card-copy h3 { margin: 0; font-family: "Songti SC",serif; font-size: clamp(2.2rem,5vw,4.2rem); font-weight: 400; line-height: 1.05; }
+.share-card-copy > span { display: block; margin-top: 1.3rem; color: rgba(255,255,255,.56); font-family: "Songti SC",serif; font-size: .84rem; line-height: 1.9; }
+.share-card-preview { grid-area: preview; align-self: center; width: min(100%,24rem); margin-inline: auto; overflow: hidden; border: 1px solid rgba(255,255,255,.15); box-shadow: 1.2rem 1.2rem 0 rgba(255,255,255,.04), 0 1.5rem 5rem rgba(0,0,0,.32); }
+.share-card-preview canvas { display: block; width: 100%; height: auto; aspect-ratio: 4/5; }
+.share-card-actions { grid-area: actions; display: flex; flex-wrap: wrap; gap: .7rem; margin-top: 2rem; }
+.share-card-actions button { min-height: 2.8rem; padding: .7rem 1rem; border: 1px solid rgba(255,255,255,.24); background: transparent; color: #fff; font: inherit; font-size: .66rem; cursor: pointer; }
+.share-card-actions button:first-child { border-color: #efe9df; background: #efe9df; color: #071525; }
+.share-card-actions button:hover { border-color: #c79563; }
+.share-card-entry .share-card-dialog .share-card-status { grid-area: status; min-height: 1.2rem; margin: .8rem 0 0; color: #c79563; font-family: inherit; font-size: .62rem; line-height: 1.4; }
+
+@media (max-width: 720px) {
+  .share-card-dialog { grid-template-columns: 1fr; grid-template-areas: "copy" "preview" "actions" "status"; gap: 1.4rem; align-items: start; width: 100%; }
+  .share-card-copy { padding: 1.5rem 2.8rem 0 0; }
+  .share-card-copy h3 { font-size: clamp(2.2rem,12vw,3.5rem); }
+  .share-card-preview { width: min(88%,22rem); }
+  .share-card-actions { justify-content: center; margin-top: 0; }
+  .share-card-entry .share-card-dialog .share-card-status { text-align: center; }
+}
+
 html[data-theme="day"] body { background: #eef5f3; color: #102b36; }
 html[data-theme="day"] .hero { color: #102b36; background-color: #b9deef; background: linear-gradient(90deg,rgba(238,249,250,.78),rgba(238,249,250,.27) 43%,rgba(255,255,255,.02) 72%),url("/shenhuili-day.png") center center / cover no-repeat; }
 html[data-theme="day"] .hero::before { background: linear-gradient(90deg,rgba(233,247,248,.55),transparent) !important; }

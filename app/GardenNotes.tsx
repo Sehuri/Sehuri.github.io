@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { gardenNotes, type GardenNote } from "./noteData";
 import { currentSearchTarget, gardenDeepLinkEvent, revealSearchTarget, searchTargetId } from "./deepLinks";
+import ShareCard from "./ShareCard";
 
 const noteTargetId = (note: GardenNote) => searchTargetId("note", note.slug);
 
@@ -26,6 +27,14 @@ function NoteDialog({ note, onClose }: { note: GardenNote; onClose: () => void }
         <h2 id="note-dialog-title">{note.title}</h2>
         <blockquote>“{note.excerpt}”</blockquote>
         <div>{note.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div>
+        <ShareCard data={{
+          category: "庭院手记",
+          title: `「${note.title}」`,
+          meta: `${note.category} · ${note.date}`,
+          quote: note.excerpt,
+          targetId: noteTargetId(note),
+          tone: "note",
+        }} />
         {note.related ? <a href={note.related.href} onClick={onClose}>{note.related.label} ↗</a> : null}
       </article>
     </div>

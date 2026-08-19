@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { films, type Film } from "./filmData";
 import { currentSearchTarget, gardenDeepLinkEvent, revealSearchTarget, searchTargetId } from "./deepLinks";
+import ShareCard from "./ShareCard";
 
 const filmTargetId = (film: Film) => searchTargetId("film", film.slug);
 
@@ -53,6 +54,14 @@ function FilmDialog({ film, onClose }: { film: Film; onClose: () => void }) {
           </dl>
           <div className="film-dialog-story"><small>{format === "电视剧" ? "ABOUT THE SERIES" : "ABOUT THE FILM"}</small><p>{film.summary}</p></div>
           <blockquote>“{film.note}”</blockquote>
+          <ShareCard data={{
+            category: "影视",
+            title: `《${film.title}》`,
+            meta: `${film.director} · ${film.year} · ${format}`,
+            quote: film.note,
+            targetId: filmTargetId(film),
+            tone: "film",
+          }} />
           {film.chapters ? (
             <div className="film-series-list">
               <small>{film.seriesLabel ?? "SERIES COLLECTION"}</small>

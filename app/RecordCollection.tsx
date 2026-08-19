@@ -8,6 +8,7 @@ import {
   type Album,
 } from "./albumData";
 import { currentSearchTarget, gardenDeepLinkEvent, revealSearchTarget, searchTargetId } from "./deepLinks";
+import ShareCard from "./ShareCard";
 
 const albumTargetId = (album: Album) => searchTargetId("album", `${album.artist}-${album.title}`);
 
@@ -93,6 +94,14 @@ function AlbumDialog({
             </p>
             <blockquote>“{album.note}”</blockquote>
             <p className="album-dialog-description">{album.description}</p>
+            <ShareCard data={{
+              category: "唱片",
+              title: `《${album.title}》`,
+              meta: `${album.artist} · ${album.year} · ${album.detail}`,
+              quote: album.note,
+              targetId: albumTargetId(album),
+              tone: "record",
+            }} />
           </div>
         </div>
 
