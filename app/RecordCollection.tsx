@@ -101,6 +101,8 @@ function AlbumDialog({
               quote: album.note,
               targetId: albumTargetId(album),
               tone: "record",
+              coverUrls: album.artwork ? [album.artwork] : undefined,
+              coverLabel: album.featured ? "1Q84 OST" : album.title,
             }} />
           </div>
         </div>

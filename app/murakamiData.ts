@@ -18,8 +18,14 @@ export type MurakamiBook = {
 const openLibraryCover = (isbn: string) =>
   `https://covers.openlibrary.org/b/isbn/${isbn}-L.jpg`;
 
-const yiwenCover = (isbn: string) =>
-  `https://www.yiwen.com.cn/images/fengmian/${isbn}.jpg`;
+const localYiwenCovers = new Set([
+  "9787532745982", "9787532776771", "9787532777563", "9787532777570", "9787532777594",
+  "9787532777600", "9787532777617", "9787532777624", "9787532777631",
+]);
+
+const yiwenCover = (isbn: string) => localYiwenCovers.has(isbn)
+  ? `/book-covers/${isbn}.jpg`
+  : `https://www.yiwen.com.cn/images/fengmian/${isbn}.jpg`;
 
 export const murakamiBooks: readonly MurakamiBook[] = [
   {

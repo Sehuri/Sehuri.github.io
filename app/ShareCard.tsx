@@ -9,6 +9,8 @@ export type ShareCardData = {
   quote: string;
   targetId: string;
   tone: "record" | "film" | "note" | "book";
+  coverUrls?: readonly string[];
+  coverLabel?: string;
 };
 
 const canonicalRoot = "https://sehuri.github.io/";
@@ -68,13 +70,88 @@ function roundedRect(
   context.roundRect(x, y, width, height, radius);
 }
 
-function loadAvatar() {
+function loadImage(source: string) {
   return new Promise<HTMLImageElement>((resolve, reject) => {
     const image = new Image();
+    if (/^https?:\/\//u.test(source)) image.crossOrigin = "anonymous";
+    image.referrerPolicy = "no-referrer";
     image.onload = () => resolve(image);
     image.onerror = reject;
-    image.src = "/favicon-shenhuili.png";
+    image.src = source;
   });
+}
+
+async function loadFirstImage(sources: readonly string[]) {
+  for (const source of sources) {
+    try {
+      return await loadImage(source);
+    } catch {
+      // Try the next known cover before drawing the designed fallback.
+    }
+  }
+  return null;
+}
+
+function drawContainedImage(
+  context: CanvasRenderingContext2D,
+  image: HTMLImageElement,
+  x: number,
+  y: number,
+  width: number,
+  height: number,
+) {
+  const scale = Math.min(width / image.naturalWidth, height / image.naturalHeight);
+  const drawWidth = image.naturalWidth * scale;
+  const drawHeight = image.naturalHeight * scale;
+  context.save();
+  context.shadowColor = "rgba(7, 21, 37, 0.22)";
+  context.shadowBlur = 26;
+  context.shadowOffsetY = 12;
+  context.drawImage(image, x + (width - drawWidth) / 2, y + (height - drawHeight) / 2, drawWidth, drawHeight);
+  context.restore();
+}
+
+function drawDesignedCover(
+  context: CanvasRenderingContext2D,
+  data: ShareCardData,
+  x: number,
+  y: number,
+  width: number,
+  height: number,
+) {
+  const palette = palettes[data.tone];
+  const coverWidth = data.tone === "record" ? height : Math.min(330, width * 0.42);
+  const coverX = x + (width - coverWidth) / 2;
+  context.save();
+  context.fillStyle = data.tone === "film" || data.tone === "record" ? "#0b2032" : palette.soft;
+  context.fillRect(coverX, y, coverWidth, height);
+  context.strokeStyle = palette.accent;
+  context.globalAlpha = 0.7;
+  context.lineWidth = 2;
+  context.strokeRect(coverX + 18, y + 18, coverWidth - 36, height - 36);
+  context.globalAlpha = 1;
+
+  if (data.tone === "record") {
+    context.fillStyle = "#ead6a9";
+    context.beginPath();
+    context.arc(coverX + coverWidth * 0.62, y + height * 0.34, 58, 0, Math.PI * 2);
+    context.fill();
+    context.fillStyle = "#b7c2bd";
+    context.beginPath();
+    context.arc(coverX + coverWidth * 0.42, y + height * 0.48, 40, 0, Math.PI * 2);
+    context.fill();
+  }
+
+  context.fillStyle = data.tone === "film" || data.tone === "record" ? "#f1ece2" : palette.ink;
+  context.textAlign = "center";
+  context.font = '600 20px -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif';
+  context.globalAlpha = 0.72;
+  context.fillText(data.category, coverX + coverWidth / 2, y + 70);
+  context.globalAlpha = 1;
+  context.font = '500 42px "Songti SC", "STSong", serif';
+  drawWrappedText(context, data.coverLabel ?? data.title, coverX + coverWidth / 2, y + height * 0.68, coverWidth - 70, 54, 3);
+  context.textAlign = "start";
+  context.restore();
 }
 
 async function paintCard(canvas: HTMLCanvasElement, data: ShareCardData) {
@@ -116,60 +193,73 @@ async function paintCard(canvas: HTMLCanvasElement, data: ShareCardData) {
   context.font = '600 22px -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif';
   context.fillText(data.category, 112, 278);
 
+  const coverX = 112;
+  const coverY = 262;
+  const coverWidth = 856;
+  const coverHeight = 448;
+  context.fillStyle = data.tone === "film" ? "#10283a" : palette.soft;
+  context.globalAlpha = 0.56;
+  roundedRect(context, coverX, coverY, coverWidth, coverHeight, 18);
+  context.fill();
+  context.globalAlpha = 1;
+  const cover = await loadFirstImage(data.coverUrls ?? []);
+  if (cover) drawContainedImage(context, cover, coverX + 26, coverY + 22, coverWidth - 52, coverHeight - 44);
+  else drawDesignedCover(context, data, coverX, coverY, coverWidth, coverHeight);
+
   context.fillStyle = palette.ink;
-  context.font = '500 68px "Songti SC", "STSong", serif';
-  const titleBottom = drawWrappedText(context, data.title, 112, 390, 820, 86, 3);
+  context.font = '500 54px "Songti SC", "STSong", serif';
+  const titleBottom = drawWrappedText(context, data.title, 112, 796, 856, 68, 2);
 
   context.globalAlpha = 0.58;
   context.font = '400 28px -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif';
-  const metaBottom = drawWrappedText(context, data.meta, 112, titleBottom + 18, 820, 42, 2);
+  const metaBottom = drawWrappedText(context, data.meta, 112, titleBottom + 12, 856, 38, 2);
   context.globalAlpha = 1;
 
-  const quoteTop = Math.max(690, metaBottom + 90);
+  const quoteTop = Math.max(1010, metaBottom + 48);
   context.fillStyle = palette.accent;
-  context.fillRect(112, quoteTop - 20, 3, 270);
+  context.fillRect(112, quoteTop - 16, 3, 148);
   context.fillStyle = palette.ink;
-  context.font = '400 42px "Songti SC", "STSong", serif';
-  drawWrappedText(context, `“${data.quote}”`, 154, quoteTop + 30, 760, 66, 4);
+  context.font = '400 34px "Songti SC", "STSong", serif';
+  drawWrappedText(context, `“${data.quote}”`, 150, quoteTop + 20, 790, 52, 3);
 
   context.strokeStyle = palette.accent;
   context.globalAlpha = 0.32;
   context.beginPath();
-  context.moveTo(112, 1080);
-  context.lineTo(968, 1080);
+  context.moveTo(112, 1192);
+  context.lineTo(968, 1192);
   context.stroke();
   context.globalAlpha = 1;
 
   try {
-    const avatar = await loadAvatar();
+    const avatar = await loadImage("/favicon-shenhuili.png");
     context.save();
     context.beginPath();
-    context.arc(158, 1172, 52, 0, Math.PI * 2);
+    context.arc(150, 1242, 38, 0, Math.PI * 2);
     context.clip();
-    context.drawImage(avatar, 106, 1120, 104, 104);
+    context.drawImage(avatar, 112, 1204, 76, 76);
     context.restore();
   } catch {
     context.fillStyle = palette.ink;
     context.beginPath();
-    context.arc(158, 1172, 52, 0, Math.PI * 2);
+    context.arc(150, 1242, 38, 0, Math.PI * 2);
     context.fill();
   }
 
   context.fillStyle = palette.ink;
   context.font = '600 26px -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif';
-  context.fillText("深绘里", 232, 1163);
+  context.fillText("深绘里", 214, 1235);
   context.globalAlpha = 0.55;
   context.font = '400 21px -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif';
-  context.fillText("sehuri.github.io", 232, 1202);
+  context.fillText("sehuri.github.io", 214, 1268);
   context.globalAlpha = 1;
 
   context.fillStyle = data.tone === "film" ? "#ead8b8" : "#ead6a9";
   context.beginPath();
-  context.arc(882, 1143, 34, 0, Math.PI * 2);
+  context.arc(890, 1230, 30, 0, Math.PI * 2);
   context.fill();
   context.fillStyle = data.tone === "film" ? "#a8b9ba" : "#b7c2bd";
   context.beginPath();
-  context.arc(936, 1195, 24, 0, Math.PI * 2);
+  context.arc(938, 1268, 21, 0, Math.PI * 2);
   context.fill();
 }
 
@@ -180,15 +270,26 @@ function canvasBlob(canvas: HTMLCanvasElement) {
 export default function ShareCard({ data }: { data: ShareCardData }) {
   const [open, setOpen] = useState(false);
   const [status, setStatus] = useState("");
+  const [ready, setReady] = useState(false);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const shareUrl = `${canonicalRoot}#${encodeURIComponent(data.targetId)}`;
 
   useEffect(() => {
     if (!open || !canvasRef.current) return;
-    void paintCard(canvasRef.current, data);
+    let cancelled = false;
+    setReady(false);
+    setStatus(data.coverUrls?.length ? "正在准备封面…" : "正在生成卡片…");
+    void paintCard(canvasRef.current, data).then(() => {
+      if (cancelled) return;
+      setReady(true);
+      setStatus("");
+    });
     const onKeyDown = (event: KeyboardEvent) => event.key === "Escape" && setOpen(false);
     window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
+    return () => {
+      cancelled = true;
+      window.removeEventListener("keydown", onKeyDown);
+    };
   }, [data, open]);
 
   const saveImage = async () => {
@@ -241,8 +342,8 @@ export default function ShareCard({ data }: { data: ShareCardData }) {
             </div>
             <div className={`share-card-preview share-card-${data.tone}`}><canvas ref={canvasRef} aria-label={`${data.title}分享卡片预览`} /></div>
             <div className="share-card-actions">
-              <button type="button" onClick={shareImage}>分享图片</button>
-              <button type="button" onClick={saveImage}>保存卡片</button>
+              <button type="button" onClick={shareImage} disabled={!ready}>分享图片</button>
+              <button type="button" onClick={saveImage} disabled={!ready}>保存卡片</button>
               <button type="button" onClick={copyLink}>复制链接</button>
             </div>
             <p className="share-card-status" aria-live="polite">{status}</p>

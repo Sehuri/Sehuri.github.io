@@ -7,9 +7,13 @@ import ShareCard from "./ShareCard";
 
 const bookTargetId = (book: MurakamiBook) => searchTargetId("murakami", book.title);
 
-function BookCover({ book, className, loading }: { book: MurakamiBook; className: string; loading?: "lazy" | "eager" }) {
+function bookCoverCandidates(book: MurakamiBook) {
   const officialIsbn = book.cover.match(/fengmian\/(\d+)\.jpg/)?.[1];
-  const candidates = [book.cover, ...(officialIsbn ? [`https://covers.openlibrary.org/b/isbn/${officialIsbn}-L.jpg`] : []), ...(book.coverAlternates ?? [])];
+  return [book.cover, ...(officialIsbn ? [`https://covers.openlibrary.org/b/isbn/${officialIsbn}-L.jpg`] : []), ...(book.coverAlternates ?? [])];
+}
+
+function BookCover({ book, className, loading }: { book: MurakamiBook; className: string; loading?: "lazy" | "eager" }) {
+  const candidates = bookCoverCandidates(book);
   const [coverIndex, setCoverIndex] = useState(0);
   const failed = coverIndex >= candidates.length;
   return (
@@ -60,6 +64,8 @@ function BookDialog({ book, onClose }: { book: MurakamiBook; onClose: () => void
               quote: book.personalNote,
               targetId: bookTargetId(book),
               tone: "book",
+              coverUrls: bookCoverCandidates(book),
+              coverLabel: book.title,
             }} />
           </div>
         </div>

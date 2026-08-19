@@ -61,6 +61,8 @@ function FilmDialog({ film, onClose }: { film: Film; onClose: () => void }) {
             quote: film.note,
             targetId: filmTargetId(film),
             tone: "film",
+            coverUrls: [film.poster],
+            coverLabel: film.title,
           }} />
           {film.chapters ? (
             <div className="film-series-list">

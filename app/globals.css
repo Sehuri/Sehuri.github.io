@@ -2977,6 +2977,7 @@ footer small {
 .share-card-actions button { min-height: 2.8rem; padding: .7rem 1rem; border: 1px solid rgba(255,255,255,.24); background: transparent; color: #fff; font: inherit; font-size: .66rem; cursor: pointer; }
 .share-card-actions button:first-child { border-color: #efe9df; background: #efe9df; color: #071525; }
 .share-card-actions button:hover { border-color: #c79563; }
+.share-card-actions button:disabled { cursor: wait; opacity: .42; }
 .share-card-entry .share-card-dialog .share-card-status { grid-area: status; min-height: 1.2rem; margin: .8rem 0 0; color: #c79563; font-family: inherit; font-size: .62rem; line-height: 1.4; }
 
 @media (max-width: 720px) {

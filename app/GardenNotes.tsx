@@ -34,6 +34,7 @@ function NoteDialog({ note, onClose }: { note: GardenNote; onClose: () => void }
           quote: note.excerpt,
           targetId: noteTargetId(note),
           tone: "note",
+          coverLabel: note.title,
         }} />
         {note.related ? <a href={note.related.href} onClick={onClose}>{note.related.label} ↗</a> : null}
       </article>
