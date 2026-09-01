@@ -96,6 +96,14 @@ npm run build       # 检查 ChatGPT Sites 构建
 npm run build:pages # 生成 GitHub Pages 静态文件
 ```
 
+日常更新网站时，只需要提交并推送 `main`：
+
+```bash
+git push origin main
+```
+
+GitHub Actions 会自动完成依赖安装、静态构建与 `gh-pages` 发布。只有构建成功时线上页面才会更新，也可以在仓库的 **Actions** 页面手动重新运行部署。
+
 ## 技术与部署
 
 - Next.js + React + TypeScript
@@ -103,7 +111,7 @@ npm run build:pages # 生成 GitHub Pages 静态文件
 - GitHub Pages
 - ChatGPT Sites
 
-源码维护在 `main` 分支，GitHub Pages 的静态构建发布到 `gh-pages` 分支。
+源码维护在 `main` 分支。每次推送 `main` 后，`Deploy GitHub Pages` 工作流会自动检查并生成静态网站，再将构建结果发布到 `gh-pages` 分支。
 
 ## 关于名字
 
