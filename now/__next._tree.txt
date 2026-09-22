@@ -1,0 +1,6 @@
+:HL["/_next/static/chunks/0eqy05bzooohs.css","style"]
+:HL["/now/simple-and-usable-cn.jpg","image"]
+:HL["/now/pedro-paramo.jpg","image"]
+:HL["/now/heart-beat.jpg","image"]
+:HL["/now/the-odyssey.jpg","image"]
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"now","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"e5CKOv7fCZGyjb6CNZiX5"}
