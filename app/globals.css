@@ -378,66 +378,73 @@ a {
   background: rgba(255, 255, 255, 0.45);
 }
 
-/* A quiet, dated snapshot directly beneath the opening scene. */
-.now-section {
-  position: relative;
-  overflow: hidden;
-  padding: clamp(4.5rem, 9vw, 8rem) clamp(1.25rem, 6vw, 6.5rem);
-  background:
-    radial-gradient(circle at 14% 16%, rgba(229, 165, 143, 0.14), transparent 24rem),
-    linear-gradient(145deg, #071525 0%, #0a1d30 68%, #0a1928 100%);
-  color: var(--moon);
-}
+/* A small homepage tag opens a complete, self-contained "Now" archive. */
+.now-tag { display: inline-flex; align-items: center; gap: .65rem; min-height: 2.45rem; padding: .55rem .8rem; border: 1px solid rgba(255,255,255,.28); background: rgba(5,18,33,.25); color: rgba(255,255,255,.76); font-size: .58rem; letter-spacing: .1em; backdrop-filter: blur(8px); transition: border-color 180ms ease, background 180ms ease; }
+.now-tag i { width: .42rem; aspect-ratio: 1; border-radius: 50%; background: var(--sunset); box-shadow: 0 0 .8rem rgba(229,165,143,.7); }
+.now-tag span { color: var(--sunset); font-weight: 600; }
+.now-tag strong { font-family: "Songti SC",serif; font-size: .76rem; font-weight: 400; letter-spacing: .05em; }
+.now-tag time { padding-left: .65rem; border-left: 1px solid rgba(255,255,255,.2); color: rgba(255,255,255,.4); }
+.now-tag:hover, .now-tag:focus-visible { border-color: rgba(255,255,255,.6); background: rgba(5,18,33,.5); }
 
-.now-section::after {
-  content: "NOW";
-  position: absolute;
-  right: -0.04em;
-  bottom: -0.26em;
-  color: rgba(255, 255, 255, 0.018);
-  font-family: Georgia, serif;
-  font-size: clamp(13rem, 27vw, 28rem);
-  line-height: 1;
-  pointer-events: none;
-}
-
-.now-shell { position: relative; z-index: 1; max-width: 84rem; margin: 0 auto; }
-.now-heading { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: end; margin-bottom: clamp(2.5rem, 5vw, 4rem); }
-.now-heading .section-kicker { color: var(--sunset); }
-.now-heading h2 { margin: 0; font-family: "Songti SC", "STSong", serif; font-size: clamp(3.5rem, 7vw, 6.5rem); font-weight: 400; line-height: 0.95; letter-spacing: -0.04em; }
-.now-heading > p { justify-self: end; max-width: 29rem; margin: 0; color: rgba(235, 242, 245, 0.5); font-family: "Songti SC", "STSong", serif; font-size: 1rem; line-height: 2; }
-.now-board { display: grid; grid-template-columns: minmax(18rem, 0.72fr) minmax(0, 1.28fr); border-top: 1px solid rgba(255, 255, 255, 0.14); border-left: 1px solid rgba(255, 255, 255, 0.14); }
-.now-location { position: relative; display: flex; flex-direction: column; justify-content: flex-end; min-height: 31rem; padding: clamp(1.7rem, 4vw, 3.5rem); overflow: hidden; border-right: 1px solid rgba(255, 255, 255, 0.14); border-bottom: 1px solid rgba(255, 255, 255, 0.14); }
-.now-location::before { content: "宁"; position: absolute; right: -0.08em; top: -0.18em; color: rgba(255, 255, 255, 0.028); font-family: "Songti SC", serif; font-size: clamp(15rem, 25vw, 24rem); line-height: 1; }
-.now-location-mark { position: absolute; left: clamp(1.7rem, 4vw, 3.5rem); top: clamp(1.7rem, 4vw, 3.5rem); width: 5.6rem; aspect-ratio: 1; border: 1px solid rgba(229, 165, 143, 0.42); border-radius: 50%; }
-.now-location-mark span { position: absolute; left: 50%; top: 50%; width: 0.7rem; aspect-ratio: 1; border-radius: 50%; background: var(--sunset); box-shadow: 0 0 1.7rem rgba(229, 165, 143, 0.62); transform: translate(-50%, -50%); }
-.now-location-mark i { position: absolute; left: 50%; top: 50%; width: 8.5rem; height: 1px; background: linear-gradient(90deg, transparent, rgba(229, 165, 143, 0.48), transparent); transform: translate(-50%, -50%) rotate(-22deg); }
-.now-location > div:nth-child(2) { position: relative; z-index: 1; }
-.now-location p { margin: 0; color: var(--sunset); font-size: 0.6rem; letter-spacing: 0.18em; }
-.now-location h3 { margin: 0.65rem 0 0; font-family: "Songti SC", "STSong", serif; font-size: clamp(4.8rem, 9vw, 8.2rem); font-weight: 400; line-height: 0.95; letter-spacing: 0.02em; }
-.now-location > div:nth-child(2) > span { display: block; margin-top: 1rem; color: rgba(255, 255, 255, 0.38); font-size: 0.62rem; letter-spacing: 0.22em; }
-.now-location > small { position: absolute; top: 1.5rem; right: 1.5rem; color: rgba(255, 255, 255, 0.24); font-family: Georgia, serif; }
-.now-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.now-item { --now-accent: var(--mist); position: relative; display: flex; flex-direction: column; min-width: 0; min-height: 15.5rem; padding: clamp(1.3rem, 2.5vw, 2rem); border-right: 1px solid rgba(255, 255, 255, 0.14); border-bottom: 1px solid rgba(255, 255, 255, 0.14); transition: background 200ms ease; }
-.now-item:last-child { grid-column: 1 / -1; min-height: 13rem; }
-.now-item:hover, .now-item:focus-visible { background: rgba(255, 255, 255, 0.045); outline: none; }
-.now-item > div { display: flex; justify-content: space-between; color: rgba(255, 255, 255, 0.28); }
-.now-item > div span { color: var(--now-accent); font-family: Georgia, serif; font-size: 0.7rem; }
-.now-item > div small { font-size: 0.52rem; letter-spacing: 0.16em; }
-.now-item > p { margin: auto 0 0.55rem; color: var(--now-accent); font-size: 0.62rem; letter-spacing: 0.08em; }
-.now-item h3 { margin: 0; font-family: "Songti SC", "STSong", serif; font-size: clamp(1.65rem, 3vw, 2.65rem); font-weight: 400; line-height: 1.25; }
-.now-item h3 span { display: block; }
-.now-item em { margin-top: 0.5rem; color: rgba(255, 255, 255, 0.38); font-family: "Songti SC", serif; font-size: 0.78rem; font-style: normal; }
-.now-item > b { position: absolute; right: 1.2rem; bottom: 1.2rem; color: rgba(255, 255, 255, 0.22); font-size: 0.9rem; font-weight: 400; transition: color 180ms ease, transform 180ms ease; }
-.now-item:hover > b, .now-item:focus-visible > b { color: var(--now-accent); transform: translate(0.2rem, -0.2rem); }
-.now-item.reading { --now-accent: #b7c7de; }
-.now-item.music { --now-accent: #c2a2bd; }
-.now-item.film { --now-accent: #d6ae79; }
-.now-item.knowledge { --now-accent: #7db7b0; }
-.now-item.travel { --now-accent: #e5a58f; }
-.now-updated { display: flex; align-items: center; gap: 1rem; margin-top: 1.3rem; color: rgba(255, 255, 255, 0.32); font-size: 0.55rem; letter-spacing: 0.18em; }
-.now-updated i { width: min(7rem, 18vw); height: 1px; background: rgba(255, 255, 255, 0.15); }
-.now-updated time { color: var(--sunset); }
+.now-page { min-height: 100svh; overflow: hidden; background: #071525; color: var(--moon); }
+.now-page-nav { display: flex; justify-content: space-between; align-items: center; padding: 1.4rem clamp(1.25rem,5vw,5rem); border-bottom: 1px solid rgba(255,255,255,.12); }
+.now-page-nav > a:last-child { color: rgba(255,255,255,.56); font-size: .7rem; letter-spacing: .12em; }
+.now-page-nav > a:last-child:hover { color: #fff; }
+.now-archive { width: min(86rem,100%); margin: 0 auto; padding: clamp(4rem,8vw,8rem) clamp(1.25rem,5vw,5rem); }
+.now-archive-heading { display: grid; grid-template-columns: 1fr auto auto; gap: clamp(2rem,6vw,6rem); align-items: end; padding-bottom: clamp(3rem,6vw,5rem); border-bottom: 1px solid rgba(255,255,255,.15); }
+.now-archive-heading p, .now-reading header p, .now-feature-label p, .now-thought-card > div p { margin: 0; color: var(--sunset); font-size: .62rem; font-weight: 600; letter-spacing: .2em; }
+.now-archive-heading h1 { margin: .65rem 0 0; font-family: "Songti SC","STSong",serif; font-size: clamp(5.5rem,12vw,11rem); font-weight: 400; line-height: .84; letter-spacing: -.06em; }
+.now-archive-heading > time { align-self: start; color: rgba(255,255,255,.4); font-size: .62rem; letter-spacing: .18em; }
+.now-archive-place { display: grid; min-width: 11rem; }
+.now-archive-place span { color: rgba(255,255,255,.36); font-size: .6rem; letter-spacing: .12em; }
+.now-archive-place strong { margin: .4rem 0; font-family: "Songti SC",serif; font-size: 3.4rem; font-weight: 400; line-height: 1; }
+.now-archive-place small { color: var(--sunset); font-size: .54rem; letter-spacing: .18em; }
+.now-reading { padding: clamp(4rem,8vw,7rem) 0; }
+.now-reading > header { display: flex; gap: 1.3rem; align-items: flex-start; margin-bottom: 2.5rem; }
+.now-reading > header > span, .now-feature-label span, .now-thought-card > div > span { color: rgba(255,255,255,.25); font-family: Georgia,serif; font-size: .7rem; }
+.now-reading h2 { margin: .4rem 0 0; font-family: "Songti SC",serif; font-size: clamp(2.8rem,5vw,5rem); font-weight: 400; }
+.now-book-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); border-top: 1px solid rgba(255,255,255,.14); border-left: 1px solid rgba(255,255,255,.14); }
+.now-book { display: grid; grid-template-columns: minmax(10rem,.7fr) minmax(0,1.3fr); gap: clamp(1.4rem,3vw,3rem); min-width: 0; padding: clamp(1.3rem,3vw,2.5rem); border-right: 1px solid rgba(255,255,255,.14); border-bottom: 1px solid rgba(255,255,255,.14); }
+.now-book-cover { align-self: start; aspect-ratio: 3/4; overflow: hidden; background: rgba(255,255,255,.05); box-shadow: .8rem .8rem 0 rgba(255,255,255,.025); }
+.now-book-cover img { width: 100%; height: 100%; object-fit: cover; }
+.now-work-copy { align-self: end; }
+.now-work-copy > p:first-child { margin: 0; color: var(--sunset); font-size: .58rem; letter-spacing: .08em; }
+.now-work-copy h3 { margin: .65rem 0 .25rem; font-family: "Songti SC",serif; font-size: clamp(1.8rem,3vw,3rem); font-weight: 400; line-height: 1.25; }
+.now-work-copy > span { color: rgba(255,255,255,.33); font-family: Georgia,serif; font-size: .72rem; }
+.now-work-copy > small { display: block; margin-top: .7rem; color: rgba(255,255,255,.45); font-size: .58rem; }
+.now-work-copy > div { width: 2.6rem; height: 1px; margin: 1.4rem 0; background: var(--sunset); opacity: .5; }
+.now-work-copy > p:last-child { margin: 0; color: rgba(255,255,255,.58); font-family: "Songti SC",serif; font-size: .88rem; line-height: 1.95; }
+.now-feature { display: grid; grid-template-columns: minmax(14rem,.72fr) minmax(0,1.28fr); gap: clamp(2.5rem,7vw,7rem); align-items: center; padding: clamp(4rem,9vw,8rem) clamp(1.4rem,5vw,5rem); border-top: 1px solid rgba(255,255,255,.14); }
+.now-feature-art { overflow: hidden; background: rgba(255,255,255,.05); box-shadow: 1.1rem 1.1rem 0 rgba(255,255,255,.03); }
+.now-feature-art.square { aspect-ratio: 1; }
+.now-feature-art.poster { width: min(100%,25rem); aspect-ratio: 2/3; justify-self: end; }
+.now-feature-art img { width: 100%; height: 100%; object-fit: cover; }
+.now-feature-label { display: flex; gap: 1rem; align-items: center; }
+.now-feature-copy h2 { margin: 1.4rem 0 0; font-family: "Songti SC",serif; font-size: clamp(3.7rem,8vw,7.5rem); font-weight: 400; line-height: .98; letter-spacing: -.04em; }
+.now-feature-copy h3 { margin: .7rem 0 2rem; color: rgba(255,255,255,.45); font-family: Georgia,"Songti SC",serif; font-size: 1rem; font-weight: 400; }
+.now-feature-copy dl { display: grid; grid-template-columns: repeat(3,1fr); margin: 0; padding: 1.2rem 0; border-top: 1px solid rgba(255,255,255,.12); border-bottom: 1px solid rgba(255,255,255,.12); }
+.now-feature-copy dt { color: rgba(255,255,255,.3); font-size: .56rem; letter-spacing: .1em; }
+.now-feature-copy dd { margin: .45rem 0 0; font-family: "Songti SC",serif; font-size: .75rem; line-height: 1.5; }
+.now-feature-copy > p { max-width: 38rem; margin: 2rem 0 0; color: rgba(255,255,255,.62); font-family: "Songti SC",serif; font-size: 1rem; line-height: 2; }
+.now-film { grid-template-columns: minmax(0,1.28fr) minmax(14rem,.72fr); }
+.now-thoughts { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); border-top: 1px solid rgba(255,255,255,.14); border-left: 1px solid rgba(255,255,255,.14); }
+.now-thought-card { position: relative; min-height: 34rem; padding: clamp(1.6rem,4vw,3.5rem); overflow: hidden; border-right: 1px solid rgba(255,255,255,.14); border-bottom: 1px solid rgba(255,255,255,.14); }
+.now-thought-card::before { position: absolute; right: -.08em; top: -.15em; color: rgba(255,255,255,.025); font-family: "Songti SC",serif; font-size: clamp(14rem,25vw,25rem); line-height: 1; }
+.now-thought-card.ontology::before { content: "在"; }
+.now-thought-card.destination::before { content: "往"; }
+.now-thought-card > div:first-child { position: relative; display: flex; justify-content: space-between; }
+.now-thought-card > small { position: relative; display: block; margin-top: clamp(5rem,11vw,10rem); color: var(--sunset); font-size: .62rem; }
+.now-thought-card h2 { position: relative; margin: .55rem 0 1.4rem; font-family: "Songti SC",serif; font-size: clamp(3.2rem,6vw,6rem); font-weight: 400; line-height: 1.1; }
+.now-thought-card > p { position: relative; max-width: 31rem; margin: 0; color: rgba(255,255,255,.58); font-family: "Songti SC",serif; font-size: .92rem; line-height: 2; }
+.now-thought-card ul { position: relative; display: flex; flex-wrap: wrap; gap: .55rem; margin: 2rem 0 0; padding: 0; list-style: none; }
+.now-thought-card li { padding: .45rem .7rem; border: 1px solid rgba(125,183,176,.35); color: #8fc3bd; font-size: .58rem; }
+.now-destination-line { position: absolute; left: clamp(1.6rem,4vw,3.5rem); right: clamp(1.6rem,4vw,3.5rem); bottom: 2rem; display: flex; align-items: center; gap: 1rem; color: rgba(255,255,255,.32); font-size: .52rem; letter-spacing: .15em; }
+.now-destination-line i { flex: 1; height: 1px; background: linear-gradient(90deg,var(--sunset),rgba(255,255,255,.12)); }
+.now-archive-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 0; padding: 3rem 0 0; background: transparent; border: 0; color: rgba(255,255,255,.4); }
+.now-archive-footer p { margin: 0; font-family: "Songti SC",serif; font-size: 1rem; }
+.now-archive-footer > div { display: flex; gap: 1rem; align-items: center; font-size: .55rem; letter-spacing: .15em; }
+.now-archive-footer i { width: 4rem; height: 1px; background: rgba(255,255,255,.18); }
+.now-archive-footer time { color: var(--sunset); }
 
 .garden-today {
   position: relative;
@@ -3137,13 +3144,8 @@ html[data-theme="day"] .text-action { color: #143442; }
 html[data-theme="day"] .hero-note, html[data-theme="day"] .scroll-cue { color: rgba(8,39,50,.56); }
 html[data-theme="day"] .hero-note i, html[data-theme="day"] .scroll-cue span { background: rgba(8,39,50,.3); }
 html[data-theme="day"] .hero-moon-hit, html[data-theme="day"] .moon-guide { display: none; }
-html[data-theme="day"] .now-section { background: radial-gradient(circle at 14% 16%,rgba(229,165,143,.16),transparent 24rem),linear-gradient(145deg,#eaf4f1,#e3eeed 68%,#e8f0eb); color: #102b36; }
-html[data-theme="day"] .now-section::after, html[data-theme="day"] .now-location::before { color: rgba(7,38,48,.026); }
-html[data-theme="day"] .now-heading > p { color: rgba(7,38,48,.56); }
-html[data-theme="day"] .now-board, html[data-theme="day"] .now-location, html[data-theme="day"] .now-item { border-color: rgba(7,38,48,.14); }
-html[data-theme="day"] .now-location > div:nth-child(2) > span, html[data-theme="day"] .now-location > small, html[data-theme="day"] .now-item > div, html[data-theme="day"] .now-item em, html[data-theme="day"] .now-item > b, html[data-theme="day"] .now-updated { color: rgba(7,38,48,.4); }
-html[data-theme="day"] .now-item:hover, html[data-theme="day"] .now-item:focus-visible { background: rgba(255,255,255,.45); }
-html[data-theme="day"] .now-updated i { background: rgba(7,38,48,.15); }
+html[data-theme="day"] .now-tag { border-color: rgba(8,39,50,.24); background: rgba(245,252,250,.38); color: rgba(8,39,50,.76); }
+html[data-theme="day"] .now-tag time { border-color: rgba(8,39,50,.18); color: rgba(8,39,50,.45); }
 html[data-theme="day"] .day-motifs { display: block; position: absolute; z-index: 2; inset: 0; pointer-events: none; }
 html[data-theme="day"] .day-bird { position: absolute; left: 22%; top: 16%; color: rgba(24,75,86,.55); font-family: Georgia,serif; font-size: 2rem; animation: dayBird 9s ease-in-out infinite; }
 html[data-theme="day"] .day-shadow { position: absolute; right: 17%; bottom: 5%; width: 14rem; height: 2.2rem; border-radius: 50%; background: rgba(20,48,52,.16); filter: blur(12px); transform: rotate(-7deg); }
@@ -3210,8 +3212,10 @@ html[data-theme="day"] .search-group a:hover { background: rgba(255,255,255,.5);
 }
 
 @media (max-width: 980px) {
-  .now-board { grid-template-columns: 1fr; }
-  .now-location { min-height: 23rem; }
+  .now-archive-heading { grid-template-columns: 1fr auto; }
+  .now-archive-heading > time { grid-column: 2; grid-row: 1; }
+  .now-archive-place { grid-column: 2; grid-row: 1; align-self: end; }
+  .now-book-grid { grid-template-columns: 1fr; }
   .journey-shell { grid-template-columns: 1fr; }
   .journey-route-list { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); border-right: 0; border-bottom: 1px solid rgba(235,244,249,.16); }
   .journey-route-list button { min-height: 7.5rem; border-right: 1px solid rgba(235,244,249,.13); }
@@ -3219,8 +3223,10 @@ html[data-theme="day"] .search-group a:hover { background: rgba(255,255,255,.5);
 }
 
 @media (max-width: 840px) {
-  .now-heading { grid-template-columns: 1fr; }
-  .now-heading > p { justify-self: start; }
+  .now-feature, .now-film, .now-thoughts { grid-template-columns: 1fr; }
+  .now-feature-art { width: min(100%,28rem); }
+  .now-feature-art.poster { justify-self: start; grid-row: 1; }
+  .now-thought-card { min-height: 29rem; }
   .notes-heading { grid-template-columns: 1fr; }
   .journey-heading { grid-template-columns: 1fr; }
   .journey-heading > p { justify-self: start; }
@@ -3229,15 +3235,22 @@ html[data-theme="day"] .search-group a:hover { background: rgba(255,255,255,.5);
 }
 
 @media (max-width: 620px) {
-  .now-section { padding: 4.7rem 1rem; }
-  .now-heading { margin-bottom: 2.5rem; }
-  .now-heading h2 { font-size: 4.5rem; }
-  .now-location { min-height: 20rem; padding: 1.4rem; }
-  .now-location-mark { left: 1.4rem; top: 1.4rem; width: 4.5rem; }
-  .now-location h3 { font-size: 5.2rem; }
-  .now-grid { grid-template-columns: 1fr; }
-  .now-item, .now-item:last-child { grid-column: auto; min-height: 11.5rem; padding: 1.3rem; }
-  .now-item h3 { padding-right: 1.5rem; font-size: 1.8rem; }
+  .hero-actions { flex-wrap: wrap; gap: 1rem 1.4rem; }
+  .now-tag { order: 3; flex-basis: max-content; }
+  .now-page-nav { padding: 1rem; }
+  .now-archive { padding: 3.5rem 1rem 5rem; }
+  .now-archive-heading { grid-template-columns: 1fr; gap: 2rem; }
+  .now-archive-heading > time, .now-archive-place { grid-column: 1; grid-row: auto; }
+  .now-archive-heading > time { position: absolute; right: 1rem; top: 6.8rem; }
+  .now-archive-place strong { font-size: 2.8rem; }
+  .now-book { grid-template-columns: 8.5rem minmax(0,1fr); gap: 1.2rem; padding: 1rem; }
+  .now-work-copy > p:last-child { grid-column: 1 / -1; }
+  .now-feature { padding: 4rem .5rem; gap: 2.5rem; }
+  .now-feature-copy dl { grid-template-columns: 1fr; }
+  .now-feature-copy dl div { padding: .8rem 0; border-bottom: 1px solid rgba(255,255,255,.08); }
+  .now-thought-card { min-height: 31rem; padding: 1.4rem; }
+  .now-destination-line { left: 1.4rem; right: 1.4rem; }
+  .now-archive-footer { align-items: flex-start; gap: 1.5rem; flex-direction: column; }
   .global-tools { gap: .35rem; }
   .global-tools button { width: 2.15rem; height: 2.15rem; }
   .search-backdrop { padding: 0; }

@@ -82,7 +82,7 @@ const localItems: SearchItem[] = [
     title: "此刻，在南京",
     subtitle: "更新于 2026.09.22",
     description: "正在读《简约至上》和《佩德罗·巴拉莫》，最近循环王力宏《脚本》，正在研究本体论。",
-    href: "#now",
+    href: "/now/",
     keywords: "南京 简约至上 佩德罗·巴拉莫 脚本 王力宏 奥德赛 本体论 新加坡 印度尼西亚",
   }],
 );
@@ -143,7 +143,7 @@ export default function GlobalExperience() {
 
   const openResult = (event: React.MouseEvent<HTMLAnchorElement>, item: SearchItem) => {
     setSearchOpen(false);
-    if (item.href.startsWith("http")) return;
+    if (item.href.startsWith("http") || item.href.startsWith("/")) return;
 
     event.preventDefault();
     const targetId = decodeURIComponent(item.href.replace(/^#/, ""));

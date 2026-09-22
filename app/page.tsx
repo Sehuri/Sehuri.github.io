@@ -6,7 +6,6 @@ import FilmCollection from "./FilmCollection";
 import ContactSection from "./ContactSection";
 import HeroMoonExperience from "./HeroMoonExperience";
 import MurakamiLibrary from "./MurakamiLibrary";
-import NowSection from "./NowSection";
 import RecordCollection from "./RecordCollection";
 import ThemeJourneys from "./ThemeJourneys";
 import { recordCount } from "./albumData";
@@ -103,7 +102,7 @@ export default function Home() {
             <span>深绘里</span>
           </a>
           <div className="nav-links">
-            <a href="#now">此刻</a>
+            <a href="#spaces">我的空间</a>
             <a href="#journeys">主题漫游</a>
             <a href="#moon-guide">两个月亮</a>
             <a href="#growth">庭院年轮</a>
@@ -135,6 +134,12 @@ export default function Home() {
               进入我的世界 <span aria-hidden="true">↓</span>
             </a>
             <a className="text-action" href="#today">看看今天</a>
+            <a className="now-tag" href="/now/" aria-label="查看完整的此刻栏目">
+              <i aria-hidden="true" />
+              <span>NOW</span>
+              <strong>南京</strong>
+              <time dateTime="2026-09-22">09.22</time>
+            </a>
           </div>
         </div>
 
@@ -143,13 +148,11 @@ export default function Home() {
           <i />
           <span>NANJING · CHINA</span>
         </div>
-        <a className="scroll-cue" href="#now" aria-label="向下浏览此刻">
+        <a className="scroll-cue" href="#spaces" aria-label="向下浏览">
           <span />
           SCROLL
         </a>
       </section>
-
-      <NowSection />
 
       <GardenFeatures />
 
