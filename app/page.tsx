@@ -7,6 +7,7 @@ import ContactSection from "./ContactSection";
 import HeroMoonExperience from "./HeroMoonExperience";
 import MurakamiLibrary from "./MurakamiLibrary";
 import RecordCollection from "./RecordCollection";
+import ThemeJourneys from "./ThemeJourneys";
 import { recordCount } from "./albumData";
 import { murakamiBooks } from "./murakamiData";
 import { filmCount } from "./filmData";
@@ -102,6 +103,7 @@ export default function Home() {
           </a>
           <div className="nav-links">
             <a href="#spaces">我的空间</a>
+            <a href="#journeys">主题漫游</a>
             <a href="#moon-guide">两个月亮</a>
             <a href="#growth">庭院年轮</a>
             <a href="#about">关于我</a>
@@ -147,6 +149,8 @@ export default function Home() {
       </section>
 
       <GardenFeatures />
+
+      <ThemeJourneys />
 
       <section className="spaces" id="spaces">
         <header className="section-heading">
@@ -274,6 +278,7 @@ export default function Home() {
           <a href="https://yueji-reading-room.shenhuil.chatgpt.site">阅读</a>
           <a href="https://sehuri.github.io/Sehuri-knowledge-wiki/">知识</a>
           <a href="#records">音乐</a>
+          <a href="#journeys">漫游</a>
           <a href="#notes">手记</a>
           <a href="#films">电影</a>
           <a href="#murakami">村上</a>

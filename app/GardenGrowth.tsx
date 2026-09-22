@@ -19,6 +19,7 @@ const stats = [
 ] as const;
 
 const growthEvents = [
+  { date: "2026.09", title: "收藏之间长出路线", space: "CURATED PATHS", description: "四条主题漫游将旅行、阅读、知识、声音、光影与手记连成可以一站站走过的策展路径。", href: "#journeys", image: "/shenhuili.png", imageAlt: "深绘里天空中的两个月亮" },
   { date: "2026.08", title: "白昼与搜索抵达庭院", space: "DAYLIGHT · SEARCH", description: "影子在白天归来，一只搜索框也终于可以穿过城市、书、唱片、电影、知识与手记。", href: "#top", image: "/shenhuili-day.png", imageAlt: "深绘里的白天庭院" },
   { date: "2026.08", title: "庭院手记翻开第一页", space: "NOTES", description: `${gardenNotes.length} 篇轻量随笔成为收藏之外，属于自己的文字空间。`, href: "#notes", image: "/shenhuili-day.png", imageAlt: "白天庭院与海风" },
   { date: "2026.08", title: "留下相遇的入口", space: "CONTACT", description: "微信、抖音、小红书、X、Instagram、邮箱与 GitHub 汇入同一张联系地图。", href: "#contact", image: "/contact/wechat.jpg", imageAlt: "深绘里的微信二维码" },
@@ -41,7 +42,7 @@ export default function GardenGrowth() {
       </header>
 
       <div className="growth-now">
-        <div className="growth-now-title"><span>NOW</span><h3>此刻的数据</h3><p>LAST UPDATED · 2026.08</p></div>
+        <div className="growth-now-title"><span>NOW</span><h3>此刻的数据</h3><p>LAST UPDATED · 2026.09</p></div>
         <div className="growth-stat-grid">
           {stats.map((stat) => (
             <a href={stat.href} key={stat.label}>

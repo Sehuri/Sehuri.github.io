@@ -7,6 +7,7 @@ import { gardenNotes } from "./noteData";
 import { murakamiBooks } from "./murakamiData";
 import { bookRecommendations } from "./recommendationData";
 import { gardenDeepLinkEvent, searchTargetId } from "./deepLinks";
+import { themeJourneys } from "./journeyData";
 
 type SearchItem = {
   id: string;
@@ -66,10 +67,19 @@ const localItems: SearchItem[] = [
     href: `#${searchTargetId("note", note.slug)}`,
     keywords: `${note.title} ${note.category} ${note.excerpt} ${note.paragraphs.join(" ")}`,
   })),
+  themeJourneys.map((journey) => ({
+    id: `journey-${journey.slug}`,
+    type: "主题路线",
+    title: journey.title,
+    subtitle: journey.duration,
+    description: journey.introduction,
+    href: "#journeys",
+    keywords: `${journey.english} ${journey.closing} ${journey.stops.map((stop) => `${stop.type} ${stop.title} ${stop.meta} ${stop.note}`).join(" ")}`,
+  })),
 );
 
 const normalize = (value: string) => value.toLocaleLowerCase("zh-CN").replace(/[《》·，。！？：；、\s_-]/g, "");
-const typeOrder = ["城市", "书籍", "唱片", "电影", "电视剧", "知识", "手记"];
+const typeOrder = ["主题路线", "城市", "书籍", "唱片", "电影", "电视剧", "知识", "手记"];
 
 export default function GlobalExperience() {
   const [theme, setTheme] = useState<"night" | "day">("night");
