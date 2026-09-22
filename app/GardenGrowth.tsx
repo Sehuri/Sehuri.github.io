@@ -19,6 +19,7 @@ const stats = [
 ] as const;
 
 const growthEvents = [
+  { date: "2026.09", title: "生活在此刻留下坐标", space: "NOW", description: "南京、两本正在读的书、一首循环的歌、刚看完的电影与下一站计划，被收进一张轻量的生活切片。", href: "#now", image: "/shenhuili-day.png", imageAlt: "深绘里的此刻" },
   { date: "2026.09", title: "收藏之间长出路线", space: "CURATED PATHS", description: "四条主题漫游将旅行、阅读、知识、声音、光影与手记连成可以一站站走过的策展路径。", href: "#journeys", image: "/shenhuili.png", imageAlt: "深绘里天空中的两个月亮" },
   { date: "2026.08", title: "白昼与搜索抵达庭院", space: "DAYLIGHT · SEARCH", description: "影子在白天归来，一只搜索框也终于可以穿过城市、书、唱片、电影、知识与手记。", href: "#top", image: "/shenhuili-day.png", imageAlt: "深绘里的白天庭院" },
   { date: "2026.08", title: "庭院手记翻开第一页", space: "NOTES", description: `${gardenNotes.length} 篇轻量随笔成为收藏之外，属于自己的文字空间。`, href: "#notes", image: "/shenhuili-day.png", imageAlt: "白天庭院与海风" },

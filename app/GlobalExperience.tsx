@@ -76,10 +76,19 @@ const localItems: SearchItem[] = [
     href: "#journeys",
     keywords: `${journey.english} ${journey.closing} ${journey.stops.map((stop) => `${stop.type} ${stop.title} ${stop.meta} ${stop.note}`).join(" ")}`,
   })),
+  [{
+    id: "now-2026-09-22",
+    type: "此刻",
+    title: "此刻，在南京",
+    subtitle: "更新于 2026.09.22",
+    description: "正在读《简约至上》和《佩德罗·巴拉莫》，最近循环王力宏《脚本》，正在研究本体论。",
+    href: "#now",
+    keywords: "南京 简约至上 佩德罗·巴拉莫 脚本 王力宏 奥德赛 本体论 新加坡 印度尼西亚",
+  }],
 );
 
 const normalize = (value: string) => value.toLocaleLowerCase("zh-CN").replace(/[《》·，。！？：；、\s_-]/g, "");
-const typeOrder = ["主题路线", "城市", "书籍", "唱片", "电影", "电视剧", "知识", "手记"];
+const typeOrder = ["此刻", "主题路线", "城市", "书籍", "唱片", "电影", "电视剧", "知识", "手记"];
 
 export default function GlobalExperience() {
   const [theme, setTheme] = useState<"night" | "day">("night");
