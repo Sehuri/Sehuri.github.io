@@ -8,7 +8,7 @@ const today = new Date();
 const growingDays = Math.max(1, Math.floor((today.getTime() - startDate.getTime()) / 86400000) + 1);
 
 const stats = [
-  { value: "52", unit: "座城市", label: "走过的足迹", href: "https://sehuri.github.io/travel-map/" },
+  { value: "53", unit: "座城市", label: "走过的足迹", href: "https://sehuri.github.io/travel-map/" },
   { value: "26", unit: "本书", label: "今年的阅读", href: "https://yueji-reading-room.shenhuil.chatgpt.site" },
   { value: String(recordCount), unit: "张唱片", label: "收藏的声音", href: "#records" },
   { value: "128", unit: "篇知识", label: "知识花园收录", href: "https://sehuri.github.io/Sehuri-knowledge-wiki/" },

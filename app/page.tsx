@@ -19,7 +19,7 @@ const spaces = [
     name: "远行",
     english: "TRAVEL",
     description: "把走过的城市、遇见的风景，留在一张会持续生长的地图上。",
-    detail: "52 座城市 · 2 个国家",
+    detail: "53 座城市 · 2 个国家",
     href: "https://sehuri.github.io/travel-map/",
     action: "打开旅行地图",
     tone: "travel",
