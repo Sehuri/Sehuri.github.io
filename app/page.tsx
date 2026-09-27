@@ -12,6 +12,7 @@ import { recordCount } from "./albumData";
 import { murakamiBooks } from "./murakamiData";
 import { filmCount } from "./filmData";
 import { gardenNotes } from "./noteData";
+import { ExternalSpaceDetail, ExternalStatsProvider } from "./ExternalStats";
 
 const spaces = [
   {
@@ -19,7 +20,7 @@ const spaces = [
     name: "远行",
     english: "TRAVEL",
     description: "把走过的城市、遇见的风景，留在一张会持续生长的地图上。",
-    detail: "53 座城市 · 2 个国家",
+    detail: <ExternalSpaceDetail kind="travel" />,
     href: "https://sehuri.github.io/travel-map/",
     action: "打开旅行地图",
     tone: "travel",
@@ -29,7 +30,7 @@ const spaces = [
     name: "阅迹",
     english: "READING",
     description: "书架、划线，以及那些曾让我停下来想一想的句子。",
-    detail: "连接微信读书 · 持续更新",
+    detail: <ExternalSpaceDetail kind="reading" />,
     href: "https://yueji-reading-room.shenhuil.chatgpt.site",
     action: "走进阅览室",
     tone: "reading",
@@ -39,7 +40,7 @@ const spaces = [
     name: "知庭",
     english: "KNOWLEDGE",
     description: "从文章、视频和零散灵感里，慢慢长出自己的知识花园。",
-    detail: "个人知识 Wiki · 持续更新",
+    detail: <ExternalSpaceDetail kind="wiki" />,
     href: "https://sehuri.github.io/Sehuri-knowledge-wiki/",
     action: "进入知识花园",
     tone: "knowledge",
@@ -92,6 +93,7 @@ function Arrow() {
 
 export default function Home() {
   return (
+    <ExternalStatsProvider>
     <main>
       <a className="skip-link" href="#today">跳到今日庭院</a>
 
@@ -295,5 +297,6 @@ export default function Home() {
         <small>© 2026 SEHURI</small>
       </footer>
     </main>
+    </ExternalStatsProvider>
   );
 }

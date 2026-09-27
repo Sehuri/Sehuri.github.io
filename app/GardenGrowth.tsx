@@ -2,16 +2,17 @@ import { recordCount } from "./albumData";
 import { murakamiBooks } from "./murakamiData";
 import { filmCount } from "./filmData";
 import { gardenNotes } from "./noteData";
+import { ExternalStatValue } from "./ExternalStats";
 
 const startDate = new Date("2026-07-29T00:00:00+08:00");
 const today = new Date();
 const growingDays = Math.max(1, Math.floor((today.getTime() - startDate.getTime()) / 86400000) + 1);
 
 const stats = [
-  { value: "53", unit: "座城市", label: "走过的足迹", href: "https://sehuri.github.io/travel-map/" },
-  { value: "26", unit: "本书", label: "今年的阅读", href: "https://yueji-reading-room.shenhuil.chatgpt.site" },
+  { value: <ExternalStatValue kind="travel" />, unit: "座城市", label: "走过的足迹", href: "https://sehuri.github.io/travel-map/" },
+  { value: <ExternalStatValue kind="reading" />, unit: "本书", label: "今年读过", href: "https://yueji-reading-room.shenhuil.chatgpt.site" },
   { value: String(recordCount), unit: "张唱片", label: "收藏的声音", href: "#records" },
-  { value: "128", unit: "篇知识", label: "知识花园收录", href: "https://sehuri.github.io/Sehuri-knowledge-wiki/" },
+  { value: <ExternalStatValue kind="wiki" />, unit: "条内容", label: "知识花园收录", href: "https://sehuri.github.io/Sehuri-knowledge-wiki/" },
   { value: String(murakamiBooks.length), unit: "部作品", label: "村上书房", href: "#murakami" },
   { value: String(filmCount), unit: "部影视", label: "光影馆收藏", href: "#films" },
   { value: String(gardenNotes.length), unit: "篇手记", label: "庭院留下的文字", href: "#notes" },
@@ -43,7 +44,7 @@ export default function GardenGrowth() {
       </header>
 
       <div className="growth-now">
-        <div className="growth-now-title"><span>NOW</span><h3>此刻的数据</h3><p>LAST UPDATED · 2026.09</p></div>
+        <div className="growth-now-title"><span>NOW</span><h3>此刻的数据</h3><p>从各项目读取最新数据</p></div>
         <div className="growth-stat-grid">
           {stats.map((stat) => (
             <a href={stat.href} key={stat.label}>

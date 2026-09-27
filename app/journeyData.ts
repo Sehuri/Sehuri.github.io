@@ -53,7 +53,7 @@ export const themeJourneys: readonly ThemeJourney[] = [
     introduction: "出走有时是一次旅行，有时是从别人替你写好的生活里离开。这条路线从地图出发，经过公路、唱片和世界尽头，再问一次我们为什么要走远。",
     closing: "出走不一定为了抛下什么。它也可以是给生活腾出一点距离，好重新辨认自己想去的方向。",
     stops: [
-      { type: "旅行地图", title: "从一座走过的城市出发", meta: "53 座城市 · 旅行时间线", note: "先打开地图，看看一段距离如何在回忆中变成坐标。", href: "https://sehuri.github.io/travel-map/#memories" },
+      { type: "旅行地图", title: "从一座走过的城市出发", meta: "旅行时间线", note: "先打开地图，看看一段距离如何在回忆中变成坐标。", href: "https://sehuri.github.io/travel-map/#memories" },
       { type: "光影馆", title: "《末路狂花》", meta: "雷德利·斯科特 · 1991", note: "一次周末出行变成决绝的公路逃离，自由短得像一次腾空。", href: local("film", "thelma-and-louise") },
       { type: "唱片室", title: "《一百种生活》", meta: "卢广仲 · 2009", note: "离开唯一的答案，世界才会显露出更多种可以生活的样子。", href: local("album", "卢广仲-一百种生活") },
       { type: "庭院手记", title: "想去乌斯怀亚的今天", meta: "旅行手记 · 2026.08.16", note: "有些远方先作为一个念头存在，然后在某一天慢慢变成真实路线。", href: local("note", "want-to-go-to-ushuaia-today") },

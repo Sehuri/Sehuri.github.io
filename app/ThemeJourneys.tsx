@@ -3,16 +3,21 @@
 import { useState } from "react";
 import { gardenDeepLinkEvent } from "./deepLinks";
 import { themeJourneys } from "./journeyData";
+import { useExternalStats } from "./ExternalStats";
 
 function Arrow() {
   return <span aria-hidden="true">↗</span>;
 }
 
 export default function ThemeJourneys() {
+  const { travel } = useExternalStats();
   const [routeIndex, setRouteIndex] = useState(0);
   const [stopIndex, setStopIndex] = useState(0);
   const route = themeJourneys[routeIndex];
   const stop = route.stops[stopIndex];
+  const stopMeta = route.slug === "about-leaving" && stopIndex === 0 && travel
+    ? `${travel.cities} 座城市 · 旅行时间线`
+    : stop.meta;
 
   const chooseRoute = (index: number) => {
     setRouteIndex(index);
@@ -69,7 +74,7 @@ export default function ThemeJourneys() {
           <div className="journey-stop-detail">
             <div className="journey-stop-count"><span>{String(stopIndex + 1).padStart(2, "0")}</span><i /><small>{String(route.stops.length).padStart(2, "0")}</small></div>
             <div className="journey-stop-copy">
-              <small>{stop.type} · {stop.meta}</small>
+              <small>{stop.type} · {stopMeta}</small>
               <h4>{stop.title}</h4>
               <p>{stop.note}</p>
               <a href={stop.href} target={stop.href.startsWith("http") ? "_blank" : undefined} rel={stop.href.startsWith("http") ? "noreferrer" : undefined} onClick={openStop}>
