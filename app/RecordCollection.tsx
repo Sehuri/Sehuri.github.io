@@ -7,7 +7,7 @@ import {
   recordCount,
   type Album,
 } from "./albumData";
-import { currentSearchTarget, gardenDeepLinkEvent, revealSearchTarget, searchTargetId } from "./deepLinks";
+import { currentSearchTarget, gardenDeepLinkEvent, searchTargetId } from "./deepLinks";
 import ShareCard from "./ShareCard";
 
 const albumTargetId = (album: Album) => searchTargetId("album", `${album.artist}-${album.title}`);
@@ -205,8 +205,8 @@ export default function RecordCollection() {
       if (!targetId.startsWith("album-")) return;
       const targetAlbum = [featuredAlbum, ...chronologicalAlbums].find((album) => albumTargetId(album) === targetId);
       if (!targetAlbum) return;
+      setSelectedAlbum(targetAlbum);
       if (!targetAlbum.featured) setShowAll(true);
-      revealSearchTarget(targetId);
     };
     const onDeepLink = (event: Event) => openLinkedAlbum((event as CustomEvent<string>).detail);
     const onHashChange = () => openLinkedAlbum();

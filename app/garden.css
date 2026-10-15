@@ -1,0 +1,365 @@
+/* Shared structure for the daylight journal and the moonlit collection walk. */
+:root {
+  --garden-bg: #071827;
+  --garden-fg: #f1ede4;
+  --garden-muted: #b4c0c8;
+  --garden-line: #ffffff30;
+  --garden-accent: #e8b48b;
+  --garden-serif: "Songti SC", "STSong", "Noto Serif SC", Georgia, serif;
+  --garden-gutter: clamp(24px, 5.7vw, 84px);
+}
+html[data-theme="day"] {
+  --garden-bg: #f4f1e8;
+  --garden-fg: #172d36;
+  --garden-muted: #536a61;
+  --garden-line: #203e3838;
+  --garden-accent: #35594c;
+}
+body { background-color: var(--garden-bg); }
+.garden-site { color: var(--garden-fg); background-color: var(--garden-bg); }
+.garden-site .day-only { display: none !important; }
+html[data-theme="day"] .garden-site .night-only { display: none !important; }
+html[data-theme="day"] .garden-site .day-only { display: var(--day-display, block) !important; }
+.garden-entrance { position: relative; isolation: isolate; overflow: clip; background: var(--garden-bg); }
+.garden-entrance h1, .garden-entrance h2, .garden-entrance h3, .garden-entrance p, .garden-entrance figure { margin: 0; }
+.garden-entrance button, .garden-entrance a { -webkit-tap-highlight-color: transparent; }
+.garden-entrance button { font: inherit; cursor: pointer; }
+.garden-site :is(a, button, summary, input):focus-visible { outline: 2px solid var(--garden-accent); outline-offset: 6px; }
+.entrance-landscape { position: absolute; inset: 0 0 auto; height: calc(90px + clamp(390px, 35.5vw, 510px) + 76px + clamp(300px, 26vw, 375px)); pointer-events: none; }
+.entrance-landscape img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: center 40%; }
+.entrance-frontispiece { position: relative; }
+.entrance-masthead { position: relative; z-index: 10; display: flex; align-items: center; gap: 36px; height: 90px; margin: 0 var(--garden-gutter); border-bottom: 1px solid transparent; }
+.entrance-wordmark { display: flex; align-items: center; gap: 16px; flex-shrink: 0; }
+.entrance-seal { display: grid; place-items: center; width: 44px; height: 48px; border: 1px solid currentColor; font-family: var(--garden-serif); font-size: 31px; font-weight: 400; }
+.entrance-wordmark strong { font-family: var(--garden-serif); font-size: 28px; letter-spacing: .14em; font-weight: 500; }
+.entrance-wordmark small { display: block; margin-top: 4px; font-size: 8px; letter-spacing: .23em; }
+.entrance-nav { display: flex; align-items: center; gap: 33px; margin-left: auto; }
+.entrance-nav a { position: relative; padding: 15px 0; font-size: 14px; letter-spacing: .1em; }
+.entrance-nav a[href="#journeys"]::after { position: absolute; content: ""; left: 0; right: 0; bottom: 6px; border-bottom: 2px solid var(--garden-accent); }
+.entrance-masthead .global-tools { display: flex; align-items: center; gap: 10px; padding-left: 22px; border-left: 1px solid var(--garden-line); }
+.entrance-masthead .global-tools button { display: grid; place-items: center; width: 42px; height: 44px; padding: 0; border: 0; background: transparent; color: inherit; }
+.entrance-masthead .global-tools i, .entrance-masthead .global-tools kbd { display: none; }
+.entrance-mobile-menu { display: none; }
+.entrance-kicker { font-size: 11px; letter-spacing: .24em; line-height: 1.6; font-weight: 500; }
+.entrance-night-intro { position: relative; height: clamp(390px, 35.5vw, 510px); padding: 49px var(--garden-gutter) 30px; }
+.entrance-night-intro > .entrance-kicker { color: #c5d2dc; }
+.entrance-night-intro h1 { margin-top: 18px; font-family: var(--garden-serif); font-size: clamp(46px, 5.2vw, 75px); line-height: 1.38; font-weight: 400; letter-spacing: .01em; }
+.entrance-intro { font-family: var(--garden-serif); font-size: 21px; line-height: 1.9; letter-spacing: .035em; }
+.entrance-night-intro > .entrance-intro { margin-top: 15px; }
+.entrance-actions { display: flex; gap: 35px; align-items: center; margin-top: 28px; }
+.entrance-primary { display: inline-flex; align-items: center; justify-content: center; gap: 25px; min-height: 50px; padding: 13px 24px; border: 1px solid transparent; background: #f1ede4; color: #142737; font-family: var(--garden-serif); font-size: 16px; line-height: 1.5; letter-spacing: .035em; text-align: center; transition: background-color 160ms, transform 160ms; }
+.entrance-primary:hover { background: #fffaf0; transform: translateY(-2px); }
+.entrance-text-link { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; width: fit-content; border-bottom: 1px solid currentColor; font-family: var(--garden-serif); font-size: 16px; line-height: 1.6; }
+.entrance-moon-layer { position: absolute; z-index: 3; inset: 0; pointer-events: none; }
+.entrance-moon-layer .hero-moon-hit { position: absolute; right: auto; padding: 0; margin: 0; min-width: 0; min-height: 0; border: 0; border-radius: 50%; background: transparent; box-shadow: none; pointer-events: auto; touch-action: manipulation; }
+.entrance-moon-layer .hero-moon-hit:hover { border: 0; box-shadow: none; outline: none; }
+.entrance-moon-layer .hero-moon-hit:focus-visible { outline: 2px solid #f1ede4; outline-offset: 4px; box-shadow: none; }
+.garden-atlas { position: relative; }
+.atlas-route-heading { display: flex; justify-content: space-between; align-items: center; gap: 24px; min-height: 76px; margin: 0 var(--garden-gutter); }
+.atlas-route-heading h2 { font-family: var(--garden-serif); font-size: 20px; font-weight: 500; line-height: 1.5; }
+.atlas-route-heading p { margin-top: 8px; font-size: 14px; letter-spacing: .08em; color: #d1d8df; }
+.atlas-route-tabs { display: flex; flex-wrap: wrap; align-items: center; gap: 20px; }
+.atlas-route-tabs button { padding: 14px 0 10px; border: 0; border-bottom: 2px solid transparent; background: transparent; color: #c6cdd3; font-family: var(--garden-serif); font-size: 17px; letter-spacing: .02em; }
+.atlas-route-tabs button[aria-selected="true"] { color: var(--garden-fg); border-bottom-color: var(--garden-accent); }
+.atlas-walk { position: relative; height: clamp(300px, 26vw, 375px); margin: 0 var(--garden-gutter); }
+.atlas-trail { position: absolute; left: -4%; top: 8px; width: 108%; height: 230px; object-fit: fill; opacity: .78; pointer-events: none; }
+.atlas-stops { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 22px; margin: 0; padding: 14px 0 0; list-style: none; }
+.atlas-stops > li { min-width: 0; }
+.atlas-stops > li:nth-child(2), .atlas-stops > li:nth-child(5) { padding-top: 24px; }
+.atlas-stops > li:nth-child(3), .atlas-stops > li:nth-child(6) { padding-top: 75px; }
+.atlas-node { display: block; width: 100%; padding: 0; border: 0; background: transparent; color: var(--garden-fg); text-align: left; }
+.atlas-object { display: flex; justify-content: flex-start; align-items: end; height: clamp(120px, 13.5vw, 188px); margin-bottom: 12px; }
+.atlas-object img { display: block; width: auto; max-width: 90%; height: 100%; object-fit: contain; object-position: bottom left; filter: drop-shadow(0 4px 12px #0006); transition: transform 200ms, filter 200ms; }
+.atlas-node.record .atlas-object img { width: 100%; height: auto; max-height: 90%; aspect-ratio: 1; }
+.atlas-node.note .atlas-object img { max-width: 115%; max-height: 90%; }
+.atlas-node.photo .atlas-object img { width: 100%; height: 75%; object-fit: cover; }
+.atlas-node:hover .atlas-object img, .atlas-node:focus-visible .atlas-object img { transform: translateY(-6px); }
+.atlas-node.selected .atlas-object img { filter: drop-shadow(0 0 14px #e5ac5b6b); }
+.atlas-node-copy { display: block; font-family: var(--garden-serif); }
+.atlas-node-copy > small { display: block; color: #f1bd8e; font-family: "Avenir Next", sans-serif; font-size: 13px; line-height: 1.5; }
+.atlas-node-copy strong { display: block; margin-top: 1px; font-size: 20px; line-height: 1.4; font-weight: 400; }
+.atlas-node-copy > span { display: block; margin-top: 4px; font-size: 13px; line-height: 1.6; color: #d4dbe1; }
+.atlas-detail { display: grid; grid-template-columns: 1fr 1.16fr .34fr; gap: 44px; align-items: center; min-height: 380px; padding: 35px var(--garden-gutter); background: var(--garden-bg); border-top: 1px solid #ffffff26; }
+.atlas-detail-image { height: 300px; overflow: hidden; }
+.atlas-detail-image img { display: block; width: 100%; height: 100%; object-fit: contain; background: #0a1b2b; }
+.atlas-detail-image.note img, .atlas-detail-image.photo img { object-fit: cover; }
+.atlas-detail-copy { padding-left: 35px; border-left: 1px solid #e7b58b9c; }
+.atlas-meta { font-family: var(--garden-serif); color: #c5cdd3; font-size: 14px; letter-spacing: .04em; }
+.atlas-meta b { color: var(--garden-accent); font-weight: 500; }
+.atlas-detail-copy h3 { margin-top: 14px; font-family: var(--garden-serif); font-size: clamp(31px, 3.5vw, 50px); font-weight: 400; line-height: 1.4; overflow-wrap: anywhere; }
+.atlas-excerpt { max-width: 30em; margin-top: 16px !important; font-family: var(--garden-serif); font-size: 20px; line-height: 1.9; color: #d7dce0; }
+.atlas-date { margin-top: 14px !important; color: #b6c1c9; font-family: var(--garden-serif); font-size: 14px; letter-spacing: .12em; }
+.atlas-detail-copy .entrance-primary { margin-top: 22px; min-height: 46px; padding: 10px 20px; font-size: 15px; }
+.atlas-controls { min-width: 0; padding-left: 25px; border-left: 1px solid var(--garden-line); }
+.atlas-controls > button { display: block; width: 100%; min-height: 80px; padding: 8px 0; border: 0; background: transparent; color: inherit; text-align: left; }
+.atlas-controls > button + button { margin-top: 12px; }
+.atlas-controls > button > span { display: flex; align-items: center; gap: 8px; font-family: var(--garden-serif); font-size: 15px; }
+.atlas-controls small { display: block; margin-top: 10px; font-family: var(--garden-serif); font-size: 13px; line-height: 1.7; color: var(--garden-muted); }
+.atlas-controls button:disabled { opacity: .35; cursor: default; }
+.atlas-progress { display: flex; flex-wrap: wrap; margin-top: 12px; gap: 0; }
+.atlas-progress button { display: grid; place-items: center; width: 22px; height: 30px; border: 0; background: transparent; padding: 0; }
+.atlas-progress span { width: 8px; height: 8px; border: 1px solid var(--garden-muted); border-radius: 50%; }
+.atlas-progress [aria-current="step"] span { background: var(--garden-accent); border-color: var(--garden-accent); }
+.night-directory { margin: 0 var(--garden-gutter); padding: 15px 0 0; border-bottom: 1px solid var(--garden-line); }
+.night-directory > p { display: flex; align-items: center; gap: 20px; padding: 16px 0; font-family: var(--garden-serif); font-size: 16px; letter-spacing: .04em; }
+.night-directory > p::after { content: ""; flex: 1; border-bottom: 1px solid var(--garden-line); }
+.entrance-directory { --day-display: flex; display: flex; align-items: center; justify-content: center; }
+.entrance-directory a { position: relative; flex: 1; padding: 24px 12px; font-family: var(--garden-serif); font-size: 18px; text-align: center; white-space: nowrap; }
+.entrance-directory a:hover { color: var(--garden-accent); }
+.entrance-directory a + a::before { position: absolute; left: 0; content: "/"; color: var(--garden-muted); font-family: sans-serif; font-size: 14px; }
+.collection-archive { color: var(--garden-fg); }
+.collection-archive > summary { display: flex; justify-content: space-between; align-items: center; gap: 25px; min-height: 100px; margin: 0 var(--garden-gutter); padding: 20px 0; list-style: none; cursor: pointer; border-bottom: 1px solid var(--garden-line); }
+.collection-archive > summary::-webkit-details-marker { display: none; }
+.collection-archive > summary small { display: block; color: var(--garden-muted); font-size: 9px; letter-spacing: .2em; line-height: 1.6; }
+.collection-archive > summary strong { display: block; margin-top: 8px; font: 400 20px/1.5 var(--garden-serif); }
+.collection-archive[open] > summary > svg { transform: rotate(180deg); }
+.garden-site .garden-footer { display: flex; flex-wrap: wrap; align-items: center; gap: 20px; padding: 30px var(--garden-gutter); min-height: 95px; border: 0; background: var(--garden-bg); color: var(--garden-muted); }
+.garden-footer .footer-brand { display: none; }
+.garden-site .garden-footer p { font-family: var(--garden-serif); font-size: 13px; color: var(--garden-fg); }
+.garden-site .garden-footer > div { display: flex; flex-wrap: wrap; gap: 12px; margin-left: auto; }
+.garden-site .garden-footer a { font-size: 11px; line-height: 1.6; }
+.garden-site .garden-footer small { font-size: 10px; }
+
+/* Both entrances use an immersive landscape; daylight continues as a paper journal. */
+html[data-theme="day"] { --day-cover-height: max(720px, 100svh); --day-masthead-height: 84px; }
+html[data-theme="day"] .garden-site, html[data-theme="day"] .garden-entrance { background: #f4f1e8 url("/garden/paper-texture.webp") repeat; background-size: 650px; }
+.entrance-day-landscape { position: absolute; inset: 0; pointer-events: none; }
+.entrance-day-landscape img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center center; }
+.entrance-day-landscape::after { content: ""; position: absolute; inset: 0; background: #f7f8ed; opacity: .22; }
+html[data-theme="day"] .entrance-masthead { border-bottom-color: #203e3830; height: 84px; }
+html[data-theme="day"] .entrance-seal { background: #b97954; color: #fff5df; border: 0; }
+html[data-theme="day"] .entrance-nav a[href="#journeys"]::after { display: none; }
+html[data-theme="day"] .entrance-primary { background: #345746; color: #f8f4e8; }
+html[data-theme="day"] .entrance-primary:hover { background: #244635; }
+.entrance-day-intro { --day-display: flex; position: relative; align-items: center; padding: 50px var(--garden-gutter) 72px; min-height: calc(var(--day-cover-height) - var(--day-masthead-height)); }
+.day-letter { position: relative; z-index: 1; width: 62%; max-width: 820px; text-shadow: 0 1px 12px #f8fbefaa; }
+.day-letter .entrance-kicker { color: #436052; font-size: 10px; }
+.day-letter h1 { position: relative; margin-top: 22px; font: 500 clamp(42px, 4.7vw, 68px)/1.36 var(--garden-serif); letter-spacing: -.035em; }
+.day-letter .entrance-intro { margin: 24px 0; max-width: 30em; color: #244938; font-size: 17px; line-height: 1.9; }
+.day-signature { display: block; width: 205px; height: 120px; object-fit: contain; margin: 12px 0 0; }
+.day-landscape-caption { position: absolute; right: var(--garden-gutter); bottom: 22px; color: #f8f7ee; font: 12px/1.6 var(--garden-serif); text-shadow: 0 1px 8px #153c2b; }
+html[data-theme="day"] .entrance-directory { margin: 0 var(--garden-gutter); border-block: 1px solid #2f4b4663; }
+html[data-theme="day"] .entrance-directory a { padding-block: 21px; font-size: 22px; }
+html[data-theme="day"] .entrance-directory a + a::before { content: ""; top: 30px; height: 15px; border-left: 1px solid #2f4b4663; }
+.day-journal { --day-display: grid; grid-template-columns: minmax(0, 1.85fr) minmax(0, .85fr); gap: 42px; padding: 42px var(--garden-gutter); }
+.day-journal-main > header { display: flex; align-items: center; justify-content: space-between; gap: 18px; margin-bottom: 25px; }
+.day-journal h2 { font: 500 37px/1.4 var(--garden-serif); }
+.day-journal-main header .entrance-kicker { margin-top: 10px; font-size: 10px; color: #526c5e; }
+.day-journal-main header .entrance-text-link { align-self: center; font-size: 15px; color: #345746; }
+.journal-photo { display: block; overflow: hidden; }
+.journal-photo img { display: block; width: 100%; height: auto; aspect-ratio: 1.65; object-fit: cover; transition: transform 400ms; }
+.journal-photo:hover img { transform: scale(1.025); }
+.journal-copy { padding-top: 21px; }
+.journal-category { font: 14px/1.6 var(--garden-serif); color: #5b665c; }
+.journal-copy h3 { margin-top: 8px; font: 500 42px/1.4 var(--garden-serif); }
+.journal-copy time { display: block; margin-top: 9px; font: 13px/1.6 var(--garden-serif); color: #476155; letter-spacing: .13em; }
+.journal-copy > p:not(.journal-category) { margin-top: 22px; font: 19px/1.9 var(--garden-serif); }
+.journal-copy .entrance-text-link { margin-top: 19px; color: #355b47; }
+.journal-latest { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 7px 16px; margin-top: 30px; padding-top: 18px; border-top: 1px solid var(--garden-line); }
+.journal-latest small { grid-column: 1; font-size: 11px; color: var(--garden-muted); }
+.journal-latest span { font: 17px/1.5 var(--garden-serif); }
+.journal-latest svg { grid-column: 2; grid-row: 1 / 3; }
+.day-desk { padding-left: 38px; border-left: 1px solid var(--garden-line); }
+.day-desk h2 { font-size: 29px; }
+.day-desk > .entrance-kicker { margin: 10px 0 19px; font-size: 10px; }
+.desk-object { display: block; margin-bottom: 26px; }
+.desk-book { display: grid; place-items: center; height: 290px; padding: 22px; background: #e4dfd0; }
+.desk-book img { display: block; width: auto; max-width: 85%; height: 100%; object-fit: contain; box-shadow: 8px 9px 15px #24312624; transition: transform 200ms; }
+.desk-record { width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; display: block; transition: transform 200ms; }
+.desk-object:hover img { transform: translateY(-3px); }
+.desk-object > small { display: block; margin-top: 11px; font: 13px/1.5 var(--garden-serif); color: #697166; }
+.desk-object > strong { display: block; margin-top: 4px; font: 400 17px/1.7 var(--garden-serif); }
+html[data-theme="day"] .garden-atlas { margin: 0 var(--garden-gutter); padding: 32px 0 24px; border-block: 1px solid #2f4b4663; }
+.day-route-letter { --day-display: grid; grid-template-columns: .85fr 1.15fr; align-items: center; gap: 60px; }
+.day-route-letter .entrance-kicker { font-size: 10px; color: #526c5e; }
+.day-route-letter h2 { margin-top: 14px; font: 400 38px/1.5 var(--garden-serif); }
+.day-route-letter p:not(.entrance-kicker) { margin-top: 10px; font: 17px/1.7 var(--garden-serif); }
+.day-route-letter .entrance-primary { margin-top: 20px; }
+.day-route-letter > img { width: 100%; height: 250px; object-fit: cover; }
+html[data-theme="day"] .atlas-route-heading { margin: 18px 0 0; min-height: auto; }
+html[data-theme="day"] .atlas-route-tabs button { color: #50675b; font-size: 15px; }
+html[data-theme="day"] .atlas-route-tabs button[aria-selected="true"] { color: #244635; }
+html[data-theme="day"] .atlas-panel { display: none; }
+html[data-theme="day"] .day-expanded .atlas-panel { display: block; }
+html[data-theme="day"] .atlas-walk { margin: 20px 0; height: 335px; }
+html[data-theme="day"] .atlas-trail { opacity: .7; }
+html[data-theme="day"] .atlas-node-copy > small { color: #735538; }
+html[data-theme="day"] .atlas-node-copy > span, html[data-theme="day"] .atlas-excerpt, html[data-theme="day"] .atlas-date, html[data-theme="day"] .atlas-meta { color: #516457; }
+html[data-theme="day"] .atlas-detail { background: transparent; padding: 25px 0; grid-template-columns: 1fr 1.2fr .3fr; border-top-color: var(--garden-line); }
+html[data-theme="day"] .atlas-detail-image img { background: #e4dfd0; }
+html[data-theme="day"] .garden-footer { background: #f4f1e8 url("/garden/paper-texture.webp") repeat; background-size: 650px; }
+
+@media (min-width: 1600px) {
+  .garden-entrance, .collection-archive > summary, .garden-footer { max-width: 1600px; margin-inline: auto; }
+}
+@media (max-width: 1100px) {
+  .entrance-masthead { gap: 20px; }
+  .entrance-nav { gap: 22px; }
+  .entrance-wordmark small { font-size: 7px; }
+  .atlas-route-tabs { gap: 14px; }
+  .atlas-route-tabs button { font-size: 15px; }
+  .atlas-detail { gap: 26px; grid-template-columns: .95fr 1.1fr .35fr; }
+  .atlas-detail-copy { padding-left: 24px; }
+  .atlas-controls { padding-left: 16px; }
+  .atlas-excerpt { font-size: 18px; }
+  .day-letter .entrance-intro { font-size: 16px; max-width: 26em; }
+  .day-journal { gap: 28px; }
+  .day-desk { padding-left: 25px; }
+  .day-journal h2 { font-size: 31px; }
+  .day-desk h2 { font-size: 25px; }
+  .desk-book { height: 250px; padding: 18px; }
+  .day-route-letter { gap: 30px; }
+}
+@media (max-width: 760px) {
+  :root { --garden-gutter: 24px; }
+  .entrance-masthead, html[data-theme="day"] .entrance-masthead { height: 82px; gap: 12px; }
+  .entrance-seal { width: 35px; height: 39px; font-size: 25px; }
+  .entrance-wordmark { gap: 10px; }
+  .entrance-wordmark strong { font-size: 22px; }
+  .entrance-wordmark small { font-size: 6px; letter-spacing: .16em; }
+  .entrance-nav { display: none; }
+  .entrance-masthead .global-tools { margin-left: auto; padding-left: 0; border: 0; gap: 0; }
+  .entrance-masthead .global-tools button { width: 40px; height: 44px; }
+  .entrance-mobile-menu { display: block; }
+  .entrance-mobile-menu summary { display: grid; place-items: center; width: 40px; height: 44px; list-style: none; cursor: pointer; }
+  .entrance-mobile-menu summary::-webkit-details-marker { display: none; }
+  .entrance-mobile-menu nav { position: absolute; left: 0; right: 0; top: 72px; display: grid; grid-template-columns: 1fr 1fr; padding: 18px; gap: 5px 20px; background: var(--garden-bg); border: 1px solid var(--garden-line); box-shadow: 0 12px 30px #0003; }
+  .entrance-mobile-menu a { min-height: 44px; display: flex; align-items: center; font: 16px var(--garden-serif); }
+  .entrance-night-intro { height: 490px; padding-top: 55px; }
+  .entrance-landscape { height: 650px; }
+  .entrance-landscape img { object-position: 60% top; }
+  .entrance-night-intro h1 { margin-top: 22px; font-size: clamp(36px, 6.8vw, 49px); line-height: 1.4; }
+  .entrance-kicker { font-size: 9px; letter-spacing: .19em; }
+  .entrance-intro { font-size: 18px; }
+  .entrance-night-intro > .entrance-intro { margin-top: 18px; }
+  .entrance-actions { align-items: flex-start; flex-direction: column; gap: 13px; margin-top: 25px; }
+  .entrance-primary { min-height: 48px; padding: 12px 19px; font-size: 15px; }
+  .entrance-text-link { font-size: 15px; }
+  .atlas-route-heading { display: block; margin: 0; padding: 25px var(--garden-gutter) 14px; background: var(--garden-bg); }
+  .atlas-route-heading h2 { font-size: 18px; }
+  .atlas-route-heading p { font-size: 12px; }
+  .atlas-route-tabs { gap: 2px 20px; margin-top: 12px; }
+  .atlas-route-tabs button { font-size: 15px; min-height: 44px; padding: 8px 0; }
+  .atlas-walk { height: auto; margin: 0; padding: 4px var(--garden-gutter) 24px; background: var(--garden-bg); }
+  .atlas-trail { display: none; }
+  .atlas-stops { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 22px 20px; padding: 10px 0; }
+  .atlas-stops > li:nth-child(n) { padding-top: 0; }
+  .atlas-object { height: 122px; margin-bottom: 8px; justify-content: center; }
+  .atlas-object img { max-width: 95%; object-position: bottom center; }
+  .atlas-node-copy strong { font-size: 17px; }
+  .atlas-node-copy > span { font-size: 12px; line-height: 1.6; }
+  .atlas-node-copy > small { font-size: 12px; }
+  .atlas-detail, html[data-theme="day"] .atlas-detail { grid-template-columns: 1fr; gap: 24px; padding: 26px var(--garden-gutter); }
+  .atlas-detail-image { height: auto; aspect-ratio: 4 / 3; max-height: 350px; }
+  .atlas-detail-copy { padding-left: 20px; }
+  .atlas-detail-copy h3 { font-size: 34px; margin-top: 10px; }
+  .atlas-excerpt { font-size: 18px; margin-top: 12px !important; }
+  .atlas-controls { display: grid; grid-template-columns: 1fr 1fr; padding: 18px 0 0; border-left: 0; border-top: 1px solid var(--garden-line); }
+  .atlas-controls > button { min-height: 60px; }
+  .atlas-controls > button + button { margin-top: 0; text-align: right; }
+  .atlas-controls > button + button > span { justify-content: end; }
+  .atlas-progress { grid-column: 1 / -1; justify-content: center; margin-top: 8px; }
+  .atlas-progress button { width: 44px; height: 44px; }
+  .night-directory { margin-top: 8px; }
+  .night-directory > p { font-size: 15px; }
+  .entrance-directory { flex-wrap: wrap; justify-content: flex-start; padding: 10px 0; }
+  .entrance-directory a { flex: 0 0 25%; padding: 14px 7px; font-size: 17px; }
+  .entrance-directory a:nth-child(5)::before { display: none; }
+  .collection-archive > summary { min-height: 95px; }
+  .collection-archive > summary strong { font-size: 18px; }
+  .garden-site .garden-footer { gap: 17px; padding-top: 24px; padding-bottom: 26px; }
+  .garden-site .garden-footer > div { margin-left: 0; width: 100%; }
+  html[data-theme="day"] { --day-cover-height: max(820px, 100svh); --day-masthead-height: 82px; }
+  .entrance-day-landscape img { object-position: 65% top; }
+  .entrance-day-landscape::after { opacity: .12; }
+  .entrance-day-intro { align-items: flex-end; padding: 285px 0 0; }
+  .day-letter { width: 100%; max-width: none; padding: 25px var(--garden-gutter) 64px; background: #f4f5e9d9; text-shadow: none; }
+  .day-letter .entrance-kicker { font-size: 9px; }
+  .day-letter h1 { width: 100%; margin-top: 20px; font-size: clamp(34px, 6.7vw, 49px); letter-spacing: -.04em; }
+  .day-letter .entrance-intro { max-width: 25em; margin: 18px 0; font-size: 16px; }
+  .day-signature { width: 150px; height: 86px; margin-top: 10px; }
+  .day-landscape-caption { left: var(--garden-gutter); right: auto; color: #436052; font-size: 11px; text-shadow: none; }
+  html[data-theme="day"] .entrance-directory a { font-size: 17px; padding-block: 15px; }
+  html[data-theme="day"] .entrance-directory a + a::before { top: 21px; }
+  .day-journal { grid-template-columns: 1fr; gap: 32px; padding-top: 30px; padding-bottom: 32px; }
+  .day-journal h2 { font-size: 28px; }
+  .day-journal-main > header { align-items: flex-start; gap: 12px; margin-bottom: 20px; }
+  .day-journal-main header .entrance-text-link { font-size: 13px; white-space: nowrap; }
+  .journal-photo img { aspect-ratio: 1.35; }
+  .journal-copy h3 { font-size: 34px; }
+  .journal-copy > p:not(.journal-category) { font-size: 18px; margin-top: 18px; }
+  .journal-latest span { font-size: 15px; }
+  .day-desk { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 0 22px; padding: 28px 0 0; border-left: 0; border-top: 1px solid var(--garden-line); }
+  .day-desk h2, .day-desk > .entrance-kicker { grid-column: 1 / -1; }
+  .day-desk h2 { font-size: 25px; }
+  .day-desk > .entrance-kicker { margin-bottom: 20px; }
+  .desk-book { height: auto; aspect-ratio: 1; padding: 14px; }
+  .desk-object > strong { font-size: 15px; }
+  .desk-object > small { font-size: 12px; }
+  .day-route-letter { grid-template-columns: 1fr; gap: 25px; }
+  .day-route-letter h2 { font-size: 31px; }
+  .day-route-letter > img { height: auto; aspect-ratio: 1.9; }
+  html[data-theme="day"] .atlas-route-heading { padding: 0; background: transparent; }
+  html[data-theme="day"] .atlas-walk { margin: 10px 0; padding: 10px 0; background: transparent; height: auto; }
+  html[data-theme="day"] .atlas-detail { padding: 24px 0; }
+  html[data-theme="day"] .atlas-route-tabs { gap: 0 18px; }
+}
+@media (max-width: 390px) {
+  :root { --garden-gutter: 20px; }
+  .entrance-wordmark small { max-width: 130px; font-size: 5px; }
+  .entrance-wordmark strong { font-size: 20px; }
+  .entrance-masthead { gap: 6px; }
+  .entrance-masthead .global-tools button, .entrance-mobile-menu summary { width: 35px; }
+  .entrance-night-intro h1 { font-size: 35px; }
+  .atlas-stops { gap: 21px 15px; }
+  .atlas-object { height: 108px; }
+  .atlas-node-copy strong { font-size: 16px; }
+  .day-journal h2 { font-size: 26px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .garden-site { scroll-behavior: auto; }
+  .garden-entrance *, .garden-entrance *::before, .garden-entrance *::after { animation: none !important; transition: none !important; }
+}
+
+
+/* First comparison: restore the source proportions and leave node captions clear of the detail. */
+.entrance-night-intro { height: clamp(380px,33vw,475px); padding-top: 26px; }
+.entrance-night-intro h1 { margin-top: 14px; font-size: clamp(44px,4.9vw,70px); line-height: 1.25; }
+.entrance-night-intro > .entrance-intro { margin-top: 12px; font-size: 20px; line-height: 1.6; }
+.entrance-actions { margin-top: 20px; }
+.atlas-walk { height: clamp(350px,29vw,420px); }
+.entrance-landscape { height: calc(90px + clamp(380px,33vw,475px) + 76px + clamp(350px,29vw,420px)); }
+html[data-theme="day"] { --garden-gutter: clamp(24px,4.4vw,76px); }
+@media (max-width:760px) {
+  html[data-theme="day"] { --garden-gutter:24px; }
+  .entrance-landscape { height:650px; }
+  .entrance-night-intro { height:490px; padding-top:40px; }
+  .entrance-night-intro h1 { font-size:clamp(36px,6.8vw,49px); line-height:1.4; margin-top:22px; }
+  .entrance-night-intro > .entrance-intro { font-size:18px; line-height:1.8; margin-top:18px; }
+  .entrance-actions { margin-top:25px; }
+  .atlas-walk { height:auto; }
+  .day-letter h1 { width:100%; font-size:clamp(34px,6.7vw,49px); letter-spacing:-.04em; }
+}
+@media (max-width:390px) {
+  html[data-theme="day"] { --garden-gutter:20px; }
+  .entrance-night-intro h1 { font-size:35px; }
+}
+
+/* Keep the selected artwork close to the reference without crowding the archive access. */
+.entrance-landscape img { filter: brightness(.9); }
+.atlas-detail { min-height: 0; padding-block: 28px; }
+.atlas-detail-image { height: 270px; }
+.collection-archive > summary { min-height: 78px; }
+.garden-site .garden-footer { min-height: 70px; padding-block: 22px; }
+.desk-book { padding: 0; height: auto; aspect-ratio: 1; }
+.desk-book img { width: 100%; max-width: 100%; height: 100%; object-fit: cover; box-shadow: none; }
+@media (min-width:761px) and (max-width:980px) {
+  .entrance-landscape img { object-position:right top; }
+}
+@media (max-width:760px) {
+  .entrance-masthead .global-tools button, .entrance-mobile-menu summary { width:44px; height:44px; }
+  .atlas-detail-image { height:auto; }
+  .desk-book { padding:0; }
+  .entrance-landscape { height:572px; }
+  .entrance-landscape img { object-fit:cover; object-position:center top; filter:none; }
+}

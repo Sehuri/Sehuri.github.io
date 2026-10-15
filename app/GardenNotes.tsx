@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { gardenNotes, type GardenNote } from "./noteData";
-import { currentSearchTarget, gardenDeepLinkEvent, revealSearchTarget, searchTargetId } from "./deepLinks";
+import { currentSearchTarget, gardenDeepLinkEvent, searchTargetId } from "./deepLinks";
 import ShareCard from "./ShareCard";
 
 const noteTargetId = (note: GardenNote) => searchTargetId("note", note.slug);
@@ -48,8 +48,9 @@ export default function GardenNotes() {
   useEffect(() => {
     const openLinkedNote = (targetId = currentSearchTarget()) => {
       if (!targetId.startsWith("note-")) return;
-      if (!gardenNotes.some((note) => noteTargetId(note) === targetId)) return;
-      revealSearchTarget(targetId);
+      const linkedNote = gardenNotes.find((note) => noteTargetId(note) === targetId);
+      if (!linkedNote) return;
+      setSelected(linkedNote);
     };
     const onDeepLink = (event: Event) => openLinkedNote((event as CustomEvent<string>).detail);
     const onHashChange = () => openLinkedNote();

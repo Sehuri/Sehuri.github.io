@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { films, type Film } from "./filmData";
-import { currentSearchTarget, gardenDeepLinkEvent, revealSearchTarget, searchTargetId } from "./deepLinks";
+import { currentSearchTarget, gardenDeepLinkEvent, searchTargetId } from "./deepLinks";
 import ShareCard from "./ShareCard";
 
 const filmTargetId = (film: Film) => searchTargetId("film", film.slug);
@@ -88,9 +88,9 @@ export default function FilmCollection() {
       if (!targetId.startsWith("film-")) return;
       const targetFilm = films.find((film) => filmTargetId(film) === targetId);
       if (!targetFilm) return;
+      setSelectedFilm(targetFilm);
       setFilter("全部");
       setShowAll(true);
-      revealSearchTarget(targetId);
     };
     const onDeepLink = (event: Event) => openLinkedFilm((event as CustomEvent<string>).detail);
     const onHashChange = () => openLinkedFilm();

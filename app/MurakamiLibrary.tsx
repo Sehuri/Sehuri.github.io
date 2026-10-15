@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { murakamiBooks, readingRoutes, type MurakamiBook } from "./murakamiData";
-import { currentSearchTarget, gardenDeepLinkEvent, revealSearchTarget, searchTargetId } from "./deepLinks";
+import { currentSearchTarget, gardenDeepLinkEvent, searchTargetId } from "./deepLinks";
 import ShareCard from "./ShareCard";
 
 const bookTargetId = (book: MurakamiBook) => searchTargetId("murakami", book.title);
@@ -95,9 +95,9 @@ export default function MurakamiLibrary() {
       if (!targetId.startsWith("murakami-")) return;
       const targetBook = chronologicalBooks.find((book) => bookTargetId(book) === targetId);
       if (!targetBook) return;
+      setSelectedBook(targetBook);
       setFilter("全部");
       setShowAll(true);
-      revealSearchTarget(targetId);
     };
     const onDeepLink = (event: Event) => openLinkedBook((event as CustomEvent<string>).detail);
     const onHashChange = () => openLinkedBook();

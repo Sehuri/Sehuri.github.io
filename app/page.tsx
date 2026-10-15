@@ -1,13 +1,12 @@
 import GardenFeatures from "./GardenFeatures";
 import GardenGrowth from "./GardenGrowth";
 import GardenNotes from "./GardenNotes";
-import GlobalExperience from "./GlobalExperience";
+import GardenEntrance from "./GardenEntrance";
+import CollectionArchive from "./CollectionArchive";
 import FilmCollection from "./FilmCollection";
 import ContactSection from "./ContactSection";
-import HeroMoonExperience from "./HeroMoonExperience";
 import MurakamiLibrary from "./MurakamiLibrary";
 import RecordCollection from "./RecordCollection";
-import ThemeJourneys from "./ThemeJourneys";
 import { recordCount } from "./albumData";
 import { murakamiBooks } from "./murakamiData";
 import { filmCount } from "./filmData";
@@ -94,71 +93,13 @@ function Arrow() {
 export default function Home() {
   return (
     <ExternalStatsProvider>
-    <main>
+    <main className="garden-site">
       <a className="skip-link" href="#today">跳到今日庭院</a>
 
-      <section className="hero" id="top">
-        <nav className="site-nav" aria-label="主导航">
-          <a className="wordmark" href="#top" aria-label="深绘里首页">
-            <span className="wordmark-seal">深</span>
-            <span>深绘里</span>
-          </a>
-          <div className="nav-links">
-            <a href="#spaces">我的空间</a>
-            <a href="#journeys">主题漫游</a>
-            <a href="#moon-guide">两个月亮</a>
-            <a href="#growth">庭院年轮</a>
-            <a href="#about">关于我</a>
-            <a href="#contact">联系我</a>
-            <a href="https://github.com/Sehuri" target="_blank" rel="noreferrer">
-              GitHub <Arrow />
-            </a>
-          </div>
-          <GlobalExperience />
-        </nav>
+      <GardenEntrance />
 
-        <div className="hero-shade" aria-hidden="true" />
-        <HeroMoonExperience />
-        <div className="day-motifs" aria-hidden="true"><span className="day-bird">⌁</span><span className="day-shadow" /><p>THE SHADOW RETURNS</p></div>
-        <div className="hero-content">
-          <p className="eyebrow">SEHURI&apos;S DIGITAL GARDEN</p>
-          <h1>
-            深绘里
-            <span>在自己的世界里，慢慢生长。</span>
-          </h1>
-          <p className="hero-intro">
-            在旅行、阅读与知识之间，
-            <br />
-            收藏我看见的世界。
-          </p>
-          <div className="hero-actions">
-            <a className="primary-action" href="#spaces">
-              进入我的世界 <span aria-hidden="true">↓</span>
-            </a>
-            <a className="text-action" href="#today">看看今天</a>
-            <a className="now-tag" href="/now/" aria-label="查看完整的此刻栏目">
-              <i aria-hidden="true" />
-              <span>NOW</span>
-              <strong>南京</strong>
-              <time dateTime="2026-09-22">09.22</time>
-            </a>
-          </div>
-        </div>
-
-        <div className="hero-note" aria-hidden="true">
-          <span>2026.09.22</span>
-          <i />
-          <span>NANJING · CHINA</span>
-        </div>
-        <a className="scroll-cue" href="#spaces" aria-label="向下浏览">
-          <span />
-          SCROLL
-        </a>
-      </section>
-
+      <CollectionArchive>
       <GardenFeatures />
-
-      <ThemeJourneys />
 
       <section className="spaces" id="spaces">
         <header className="section-heading">
@@ -275,7 +216,9 @@ export default function Home() {
 
       <ContactSection />
 
-      <footer>
+      </CollectionArchive>
+
+      <footer className="garden-footer">
         <a className="wordmark footer-brand" href="#top">
           <span className="wordmark-seal">深</span>
           <span>深绘里</span>

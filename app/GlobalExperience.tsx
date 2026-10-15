@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
+import { IconSearch, IconSun, IconMoon } from "@tabler/icons-react";
 import { albumTimeline, featuredAlbum } from "./albumData";
 import { films } from "./filmData";
 import { gardenNotes } from "./noteData";
@@ -90,18 +91,29 @@ const localItems: SearchItem[] = [
 const normalize = (value: string) => value.toLocaleLowerCase("zh-CN").replace(/[《》·，。！？：；、\s_-]/g, "");
 const typeOrder = ["此刻", "主题路线", "城市", "书籍", "唱片", "电影", "电视剧", "知识", "手记"];
 
+const themeEvent = "shenhuili:theme-change";
+function subscribeTheme(onChange: () => void) {
+  const onStorage = (event: StorageEvent) => {
+    if (event.key !== "shenhuili-theme") return;
+    document.documentElement.dataset.theme = event.newValue === "day" ? "day" : "night";
+    onChange();
+  };
+  window.addEventListener(themeEvent, onChange);
+  window.addEventListener("storage", onStorage);
+  return () => { window.removeEventListener(themeEvent, onChange); window.removeEventListener("storage", onStorage); };
+}
+const readTheme = (): "night" | "day" => document.documentElement.dataset.theme === "day" ? "day" : "night";
+const serverTheme = (): "night" | "day" => "night";
+
 export default function GlobalExperience() {
-  const [theme, setTheme] = useState<"night" | "day">("night");
+  const theme = useSyncExternalStore(subscribeTheme, readTheme, serverTheme);
   const [searchOpen, setSearchOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [externalItems, setExternalItems] = useState<SearchItem[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
+  const searchPanelRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    const stored = localStorage.getItem("shenhuili-theme");
-    const initial = stored === "day" ? "day" : "night";
-    setTheme(initial);
-    document.documentElement.dataset.theme = initial;
     fetch("/search-external.json").then((response) => response.json()).then(setExternalItems).catch(() => setExternalItems([]));
   }, []);
 
@@ -120,9 +132,19 @@ export default function GlobalExperience() {
   useEffect(() => {
     if (!searchOpen) return;
     const overflow = document.body.style.overflow;
+    const previousFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    const trapFocus = (event: KeyboardEvent) => {
+      if (event.key !== "Tab") return;
+      const items = Array.from(searchPanelRef.current?.querySelectorAll<HTMLElement>('button:not([disabled]), a[href], input') ?? []);
+      const first = items[0];
+      const last = items[items.length - 1];
+      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus(); }
+      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
+    };
     document.body.style.overflow = "hidden";
+    document.addEventListener("keydown", trapFocus);
     requestAnimationFrame(() => inputRef.current?.focus());
-    return () => { document.body.style.overflow = overflow; };
+    return () => { document.body.style.overflow = overflow; document.removeEventListener("keydown", trapFocus); previousFocus?.focus({ preventScroll: true }); };
   }, [searchOpen]);
 
   const allItems = useMemo(() => [...localItems, ...externalItems], [externalItems]);
@@ -136,9 +158,9 @@ export default function GlobalExperience() {
 
   const switchTheme = () => {
     const next = theme === "night" ? "day" : "night";
-    setTheme(next);
     document.documentElement.dataset.theme = next;
-    localStorage.setItem("shenhuili-theme", next);
+    try { localStorage.setItem("shenhuili-theme", next); } catch { /* The theme still works when storage is unavailable. */ }
+    window.dispatchEvent(new Event(themeEvent));
   };
 
   const openResult = (event: React.MouseEvent<HTMLAnchorElement>, item: SearchItem) => {
@@ -156,13 +178,13 @@ export default function GlobalExperience() {
   return (
     <>
       <div className="global-tools">
-        <button className="search-trigger" type="button" onClick={() => setSearchOpen(true)} aria-label="搜索全部收藏"><span aria-hidden="true">⌕</span><i>搜索</i><kbd>⌘ K</kbd></button>
-        <button className="theme-trigger" type="button" onClick={switchTheme} aria-label={theme === "night" ? "切换到白天模式" : "切换到夜晚模式"}><span aria-hidden="true">{theme === "night" ? "☼" : "☾"}</span><i>{theme === "night" ? "白天" : "夜晚"}</i></button>
+        <button className="search-trigger" type="button" onClick={() => setSearchOpen(true)} aria-label="搜索全部收藏"><IconSearch size={21} stroke={1.25} /><i>搜索</i><kbd>⌘ K</kbd></button>
+        <button className="theme-trigger" type="button" onClick={switchTheme} aria-label={theme === "night" ? "切换到白天模式" : "切换到夜晚模式"} title={theme === "night" ? "切换到白天" : "切换到夜晚"}>{theme === "night" ? <IconSun size={22} stroke={1.25} /> : <IconMoon size={21} stroke={1.25} />}<i>{theme === "night" ? "白天" : "夜晚"}</i></button>
       </div>
 
       {searchOpen ? (
         <div className="search-backdrop" onMouseDown={() => setSearchOpen(false)}>
-          <section className="search-panel" role="dialog" aria-modal="true" aria-labelledby="global-search-title" onMouseDown={(event) => event.stopPropagation()}>
+          <section ref={searchPanelRef} className="search-panel" role="dialog" aria-modal="true" aria-labelledby="global-search-title" onMouseDown={(event) => event.stopPropagation()}>
             <header><div><p>SEARCH THE GARDEN</p><h2 id="global-search-title">在庭院里寻找</h2></div><button type="button" onClick={() => setSearchOpen(false)} aria-label="关闭全局搜索">×</button></header>
             <label className="search-input"><span aria-hidden="true">⌕</span><input ref={inputRef} value={query} onChange={(event) => setQuery(event.target.value)} placeholder="搜索城市、书、唱片、电影、知识或手记……" /><kbd>ESC</kbd></label>
             <div className="search-body">

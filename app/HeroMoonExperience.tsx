@@ -1,7 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { featuredTrackSections, type ConceptTrack } from "./albumData";
+import { moonHitBoxes } from "./moonGeometry";
 
 type MoonSide = 0 | 1;
 
@@ -16,6 +18,38 @@ export default function HeroMoonExperience() {
   const [side, setSide] = useState<MoonSide | null>(null);
   const [track, setTrack] = useState<ConceptTrack | null>(null);
   const [dayNotice, setDayNotice] = useState(false);
+  const layer = useRef<HTMLDivElement>(null);
+  const [hitBoxes, setHitBoxes] = useState<ReturnType<typeof moonHitBoxes>>([]);
+
+  useEffect(() => {
+    const landscape = layer.current?.parentElement;
+    const image = landscape?.querySelector("img");
+    if (!landscape || !image) return;
+    const position = (value: string) => {
+      if (value === "right" || value === "bottom") return 1;
+      if (value === "left" || value === "top") return 0;
+      return value.endsWith("%") ? parseFloat(value) / 100 : .5;
+    };
+    const measure = () => {
+      if (!image.naturalWidth || !landscape.clientWidth || !landscape.clientHeight) return;
+      const [x, y = "50%"] = getComputedStyle(image).objectPosition.split(" ");
+      setHitBoxes(moonHitBoxes(
+        landscape.clientWidth, landscape.clientHeight,
+        image.naturalWidth, image.naturalHeight,
+        position(x), position(y), image.currentSrc.includes("night-landscape-mobile"),
+      ));
+    };
+    const observer = new ResizeObserver(measure);
+    observer.observe(landscape);
+    image.addEventListener("load", measure);
+    window.addEventListener("resize", measure);
+    measure();
+    return () => {
+      observer.disconnect();
+      image.removeEventListener("load", measure);
+      window.removeEventListener("resize", measure);
+    };
+  }, []);
 
   const enterWorld = (nextSide: MoonSide) => {
     setSide(nextSide);
@@ -65,28 +99,27 @@ export default function HeroMoonExperience() {
 
   return (
     <>
-      <div className="moon-guide" id="moon-guide" role="status">
-        <span>尝试点击背景里的两个月亮，会进入不同世界。</span>
-        <a href="#top" aria-label="关闭双月提示">知道了</a>
+      <div className="entrance-moon-layer" id="moon-guide" ref={layer}>
+        {hitBoxes.map(({ side: moonSide, left, top, size }) => <button
+          key={moonSide}
+          className={`hero-moon-hit hero-moon-${moonSide === 0 ? "cold" : "warm"}`}
+          style={{ left, top, width: size, height: size }}
+          type="button"
+          onClick={() => enterWorld(moonSide)}
+          aria-label={moonSide === 0 ? "进入冷酷仙境" : "进入世界尽头"}
+        />)}
       </div>
 
-      {dayNotice ? (
+      {dayNotice ? createPortal(
         <aside className="day-moon-notice" role="status" aria-live="polite">
           <span aria-hidden="true">☼</span>
           <div><small>DAYLIGHT</small><p>太阳还没有落下，两个月亮的世界还未出现。</p></div>
           <button type="button" onClick={switchToNight}>切换到夜晚</button>
           <button className="day-moon-notice-close" type="button" onClick={() => setDayNotice(false)} aria-label="关闭提示">×</button>
-        </aside>
+        </aside>, document.body,
       ) : null}
 
-      <button className="hero-moon-hit hero-moon-cold" type="button" onClick={() => enterWorld(0)} aria-label="点击上方月亮，进入冷酷仙境">
-        <span>冷酷仙境</span>
-      </button>
-      <button className="hero-moon-hit hero-moon-warm" type="button" onClick={() => enterWorld(1)} aria-label="点击下方月亮，进入世界尽头">
-        <span>世界尽头</span>
-      </button>
-
-      {track && section ? (
+      {track && section ? createPortal(
         <div className="hero-moon-backdrop" onMouseDown={close}>
           <article className={`hero-moon-dialog ${side === 0 ? "wonderland" : "world-end"}`} role="dialog" aria-modal="true" aria-labelledby="hero-moon-title" onMouseDown={(event) => event.stopPropagation()}>
             <button className="hero-moon-close" type="button" onClick={close} aria-label="关闭双月歌曲窗口" autoFocus>×</button>
@@ -111,7 +144,7 @@ export default function HeroMoonExperience() {
               </div>
             </div>
           </article>
-        </div>
+        </div>, document.body,
       ) : null}
     </>
   );

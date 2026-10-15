@@ -19,6 +19,9 @@ export function revealSearchTarget(targetId: string) {
   window.setTimeout(() => {
     const target = document.getElementById(targetId);
     if (!target) return;
+    for (let parent = target.parentElement; parent; parent = parent.parentElement) {
+      if (parent instanceof HTMLDetailsElement) parent.open = true;
+    }
     target.scrollIntoView({ behavior: "smooth", block: "center" });
     target.focus({ preventScroll: true });
   }, 120);
