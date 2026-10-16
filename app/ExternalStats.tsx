@@ -3,8 +3,9 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
 
 type TravelVisit = { name: string; country: string; date?: string; desc?: string };
+type TravelCity = { name: string; country: string; dates: string[]; descriptions: string[] };
 type WikiEntry = { id: string; title: string; author?: string; summary?: string; topics?: string[]; concepts?: string[] };
-type TravelStats = { cities: number; countries: number; visits: TravelVisit[] };
+type TravelStats = { cities: number; countries: number; cityItems: TravelCity[] };
 type ReadingStats = { annualRead: number; publicBooks: number };
 type WikiStats = { entries: number; items: WikiEntry[] };
 type SourceState<T> = T | null | undefined;
@@ -54,7 +55,18 @@ async function githubFile(repository: string, path: string): Promise<string> {
 function travelFromVisits(visits: Array<{ name?: string; country?: string; date?: string; desc?: string }>): TravelStats {
   const valid = visits.filter((visit): visit is TravelVisit => typeof visit.name === "string" && !!visit.name.trim() && typeof visit.country === "string" && !!visit.country.trim());
   if (!valid.length || valid.length !== visits.length) throw new Error("Travel records are incomplete");
-  return { cities: valid.length, countries: new Set(valid.map((visit) => visit.country)).size, visits: valid };
+  const cities = new Map<string, TravelCity>();
+  for (const visit of valid) {
+    const name = visit.name.trim().normalize("NFKC");
+    const country = visit.country.trim().normalize("NFKC");
+    const key = JSON.stringify([country, name]);
+    const city: TravelCity = cities.get(key) ?? { name, country, dates: [], descriptions: [] };
+    if (visit.date && !city.dates.includes(visit.date)) city.dates.push(visit.date);
+    if (visit.desc && !city.descriptions.includes(visit.desc)) city.descriptions.push(visit.desc);
+    cities.set(key, city);
+  }
+  const cityItems = Array.from(cities.values(), (city) => ({ ...city, dates: city.dates.sort() }));
+  return { cities: cityItems.length, countries: new Set(cityItems.map((city) => city.country)).size, cityItems };
 }
 
 function parseTravelVisits(source: string): TravelVisit[] {

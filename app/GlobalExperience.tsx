@@ -115,14 +115,14 @@ export default function GlobalExperience() {
   const searchPanelRef = useRef<HTMLElement>(null);
 
   const externalItems = useMemo<SearchItem[]>(() => [
-    ...(externalStats.travel?.visits ?? []).map((visit, index) => ({
-      id: `city-${visit.name}-${visit.date ?? index}`,
+    ...(externalStats.travel?.cityItems ?? []).map((city) => ({
+      id: `city-${city.country}-${city.name}`,
       type: "城市",
-      title: visit.name,
-      subtitle: `${visit.country}${visit.date ? ` · ${visit.date}` : ""}`,
-      description: visit.desc ?? "旅行地图里的一段足迹。",
+      title: city.name,
+      subtitle: [city.country, city.dates.join("、"), city.dates.length > 1 ? `${city.dates.length} 次到访` : ""].filter(Boolean).join(" · "),
+      description: city.descriptions.join(" ") || "旅行地图里的一段足迹。",
       href: "https://sehuri.github.io/travel-map/#memories",
-      keywords: `${visit.name} ${visit.country} ${visit.date ?? ""} 旅行 城市 足迹 ${visit.desc ?? ""}`,
+      keywords: `${city.name} ${city.country} ${city.dates.join(" ")} 旅行 城市 足迹 ${city.descriptions.join(" ")}`,
     })),
     ...(externalStats.wiki?.items ?? []).map((item) => ({
       id: `knowledge-${item.id}`,
