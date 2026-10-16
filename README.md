@@ -8,22 +8,19 @@
 
 我把旅行、阅读、知识、音乐、影视和随手写下的文字放在这里，让散落在不同地方的收藏拥有同一个入口。它不是一份静止的个人简历，而是一个会随着生活持续变化的长期项目。
 
+## 访问网站
+
+- [GitHub Pages · 深绘里](https://sehuri.github.io/)
+- [ChatGPT Sites · 深绘里](https://shenhuili-digital-garden.shenhuil.chatgpt.site/)
+- [此刻 / NOW](https://sehuri.github.io/now/)
+
 ## 日夜庭院
 
 首页提供两种构图：夜晚是双月下的收藏漫游，白天以整幅庭院插画铺满首屏，下方延续纸色的私人生活刊。右上角可以切换，浏览器会记住选择；两种界面共用主题路线、搜索和收藏详情。
 
 手机使用单独的夜景构图，让人物与双月完整显示。双月作为没有常驻标记的彩蛋，点击区域按原始图片里的月面坐标随缩放和裁切同步移动。首页之外的全部空间、唱片、影视、书房与手记，仍可通过空间导航或“继续走走”打开。
 
-### 本地查看
-
-已有静态构建时，运行 `npm run preview:local`，即可在 `http://localhost:4174/` 查看。预览作为独立后台进程运行，同时监听 IPv4 与 IPv6 本机回环地址，不对局域网开放。日志保存在忽略提交的 `.preview/server.log`。
-
-`npm run preview:status` 查看运行状态，`npm run preview:check` 检查页面及静态资源，`npm run preview:stop` 停止预览。代码更新后先运行 `npm run build:pages`，刷新即可查看新构建；本地开发热更新仍使用 `npm run dev`。
-
-## 访问网站
-
-- GitHub Pages：[https://sehuri.github.io](https://sehuri.github.io)
-- ChatGPT Sites：[https://shenhuili-digital-garden.shenhuil.chatgpt.site](https://shenhuili-digital-garden.shenhuil.chatgpt.site)
+首页以主题漫游和空间入口为主，点击“继续走走，翻看全部收藏”可以展开今日推荐、各处空间与收藏。通过导航、搜索或路线打开收藏时，会自动展开对应区域。
 
 ## 网站里的空间
 
@@ -73,32 +70,61 @@
 - **两个月亮**：夜晚首屏中的两个月亮分别通往“冷酷仙境”和“世界尽头”，会从对应歌单中随机选择一首歌曲。
 - **今日推荐**：每天从足迹、书架、知识、唱片和影视收藏中各推荐一项。
 - **随便走走**：随机选择网站中的一个空间，开始一次没有预设目的的漫游。
-- **主题漫游**：沿着“两个月亮之间”“关于出走”等策展路线，在旅行、书籍、唱片、影视、知识与手记之间逐站行走。
-- **此刻**：用一张轻量生活切片记录当前所在、正在阅读与研究的内容，以及下一站计划。
-- **全局搜索**：一个搜索框查找城市、书籍、知识、唱片、电影、电视剧与庭院手记；城市和知识结果与对应项目的公开数据同步。
+- **主题漫游**：四条路线各有六个节点，用引言、节点说明和结语串联旅行、书籍、唱片、影视、知识与手记；支持切换路线、上一站、下一站与进度定位。
+- **此刻 / NOW**：从首页导航进入独立的 `/now/` 页面，查看当前所在、正在读、最近循环、最近看完、正在研究、下一站和更新日期。书籍、唱片与电影附封面、作者或主创及介绍，每一期近况单独编写。
+- **全局搜索**：点击搜索或按 `⌘ K` / `Ctrl K`，查找此刻、主题路线、城市、本站书籍收藏、知识、唱片、电影、电视剧与庭院手记。城市和知识结果与对应项目的公开数据同步，重复到访同一城市会合并展示。
 - **白天与夜晚**：默认是有两个月亮的深夜主题，也可以切换到海风、云与归来之影组成的白天庭院。
 - **庭院年轮**：记录网站当前收藏的数据，以及每一次新增模块和功能的成长时间线。
 
+当前可以漫游的四条路线：
+
+- 两个月亮之间：现实、内心与平行世界。
+- 关于出走：旅途、自由与另一种生活。
+- 海边与孤独：海风、声音与人与人的距离。
+- 技术与人的边界：能力、知识组织与选择的责任。
+
 ## 独立项目与更新方式
 
-旅行地图、阅览室和知识 Wiki 都是独立维护、独立部署的项目，个人网站通过它们的线上地址进行连接。
+旅行地图、阅览室和知识 Wiki 独立维护、独立部署。个人网站连接这些空间，并在打开页面时读取已发布的公开数据，无需把独立项目的代码和内容重复复制进本仓库。
 
-因此：
+| 来源 | 个人网站读取的内容 | 使用位置 |
+| --- | --- | --- |
+| 旅行地图的公开到访记录 | 去重后的城市、国家、到访日期与介绍 | 远行空间卡片、庭院年轮、城市搜索 |
+| 阅览室的公开统计 `data.json` | 年度已读数量、公开书架数量 | 阅迹空间卡片、庭院年轮 |
+| 知识 Wiki 的公开索引 | 条目数量、标题、作者、摘要、主题与概念 | 知庭空间卡片、庭院年轮、知识搜索 |
 
-- 独立项目发布新版本后，从个人网站进入时会直接看到该项目的最新版。
-- 独立项目的代码和内容不需要重复复制进本仓库。
-- 首页及全局搜索的城市数据直接读取旅行地图的公开记录，按国家和城市名称去重；重复到访只计一座城市，搜索中合并展示到访日期和介绍。知识数据读取知识库的公开索引；年度阅读和公开书架数量读取阅览室每天生成的公开统计。刷新个人网站后，这些数字及搜索结果会跟随各项目已发布的数据变化。
-- 如果数据源暂时无法访问，对应位置会显示“—”或“暂无法读取最新数据”，不再展示过期数字。
-- 主题漫游中的策展文字、今日推荐等人工内容仍由个人网站单独维护。
+**城市数按国家和城市名称去重。** 例如雅加达在 2026 年 10 月 2 日和 10 月 4 日各有一次到访，城市总数只计一座，搜索中只展示一张城市卡片，并保留两个日期及相关介绍。各处统计和搜索共用同一份去重后的城市列表；旅游地图原有的每次到访记录继续保留。
+
+刷新个人网站后，数字及搜索结果会跟随各项目已发布的数据变化。阅览室以其定时同步后发布的公开统计为准；首页书籍搜索目前收录本站的书籍推荐和村上书房，并非阅览室全部书架。
+
+加载期间会显示同步提示。如果数据源暂时无法访问，对应位置会显示“—”或“暂无法读取最新数据”，搜索也会提示部分外部收藏无法读取。
+
+主题路线的策展文字、今日推荐候选、此刻近况、唱片、影视、村上作品与手记，由个人网站单独维护；外部项目更新不会改写这些人工内容。
 
 这样的结构让每个空间都可以单独生长，同时又通过主页汇入同一座庭院。
+
+## 内容维护
+
+| 想更新的内容 | 主要文件或目录 |
+| --- | --- |
+| 首屏日夜庭院与导航 | [app/GardenEntrance.tsx](./app/GardenEntrance.tsx) |
+| 此刻近况、封面与海报 | [app/NowSection.tsx](./app/NowSection.tsx)、[public/now/](./public/now/) |
+| 主题漫游路线与节点 | [app/journeyData.ts](./app/journeyData.ts) |
+| 唱片收藏与双月歌单 | [app/albumData.ts](./app/albumData.ts) |
+| 电影与电视剧 | [app/filmData.ts](./app/filmData.ts) |
+| 村上书房 | [app/murakamiData.ts](./app/murakamiData.ts) |
+| 庭院手记 | [app/noteData.ts](./app/noteData.ts) |
+| 旅行、书籍、知识的推荐候选 | [app/recommendationData.ts](./app/recommendationData.ts) |
+| 外部数据同步与城市去重 | [app/ExternalStats.tsx](./app/ExternalStats.tsx) |
+| 全局搜索与主题切换 | [app/GlobalExperience.tsx](./app/GlobalExperience.tsx) |
+| 庭院年轮与成长时间线 | [app/GardenGrowth.tsx](./app/GardenGrowth.tsx) |
 
 ## 本地运行
 
 需要 Node.js `>=22.13.0`。
 
 ```bash
-npm install
+npm ci
 npm run dev
 ```
 
@@ -107,18 +133,15 @@ npm run dev
 常用命令：
 
 ```bash
-npm run dev         # 启动本地开发环境
-npm run build       # 检查 ChatGPT Sites 构建
-npm run build:pages # 生成 GitHub Pages 静态文件
+npm run dev           # 启动支持热更新的本地开发环境
+npm run build         # 构建 ChatGPT Sites 版本
+npm run build:pages   # 生成 GitHub Pages 静态文件到 out/
+npm run preview:local # 启动静态构建预览：http://localhost:4174/
+npm run preview:check # 检查本地预览页面及静态资源
+npm run preview:stop  # 停止静态预览
 ```
 
-日常更新网站时，只需要提交并推送 `main`：
-
-```bash
-git push origin main
-```
-
-GitHub Actions 会自动完成依赖安装、静态构建与 `gh-pages` 发布。只有构建成功时线上页面才会更新，也可以在仓库的 **Actions** 页面手动重新运行部署。
+静态预览需要先运行 `npm run build:pages`，代码修改后重新构建并刷新页面。预览作为独立后台进程运行，同时监听 IPv4 与 IPv6 本机回环地址，不对局域网开放；运行状态可通过 `npm run preview:status` 查看，日志位于忽略提交的 `.preview/server.log`。
 
 ## 技术与部署
 
@@ -127,7 +150,11 @@ GitHub Actions 会自动完成依赖安装、静态构建与 `gh-pages` 发布�
 - GitHub Pages
 - ChatGPT Sites
 
-源码维护在 `main` 分支。每次推送 `main` 后，`Deploy GitHub Pages` 工作流会自动检查并生成静态网站，再将构建结果发布到 `gh-pages` 分支。
+源码与 README 维护在 `main` 分支。提交修改后运行 `git push origin main`，即可触发 [Deploy GitHub Pages](https://github.com/Sehuri/Sehuri.github.io/actions/workflows/deploy-pages.yml) 工作流：安装依赖、构建静态页面，并将构建产物提交到 `gh-pages` 分支。GitHub Pages 从该分支发布网站；构建失败时不会执行产物发布，也可以在 Actions 页面手动启动工作流。
+
+`gh-pages` 中的自动发布提交由 `github-actions[bot]` 创建，因此它会出现在仓库的贡献者列表中。
+
+ChatGPT Sites 使用同一套网站源码，通过 Sites 的构建与发布流程单独更新；推送 GitHub `main` 不会自动发布 Sites 版本。
 
 ## 关于名字
 
