@@ -1,7 +1,7 @@
-:HL["/_next/static/chunks/0aabinibh5mz5.css","style"]
+:HL["/_next/static/chunks/093867~i6st1n.css","style"]
 :HL["/_next/static/chunks/0fha.j2vl~fjs.css","style"]
 :HL["/now/simple-and-usable-cn.jpg","image"]
 :HL["/now/pedro-paramo.jpg","image"]
 :HL["/now/heart-beat.jpg","image"]
 :HL["/now/the-odyssey.jpg","image"]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"now","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"JcCy9JX4z0CCJ6fWr8O9m"}
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"now","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"dNNSkigQVInNsWqEietjk"}
