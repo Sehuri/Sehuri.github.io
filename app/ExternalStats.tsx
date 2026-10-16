@@ -2,9 +2,11 @@
 
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
 
-type TravelStats = { cities: number; countries: number };
+type TravelVisit = { name: string; country: string; date?: string; desc?: string };
+type WikiEntry = { id: string; title: string; author?: string; summary?: string; topics?: string[]; concepts?: string[] };
+type TravelStats = { cities: number; countries: number; visits: TravelVisit[] };
 type ReadingStats = { annualRead: number; publicBooks: number };
-type WikiStats = { entries: number };
+type WikiStats = { entries: number; items: WikiEntry[] };
 type SourceState<T> = T | null | undefined;
 
 type ExternalStats = {
@@ -21,13 +23,13 @@ const ExternalStatsContext = createContext<ExternalStats>({
 
 declare global {
   interface Window {
-    TRAVEL_DATA?: { visits?: Array<{ name?: string; country?: string }> };
+    TRAVEL_DATA?: { visits?: Array<{ name?: string; country?: string; date?: string; desc?: string }> };
   }
 }
 
 function asCount(value: unknown): number | null {
   if (typeof value !== "number" && typeof value !== "string") return null;
-  const normalized = String(value).replaceAll(",", "").trim();
+  const normalized = String(value).replaceAll(",", "").trim().replace(/\s*本$/, "");
   if (!/^\d+$/.test(normalized)) return null;
   const count = Number(normalized);
   return Number.isSafeInteger(count) ? count : null;
@@ -49,19 +51,34 @@ async function githubFile(repository: string, path: string): Promise<string> {
   return decodeGitHubContent(body.content);
 }
 
-function travelFromVisits(visits: Array<{ name?: string; country?: string }>): TravelStats {
-  const valid = visits.filter((visit) => typeof visit.name === "string" && typeof visit.country === "string");
+function travelFromVisits(visits: Array<{ name?: string; country?: string; date?: string; desc?: string }>): TravelStats {
+  const valid = visits.filter((visit): visit is TravelVisit => typeof visit.name === "string" && !!visit.name.trim() && typeof visit.country === "string" && !!visit.country.trim());
   if (!valid.length || valid.length !== visits.length) throw new Error("Travel records are incomplete");
-  return { cities: valid.length, countries: new Set(valid.map((visit) => visit.country)).size };
+  return { cities: valid.length, countries: new Set(valid.map((visit) => visit.country)).size, visits: valid };
+}
+
+function parseTravelVisits(source: string): TravelVisit[] {
+  const section = source.match(/visits:\s*\[([\s\S]*?)\n  \],\s*\n  [A-Za-z]\w*:/)?.[1];
+  if (!section) throw new Error("Travel records were not found");
+  const field = (row: string, key: string): string | undefined => {
+    const value = row.match(new RegExp(`${key}:\\s*("(?:\\\\.|[^"\\\\])*")`))?.[1];
+    return value ? JSON.parse(value) as string : undefined;
+  };
+  return section.split("\n").filter((row) => /^\s*\{\s*name:/.test(row)).map((row) => ({
+    name: field(row, "name") ?? "",
+    country: field(row, "country") ?? "",
+    date: field(row, "date"),
+    desc: field(row, "desc"),
+  }));
 }
 
 async function travelStats(): Promise<TravelStats> {
   try {
-    const visits = await new Promise<Array<{ name?: string; country?: string }>>((resolve, reject) => {
+    const visits = await new Promise<Array<{ name?: string; country?: string; date?: string; desc?: string }>>((resolve, reject) => {
       if (window.TRAVEL_DATA?.visits) return resolve(window.TRAVEL_DATA.visits);
       const script = document.createElement("script");
       const timeout = window.setTimeout(() => reject(new Error("Travel data request timed out")), 12000);
-      script.src = "https://sehuri.github.io/travel-map/assets/data.js";
+      script.src = `https://sehuri.github.io/travel-map/assets/data.js?sync=${Date.now()}`;
       script.async = true;
       script.onload = () => {
         window.clearTimeout(timeout);
@@ -77,11 +94,7 @@ async function travelStats(): Promise<TravelStats> {
   } catch {
     // The public repository is a fallback when a browser blocks the deployed script.
     const source = await githubFile("travel-map", "assets/data.js");
-    const visits = source.match(/visits:\s*\[([\s\S]*?)\]\s*,\s*wishlist:/)?.[1];
-    if (!visits) throw new Error("Travel records were not found");
-    const countries = [...visits.matchAll(/\{\s*name:\s*"[^"]+"\s*,\s*country:\s*"([^"]+)"/g)].map((match) => match[1]);
-    if (!countries.length) throw new Error("Travel records could not be counted");
-    return { cities: countries.length, countries: new Set(countries).size };
+    return travelFromVisits(parseTravelVisits(source));
   }
 }
 
@@ -106,12 +119,15 @@ function parseWikiStats(source: string): WikiStats {
   if (!json) throw new Error("Wiki index was not found");
   const data = JSON.parse(json) as { items?: unknown };
   if (!Array.isArray(data.items)) throw new Error("Wiki index is incomplete");
-  return { entries: data.items.length };
+  const items = data.items.filter((item): item is WikiEntry => typeof item?.id === "string" && typeof item?.title === "string");
+  if (items.length !== data.items.length) throw new Error("Wiki index has invalid entries");
+  return { entries: items.length, items };
 }
 
 async function wikiStats(): Promise<WikiStats> {
   try {
     const response = await fetch("https://raw.githubusercontent.com/Sehuri/Sehuri-knowledge-wiki/main/pages/wiki-public-data.ts", {
+      cache: "no-cache",
       signal: AbortSignal.timeout(12000),
     });
     if (!response.ok) throw new Error(`Wiki data request failed: ${response.status}`);
@@ -148,7 +164,7 @@ export function useExternalStats() {
 export function ExternalStatValue({ kind }: { kind: "travel" | "reading" | "wiki" }) {
   const stats = useExternalStats();
   const value = kind === "travel" ? stats.travel?.cities : kind === "reading" ? stats.reading?.annualRead : stats.wiki?.entries;
-  return <span aria-live="polite">{value ?? "—"}</span>;
+  return <span className="external-stat-number" aria-live="polite">{value ?? "—"}</span>;
 }
 
 export function ExternalSpaceDetail({ kind }: { kind: "travel" | "reading" | "wiki" }) {

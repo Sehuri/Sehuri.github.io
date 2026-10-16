@@ -9,6 +9,7 @@ import { murakamiBooks } from "./murakamiData";
 import { bookRecommendations } from "./recommendationData";
 import { gardenDeepLinkEvent, searchTargetId } from "./deepLinks";
 import { themeJourneys } from "./journeyData";
+import { useExternalStats } from "./ExternalStats";
 
 type SearchItem = {
   id: string;
@@ -109,13 +110,30 @@ export default function GlobalExperience() {
   const theme = useSyncExternalStore(subscribeTheme, readTheme, serverTheme);
   const [searchOpen, setSearchOpen] = useState(false);
   const [query, setQuery] = useState("");
-  const [externalItems, setExternalItems] = useState<SearchItem[]>([]);
+  const externalStats = useExternalStats();
   const inputRef = useRef<HTMLInputElement>(null);
   const searchPanelRef = useRef<HTMLElement>(null);
 
-  useEffect(() => {
-    fetch("/search-external.json").then((response) => response.json()).then(setExternalItems).catch(() => setExternalItems([]));
-  }, []);
+  const externalItems = useMemo<SearchItem[]>(() => [
+    ...(externalStats.travel?.visits ?? []).map((visit, index) => ({
+      id: `city-${visit.name}-${visit.date ?? index}`,
+      type: "城市",
+      title: visit.name,
+      subtitle: `${visit.country}${visit.date ? ` · ${visit.date}` : ""}`,
+      description: visit.desc ?? "旅行地图里的一段足迹。",
+      href: "https://sehuri.github.io/travel-map/#memories",
+      keywords: `${visit.name} ${visit.country} ${visit.date ?? ""} 旅行 城市 足迹 ${visit.desc ?? ""}`,
+    })),
+    ...(externalStats.wiki?.items ?? []).map((item) => ({
+      id: `knowledge-${item.id}`,
+      type: "知识",
+      title: item.title,
+      subtitle: item.author ? `作者 · ${item.author}` : "知识花园",
+      description: item.summary ?? "收录在知识花园的内容。",
+      href: "https://sehuri.github.io/Sehuri-knowledge-wiki/",
+      keywords: `${item.title} ${item.author ?? ""} ${(item.topics ?? []).join(" ")} ${(item.concepts ?? []).join(" ")} ${item.summary ?? ""}`,
+    })),
+  ], [externalStats.travel, externalStats.wiki]);
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
@@ -189,7 +207,7 @@ export default function GlobalExperience() {
             <label className="search-input"><span aria-hidden="true">⌕</span><input ref={inputRef} value={query} onChange={(event) => setQuery(event.target.value)} placeholder="搜索城市、书、唱片、电影、知识或手记……" /><kbd>ESC</kbd></label>
             <div className="search-body">
               {!query ? (
-                <div className="search-intro"><p>一只搜索框，穿过整座庭院。</p><div>{counts.map((item) => <button type="button" key={item.type} onClick={() => setQuery(item.type)}><strong>{item.count}</strong><span>{item.type}</span></button>)}</div><small>试试搜索“村上”“上海”“时间”或一位歌手。</small></div>
+                <div className="search-intro"><p>一只搜索框，穿过整座庭院。</p><div>{counts.map((item) => <button type="button" key={item.type} onClick={() => setQuery(item.type)}><strong>{item.count}</strong><span>{item.type}</span></button>)}</div><small>{externalStats.travel === undefined || externalStats.wiki === undefined ? "正在同步旅行地图与知识花园……" : externalStats.travel === null || externalStats.wiki === null ? "部分外部收藏暂时无法读取，请稍后重试。" : "试试搜索“村上”“上海”“时间”或一位歌手。"}</small></div>
               ) : grouped.length ? grouped.map((group) => (
                 <section className="search-group" key={group.type}><header><h3>{group.type}</h3><span>{group.items.length}</span></header><div>{group.items.map((item) => <a href={item.href} target={item.href.startsWith("http") ? "_blank" : undefined} rel={item.href.startsWith("http") ? "noreferrer" : undefined} key={item.id} onClick={(event) => openResult(event, item)}><small>{item.type}</small><h4>{item.title}</h4><span>{item.subtitle}</span><p>{item.description}</p><i>↗</i></a>)}</div></section>
               )) : <div className="search-empty"><span>○</span><h3>没有找到这件收藏</h3><p>换一个更短的词试试，也许它藏在另一条路上。</p></div>}

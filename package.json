@@ -16,7 +16,6 @@
     "preview:stop": "node scripts/local-preview.mjs stop",
     "test": "npm run build && node --test tests/rendered-html.test.mjs",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
-    "search:index": "node scripts/generate-search-index.mjs",
     "db:generate": "drizzle-kit generate"
   },
   "dependencies": {

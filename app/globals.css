@@ -1259,6 +1259,7 @@ a.space-card:focus-visible {
 .growth-stat-grid a:hover { background: rgba(255,255,255,.05); }
 .growth-stat-grid strong { font-family: "Songti SC", serif; font-size: clamp(2.6rem,5vw,4.8rem); font-weight: 400; line-height: 1; }
 .growth-stat-grid span { margin-left: .45rem; color: var(--sunset); font-family: "Songti SC", serif; font-size: .72rem; }
+.growth-stat-grid strong .external-stat-number { margin-left: 0; color: inherit; font: inherit; }
 .growth-stat-grid p { margin: 1rem 0 0; color: rgba(255,255,255,.46); font-size: .62rem; }
 .growth-stat-grid i { position: absolute; right: 1rem; top: 1rem; color: rgba(255,255,255,.28); font-style: normal; }
 .growth-timeline { display: grid; grid-template-columns: .42fr 1.58fr; gap: clamp(2rem,6vw,6rem); margin-top: clamp(4rem,8vw,7rem); }
