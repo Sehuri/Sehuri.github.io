@@ -2,8 +2,6 @@
 
 > 在自己的世界里，慢慢生长。
 
-![深绘里个人网站预览](./public/og.png)
-
 「深绘里」是我的个人数字庭院。
 
 我把旅行、阅读、知识、音乐、影视和随手写下的文字放在这里，让散落在不同地方的收藏拥有同一个入口。它不是一份静止的个人简历，而是一个会随着生活持续变化的长期项目。
@@ -13,6 +11,63 @@
 - [GitHub Pages · 深绘里](https://sehuri.github.io/)
 - [ChatGPT Sites · 深绘里](https://shenhuili-digital-garden.shenhuil.chatgpt.site/)
 - [此刻 / NOW](https://sehuri.github.io/now/)
+
+## 网站实景
+
+以下为当前版本的真实页面截图，拍摄于 2026 年 10 月 16 日。点击图片可以查看原图。
+
+### 黑夜 · 两个月亮之间
+
+双月、远山与城市灯火，陪着一座城、一本书和一首歌，展开夜晚的收藏漫游。
+
+[![黑夜首页：双月下的深绘里与主题路线](./docs/screenshots/night-home.jpg)](./docs/screenshots/night-home.jpg)
+
+### 白天 · 把生活慢慢绘成自己的世界
+
+同一座庭院，在白天换成云、草木与开阔的天光，继续向下翻阅生活与手记。
+
+[![白天首页：蓝天、草木与深绘里的私人生活刊](./docs/screenshots/day-home.jpg)](./docs/screenshots/day-home.jpg)
+
+### 再往里走走
+
+<table>
+  <tr>
+    <td width="50%" valign="top">
+      <strong>主题漫游</strong><br />
+      让书、声音、电影与手记沿一条路线相遇。
+      <a href="./docs/screenshots/theme-journey.jpg"><img src="./docs/screenshots/theme-journey.jpg" alt="主题漫游：两个月亮之间的六个路线节点与手记讲解" width="100%" /></a>
+    </td>
+    <td width="50%" valign="top">
+      <strong>此刻 / NOW</strong><br />
+      用书封和介绍，留下这一期正在读的内容。
+      <a href="./docs/screenshots/now-reading.jpg"><img src="./docs/screenshots/now-reading.jpg" alt="此刻页面：《简约至上》和《佩德罗·巴拉莫》的封面、作者与介绍" width="100%" /></a>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <strong>听潮 · 唱片室</strong><br />
+      从置顶的 1Q84 OST，走进双面选集与唱片收藏。
+      <a href="./docs/screenshots/record-room.jpg"><img src="./docs/screenshots/record-room.jpg" alt="唱片室：1Q84 OST 封面、双面选集与私人推荐语" width="100%" /></a>
+    </td>
+    <td width="50%" valign="top">
+      <strong>光影馆</strong><br />
+      按首映时间排列的电影与剧集，可以分类浏览。
+      <a href="./docs/screenshots/cinema.jpg"><img src="./docs/screenshots/cinema.jpg" alt="光影馆：影视类型筛选与《乱世佳人》《2001太空漫游》《教父》海报" width="100%" /></a>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <strong>村上书房</strong><br />
+      留给反复重读的作品，也留给进入另一个世界的门。
+      <a href="./docs/screenshots/murakami-library.jpg"><img src="./docs/screenshots/murakami-library.jpg" alt="村上书房：《世界尽头与冷酷仙境》与《舞！舞！舞！》两部珍藏作品" width="100%" /></a>
+    </td>
+    <td width="50%" valign="top">
+      <strong>在庭院里寻找</strong><br />
+      一只搜索框，连接城市、书籍、知识与其他收藏。
+      <a href="./docs/screenshots/global-search.jpg"><img src="./docs/screenshots/global-search.jpg" alt="全局搜索：57 座城市及各类收藏的分类入口" width="100%" /></a>
+    </td>
+  </tr>
+</table>
 
 ## 日夜庭院
 
